@@ -33,7 +33,7 @@ script:
 after_failure:
   - cat ${TRAVIS_HOME}/.miktex/texmfs/data/miktex/log/lualatex.log
   - cat arara.log
-  - cat report.log
+  - cat maltoni_niccolo_tesi.log
 # TODO: per abilitare le release su GitHub, configurare quanto segue
 # deploy:
 #   provider: releases
