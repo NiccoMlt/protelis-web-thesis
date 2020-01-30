@@ -28,8 +28,8 @@ install:
   - pygmentize -V       # visualizza la versione di Pygments
   - inkscape --version  # visualizza la versione di Inkscape
 script:
-  - arara --log --verbose tesi.tex
-  - chktex tesi.tex
+  - arara --log --verbose maltoni_niccolo_tesi.tex
+  - chktex maltoni_niccolo_tesi.tex
 after_failure:
   - cat ${TRAVIS_HOME}/.miktex/texmfs/data/miktex/log/lualatex.log
   - cat arara.log
@@ -39,7 +39,7 @@ after_failure:
 #   provider: releases
 #   token:
 #     secure:
-#   file: "tesi.pdf"
+#   file: "maltoni_niccolo_tesi.pdf"
 #   cleanup: true
 #   draft: true
 #   on:
