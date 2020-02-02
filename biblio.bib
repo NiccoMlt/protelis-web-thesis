@@ -3,30 +3,100 @@
 % Foundational field calculus and Protelis aggregate programming
 
 @Article{7274429,
-  author       = {Beal, Jacob and Pianini, Danilo and Viroli, Mirko},
+  author       = {Jacob Beal and Danilo Pianini and Mirko Viroli},
   title        = {Aggregate Programming for the Internet of Things},
+  journal      = {Computer},
   journaltitle = {Computer},
+  year         = {2015},
   date         = {2015-09},
   volume       = {48},
   number       = {9},
-  pages        = {22-30},
+  month        = {sep},
+  pages        = {22--30},
   issn         = {0018-9162},
-  doi          = {10.1109/MC.2015.261},
+  doi          = {10.1109/mc.2015.261},
+  file         = {:res/biblio/papers/7274429 - Aggregate Programming for the Internet of Things.pdf:PDF},
   keywords     = {Aggregate programmin;Embedded systems;Internet of things;Pervasive computing;Programming;DSLs;Internet of Things;IoT;aggregate programming;distributed systems;domain-specific languages;embedded systems;field calculus;pervasive computing},
+  publisher    = {Institute of Electrical and Electronics Engineers ({IEEE})},
 }
 
 % The first scientific paper presenting Protelis and example applications
 
 @InProceedings{PianiniSASOTutorial2017,
-  author    = {Pianini, Danilo and Beal, Jacob and Viroli, Mirko},
+  author    = {Danilo Pianini and Jacob Beal and Mirko Viroli},
   title     = {Practical Aggregate Programming with Protelis},
-  booktitle = {2nd IEEE International Workshops on Foundations and Applications of Self* Systems, FAS*W@SASO/ICCAC 2017, Tucson, AZ, USA, September 18-22, 2017},
+  booktitle = {2017 {IEEE} 2nd International Workshops on Foundations and Applications of Self{\ast} Systems ({FAS}{\ast}W)},
+  year      = {2017},
   date      = {2017},
+  publisher = {{IEEE}},
+  month     = {sep},
   pages     = {391--392},
-  doi       = {10.1109/FAS-W.2017.186},
+  doi       = {10.1109/fas-w.2017.186},
   bibsource = {dblp computer science bibliography, http://dblp.org},
   biburl    = {http://dblp.org/rec/bib/conf/saso/PianiniBV17},
+  file      = {:res/biblio/papers/PianiniSASOTutorial2017 - Practical Aggregate Programming with Protelis.pdf:PDF},
   timestamp = {Mon, 23 Oct 2017 12:54:11 +0200},
+}
+
+@Thesis{amslaurea19778,
+  author      = {Filippo Nardini},
+  title       = {Sviluppo di piattaforme per il linguaggio Protelis in Kotlin e Java},
+  type        = {Tesi di Laurea},
+  institution = {Università di Bologna},
+  year        = {2019},
+  url         = {http://amslaurea.unibo.it/19778/},
+  abstract    = {L'ambiente da cui siamo circondati tutti i giorni {\`e} pervaso da dispositivi in grado di effettuare computazioni e comunicare. L'eterogeneit{\`a} di questi dispositivi rende difficile sviluppare applicazioni distribuite resilienti e affidabili utilizzando le tecniche dell'ingegneria del software classica. La programmazione aggregata si propone come paradigma di sviluppo che fornisce meccanismi di comunicazione flessibili e robusti tra questi dispositivi, in particolare vengono presi in considerazione il field calculus e una sua implementazione pratica: Protelis, un linguaggio di programmazione che supporta tale paradigma di programmazione.
+In questo lavoro vengono analizzate le caratteristiche di Protelis, in particolare la sua architettura e i suoi livelli di astrazione. In seguito vengono modellati nuovi concetti, per la realizzazione di un modello ad oggetti riusabile, che possa essere un potenziale punto di partenza per l'implementazione di un'infrastruttura facilmente estendibile, riusabile, e manutenibile. A supporto della flessibilit{\`a} del modello, sono presentate tre realizzazioni dell'architettura descritta, che eseguono lo stesso programma aggregato, ma finalizzate a descrivere tre scenari d'uso distinti: la prima rappresenta un micro-simulatore, che emula un contesto distribuito, ma sfrutta la memoria condivisa per permettere lo scambio di messaggi tra i nodi; la seconda realizza un'applicazione distribuita utilizzando le socket TCP per la comunicazione; la terza si serve di un broker di messaggistica centrale e sfrutta il protocollo MQTT, un modello di scambio di messaggi utilizzato nell'Internet-of-Things, per implementare la comunicazione. Per provare l'interoperabilit{\`a} dell'architettura con i linguaggi eseguiti sulla Java Virtual Machine, questi tre scenari sono stati implementati sia in Java che in Kotlin.},
+  file        = {:res/biblio/amslaurea/amslaurea19778 - Sviluppo Di Piattaforme Per Il Linguaggio Protelis in Kotlin E Java.pdf:PDF},
+  keywords    = {aggregate computing,field calculus,protelis,software engineering},
+}
+
+@Thesis{amslaurea16824,
+  author      = {Gianluca Aguzzi},
+  title       = {Sviluppo di un front-end di simulazione per applicazioni aggregate nel framework Scafi},
+  type        = {Tesi di Laurea},
+  institution = {Università di Bologna},
+  year        = {2018},
+  url         = {http://amslaurea.unibo.it/16824/},
+  abstract    = {La tesi {\`e} articolata in sei capitoli: nel primo vengono introdotti gli studi pregressi realizzati durante il periodo di tirocinio svolto presso l'Universit{\`a} di Bologna, utili a comprendere l'insieme di scelte effettuate nelle altre fasi dello studio.
+Nel secondo capitolo viene descritta la fase di analisi del modello da realizzare, completa di elenco dei requisiti che il front-end deve rispettare, in questa fase in modo particolare, c'{\`e} stato uno scambio di informazioni costante con il prof. Mirko Viroli e il dott. Roberto Casadei nei panni dei 'committenti' nel progetto.
+Nel terzo capitolo si descrive la fase di progettazione architetturale, fornendo informazioni su come il software realizza quanto richiesto in fase di analisi in termini di architettura. Si descrive, quindi, la struttura generale del front-end e si spiega il perch{\'e} delle varie scelte presenti in questa fase.
+Nel quarto capitolo vengono descritte, invece, quelle che sono le scelte di design dettagliato, in particolare si descrive com'{\`e} possibile interfacciare il front-end con il framework {$\backslash$}class\{ScaFi\} e come avviare e descrivere una simulazione aggregata.
+Nel quinto capitolo vengono mostrate le scelte implementative per la realizzazione del software e vengono mostrati alcuni screenshot con i risultati ottenuti e, infine, nel sesto si offre una panoramica di quello che {\`e} il risultato finale mostrando la struttura dell'interfaccia grafica corredato di analisi delle performance estratte da alcune delle possibili simulazioni eseguibili sul front-end},
+  file        = {:res/biblio/amslaurea/amslaurea16824 - Sviluppo Di Un Front End Di Simulazione Per Applicazioni Aggregate Nel Framework Scafi.pdf:PDF},
+  keywords    = {aggregate computing,scafi,scala},
+}
+
+@Thesis{amslaurea13090,
+  author      = {Matteo Francia},
+  title       = {A Foundational Library for Aggregate Programming},
+  type        = {Tesi di Laurea Magistrale},
+  institution = {Università di Bologna},
+  year        = {2017},
+  url         = {http://amslaurea.unibo.it/13090/},
+  abstract    = {L'elevata diffusione di entit{\`a} computazionali ha contribuito alla costruzione di sistemi distribuiti fortemente eterogenei. L'ingegnerizzazione di sistemi auto-organizzanti, incentrata sull'interazione tra singoli dispositivi, {\`e} intrinsecamente complessa, poich{\'e} i dettagli di basso livello, come la comunicazione e l?efficienza, condizionano il design del sistema. Una pletora di nuovi linguaggi e tecnologie consente di progettare e di coordinare il comportamento collettivo di tali sistemi, astraendone i singoli componenti. In tale gruppo rientra il field calculus, il quale modella i sistemi distribuiti in termini di composizione e manipolazione di field, "mappe" dispositivo-valore variabili nel tempo, attraverso quattro operatori sufficientemente generici e semplici al fine di rendere universale il modello e di consentire la verifica di propriet{\`a} formali, come la stabilizzazione di sistemi auto-organizzanti. L'aggregate programming, ponendo le sue fondamenta nel field calculus, utilizza field computazionali per garantire elasticit{\`a}, scalabilit{\`a} e composizione di servizi distribuiti tramite, ad esempio, il linguaggio Protelis. Questa tesi contribuisce alla creazione di una libreria Protelis per l'aggregate programming, attraverso la creazione di interfacce di programmazione (API) adatte all'ingegnerizzazione di sistemi auto-organizzanti con crescente complessit{\`a}. La libreria raccoglie, all?interno di un unico framework, algoritmi tra loro eterogenei e meta-pattern per la coordinazione di entit{\`a} computazionali. Lo sviluppo della libreria richiede la progettazione di un ambiente minimale di testing e pone nuove sfide nella definizione di unit e regression testing in ambienti auto-organizzanti. L'efficienza e l'espressivit{\`a} del lavoro proposto sono testate e valutate empiricamente attraverso la simulazione di scenari pervasive computing a larga scala.},
+  file        = {:res/biblio/amslaurea/amslaurea13090 - A Foundational Library for Aggregate Programming.pdf:PDF},
+  keywords    = {Aggregate programming,Programming languages,Self-organisation,Application programming interface,Simulation},
+}
+
+@Thesis{amslaurea10341,
+  author      = {Roberto Casadei},
+  title       = {Aggregate Programming in Scala: a Core Library and Actor-Based Platform for Distributed Computational Fields},
+  type        = {Tesi di Laurea Magistrale},
+  institution = {Università di Bologna},
+  year        = {2016},
+  url         = {http://amslaurea.unibo.it/10341/},
+  abstract    = {La programmazione aggregata {\`e} un paradigma che supporta la programmazione di sistemi di dispositivi, adattativi ed eventualmente a larga scala, nel loro insieme -- come aggregati. L'approccio prevalente in questo contesto {\`e} basato sul field calculus, un calcolo formale che consente di definire programmi aggregati attraverso la composizione funzionale di campi computazionali, creando i presupposti per la specifica di pattern di auto-organizzazione robusti.
+
+La programmazione aggregata {\`e} attualmente supportata, in modo pi{\`u} o meno parziale e principalmente per la simulazione, da DSL dedicati (cf., Protelis), ma non esistono framework per linguaggi mainstream finalizzati allo sviluppo di applicazioni. Eppure, un simile supporto sarebbe auspicabile per ridurre tempi e sforzi d'adozione e per semplificare l'accesso al paradigma nella costruzione di sistemi reali, nonch{\'e} per favorire la ricerca stessa nel campo.
+
+Il presente lavoro consiste nello sviluppo, a partire da un prototipo della semantica operazionale del field calculus, di un framework per la programmazione aggregata in Scala.
+
+La scelta di Scala come linguaggio host nasce da motivi tecnici e pratici. Scala {\`e} un linguaggio moderno, interoperabile con Java, che ben integra i paradigmi ad oggetti e funzionale, ha un sistema di tipi espressivo, e fornisce funzionalit{\`a} avanzate per lo sviluppo di librerie e DSL. Inoltre, la possibilit{\`a} di appoggiarsi, su Scala, ad un framework ad attori solido come Akka, costituisce un altro fattore trainante, data la necessit{\`a} di colmare l'abstraction gap inerente allo sviluppo di un middleware distribuito.
+
+Nell'elaborato di tesi si presenta un framework che raggiunge il triplice obiettivo: la costruzione di una libreria Scala che realizza la semantica del field calculus in modo corretto e completo, la realizzazione di una piattaforma distribuita Akka-based su cui sviluppare applicazioni, e l'esposizione di un'API generale e flessibile in grado di supportare diversi scenari.},
+  file        = {:res/biblio/amslaurea/amslaurea10341 - Aggregate Programming in Scala_ a Core Library and Actor Based Platform for Distributed Computational Fields.pdf:PDF},
+  keywords    = {aggregate-programming field-calculus distributed-framework actors self-organization Scala},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
