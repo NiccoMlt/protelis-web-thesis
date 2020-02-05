@@ -22,6 +22,7 @@
 ## Dettagli tecnici
 
 Il documento è pensato per essere compilato con il motore **LuaLaTeX** tramite [**arara**](https://github.com/cereda/arara) come _build tool_ e **VisualStudio Code** come _ambiente di lavoro_, grazie all'ausilio del plugin [**LaTeX Workshop**](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+Risulta comunque compilabile anche manualmente o su Overleaf; importante è utilizzare il motore **LuaLaTeX** o al limite XeLaTeX (<u>ma non `pdflatex`!</u>).
 
 Il documenti utilizza la classe [`scrbook`](https://www.ctan.org/pkg/scrbook) (alternativa della collezione [KOMA-script](https://www.ctan.org/pkg/koma-script) della classe `book`) e definisce una dimensione del testo di 12pt, con margini identici di 2,5cm e interlinea con scartamento 1,5.
 
@@ -38,6 +39,8 @@ Lo stile scelto per la biblografia è quello [_IEEE_](https://ctan.org/pkg/bibla
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+Il progetto è stato generato a partire dal [mio template per tesi Unibo](https://github.com/NiccoMlt/Unibo-Tesi-Template), costruito cercando di aderire alle norme redazionali dell'Università di Bologna e alle _best practices_ apprese dalle guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
 Il codice LaTeX personalmente realizzato per la struttura del documento di tesi sono forniti sotto licenza [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0) in accordo al file [`LICENSE`](./LICENSE) incluso in questo repository.
 
