@@ -22,7 +22,7 @@
 ## Dettagli tecnici
 
 Il documento è pensato per essere compilato con il motore **LuaLaTeX** tramite [**arara**](https://github.com/cereda/arara) come _build tool_ e **VisualStudio Code** come _ambiente di lavoro_, grazie all'ausilio del plugin [**LaTeX Workshop**](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
-Risulta comunque compilabile anche manualmente o su Overleaf; importante è utilizzare il motore **LuaLaTeX** o al limite XeLaTeX (<u>ma non `pdflatex`!</u>).
+Risulta comunque compilabile anche manualmente o su Overleaf; importante è utilizzare il motore **LuaLaTeX** o al limite XeLaTeX (<ins>ma non `pdflatex`!</ins>).
 
 Il documenti utilizza la classe [`scrbook`](https://www.ctan.org/pkg/scrbook) (alternativa della collezione [KOMA-script](https://www.ctan.org/pkg/koma-script) della classe `book`) e definisce una dimensione del testo di 12pt, con margini identici di 2,5cm e interlinea con scartamento 1,5.
 
