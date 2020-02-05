@@ -10,7 +10,7 @@
 - È vietato riprodurre il logo dell'Ateneo di Bologna su qualunque parte dell'elaborato;
 - il file non dovrà superare i 30Mb;
 - pagine di 32-35 righe, ciascuna di 65-70 caratteri di tipo prestabilito (Times New Roman, Arial, Courier o Helvetica);
-- lunghezza dell’elaborato compresa fra le 50.000 e le 100.000 battute (spazi inclusi);
+- lunghezza dell'elaborato compresa fra le 50.000 e le 100.000 battute (spazi inclusi);
 - corpo del testo di 12 o 13 punti (le note vanno in corpo 10);
 - margini destro-sinistro e superiore-inferiore di 2,5 cm;
 - interlinea 1,5 cm;
@@ -33,7 +33,7 @@ Il PDF generato è conforme allo standard PDF/A-1b.
 La bibliografia è gestita tramite backend [`biber`](https://ctan.org/pkg/biber) e pacchetto [`biblatex`](https://www.ctan.org/pkg/biblatex);
 il database [`biblio.bib`](./biblio.bib) può essere editato a mano o con strumenti come [JabRef](http://www.jabref.org/).
 
-Lo stile scelto per la biblografia è quello [_IEEE_](https://ctan.org/pkg/biblatex-ieee).
+Lo stile scelto per la bibliografia è quello [_IEEE_](https://ctan.org/pkg/biblatex-ieee).
 
 ## Licenze e riferimenti
 

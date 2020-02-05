@@ -37,23 +37,17 @@
 \begin{document}
 
   \frontmatter{}
-  \pagenumbering{Roman}
-  \pagestyle{empty}
+
   \input{src/1-frontmatter/frontespizio.tex}
   \input{src/1-frontmatter/keywords.tex}
   \input{src/1-frontmatter/dedica.tex}
   \input{src/1-frontmatter/abstract.tex}
+
   \tableofcontents
 
   \mainmatter{}
-  \pagenumbering{arabic}
-  \pagestyle{headings}
 
-  \begin{abstract}
-    % Abstract
-  \end{abstract}
-
-  \chapter*{Introduzione}
+  \addchap{Introduzione}
 
   \part{Background}
     \chapter{Motivazioni}
