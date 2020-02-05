@@ -29,6 +29,7 @@
       "env": {}
     }
   ],
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.texdoc.path": "texdoc",
   "latex-workshop.view.pdf.tab.editorGroup": "right",
