@@ -64,6 +64,13 @@ Creato da Dan Abramov e Andrew Clark nel 2015 come implementazione alternativa a
 esso combina idee provenienti dal pattern \emph{Command}~\cite{10.5555/186897} e dall'\emph{architettura Elm} teorizzata con l'omonimo linguaggio~\cite{czaplicki2012elm}:
 lo stato dell'applicazione è descritto da un singolo POJO all'interno dello store e gli aggiornamenti avvengono tramite \emph{reducer}, funzioni pure di un'azione e dello stato corrente che generano un nuovo stato.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{res/fig/redux-diagram.png}
+  \caption{Rappresentazione del flusso unidirezionale dei dati in Redux}%
+  \label{fig:redux}
+\end{figure}
+
 Secondo la documentazione ufficiale, la completa centralizzazione dello stato permette al sistema di essere completamente predicibile, permettendo il ``\emph{time-travel debug}'' tramite strumentazione integrata nel browser.
 
 Inoltre, il non essere strettamente legato a un framework di rappresentazione e la possibilità di caricare middleware lo rendono estremamente flessibile.
