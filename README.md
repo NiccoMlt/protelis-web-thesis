@@ -1,9 +1,12 @@
-# Unibo Tesi
+# Tesi di Laurea Magistrale: Sistema Web per Protelis
 
 [![Build Status](https://travis-ci.com/NiccoMlt/protelis-web-thesis.svg?branch=master)](https://travis-ci.com/NiccoMlt/protelis-web-thesis)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
+
+La tesi riguarda la progettazione di un sistema web per la simulazione di programmi aggregati.
+Nel repository [NiccoMlt/Protelis-Web](https://github.com/NiccoMlt/Protelis-Web) è possibile trovare il codice del sistema realizzato per l'esecuzione di codice [Protelis](https://protelis.github.io) tramite un frontend web realizzato in [React](https://reactjs.org) su un backend basato su [Alchemist](https://alchemistsimulator.github.io) e [Vert.x](https://vertx.io).
 
 ## [Requisiti](https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/volume-pdf-e-deposito-online-dellelaborato) e [Norme redazionali](https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/redazione-tesi-voto-finale) della tesi
 
