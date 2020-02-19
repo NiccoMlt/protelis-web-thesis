@@ -29,7 +29,7 @@ Risulta comunque compilabile anche manualmente o su Overleaf; importante è util
 
 Il documenti utilizza la classe [`scrbook`](https://www.ctan.org/pkg/scrbook) (alternativa della collezione [KOMA-script](https://www.ctan.org/pkg/koma-script) della classe `book`) e definisce una dimensione del testo di 12pt, con margini identici di 2,5cm e interlinea con scartamento 1,5.
 
-Il font utilizzato è il _Latin Modern_ OpenType in tutte le varianti.
+Il font utilizzato è il [_Libertinus_](https://github.com/alif-type/libertinus) in tutte le varianti.
 
 Il PDF generato è conforme allo standard PDF/A-1b.
 

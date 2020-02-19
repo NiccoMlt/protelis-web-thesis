@@ -39,20 +39,34 @@
 %% Font
 % non è necessario \RequirePackage[utf8]{inputenc} perché luaLaTeX accetta solo UTF-8
 \RequirePackage{fontspec}
-\setmainfont[%
-  Extension=.otf,
-  UprightFont={*-Regular},
-  BoldFont={*-Bold},
-  ItalicFont={*-Italic},
-  BoldItalicFont={*-BoldItalic},
-  Ligatures=TeX               % abilita legature classiche di LaTeX
-]{LibertinusSerif}           % imposta il font con grazie per il testo principale
-\setsansfont[%
-  Ligatures=TeX               % abilita legature classiche di LaTeX
-]{LibertinusSans}            % imposta il font senza grazie
-\setmonofont[%
-  Scale=0.95
-]{LibertinusMono}            % imposta il font teletype monospaziato
+\defaultfontfeatures{ Scale = MatchUppercase }
+\setmainfont{libertinusserif}[
+  Scale=1.0,
+  Ligatures={Common, TeX},
+  % Numbers={OldStyle, Proportional},
+  UprightFont={*-regular},
+  BoldFont={*-bold},
+  ItalicFont={*-italic},
+  BoldItalicFont={*-bolditalic},
+  Extension=.otf
+]
+\setsansfont{libertinussans}[
+  Ligatures={Common, TeX},
+  % Numbers={OldStyle, Proportional},
+  UprightFont={*-regular},
+  BoldFont={*-bold},
+  ItalicFont={*-italic},
+  % BoldItalicFont={*-bolditalic},
+  Extension=.otf
+]
+\setmonofont{libertinusmono}[
+  Scale=0.95,
+  UprightFont={*-regular},
+  % BoldFont={*-bold},
+  % ItalicFont={*-italic},
+  % BoldItalicFont={*-bolditalic},
+  Extension=.otf
+]
 
 %% Matematica
 \RequirePackage{amsmath}
