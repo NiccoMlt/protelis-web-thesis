@@ -4,9 +4,16 @@
 
 \begin{Preambolo*}
   \usepackage{fontspec}
-  \setmainfont[Ligatures=TeX]{Libertinus Serif}
-  \setsansfont[Ligatures=TeX]{Libertinus Sans}
-  \setmonofont[Ligatures=TeX]{Libertinus Mono}
+  \setmainfont[%
+    Extension=.otf,
+    UprightFont={*-Regular},
+    BoldFont={*-Bold},
+    ItalicFont={*-Italic},
+    BoldItalicFont={*-BoldItalic},
+    Ligatures=TeX
+  ]{LibertinusSerif}
+  \setsansfont[Ligatures=TeX]{LibertinusSans}
+  \setmonofont[Scale=0.95]{LibertinusMono}
 \end{Preambolo*}
 \begin{frontespizio}
   \Universita{Bologna}        % aggiunge da sé “Università degli Studi di”.
