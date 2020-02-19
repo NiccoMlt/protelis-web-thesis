@@ -12,7 +12,7 @@
 
 \documentclass[%
   a4paper,                % formato di pagina A4
-  12pt,                   % corpo del testo a 12pt
+  13pt,                   % corpo del testo a 12pt
   % la dimensione 12pt automaticamente imposta \footnotesize a 10pt
   twoside,                % (oneside|twoside) documento a singola o doppia facciata,
   openright,              % (openany|openright) fa cominciare un capitolo nella successiva pagina a disposizione o sempre in una pagina destra
@@ -21,6 +21,9 @@
   % fleqn,                % allinea le formule a sinistra rispetto a un margine rientrato
   % leqno,                % mette la numerazione delle formule a sinistra anziché a destra
   final                   % (draft|final) scelta tra bozza o finale, influenza il comportamento degli altri pacchetti
+  headings=standardclasses, % changes the font of all section heading levels to serif
+  headings=big,             % revert to default heading size that headings=standardclasses changes
+  chapterprefix=false       % reverse the chapterprefix=true option that headings=standardclasses sets
 ]{scrbook}
 
 \usepackage{fancyvrb}       % fornisce l'ambiente VerbatimOut e modifica listati di codice
