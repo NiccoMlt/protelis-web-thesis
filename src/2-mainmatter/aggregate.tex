@@ -3,13 +3,109 @@
 La crescita esponenziale di dispositivi informatici di varia natura inseriti in contesti quotidiani ha avuto un impatto globale notevole.
 Questo insieme di entità connesse (\Cref{fig:iot}) ha dato luogo a ciò che viene definito \emph{Internet of Things} (\emph{IoT}).
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{res/fig/iot.eps}%
-  \caption{Possibile scenario di rete in contesto urbano~\cite{7274429}}%
+  \caption[
+    Possibile scenario di rete in contesto urbano.
+  ]{
+    Possibile scenario di rete in contesto urbano.\\Figura ripresa da~\cite{7274429}
+  }%
   \label{fig:iot}
 \end{figure}
 
-L'approccio iniziale per la realizzazione di sistemi in questo contesto è stato incentrato sui classici paradigmi ``\emph{single device view point}'',
-i quali vedono al centro dell'attenzione il singolo dispositivo e le interazioni che questo ha con gli altri e con l'ambiente.
-Tale approccio si è ben presto rivelato inadeguato % TODO: perché?
+L'approccio tradizionale per la realizzazione di sistemi in questo contesto è sempre stato con paradigma ``\emph{single device view point}'',
+in cui l'unità fondamentale è il singolo dispositivo connesso con il mondo fisico e con gli altri device, il cui insieme dei comportamenti individuali determinava il funzionamento del sistema.
+Tale approccio si è ben presto rivelato inadeguato, in quanto un elevato numero di dispositivi (possibilmente eterogenei) pone diversi problemi legati all'organizzazione della rete
+e la sua gestione che non dovrebbero essere gestiti in questo livello di astrazione.
+
+L'\emph{aggregate programming}, o \emph{programmazione aggregata}, costituisce un'alternativa all'approccio ``classico''
+volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
+La programmazione aggregata, infatti, ragiona su più larga scala, cercando di spostare l'attenzione sul \emph{collettivo di dispositivi} che collaborano;
+i dettagli relativi al singolo device devono essere ignorabili, per quanto possibile~\cite{7274429}.
+
+L'idea alla base è dunque di definire una modalità di deduzione del comportamento locale al singolo dispositivo a partire dal comportamento globale, di più alto livello, effettuando un \emph{mapping da globale a locale}.
+I due punti di vista necessari per poter raggiungere un tale livello di astrazione sono due~\cite{aggregatescala-pmldc2016}:
+
+\begin{itemize}
+    \item
+        il primo, detto locale o \emph{device-centric}, è quello che si riferisce alla computazione aggregata eseguita dal dispositivo singolo.
+        Questa può essere considerata la vista tradizionale.
+    \item
+        il secondo, detto globale o \emph{aggregate view}, si riferisce invece alla computazione svolta dal sistema aggregato come singola unità.
+        Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare al \emph{cosa} effettivamente si desidera che faccia.
+\end{itemize}
+
+In generale, le strategie principali per adottare un livello di astrazione così elevato sono state formalizzate~\cite{7274429} nelle seguenti possibilità:
+
+% TODO: rielabora traduzione
+\begin{itemize}
+  \item rendere le interazioni tra i dispositivi implicite (come ad esempio nell'approccio \emph{TOTA}, ``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945});
+  \item comporre comporre costruzioni geometriche e topologiche (ad esempio, \emph{Origami Shape Language}~\cite{nagpal2001programmable});
+  \item dividere la computazione in modo automatico per le esecuzioni sullo stile di modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492};
+  \item sintetizzare i dati provenienti da regioni spazio-temporali e inviarli come stream ad altre regioni (ad esempio, \emph{TinyDB}~\cite{1017485});
+  \item fornire costrutti generalizzabili per la computazione spazio temporale (ad esempio, \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}).
+\end{itemize}
+
+Studiando i suddetti approcci, sono state osservate le seguenti proprietà dei sistemi situati su larga scala:
+
+% TODO: rielabora traduzione
+\begin{itemize}
+  \item laddove non è richiesta al programmatore alcuna interazione, i meccanismi per la coordinazione devono essere nascosti ``\emph{under the hood}''~\cite{7274429};
+  \item la composizione dei moduli deve essere tanto semplice quanto trasparente;
+  \item sottoinsiemi differenti necessitano di meccanismi di coordinazione differenti per regioni e tempi distinti.
+\end{itemize}
+
+Per affrontare queste problematiche, la programmazione aggregata si basa sui seguenti tre principi~\cite{7274429}:
+
+\begin{itemize}
+  \item la ``macchina'' programmata non deve essere il singolo dispositivo, bensì la \emph{regione} dell'ambiente computazionale che astrae dai dettagli specifici;
+  \item il ``programma'' è specificato come \emph{manipolazione di costrutti di dati} con estensioni spaziali e temporali in tutta la regione;
+  \item tali manipolazioni vengono eseguite dai dispositivi inseriti all'interno della regione, tramite l'uso di meccanismi di coordinazione resilienti e di interazioni basate sulla prossimità.
+\end{itemize}
+
+In questo modo, i meccanismi di coordinazione, spesso complessi, vengono nascosti facilitando la costruzione e favorendo la modularità.
+In particolare, il paradigma si struttura su più livelli di astrazione, come è possibile vedere in~\Cref{fig:stack}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{res/fig/stack-2.png}%
+  \caption[
+    Principali livelli dell'\emph{Aggregate Programming}.
+  ]{
+    Principali livelli dell'\emph{Aggregate Programming}.\\Figura ripresa da~\cite{7274429}
+  }%
+  \label{fig:stack}
+\end{figure}
+
+Nelle \nameCrefs{sec:field-calculus} successive analizzeremo più nel dettaglio alcuni di questi.
+
+\section[Field calculus]{Field calculus \& Building Blocks}\label{sec:field-calculus}
+
+Al livello più basso della struttura rappresentata in \Cref{fig:stack} si trova il \emph{field calculus}~\cite{FieldCalculusFOCLASA2013}.
+Esso è un \emph{core calculus}, ovvero un modello teorico di programmazione che riassume la semantica operazionale minimale necessaria alla progettazione di un sistema aggregato.
+
+Il field calculus si basato sul concetto di \emph{campo computazionale}~\cite{FieldCalculusFOCLASA2013}:
+il termine riprende la nozione di campo in fisica~\cite{mcmullin2002origins}, esteso al concetto di computazione
+e inteso come ``una proiezione di ciascun dispositivo computazionale nello spazio verso un oggetto computazionale arbitrario'',
+ossia l'applicazione di una funzione che, in un dato momento nel tempo, mappa ogni punto dello spazio (un dispositivo o un nodo),
+verso un oggetto computazionale (un valore) che rappresenta il risultato della computazione su quel device.
+I \emph{campi} sono strutture dati distribuite a livello di aggregazione che gradualmente si adattano ai cambiamenti della topologia sottostante e alle interazioni con l'ambiente.
+
+% TODO: aggiungi:  Tali campi possono essere composti per implementare pattern di coordinazione in grado di organizzarsi in modo autonomo.
+I campi vengono generati e manipolati attraverso quattro costrutti fondamentali~\cite{BV-FOCAS2014}:
+
+\begin{itemize}
+  \item \emph{Built-in operator} --- \texttt{b(e1, ..., en)}: % \(b(e_1, \dots, e_n)\): % ChkTeX 11, ChkTeX 26, ChkTeX 36
+    applicazione della funzione \texttt{b} agli argomenti \texttt{e1, ..., en}. % ChkTeX 11, ChkTeX 26
+    L'output è un campo ottenuto dalla valutazione dell'operatore sul campo in ingresso.
+    Possono essere funzioni \emph{stateless} matematiche, logiche o algoritmiche, ma anche sensori, attuatori o funzioni di libreria.
+  \item
+    \emph{Function definition and call} --- \texttt{def f(x1, ..., xn) \{ eb \}} % ChkTeX 11, ChkTeX 26, ChkTeX 36
+    % TODO: describe
+  \item % TODO
+\end{itemize}
+
+\section{Protelis}\label{sec:protelis}
+
+\section{Scafi}\label{sec:scafi}
