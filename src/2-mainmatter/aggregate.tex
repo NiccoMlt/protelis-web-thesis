@@ -178,7 +178,25 @@ Esse possono essere usate e composte tra loro per scrivere applicazioni distribu
 
 \section{Protelis}\label{sec:protelis}
 
-% TODO
+Field calculus è solamente un impianto teorico;
+vista la necessità di un'architettura portabile in grado di gestire gli aspetti di comunicazione, esecuzione e interfacciamento con hardware e sistema operativo, è stato realizzato Protelis.
+Protelis~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione aggregato di paradigma funzionale fortemente influenzato da Proto~\cite{Beal2006}.
+Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus.
+
+Un nodo Protelis è costituito da un parser che traduce il programma in codice eseguibile, il quale è poi eseguito a intervalli regolari da un interprete, che si fa carico degli aspetti di interazione con il vicinato e con l'ambiente.
+Ogni esecuzione è chiamata \emph{computational round}.
+
+Il linguaggio e l'interprete sono basati su Java e possono essere inseriti in contesti virtuali~\cite{ProtelisSAC14} o reali indifferentemente.
+Questo offre, da un lato, la portabilità e il supporto alle differenti piattaforme che la JVM (\emph{Java Virtual Machine}) mette a disposizione, dall'altro l'estendibilità che l'ecosistema di librerie Java può offrire.
+
+Nel mondo scientifico, il linguaggio è già stato utilizzato per la realizzazione di diversi algoritmi aggregati, come ad esempio:
+
+\begin{itemize}
+  \item \emph{renderzvous} durante un evento di massa~\cite{ProtelisSAC14};
+  \item gestione di reti di servizi~\cite{7306601};
+  \item integrazione con servizi di realtà aumentata~\cite{PCRV-SCOPES2015}.
+  % TODO: ne devo aggiungere altri?
+\end{itemize}
 
 \section{Scafi}\label{sec:scafi}
 
