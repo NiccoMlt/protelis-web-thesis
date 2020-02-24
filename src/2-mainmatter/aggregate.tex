@@ -71,7 +71,7 @@ In particolare, il paradigma si struttura su più livelli di astrazione, come è
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{res/fig/stack-2.png}%
+  \includegraphics[width=0.65\textwidth]{res/fig/stack-2.png}%
   \caption[
     Principali livelli dell'\emph{Aggregate Programming}.
   ]{
@@ -147,13 +147,7 @@ Tale proprietà è garantita per tutti i campi ottenuti tramite composizione fun
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{res/fig/stack-detail-crop.eps}%
-  \caption[
-    Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.
-  ]{
-    Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.
-
-    \nameCref{fig:stack-detail} adattata da~\cite{ProtelisSAC14}.
-  }%
+  \caption{Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.}%
   \label{fig:stack-detail}
 \end{figure}
 
@@ -176,11 +170,30 @@ Questi operatori sono sufficientemente espressivi da poter coprire, da soli o co
 Come livello di astrazione ulteriore (il secondo dall'alto nella~\Cref{fig:stack}), volto a semplificare la composizione dei \emph{building blocks}, si aggiungono le API \emph{general-purpose}~\cite{amslaurea13090}.
 Esse possono essere usate e composte tra loro per scrivere applicazioni distribuite senza preoccuparsi dei meccanismi di coordinazione, la cui robustezza è garantita dagli operatori descritti sopra.
 
+% \section[Protelis]{Protelis, Programming Language for Aggregate Computing}\label{sec:protelis}
 \section{Protelis}\label{sec:protelis}
+
+% \begin{wrapfigure}{r}{0.2\textwidth}
+%   \begin{center}
+%     \includegraphics[width=0.2\textwidth]{res/fig/protelis-logo.png}%
+%     \caption{Logo}%
+%     \label{fig:protelis}
+%   \end{center}
+% \end{wrapfigure}
+
+\begin{wrapfigure}{r}{0pt}
+  \centering
+  % \vspace{-52pt}
+  \includegraphics[width=0.2\textwidth]{res/fig/protelis-logo.png}
+  % \vspace{50pt}
+  \caption{Logo}%
+  \label{fig:protelis}
+\end{wrapfigure}
 
 Field calculus è solamente un impianto teorico;
 vista la necessità di un'architettura portabile in grado di gestire gli aspetti di comunicazione, esecuzione e interfacciamento con hardware e sistema operativo, è stato realizzato Protelis.
-Protelis~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione aggregato di paradigma funzionale fortemente influenzato da Proto~\cite{Beal2006}.
+
+\emph{Protelis}~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione aggregato di paradigma funzionale fortemente influenzato da Proto~\cite{Beal2006}.
 Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus.
 
 Un nodo Protelis è costituito da un parser che traduce il programma in codice eseguibile, il quale è poi eseguito a intervalli regolari da un interprete, che si fa carico degli aspetti di interazione con il vicinato e con l'ambiente.
@@ -198,6 +211,23 @@ Nel mondo scientifico, il linguaggio è già stato utilizzato per la realizzazio
   % TODO: ne devo aggiungere altri?
 \end{itemize}
 
-\section{Scafi}\label{sec:scafi}
+% TODO: vedi di fare almeno una pagina
 
-% TODO
+% \section[ScaFi]{ScaFi, Aggregate Programming Toolkit}\label{sec:scafi}
+\section{ScaFi}\label{sec:scafi}
+
+Una tecnologia analoga è rappresentata da \emph{ScaFi} (\emph{\emph{Sca}la with computational \emph{Fi}elds})~\cite{aggregatescala-pmldc2016}:
+si tratta di un framework in Scala per la realizzazione di programmi aggregati attraverso un set compatto di primitive, presentato come implementazione del field calculus alternativa a Protelis.
+% Nonostante sia dunque un DSL di Scala, è sufficientemente completo da poter essere considerato un linguaggio di programmazione aggregata a sé stante.
+
+Il framework è composto principalmente da due parti:
+
+\begin{itemize}
+  \item una piattaforma distribuita che permette la configurazione e l'esecuzione di sistemi aggregati.
+  \item un \emph{internal DSL} (\emph{Domain Specific Language}) di Scala che fornisce la sintassi e la semantica per i costrutti base del field calculus.
+\end{itemize}
+
+Basandosi su Scala come linguaggio ospite, è in grado di interoperare con Java e gli altri linguaggi in grado si eseguire in ambiente JVM, mantenendo il solido \emph{type-system} messo a disposizione da Scala e i suoi costrutti funzionali.
+
+% Il framework si struttura su diversi package:
+%  TODO: serve scendere nel dettaglio?
