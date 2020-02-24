@@ -9,7 +9,9 @@ Questo insieme di entità connesse (\Cref{fig:iot}) ha dato luogo a ciò che vie
   \caption[
     Possibile scenario di rete in contesto urbano.
   ]{
-    Possibile scenario di rete in contesto urbano.\\Figura ripresa da~\cite{7274429}
+    Possibile scenario di rete in contesto urbano.
+
+    \nameCref{fig:iot} ripresa da~\cite{7274429}.
   }%
   \label{fig:iot}
 \end{figure}
@@ -73,7 +75,9 @@ In particolare, il paradigma si struttura su più livelli di astrazione, come è
   \caption[
     Principali livelli dell'\emph{Aggregate Programming}.
   ]{
-    Principali livelli dell'\emph{Aggregate Programming}.\\Figura ripresa da~\cite{7274429}
+    Principali livelli dell'\emph{Aggregate Programming}.
+
+    \nameCref{fig:stack} ripresa da~\cite{7274429}.
   }%
   \label{fig:stack}
 \end{figure}
@@ -93,33 +97,6 @@ verso un oggetto computazionale (un valore) che rappresenta il risultato della c
 I \emph{campi} sono strutture dati distribuite a livello di aggregazione che gradualmente si adattano ai cambiamenti della topologia sottostante e alle interazioni con l'ambiente.
 
 I campi vengono generati e manipolati attraverso cinque costrutti fondamentali~\cite{BV-FOCAS2014,computationalfields-forte2015}:
-
-% \begin{itemize}
-%   \item \emph{Built-in operator} --- \texttt{b(e1, ..., en)}: % \(b(e_1, \dots, e_n)\): % ChkTeX 11, ChkTeX 26, ChkTeX 36
-%     applicazione della funzione \texttt{b} agli argomenti \texttt{e1, ..., en}. % ChkTeX 11, ChkTeX 26
-%     L'output è un campo ottenuto dalla valutazione dell'operatore sul campo in ingresso.
-%     Possono essere funzioni \emph{stateless} matematiche, logiche o algoritmiche, ma anche sensori, attuatori o funzioni di libreria.
-%   \item
-%     \emph{Function definition and call} --- \texttt{def f(x1, ..., xn) \{ eb \}} % ChkTeX 11, ChkTeX 26, ChkTeX 36
-%     % TODO: describe
-%   \item % TODO
-% \end{itemize}
-
-% \begin{description}
-%   \item[Built-in operator] \texttt{b(e1, ..., en)}\\ % ChkTeX 11, ChkTeX 26, ChkTeX 36
-%     Applicazione della funzione \texttt{b} agli argomenti \texttt{e1, ..., en}. % ChkTeX 11, ChkTeX 26
-%     L'output è un campo ottenuto dalla valutazione dell'operatore sul campo in ingresso.
-%     Possono essere funzioni \emph{stateless} matematiche, logiche o algoritmiche, ma anche sensori, attuatori o funzioni di libreria.
-%   \item[Function definition and call] \texttt{def f(x1, ..., xn) \{ eb \}}\\ % ChkTeX 11, ChkTeX 26, ChkTeX 36
-%     La funzione \texttt{f} è definita con la lista di argomenti \texttt{x1, ..., xn} e il suo corpo è \texttt{eb}. % ChkTeX 11, ChkTeX 26
-%     % TODO: aggiungi roba
-%   \item[Time evolution] \texttt{rep(x<-v) \{ s1; ...; sn \}}\\ % ChkTeX 11, ChkTeX 26, ChkTeX 36
-%     % TODO
-%   \item[Neighborhood values] \texttt{nbr(s)}\\ % ChkTeX 36
-%     % TODO
-%   \item[Domain restriction] \texttt{if (e) \{ s1; ...; sn \} else \{ s1\textsuperscript{i}; ...; sm\textsuperscript{i} \}}\\ % ChkTeX 11, ChkTeX 26
-%     % TODO
-% \end{description}
 
 \begin{description}
   % TODO: should I use new notation?
@@ -159,8 +136,50 @@ Tramite questi operatori, inoltre, sono garantite:
 
 % TODO: aggiungi:  Tali campi possono essere composti per implementare pattern di coordinazione in grado di organizzarsi in modo autonomo.
 
-% TODO: Building Blocks
+Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
+gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
+
+Questo layer consiste di un insieme di operatori generici e di più alto livello, che offrono allo sviluppatore un ambiente di programmazione più espressivo,
+contribuendo in particolare alla cosiddetta \emph{self-stabilization}, ossia la capacità di raggiungere uno stato atteso in un numero finito di passi,
+indipendentemente dallo stato di partenza.
+Tale proprietà è garantita per tutti i campi ottenuti tramite composizione funzionale~\cite{BV-FOCAS2014}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{res/fig/stack-detail-crop.eps}%
+  \caption[
+    Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.
+  ]{
+    Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.
+
+    \nameCref{fig:stack-detail} adattata da~\cite{ProtelisSAC14}.
+  }%
+  \label{fig:stack-detail}
+\end{figure}
+
+Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati in aggiunta al costrutto \texttt{if} del \emph{field calculus} sono tre operatori di coordinazione~\cite{7274429,BV-FOCAS2014}:
+
+\begin{description}
+  \item[Diffusione dell'informazione nello spazio] \texttt{G} \\ % Spreading Information Across Space
+    % \texttt{G(source, init, metric, accumulate)} \\ % ChkTeX 36
+    Quest'operatore generalizza operazioni molto comuni come la stima della distanza e messaggi broadcast.
+  \item[Raccoglimento di informazione attraverso lo spazio] \texttt{C} \\ % Collecting Information From Across Space
+    % \texttt{C(potential, accumulate, local, null)} \\ % ChkTeX 36
+    Quest'operatore aggrega le informazioni verso la sorgente attraverso il gradiente di un campo specificato.
+  \item[Riassunto dell'informazione nel tempo] \texttt{T} \\ % Summarising Information Across Time
+    % \texttt{T(init, floor, decay)} \\ % ChkTeX 36
+    Quest'operatore generalizza un timer il cui rateo di aggiornamento può variare nel tempo.
+\end{description}
+
+Questi operatori sono sufficientemente espressivi da poter coprire, da soli o combinati tra loro, tutti i pattern di coordinazione usati nei sistemi a larga scala.
+
+Come livello di astrazione ulteriore (il secondo dall'alto nella~\Cref{fig:stack}), volto a semplificare la composizione dei \emph{building blocks}, si aggiungono le API \emph{general-purpose}~\cite{amslaurea13090}.
+Esse possono essere usate e composte tra loro per scrivere applicazioni distribuite senza preoccuparsi dei meccanismi di coordinazione, la cui robustezza è garantita dagli operatori descritti sopra.
 
 \section{Protelis}\label{sec:protelis}
 
+% TODO
+
 \section{Scafi}\label{sec:scafi}
+
+% TODO
