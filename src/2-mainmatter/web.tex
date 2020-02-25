@@ -1,0 +1,62 @@
+\chapter{Progettazione di sistemi web}\label{chap:web}
+  Il World Wide Web ha assunto un ruolo sempre più centrale nella quotidianità delle persone e nelle dinamiche di business.
+  In particolare, il modello di comunicazione è sempre più virato verso scenari distribuiti,
+  nei quali piattaforme eterogenee riescono a comunicare tra loro condividendo informazioni di diverso tipo attraverso la rete internet.
+
+  Anche i pattern di progettazione e le tecnologie implementative sono cresciute altrettanto velocemente negli ultimi anni, cambiando anche radicalmente gli approcci di interazione possibili.
+  Risulta dunque importante prestare attenzione allo stato dell'arte in tal senso, chiarendo quali siano i pattern più adatti e moderni per il contesto d'uso di questa tesi.
+
+  \section{Architetture, framework e stack}\label{sec:web-architecture}
+
+  Con \emph{sistema web} si intende genericamente un sistema software distribuito che coinvolge una o più entità server che espongono in rete API di varia natura, con le quali entità client possono comunicare per usufruire dei servizi.
+  Generalmente, in contesto web i client sono costituiti da pagine web aperte nei browser degli utenti.
+
+  Le possibilità di progettazione di un'applicazione web possono essere molto differenti e nel tempo si è vista una vera e propria evoluzione in tal senso:
+
+  \begin{enumerate}
+    \item
+      nel periodo iniziale del web, ciascuna pagina web era inviata al client come un documento statico;
+      l'interazione dell'utente con il sistema avveniva attraverso la navigazione, che comportava l'apertura di una sequenza di pagine a seconda delle esigenze.
+      Questo tipo di interazione era però lenta, in quanto coinvolgeva sempre la ricezione di una nuova pagina dal server.
+    \item
+      successivamente, nel 1995, con l'introduzione da parte di NetScape di JavaScript (di cui tratteremo meglio nella~\Cref{subsec:js}) come linguaggio di scripting client-side, i programmatori hanno avuto la possibilità di inserire elementi dinamici nelle pagine web.
+      In questo modo, era possibile effettuare alcune operazioni anche localmente, riducendo di fatto il numero di pagine intere scambiate con il server.
+    \item
+      un'ulteriore innovazione apparve l'anno seguente, quando Macromedia introdusse \emph{Flash}:
+      esso era un plugin per i browser che permetteva di riprodurre animazioni vettoriali e gestire le interazioni con l'utente, in modo simile a quanto fatto da JavaScript.
+    \item
+      il termine ``\emph{web application}'' nasce però con l'introduzione della versione 2.2 della Java Servlet Specification~\cite{java1999specification} nel 1999.
+      anche in questo caso, però, il server ha un ruolo centrale e ancora il concetto di \emph{ajax} (\emph{Asynchronous JavaScript + XML}) non è stato introdotto.
+    \item
+      successivamente vi sono stati diversi miglioramenti incrementali, fino ad arrivare allo standard HTML5~\cite{Smith2008}:
+      con quest'ultimo, infatti, introduce il supporto nativo ai contenuti multimediali ed arricchisce la semantica del documento, oltre a migliorare l'integrazione con JS\@.
+      Con questo standard, diventa sempre più comune il concetto di \emph{Single-page application} (SPA), secondo il quale la pagina viene caricata una sola volta, e poi modificata dinamicamente tramite chiamate specifiche al server.
+      Nascono numerosi framework client-side (come Angular, Ember o React) e l'impiego del server viene sempre più circoscritto al fornire API per accesso controllato ai dati (ad esempio, un database) o per computazioni complesse.
+  \end{enumerate}
+
+  % TODO: Service-Oriented Architecture e Resource-Oriented architecture
+
+  \section{Linguaggi ad uso web}\label{sec:lang}
+    In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.
+    In particolare, verranno presi in considerazione i due linguaggi più popolari, ossia \emph{JavaScript} e il suo superset \emph{TypeScript}, e due linguaggi di nicchia che offrono una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
+
+    \subsection{JavaScript e ECMAScript}\label{subsec:js}
+
+    \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato orientato agli oggetti e agli eventi.
+    Sviluppato originariamente nel 1995 da Brendan Eich della Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
+    esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
+    JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISOCS1998} e l'attuale versione è la decima.
+
+    Il linguaggio è attualmente il più popolare per uso web, in quanto l'unico ad essere supportato da tutti i browser moderni, almeno nelle sue feature principali.
+    Diversi linguaggi, come quelli che vedremo in seguito, vengono transpilati in una versione sufficientemente supportata di JS per poter essere eseguiti nei browser.
+
+    Analizzato dal punto di vista tecnico, esso presenta i seguenti aspetti strutturali:
+
+    \begin{description}
+      \item[Prototype-based] % TODO
+      % TODO
+    \end{description}
+
+    \subsection{TypeScript}\label{subsec:ts}
+    \subsection{Scala.js}
+    \subsection{Kotlin/Multiplatform e Kotlin/JS}
