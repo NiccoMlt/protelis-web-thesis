@@ -505,7 +505,7 @@ widening gap between the needs of the user to control aggregates of devices and 
   month           = dec,
 }
 
-@TechReport{ISOCS1998,
+@TechReport{ISO:1998,
   author      = {{ISO Central Secretary}},
   title       = {{Information} technology --- {ECMAScript} language specification},
   institution = {International Organization for Standardization},
@@ -517,6 +517,58 @@ widening gap between the needs of the user to control aggregates of devices and 
   url         = {https://www.iso.org/standard/29696.html},
   address     = {Geneva, CH},
   shorttitle  = {{ISO}/{IEC} 16262:1998},
+}
+
+@Article{Ungar1991,
+  author    = {David Ungar and Craig Chambers and Bay-Wei Chang and Urs Hölzle},
+  title     = {Organizing programs without classes},
+  journal   = {Lisp and Symbolic Computation},
+  year      = {1991},
+  volume    = {4},
+  number    = {3},
+  month     = {jul},
+  pages     = {223-242},
+  issn      = {1573-0557},
+  doi       = {10.1007/bf01806107},
+  url       = {https://doi.org/10.1007/BF01806107},
+  abstract  = {All organizational functions carried out by classes can be accomplished in a simple and natural way by object inheritance in classless languages, with no need for special mechanisms. A single model--dividing types into prototypes and traits--supports sharing of behavior and extending or replacing representations. A natural extension, dynamic object inheritance, can model behavioral modes. Object inheritance can also be used to provide structured name spaces for well-known objects. Classless languages can even express "class-based" encapsulation. These stylized uses of object inheritance become instantly recognizable idioms, and extend the repertory of organizing principles to cover a wider range of programs.},
+  publisher = {Springer Science and Business Media {LLC}},
+}
+
+@Article{5617064,
+  author    = {Stefan Tilkov and Steve Vinoski},
+  title     = {Node.js: Using JavaScript to Build High-Performance Network Programs},
+  journal   = {{IEEE} Internet Computing},
+  year      = {2010},
+  volume    = {14},
+  number    = {6},
+  month     = {nov},
+  pages     = {80-83},
+  issn      = {1941-0131},
+  doi       = {10.1109/mic.2010.145},
+  abstract  = {One of the more interesting developments recently gaining popularity in the server-side JavaScript space is Node.js. It's a framework for developing high-performance, concurrent programs that don't rely on the mainstream multithreading approach but use asynchronous I/O with an event-driven programming model.},
+  keywords  = {Java;Node.js;high performance network program;server-side JavaScript space;concurrent program;mainstream multithreading;event-driven programming model;Sockets;Instruction sets;Programming;Servers;Libraries;Writing;Registers;Node;Node.js;functional programming;Web development;JavaScript;Internet},
+  publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+}
+
+@Article{10.1145/2103621.2103686,
+  author     = {Ravi Chugh and Patrick M. Rondon and Ranjit Jhala},
+  title      = {Nested refinements: a logic for duck typing},
+  journal    = {{ACM} {SIGPLAN} Notices},
+  year       = {2012},
+  volume     = {47},
+  number     = {1},
+  month      = {jan},
+  pages      = {231–244},
+  issn       = {0362-1340},
+  doi        = {10.1145/2103621.2103686},
+  url        = {https://doi.org/10.1145/2103621.2103686},
+  abstract   = {Programs written in dynamic languages make heavy use of features --- run-time type tests, value-indexed dictionaries, polymorphism, and higher-order functions --- that are beyond the reach of type systems that employ either purely syntactic or purely semantic reasoning. We present a core calculus, System D, that merges these two modes of reasoning into a single powerful mechanism of nested refinement types wherein the typing relation is itself a predicate in the refinement logic. System D coordinates SMT-based logical implication and syntactic subtyping to automatically typecheck sophisticated dynamic language programs. By coupling nested refinements with McCarthy's theory of finite maps, System D can precisely reason about the interaction of higher-order functions, polymorphism, and dictionaries. The addition of type predicates to the refinement logic creates a circularity that leads to unique technical challenges in the metatheory, which we solve with a novel stratification approach that we use to prove the soundness of System D.},
+  address    = {New York, NY, USA},
+  issue_date = {January 2012},
+  keywords   = {dynamic languages, refinement types},
+  numpages   = {14},
+  publisher  = {Association for Computing Machinery ({ACM})},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

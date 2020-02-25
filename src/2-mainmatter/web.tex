@@ -42,10 +42,10 @@
 
     \subsection{JavaScript e ECMAScript}\label{subsec:js}
 
-    \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato orientato agli oggetti e agli eventi.
+    \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato orientato agli oggetti, agli eventi e alle funzioni.
     Sviluppato originariamente nel 1995 da Brendan Eich della Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
     esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
-    JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISOCS1998} e l'attuale versione è la decima.
+    JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISO:1998} e l'attuale versione è la decima.
 
     Il linguaggio è attualmente il più popolare per uso web, in quanto l'unico ad essere supportato da tutti i browser moderni, almeno nelle sue feature principali.
     Diversi linguaggi, come quelli che vedremo in seguito, vengono transpilati in una versione sufficientemente supportata di JS per poter essere eseguiti nei browser.
@@ -53,10 +53,62 @@
     Analizzato dal punto di vista tecnico, esso presenta i seguenti aspetti strutturali:
 
     \begin{description}
-      \item[Prototype-based] % TODO
-      % TODO
+      \item[Imperativo e strutturato]
+        Il linguaggio si presenta con una sintassi di programmazione strutturata standard, con il supporto a tutte le strutture di controllo tradizionali.
+        Una parziale differenza era nella gestione della visibilità delle variabili (\emph{scope}):
+        inizialmente, JavaScript garantiva solo la visibilità a livello di funzione (\emph{function scope}) tramite la parola chiave \texttt{var};
+        con ECMAScript 6 è stato aggiunto il supporto alla visibilità a livello di blocco (\emph{block scope}).
+
+      \item[Tipizzazione dinamica]
+        % https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+        JavaScript è un linguaggio debolmente tipizzato:
+        alle variabili non sono associati dei tipi di dato, ma solo dei valori, che possono dinamicamente cambiare tipo durante il ciclo di vita della variabile.
+        La tipizzazione dinamica consente lo stile di tipizzazione chiamato \emph{Duck Typing}~\cite{10.1145/2103621.2103686}:
+        è possibile determinare la semantica di un oggetto in base ai metodi ed alle proprietà che esso possiede,  non in base al suo tipo.
+
+      \item[Orientamento agli oggetti Prototype-based]
+        A differenza di altri linguaggi orientato agli oggetti (come Java o C++), JavaScript non fornisce un'implementazione del concetto di \emph{classe}~\cite{Ungar1991}:
+        la stessa keyword \texttt{class}, introdotta con ES6, non è altro che zucchero sintattico per migliorare l'interazione da parte dei nuovi sviluppatori con il prototipo.
+
+        In termini di ereditarietà, infatti, JS prevede un solo costrutto: gli \emph{oggetti}.
+        Ogni oggetto ha un collegamento interno ad un altro oggetto chiamato \emph{prototype}.
+        Questo oggetto prototipo ha a sua volta un suo prototype, e così via finché si raggiunge un oggetto con la proprietà prototipo settata a \texttt{null}.
+        \texttt{null}, per definizione, non ha un prototype ed agisce come link finale nella \emph{catena di prototipi}.
+
+        Quasi tutti gli oggetti in JavaScript sono istanze di \texttt{Object}, che risiede in cima alla catena dei prototipi.
+        % In JavaScript, è possibile aggiungere proprietà a qualsiasi oggetto in fase di esecuzione.
+
+      \item[First-class function]
+        JavaScript offre un supporto di prima classe alle funzioni, che sono considerate oggetti;
+        come tali, esse possono avere delle proprietà, come ad esempio \texttt{.bind()} e \texttt{.call()}. % ChkTeX 36
+
+        Ciascuna funzione costituisce una chiusura lessicale.
+
+        All'interno di oggetti, proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
+        Infine, le funzioni possono essere utilizzati per l'implementazione di \emph{pattern di ruolo} come i \emph{tratti} e i \emph{mixin}.
+
+      \item[Web APIs]
+        Con ECMAScript si standardizza la componente \emph{core} del linguaggio, che può eseguire in ambienti browser come su interpreti non legati strettamente al web (come ad esempio Node.js~\cite{5617064}).
+        Ciascuno degli ambienti nei quali il linguaggio viene interpretato mettono a disposizione delle API specifiche per l'interazione con la piattaforma;
+        quando si fa riferimento al browser, tali supporti sono chiamati \emph{Web APIs}.
+
+        Attraverso di esse, lo sviluppatore può avere accesso agli elementi del DOM (Document Object Model) di HTML, potendo manipolare la pagina visualizzata e reagire ad eventi su di essa.
+
+      \item[Asincronismo]
+        JavaScript supporta inoltre nativamente l'esecuzione di operazioni in modo asincrono tramite il costrutto della \emph{promise}, implementato da un oggetto built-in \texttt{Promise},
+        che costituisce un \emph{proxy} per un valore non necessariamente noto quando la promise viene creata.
+        È poi possibile gestire il valore ottenuto con costrutti ``\emph{thenable}'' o con il \emph{pattern async/await}.
     \end{description}
 
     \subsection{TypeScript}\label{subsec:ts}
+    TypeScript è un linguaggio di programmazione open-source sviluppato da Microsoft.
+    Esso è un super-set sintatticamente rigoroso di JavaScript ES6, che si pone come obiettivo % TODO
+
+
+    % \item[Operatore di coalescenza dei null e safe navigation]
+    % Tradizionalmente, in JavaScript sono considerati \emph{falsy} diversi valori (come \texttt{NaN}, \texttt{0} e la stringa vuota) che non sono \texttt{null} o \texttt{undefined}
+    % ma vengono trattati come valori ``non presenti'' e dunque come \texttt{false} dagli operatori booleani.
+    % Sono dunque stati introdotti gli operatori di \emph{nullish coalescing} (\texttt{??}) e di \emph{safe navigation} (\texttt{.?}) per aggirare questo tipo di problema.
+
     \subsection{Scala.js}
     \subsection{Kotlin/Multiplatform e Kotlin/JS}
