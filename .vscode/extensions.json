@@ -2,6 +2,7 @@
   "recommendations": [
     "EditorConfig.EditorConfig",
     "James-Yu.latex-workshop",
+    "jebbs.plantuml",
     "KnisterPeter.vscode-commitizen",
     "streetsidesoftware.code-spell-checker",
     "streetsidesoftware.code-spell-checker-italian"

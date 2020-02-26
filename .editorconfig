@@ -24,6 +24,11 @@ indent_style = space
 indent_size = 2
 max_line_length = 140
 
+# PlantUML files should use 2 spaces
+[*.puml]
+indent_style = space
+indent_size = 2
+
 # Shell scripts should use Linux line ending
 [*.{ba,b,c,k,z,}sh]
 end_of_line = lf

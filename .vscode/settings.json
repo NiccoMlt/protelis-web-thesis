@@ -47,12 +47,16 @@
     "approssimabile",
     "autocompletamento",
     "bytecode",
+    "classpath",
     "componibilità",
     "dall",
+    "droni",
     "etereogeneità",
     "interoperare",
     "modularizzazione",
     "prototipazione"
   ],
   "editor.fontLigatures": false,
+  "plantuml.exportOutDir": ".",
+  "plantuml.exportSubFolder": false
 }
