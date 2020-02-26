@@ -60,15 +60,15 @@
 
   \mainmatter{}
 
-  \addchap{Introduzione}
+  \input{src/2-mainmatter/intro.tex}
 
-  \part{Background}
+  \part{Background}\label{part:background}
     \input{src/2-mainmatter/motivations.tex}
     \input{src/2-mainmatter/aggregate.tex}
     \input{src/2-mainmatter/web.tex}
 
-  \part{Contributo: Protelis on Web}
-    \chapter{Analisi dei requisiti}
+  \part{Contributo: Protelis on Web}\label{part:contribution}
+    \chapter{Analisi dei requisiti}\label{chap:requirements}
       \section{Requisiti funzionali}
       \section{Requisiti non funzionali}
     \chapter{Progettazione}
@@ -77,10 +77,10 @@
     \chapter{Implementazione}
     % \chapter{Testing}
 
-  \part{Conclusioni}
-    \chapter{Valutazione dei risultati}
-    \chapter{Lavori futuri}
-    \chapter{Considerazioni finali}
+  \part{Conclusioni}\label{part:conclusion}
+    \chapter{Valutazione dei risultati}\label{chap:evaluation}
+    \chapter{Lavori futuri}\label{chap:future}
+    \chapter{Considerazioni finali}\label{chap:considerations}
 
   \appendix
   \input{src/2-mainmatter/appendices.tex}

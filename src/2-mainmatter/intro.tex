@@ -1,0 +1,140 @@
+\addchap{Introduzione}
+
+% Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo sempre crescente,
+Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo notevole.
+Grazie all'incremento della potenza computazionale disponibile a basso costo, alla riduzione delle dimensioni delle unità di calcolo e alla diffusione delle reti wireless,
+ormai gli ambienti in cui vive la maggior parte della popolazione sono pervasi di sensori (come è il caso dell'IoT) e di dispositivi ``smart'' (come smartphone e tablet).
+
+Questo ha portato alla necessità di programmare sistemi distribuiti composti da numerosi dispositivi che devono potersi coordinare tra loro
+per poter portare a termine la computazione.
+
+La \emph{programmazione aggregata} è un approccio promettente per lo sviluppo di sistemi di questo tipo.
+Tale paradigma è basato sull'impianto teorico del \emph{field calculus} e ha visto negli ultimi anni la realizzazione,
+da parte dell'Università di Bologna, di linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale:
+è questo il caso di \emph{Protelis} e \emph{ScaFi}.
+
+Entrambi si avvalgono della piattaforma JVM per poter essere eseguiti;
+come vedremo, questo garantisce numerose proprietà, ma può essere limitante in contesti didattici.
+Infatti, la necessità di configurare un progetto Gradle o SBT completo per poter realizzare un prototipo minimale
+aggiunge ulteriore complessità per un novizio che voglia approcciarsi alla tecnologia.
+Inoltre, non è da ignorare nemmeno la configurazione di una rete reale o simulata di dispositivi per l'esecuzione.
+
+In tempi recenti anche il web è maturato molto:
+l'evoluzione tecnologica ha permesso di realizzare applicazione accessibili tramite browser con livelli di complessità comparabili alle controparti desktop,
+senza il carico aggiuntivo, dal punto di vista dell'utente, dell'installazione e della configurazione.
+Inoltre, servizi complessi possono non dipendere esclusivamente dalle risorse computazionali dei dispositivi dell'utente,
+bensì sfruttarle se e quando necessario.
+
+Si è dunque ritenuto utile realizzare un sistema web semplice e immediato da usare che permetta di abbozzare esempi di codice aggregato
+(Protelis, nel prototipo implementato per questa tesi) e poterlo eseguire senza disporre di una rete di dispositivi o di un simulatore configurati per lo scopo.
+In particolare, si è deciso di propendere per l'implementazione di un backend reattivo su piattaforma JVM che esegue, su una rete di dispositivi simulata tramite Alchemist, il codice inviato da un client.
+Il client è una \emph{Single-Page Application} statica che permette lo sviluppo di codice direttamente dal browser e comunica con il server tramite bus di eventi.
+
+% Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo
+% incrementale, non solo incrementando la potenza computazionale, ma anche
+% riducendo drasticamente le dimensioni delle unità di calcolo. Questo ha portato
+% alla nascita di nuovi dispositivi indossabili (e portabili) come smartphone
+% e smartwatch divenuti, per la maggior parte della popolazione mondiale, be-
+% ni di prima necessità. La miniaturizzazione delle macchine computazionali,
+% inoltre, ha portato alla creazione di sensori intelligenti che possono essere
+% installati nei posti più disparati. Quando quest'enorme insieme di dispositivi
+% si connette in una rete comune come Internet, allora si inizia a parlare di
+% Internet of Thing (IoT). In poco tempo si è passati da quello che è stato
+% il paradigma di computazione standard per decine di anni, cioè il desktop
+% computing (la computazione avviene in un singolo dispositivo), a pervasive
+% computing (la computazione non è allocata in un solo dispositivo ma viene
+% eseguito da un insieme di dispositivi che riescono a portare a termine un
+% risultato comune). I linguaggi e i paradigmi di programmazione standard non
+% sono riusciti a garantire delle tecniche di programmazione atte a gestire tali
+% sistemi, perciò negli anni si è provato ad approcciarsi al problema in diversi
+% modi. Le tecniche di Aggregate Programming (basate sul concetto di field
+% calculus), ad esempio, aggiungono un livello d'astrazione tale da nascondere
+% quelli che sono i dettagli legati alla rete (tipologia di connessione, topologia..)
+% descrivendo l'algoritmo da eseguire su un insieme di dispositivi in termini
+% del loro comportamento aggregato.
+% [...]
+% Il comportamento di un programma aggregato, vuoi per la nuova tipologia
+% di pensiero, vuoi per la sua complessità, non è sempre facile da definire
+% e perciò, per verificare il comportamento di questi sistemi, è nata l'esigenza
+% di poter simulare sistemi reali dove avviare programmi aggregati. In questo
+% modo si ha un risultato visivo della simulazione e si verifica la correttezza
+% della logica del programma. Data questa esigenza, l'obiettivo di questa tesi
+% di laurea è quello di sviluppare un front-end di simulazioni aggregate de-
+% scritte in ScaFi per permettere di testare e visualizzare scenari di utilizzo di
+% tale framework. Per front-end non si intende solamente un semplice sistema
+% che renderizzi dei dati prodotti dalle simulazioni aggregate ma, che inoltre
+% aggiunga l'interazione con il sistema aggregato, la configurazione e l'avvio
+% di simulazione.
+
+% Al giorno d'oggi la diffusione di dispositivi mobili sempre più avanzati
+% e l'evoluzione delle tecnologie wireless ha cambiato radicalmente la
+% comunicazione e la vita delle persone. Qualsiasi utente in possesso di
+% uno smartphone o un tablet è ora in grado di ricevere informazioni e
+% il numero di servizi sta aumentando in maniera esponenziale.
+% Questo ha permesso agli sviluppatori software di investigare nel
+% campo del cosiddetto pervasive computing: ad esempio l'applicazione di Star-
+% bucks rileva la presenza della propria caffetteria preferita nelle
+% vicinanze e propone all'utente sullo schermo la tessera fedeltà per pagare
+% direttamente con lo smartphone.
+
+% La diffusione di dispositivi mobili sempre più avanzati e la parallela evoluzione
+% delle tecnologie wireless, ha rivoluzionato sempre più il mondo della
+% comunicazione e lo stile di vita delle persone, permettendo negli ultimi anni lo
+% sviluppo di un elevato numero di servizi strettamente legati alla mobilità degli
+% utenti al fine di migliorare la loro esperienza nelle esigenze quotidiane. La
+% possibilità di avere a bordo del proprio smartphone una serie di componenti
+% hardware sempre più precisi e potenti, ha allargato l'orizzonte di molti
+% sviluppatori software soprattutto in ambito pervasive-computing
+% [...]
+% Per tale scopo si parte da un'infrastruttura base sviluppata in ambito accademico
+% e i cui concetti derivano dal campo dello Spatial Computing: ogni nodo del
+% sistema non è direttamente a conoscenza di tutti gli altri presenti, ma interagisce
+% solo coi propri vicini in modo da costruire una mappa che tenga traccia di tutti
+% i nodi presenti e relative distanze da sé stesso, allo scopo di auto-organizzarsi
+% per svolgere un certo task applicativo. Questa primo prototipo dell'infrastruttura
+% sfrutta la nozione di “vicinato” sulla base delle distanze reali
+
+% I sistemi computazionali moderni sono sempre più complessi, in
+% particolare si sta assistendo all'esplosione dei sistemi pervasivi, cioè sistemi
+% computazionali distribuiti su larga scala che comprendono al loro interno un
+% elevato numero di componenti e dispositivi eterogenei fra loro. Dal punto di
+% vista ingegneristico è quindi importante assicurarsi che questi sistemi abbiano
+% diverse proprietà come scalabilità, reattività, tolleranza ai guasti unite a buone
+% performance. Realizzare queste proprietà tramite un coordinamento centrale è
+% praticamente impossibile su sistemi grandi come i sistemi pervasivi, sorge
+% quindi la necessità di un nuovo approccio che le garantisca, questo approccio
+% prende il nome di auto-organizzazione.
+
+% Negli ultimi anni il Web ha assunto un ruolo, di giorno in giorno, sempre più
+% centrale. La presenza sempre più diffusa e disponibile di una connessione
+% ad Internet ad alta velocità, ha portato il Web ovunque, anche in luoghi
+% dove, pochi anni fa, non si sarebbe mai immaginato.
+% La realizzazione e la diffusione, in continua crescita, di applicazioni Web
+% con interfacce grafiche sempre più accattivanti e funzionalità sempre più
+% avanzate hanno portato ad un utilizzo del Web sempre più pervasivo, sia
+% all'interno degli ambienti lavorativi che all'interno delle mura domestiche.
+
+% Il Web nel corso della sua esistenza ha subito un mutamento dovuto in parte
+% dalle richieste del mercato, ma soprattutto dall'evoluzione e la nascita co-
+% stante delle numerose tecnologie coinvolte in esso. Si è passati da un'iniziale
+% semplice diffusione di contenuti statici, ad una successiva collezione di siti
+% web, dapprima con limitate presenze di dinamicità e interattività (a causa
+% dei limiti tecnologici), ma successivamente poi evoluti alle attuali applicazioni
+% web moderne che hanno colmato il gap con le applicazioni desktop, sia a
+% livello tecnologico, che a livello di diffusione effettiva sul mercato.
+% Tali applicazioni web moderne possono presentare un grado di complessità
+% paragonabile in tutto e per tutto ai sistemi software desktop tradizionali;
+
+Il documento è suddiviso in tre \nameCrefs{part:background} principali.
+
+Nella~\Cref{part:background} viene fatta una disamina del contesto nel quale l'elaborato di tesi va a inserirsi.
+In particolare, nel~\Cref{chap:motivations} vengono esaminate più nel dettaglio le ragione per le quali il progetto è stato realizzato,
+con particolare attenzione allo stato dell'arte e a possibili soluzioni a problemi simili.
+Nel~\Cref{chap:aggregate} del documento viene fatta un'introduzione alla programmazione aggregata, con particolare attenzione all'impianto teorico su cui si basa e ai linguaggi ad essa collegati.
+Nel~\Cref{chap:web} viene invece fatta riportato il risultato della fase di studio dello stato dell'arte in merito allo sviluppo di sistemi web,
+con particolare attenzione ai linguaggi che permettono la realizzazione di applicazioni frontend in esecuzione sui browser degli utenti.
+
+Nella~\Cref{part:contribution} viene analizzato il processo di progettazione del sistema a cui questo elaborato di tesi si riferisce e di sviluppo del prototipo.
+Ciascuna fase del processo è descritta in un \nameCref{chap:requirements} dedicato.
+
+Infine, nella~\Cref{part:conclusion} vengono raccolti i risultati del processo di sviluppo (\Cref{chap:evaluation}), presentate le prospettive future (\Cref{chap:future}) ed enunciate brevemente le considerazioni finali (\Cref{chap:considerations}).

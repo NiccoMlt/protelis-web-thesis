@@ -40,6 +40,7 @@
   "cSpell.language": "it,it-IT,en",
   "cSpell.words": [
     "LLVM",
+    "Lightbend",
     "Multiplatform",
     "POJO",
     "Protelis",
@@ -50,7 +51,8 @@
     "dall",
     "etereogeneità",
     "interoperare",
-    "modularizzazione"
+    "modularizzazione",
+    "prototipazione"
   ],
   "editor.fontLigatures": false,
 }

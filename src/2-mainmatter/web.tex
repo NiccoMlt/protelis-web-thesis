@@ -6,7 +6,7 @@
   Anche i pattern di progettazione e le tecnologie implementative sono cresciute altrettanto velocemente negli ultimi anni, cambiando anche radicalmente gli approcci di interazione possibili.
   Risulta dunque importante prestare attenzione allo stato dell'arte in tal senso, chiarendo quali siano i pattern più adatti e moderni per il contesto d'uso di questa tesi.
 
-  \section{Architetture, framework e stack}\label{sec:web-architecture}
+  \section{Evoluzione delle architetture}\label{sec:web-architecture}
 
   Con \emph{sistema web} si intende genericamente un sistema software distribuito che coinvolge una o più entità server che espongono in rete API di varia natura, con le quali entità client possono comunicare per usufruire dei servizi.
   Generalmente, in contesto web i client sono costituiti da pagine web aperte nei browser degli utenti.
@@ -36,9 +36,11 @@
 
   % TODO: Service-Oriented Architecture e Resource-Oriented architecture
 
+  % In un sistema moderno,
+
   \section{Linguaggi ad uso web}\label{sec:lang}
     In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.
-    In particolare, verranno presi in considerazione i due linguaggi più popolari, ossia \emph{JavaScript} e il suo superset \emph{TypeScript}, e due linguaggi di nicchia che offrono una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
+    In particolare, verranno presi in considerazione i due linguaggi più popolari, ossia \emph{JavaScript} e il suo super-set \emph{TypeScript}, e due linguaggi di nicchia che offrono una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
 
     \subsection{JavaScript e ECMAScript}\label{subsec:js}
 
@@ -202,6 +204,7 @@
           Non è possibile riutilizzare codice che dipende strettamente da funzionalità della JVM (\emph{reflection}, eccezioni native di Java), in quanto porta a comportamenti indefiniti.
       \end{description}
 
+      % Oltre al supporto semi-ufficiale a React e altri framework e librerie per la realizzazione di SPA, Scala offre un'integrazione di prima classe anche con tecnologie backend molto famose come il Play Framework di Lightbend.
       Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
 
     \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}
