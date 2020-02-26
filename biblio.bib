@@ -428,7 +428,6 @@ widening gap between the needs of the user to control aggregates of devices and 
   year      = {2015},
   date      = {2015-09},
   publisher = {{IEEE}},
-  month     = {sep},
   pages     = {111-120},
   doi       = {10.1109/saso.2015.19},
   abstract  = {Small-to medium-scale enterprise systems are typically complex and highly specialized, but lack the management resources that can be devoted to large-scale (e.g., Cloud) systems, making them extremely challenging to manage. Here we present an adaptive algorithm for addressing a common management problem in enterprise service networks: safely and rapidly recovering from the failure of one or more services. Due to poorly documented and shifting dependencies, a typical industry practice for this situation is to bring the entire system down, then to restart services one at a time in a predefined order. We improve on this practice with the Dependency-Directed Recovery (DDR) algorithm, which senses dependencies by observing network interactions and recovers near-optimally from failures following a distributed graph algorithm. Our Java-based implementation of this system is suitable for deployment with a wide variety of networked enterprise services, and we validate its correct operation and advantage over fixed-order restart with emulation experiments on networks of up to 20 services.},
@@ -485,8 +484,8 @@ widening gap between the needs of the user to control aggregates of devices and 
   institution = {W3C},
   year        = {2008},
   type        = {{W3C} Note},
-  note        = {http://www.w3.org/TR/2008/NOTE-html5-pubnotes-20080610/},
   month       = jun,
+  url         = {http://www.w3.org/TR/2008/NOTE-html5-pubnotes-20080610/},
   bibsource   = {https://w2.syronex.com/jmr/w3c-biblio},
 }
 
@@ -535,6 +534,24 @@ widening gap between the needs of the user to control aggregates of devices and 
   publisher = {Springer Science and Business Media {LLC}},
 }
 
+@Misc{decorators,
+  editor       = {ECMAScript},
+  title        = {ECMAScript Decorators proposal -- Stage 2 Draft},
+  date         = {2019-02-07},
+  howpublished = {\url{https://tc39.es/proposal-decorators/}},
+  journal      = {TC39},
+  publisher    = {ECMAScript},
+}
+
+@Misc{optional,
+  editor       = {ECMAScript},
+  title        = {ECMAScript Optional Chaining proposal -- Stage 4 Draft},
+  date         = {2019-12-22},
+  howpublished = {\url{https://tc39.es/proposal-optional-chaining//}},
+  journal      = {GitHub repository},
+  publisher    = {GitHub},
+}
+
 @Article{5617064,
   author    = {Stefan Tilkov and Steve Vinoski},
   title     = {Node.js: Using JavaScript to Build High-Performance Network Programs},
@@ -569,6 +586,80 @@ widening gap between the needs of the user to control aggregates of devices and 
   keywords   = {dynamic languages, refinement types},
   numpages   = {14},
   publisher  = {Association for Computing Machinery ({ACM})},
+}
+
+@PhdThesis{Doeraene:256862,
+  author      = {Doeraene, Sébastien Jean R},
+  title       = {Cross-Platform Language Design},
+  institution = {IINFCOM},
+  year        = {2018},
+  language    = {eng},
+  pages       = {184},
+  doi         = {10.5075/EPFL-THESIS-8733},
+  url         = {http://infoscience.epfl.ch/record/256862},
+  abstract    = {Programming languages are increasingly compiled to  multiple runtimes, each featuring their own rich structures  such as their object model.
+Furthermore, they need to  interact with other languages targeting said runtimes.
+A  language targeting only one runtime can be designed to  tailor its semantics to those of that runtime, for easy  interoperability with other languages.
+However, in a  language targeting multiple runtimes with differing  semantics, it is difficult to cater to each of them while  retaining a common behavior across runtimes.
+We call  \emph{cross-platform language} a language that aims at  being both \emph{portable} across platforms and  \emph{interoperable} with each target platform.
+Portability  is the ability for a program or a library to cross-compile  for multiple platforms, and behave the same way on all of  them.
+Interoperability is the ability to communicate with  other languages on the same platform.
+While many  cross-compiling languages focus on one of these two  properties---only adding support for the other one as an  afterthought---, languages that are designed from the  ground up to support both are rare.
+
+In this thesis, we  present the design of Scala.js, the dialect of Scala  targeting the JavaScript platform, which turned Scala into  a cross-platform language.
+On the one hand, Scala programs  can be cross-compiled for the JVM and JavaScript with  portable semantics.
+On the other hand, whereas Scala/JVM  interoperates with Java, Scala.js interoperates with  JavaScript, allowing to use any JavaScript library.
+Along  the dissertation, we give insights that can be transferred  to the design of other cross-platform languages, although  with a bias towards those targeting the JVM and  JavaScript.
+
+The first and most obvious challenge is to  reconcile the static nature of Scala's object model with  JavaScript's dynamic one.
+Besides the ability to mutate a  class hierarchy at run-time in JavaScript, there are  fundamental differences between the two models, in  particular the difference between compile-time overloading  and run-time overloading.
+We discuss how such semantic  mismatches can live in harmony within the language.
+
+The  second challenge is to obtain good performance from a  language where interoperability with a dynamic and unknown  part of the program is pervasive.
+To that end, we design  and specify an intermediate representation (IR) with  first-class support for dynamically typed interoperability  features in addition to statically typed JVM-style  operations.
+Despite its tight integration with the open  world of JavaScript, most of the IR can be considered as a  closed world where advanced whole-program optimizations can  be performed.
+The performance of the overall system is  evaluated and shown to be competitive with hand-written  JavaScript, and even with Scala/JVM in some cases.},
+  address     = {Lausanne},
+  file        = {:Doeraene_256862 - Cross Platform Language Design.pdf:PDF},
+  keywords    = {interoperability ; portability ; language design ; cross-platform ; performance ; Scala ; JavaScript},
+  publisher   = {Lausanne, EPFL},
+}
+
+@Article{10.1145/3093334.2989232,
+  author     = {Stefan Marr and Benoit Daloze and Hanspeter Mössenböck},
+  title      = {Cross-language compiler benchmarking: are we fast yet?},
+  journal    = {{ACM} {SIGPLAN} Notices},
+  year       = {2016},
+  volume     = {52},
+  number     = {2},
+  month      = {nov},
+  pages      = {120--131},
+  issn       = {0362-1340},
+  doi        = {10.1145/3093334.2989232},
+  url        = {https://doi.org/10.1145/3093334.2989232},
+  address    = {New York, NY, USA},
+  issue_date = {May 2017},
+  keywords   = {Virtual Machines, Languages, Benchmarking},
+  numpages   = {12},
+  publisher  = {Association for Computing Machinery ({ACM})},
+}
+
+@Online{Belov2017,
+  author = {Roman Belov},
+  editor = {JetBrains Kotlin Blog},
+  title  = {Kotlin 1.1 Released with JavaScript Support, Coroutines and more},
+  year   = {2017},
+  date   = {2017-03-01},
+  url    = {https://blog.jetbrains.com/kotlin/2017/03/kotlin-1-1/},
+}
+
+@Online{Jemerov2017,
+  author = {Dmitry Jemerov},
+  editor = {JetBrains Kotlin Blog},
+  title  = {Kotlin 1.2 Released: Sharing Code between Platforms},
+  year   = {2017},
+  date   = {2017-11-28},
+  url    = {https://blog.jetbrains.com/kotlin/2017/11/kotlin-1-2-released/},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

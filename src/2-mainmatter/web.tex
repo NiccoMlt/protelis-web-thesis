@@ -42,73 +42,191 @@
 
     \subsection{JavaScript e ECMAScript}\label{subsec:js}
 
-    \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato orientato agli oggetti, agli eventi e alle funzioni.
-    Sviluppato originariamente nel 1995 da Brendan Eich della Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
-    esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
-    JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISO:1998} e l'attuale versione è la decima.
+      % \begin{wrapfigure}{r}{0pt}
+      %   \centering
+      %   % \vspace{-52pt}
+      %   \includegraphics[width=0.2\textwidth]{res/fig/js-logo.eps}
+      %   % \vspace{50pt}
+      %   \caption{Logo}%
+      %   \label{fig:js}
+      % \end{wrapfigure}
 
-    Il linguaggio è attualmente il più popolare per uso web, in quanto l'unico ad essere supportato da tutti i browser moderni, almeno nelle sue feature principali.
-    Diversi linguaggi, come quelli che vedremo in seguito, vengono transpilati in una versione sufficientemente supportata di JS per poter essere eseguiti nei browser.
+      \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato multi-paradigma, con supporto agli stili di programmazione funzionale, ad eventi, orientato agli oggetti.
+      % \begin{inparaitem}
+      %   \item funzionale,
+      %   \item ad eventi,
+      %   \item orientato agli oggetti.
+      % \end{inparaitem}
+      Sviluppato originariamente nel 1995 da Brendan Eich della Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
+      esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
+      JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISO:1998} e l'attuale versione è la decima.
 
-    Analizzato dal punto di vista tecnico, esso presenta i seguenti aspetti strutturali:
+      Il linguaggio è attualmente il più popolare per uso web, in quanto l'unico ad essere supportato da tutti i browser moderni, almeno nelle sue feature principali.
+      Diversi linguaggi, come quelli che vedremo in seguito, vengono transcompilati in una versione sufficientemente supportata di JS per poter essere eseguiti nei browser.
 
-    \begin{description}
-      \item[Imperativo e strutturato]
-        Il linguaggio si presenta con una sintassi di programmazione strutturata standard, con il supporto a tutte le strutture di controllo tradizionali.
-        Una parziale differenza era nella gestione della visibilità delle variabili (\emph{scope}):
-        inizialmente, JavaScript garantiva solo la visibilità a livello di funzione (\emph{function scope}) tramite la parola chiave \texttt{var};
-        con ECMAScript 6 è stato aggiunto il supporto alla visibilità a livello di blocco (\emph{block scope}).
+      Analizzato dal punto di vista tecnico, esso presenta i seguenti aspetti strutturali:
 
-      \item[Tipizzazione dinamica]
-        % https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
-        JavaScript è un linguaggio debolmente tipizzato:
-        alle variabili non sono associati dei tipi di dato, ma solo dei valori, che possono dinamicamente cambiare tipo durante il ciclo di vita della variabile.
-        La tipizzazione dinamica consente lo stile di tipizzazione chiamato \emph{Duck Typing}~\cite{10.1145/2103621.2103686}:
-        è possibile determinare la semantica di un oggetto in base ai metodi ed alle proprietà che esso possiede,  non in base al suo tipo.
+      \begin{description}
+        \item[Imperativo e strutturato]
+          Il linguaggio si presenta con una sintassi di programmazione strutturata standard, con il supporto a tutte le strutture di controllo tradizionali.
+          Una parziale differenza era nella gestione della visibilità delle variabili (\emph{scope}):
+          inizialmente, JavaScript garantiva solo la visibilità a livello di funzione (\emph{function scope}) tramite la parola chiave \texttt{var};
+          con ECMAScript 6 è stato aggiunto il supporto alla visibilità a livello di blocco (\emph{block scope}).
 
-      \item[Orientamento agli oggetti Prototype-based]
-        A differenza di altri linguaggi orientato agli oggetti (come Java o C++), JavaScript non fornisce un'implementazione del concetto di \emph{classe}~\cite{Ungar1991}:
-        la stessa keyword \texttt{class}, introdotta con ES6, non è altro che zucchero sintattico per migliorare l'interazione da parte dei nuovi sviluppatori con il prototipo.
+        \item[Tipizzazione dinamica]
+          % https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+          JavaScript è un linguaggio debolmente tipizzato:
+          alle variabili non sono associati dei tipi di dato, ma solo dei valori, che possono dinamicamente cambiare tipo durante il ciclo di vita della variabile.
+          La tipizzazione dinamica consente lo stile di tipizzazione chiamato \emph{duck typing}~\cite{10.1145/2103621.2103686} (o \emph{structural subtyping}):
+          è possibile determinare la semantica di un oggetto in base ai metodi ed alle proprietà che esso possiede,  non in base al suo tipo.
 
-        In termini di ereditarietà, infatti, JS prevede un solo costrutto: gli \emph{oggetti}.
-        Ogni oggetto ha un collegamento interno ad un altro oggetto chiamato \emph{prototype}.
-        Questo oggetto prototipo ha a sua volta un suo prototype, e così via finché si raggiunge un oggetto con la proprietà prototipo settata a \texttt{null}.
-        \texttt{null}, per definizione, non ha un prototype ed agisce come link finale nella \emph{catena di prototipi}.
+        \item[Orientamento agli oggetti Prototype-based]
+          A differenza di altri linguaggi orientato agli oggetti (come Java o C++), JavaScript non fornisce un'implementazione del concetto di \emph{classe}~\cite{Ungar1991}:
+          la stessa keyword \texttt{class}, introdotta con ES6, non è altro che zucchero sintattico per migliorare l'interazione da parte dei nuovi sviluppatori con il prototipo.
 
-        Quasi tutti gli oggetti in JavaScript sono istanze di \texttt{Object}, che risiede in cima alla catena dei prototipi.
-        % In JavaScript, è possibile aggiungere proprietà a qualsiasi oggetto in fase di esecuzione.
+          In termini di ereditarietà, infatti, JS prevede un solo costrutto: gli \emph{oggetti}.
+          Ogni oggetto ha un collegamento interno ad un altro oggetto chiamato \emph{prototype}.
+          Questo oggetto prototipo ha a sua volta un suo prototype, e così via finché si raggiunge un oggetto con la proprietà prototipo settata a \texttt{null}.
+          \texttt{null}, per definizione, non ha un prototype ed agisce come link finale nella \emph{catena di prototipi}.
 
-      \item[First-class function]
-        JavaScript offre un supporto di prima classe alle funzioni, che sono considerate oggetti;
-        come tali, esse possono avere delle proprietà, come ad esempio \texttt{.bind()} e \texttt{.call()}. % ChkTeX 36
+          Quasi tutti gli oggetti in JavaScript sono istanze di \texttt{Object}, che risiede in cima alla catena dei prototipi.
+          % In JavaScript, è possibile aggiungere proprietà a qualsiasi oggetto in fase di esecuzione.
 
-        Ciascuna funzione costituisce una chiusura lessicale.
+        \item[First-class function]
+          JavaScript offre un supporto di prima classe alle funzioni, che sono considerate oggetti;
+          come tali, esse possono avere delle proprietà, come ad esempio \texttt{.bind()} e \texttt{.call()}. % ChkTeX 36
 
-        All'interno di oggetti, proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
-        Infine, le funzioni possono essere utilizzati per l'implementazione di \emph{pattern di ruolo} come i \emph{tratti} e i \emph{mixin}.
+          Ciascuna funzione costituisce una chiusura lessicale.
 
-      \item[Web APIs]
-        Con ECMAScript si standardizza la componente \emph{core} del linguaggio, che può eseguire in ambienti browser come su interpreti non legati strettamente al web (come ad esempio Node.js~\cite{5617064}).
-        Ciascuno degli ambienti nei quali il linguaggio viene interpretato mettono a disposizione delle API specifiche per l'interazione con la piattaforma;
-        quando si fa riferimento al browser, tali supporti sono chiamati \emph{Web APIs}.
+          All'interno di oggetti, proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
+          Infine, le funzioni possono essere utilizzati per l'implementazione di \emph{pattern di ruolo} come i \emph{tratti} e i \emph{mixin}.
 
-        Attraverso di esse, lo sviluppatore può avere accesso agli elementi del DOM (Document Object Model) di HTML, potendo manipolare la pagina visualizzata e reagire ad eventi su di essa.
+        \item[Web APIs]
+          Con ECMAScript si standardizza la componente \emph{core} del linguaggio, che può eseguire in ambienti browser come su interpreti non legati strettamente al web (come ad esempio Node.js~\cite{5617064}).
+          Ciascuno degli ambienti nei quali il linguaggio viene interpretato mettono a disposizione delle API specifiche per l'interazione con la piattaforma;
+          quando si fa riferimento al browser, tali supporti sono chiamati \emph{Web APIs}.
 
-      \item[Asincronismo]
-        JavaScript supporta inoltre nativamente l'esecuzione di operazioni in modo asincrono tramite il costrutto della \emph{promise}, implementato da un oggetto built-in \texttt{Promise},
-        che costituisce un \emph{proxy} per un valore non necessariamente noto quando la promise viene creata.
-        È poi possibile gestire il valore ottenuto con costrutti ``\emph{thenable}'' o con il \emph{pattern async/await}.
-    \end{description}
+          Attraverso di esse, lo sviluppatore può avere accesso agli elementi del DOM (Document Object Model) di HTML, potendo manipolare la pagina visualizzata e reagire ad eventi su di essa.
+
+        \item[Asincronismo]
+          JavaScript supporta inoltre nativamente l'esecuzione di operazioni in modo asincrono tramite il costrutto della \emph{promise}, implementato da un oggetto built-in \texttt{Promise},
+          che costituisce un \emph{proxy} per un valore non necessariamente noto quando la promise viene creata.
+          È poi possibile gestire il valore ottenuto con costrutti ``\emph{thenable}'' o con il \emph{pattern async/await}.
+      \end{description}
 
     \subsection{TypeScript}\label{subsec:ts}
-    TypeScript è un linguaggio di programmazione open-source sviluppato da Microsoft.
-    Esso è un super-set sintatticamente rigoroso di JavaScript ES6, che si pone come obiettivo % TODO
+      TypeScript è un linguaggio di programmazione open-source sviluppato da Microsoft.
+      Esso è un super-set sintatticamente rigoroso di JavaScript ES6, che si pone come obiettivi principali:
 
+      \begin{itemize}
+        \item
+          l'introduzione di funzionalità \emph{cutting-edge} (talvolta anche nei primi stage di approvazione) di ECMAScript.
+          Esse sono rese disponibili transcompilando il sorgente TypeScript in codice JavaScript meno recentemente ma completamente compatibile con l'ambiente di esecuzione scelto
+          (ad esempio ES5 per i browser), spesso avvalendosi di \emph{polyfill} per estendere la compatibilità.
+          Tra queste funzionalità, ci sono ad esempio:
+          \begin{description}
+            \item[Decoratori]
+              Definiti in una proposta ECMAScript~\cite{decorators} tutt'ora pendente (stage 2 al momento della scrittura),
+              i decoratori sono dichiarazioni (definite tramite carattere ``\texttt{@}'') associate a una dichiarazione di classe, un metodo, una proprietà o un parametro che permettono la valutazione a runtime di una espressione specificata.
+              Il framework Angular, ad esempio, utilizza estensivamente questa funzionalità per effettuare \emph{dependency injection}.
 
-    % \item[Operatore di coalescenza dei null e safe navigation]
-    % Tradizionalmente, in JavaScript sono considerati \emph{falsy} diversi valori (come \texttt{NaN}, \texttt{0} e la stringa vuota) che non sono \texttt{null} o \texttt{undefined}
-    % ma vengono trattati come valori ``non presenti'' e dunque come \texttt{false} dagli operatori booleani.
-    % Sono dunque stati introdotti gli operatori di \emph{nullish coalescing} (\texttt{??}) e di \emph{safe navigation} (\texttt{.?}) per aggirare questo tipo di problema.
+            \item[Operatore di coalescenza del null \& safe navigation]
+              In JavaScript, sono considerati \emph{falsy} valori come \texttt{NaN}, \texttt{0} e la stringa vuota che, pur non essendo \texttt{null} o \texttt{undefined},
+              vengono trattati come valori ``non presenti'' e dunque come \texttt{false} dagli operatori booleani.
+              Per ridurre la possibilità di bug dovuto a questo tipo di valori, sono stati definiti gli operatori di \emph{nullish coalescing} ``\texttt{??}'' e di \emph{safe navigation} ``\texttt{.?}''.
+              Definiti sulla base di una precedente proposta ECMAScript~\cite{optional}, solo più tardi integrata, sono stati introdotti con la versione 3.7.3 di TypeScript.
+          \end{description}
+        \item
+          l'introduzione di un sistema di tipizzazione statica opzionale che possa integrarsi nel modo più trasparente possibile nella sintassi JavaScript standard;
+          in particolare, viene data la possibilità di definire tipi complessi tramite \emph{sintassi postfissa}.
+      \end{itemize}
 
-    \subsection{Scala.js}
-    \subsection{Kotlin/Multiplatform e Kotlin/JS}
+      % Di fatto, dunque, presenta tutte le caratteristiche di JavaScript descritte nella \Vref{subsec:js}.
+      Il sistema di tipi viene presentato come \emph{class-based} (in contrapposizione al \emph{prototype-based} tipico di JavaScript, soprattutto prima dell'introduzione dello zucchero sintattico per le classi), ma mantiene le caratteristiche di structural subtyping citate precedentemente.
+      Avvalendosi di ciò, il linguaggio permette la definizione di tipi complessi;
+      è garantito il supporto ai generici, esteso da un algebra dei tipi molto flessibile che permette unione, intersezione e condizionalità, oltre alla possibilità di accesso ai tipi delle singole proprietà.
+
+      % Il linguaggio permette la definizione di interfacce che descrivono la struttura delle proprietà attese al compilatore.
+      % Tali interfacce offrono la possibilità di definire tipi complessi:
+
+      % \begin{description}
+      %   \item[Tipi funzione]
+      %     Tramite le interfacce è possibile definire le strutture di funzioni, che possono essere implementate in modo anonimo nel codice attraverso il costrutto \texttt{function} o ``\emph{fat arrow}'' (\texttt{=>}).
+      %     % \inputminted{typescript}{res/code/functionType.ts}
+      %   \item[Indexable Types]
+      %     È possibile
+      % \end{description}
+
+      % \begin{itemize}
+      %   \item \emph{tipi funzione}, che definiscono l'oggetto come una funzione di una determinata struttura;
+      %   \item \emph{tipi indicizzabili}, che definiscono oggetti che possono fornire l'accesso a proprietà interne tramite \emph{bracket notation} (ad esempio, l'\texttt{Array});
+      %   \item \emph{tipi ibridi}, con i quali è possibile interagire tramite differenti notazioni
+      % \end{itemize}
+
+      La generazione dei metadati per la descrizione dei tipi permette un'integrazione migliore di TypeScript e JavaScript con gli ambienti di sviluppo;
+      inoltre, negli anni è diventato lo standard de-facto per la documentazione dei moduli per il linguaggio sostituendo le soluzioni basate sul parsing dei commenti come JSDoc.
+
+    \subsection{Scala.js}\label{subsec:scalajs}
+      Scala.js è un compilatore per il linguaggio di programmazione Scala che genera codice JavaScript invece di bytecode per la JVM\@.
+      % Questo permette l'impiego di tutte le funzionalità di Scala in contesto web, massimizzando il riuso di codice condiviso con la componente backend potenzialmente scritto con il medesimo linguaggio e in esecuzione su JVM\@.
+
+      I principali vantaggi dell'impiego di un linguaggio come Scala all'interno del contesto web sono i seguenti:
+      \begin{description}
+        \item[Struttura più solida]
+          Come detto, JavaScript è un linguaggio debolmente tipizzato;
+          se questo aggiunge notevole flessibilità durante lo sviluppo, d'altro canto aggiunge una maggiore possibilità di bug.
+          Anche TypeScript, che offre un sistema di tipi molto più completo, risulta anomalo per via della natura strutturale della tipizzazione implementata.
+
+          Scala mette a disposizione un type system allo stesso tempo più espressivo e più rigoroso, di conseguenza può risultare più \emph{user-friendly} sia durante lo sviluppo che in fase di debug.
+
+        \item[Prestazioni]
+          Secondo benchmark~\cite{Doeraene:256862} realizzati tramite una suite estensiva già utilizzata in letteratura~\cite{10.1145/3093334.2989232}, per quanto Scala.js risulti più lento della controparte JVM, riesce ad essere fino al 33\% più veloce della controparte scritta in JavaScript.
+
+          Inoltre, il compilatore risulta molto efficiente in termini di dimensioni finali del \emph{bundle}:
+          secondo il sito ufficiale, generalmente si parte dai \(\SI{45}{\kilo\byte}\) per un'intera applicazione compressa in gzip.
+          Questo permette di avere buone performance al primo caricamento dell'applicazione web.
+
+        % \item[Interoperabilità \& riuso]
+        \item[Interoperabilità con JavaScript]
+          % Un terzo vantaggio risiede nelle possibilità di interoperare con codice già esistente, sia con JavaScript che con Scala.
+          % In particolare,
+          Scala.js è dichiaratamente compatibile con qualsiasi modulo JavaScript, purché sia dotato del codice \emph{façade} necessario per garantirne il type checking.
+          Il team che mantiene il progetto ha effettuato il wrapping di numerose librerie di uso comune (50 al momento della scrittura) e mette a disposizione uno strumento di conversione automatico per le definizioni di tipo generate dal compilatore di TypeScript.
+          Data la popolarità di quest'ultimo, la copertura può essere dunque considerata elevata.
+
+        \item[Riuso]
+          Un'altra compatibilità utile nella realizzazione di sistemi web di grandi dimensioni è quella con codice Scala impiegato anche nel backend.
+          Questo permette di riutilizzare il codice condiviso tra server e client,
+          riducendo i costi di manutenzione del medesimo codice in linguaggi differenti e la possibile \emph{friction} originata dall'etereogeneità dei linguaggi.
+
+          Non è possibile riutilizzare codice che dipende strettamente da funzionalità della JVM (\emph{reflection}, eccezioni native di Java), in quanto porta a comportamenti indefiniti.
+      \end{description}
+
+      Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
+
+    \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}
+      Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato Koltin/JS~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
+      Il progetto si colloca in un progetto di più ampio respiro, ossia Kotlin/Multiplatform~\cite{Jemerov2017}, presentato al termine dello stesso anno in concomitanza con Kotlin 1.2, che mira a integrare anche il supporto a LLVM\@.
+
+      L'intento è molto simile a quello di Scala.js:
+      fornire un linguaggio solido per la realizzazione di componenti web (ad esempio un frontend) con lo stesso codice in esecuzione sul server su cui dialogare, in modo da coprire l'intero sistema nel modo più omogeneo possibile.
+
+      Kotlin, a differenza di quanto avviene in Scala.js, però, prevede l'utilizzo di sorgenti differenti per la parte comune (\emph{common source set}), che modella il sistema in Kotlin puro, e per la parte specifica di un particolare target:
+      in questo modo, differenti piattaforme possono avere implementazioni più vicine alle rispettive native, avvalendosi di librerie specifiche fornite dal sistema o da terze parti.
+      % Questo pattern è realizzato attraverso le parole chiave \texttt{expected} e \texttt{actual} anteposte alle definizioni che
+
+      Anche in questo caso, le criticità sono simili a quelle citate nella \nameCref{subsec:scalajs} precedente:
+      \begin{itemize}
+        \item
+          per quanto l'intera libreria standard sia stata portata da JetBrains sulle diverse piattaforme nel modo più trasparente possibile, le piattaforme di esecuzione rimangono differenti.
+          Di conseguenza, alcuni costrutti molto specifici strettamente legati alla JVM come la reflection non sono disponibili sul target JS\@.
+        \item
+          per garantire il supporto corretto ai tipi, è necessaria la presenza di codice \emph{wrapper} che li modelli.
+          JetBrains ha realizzato gli adattamenti solo per poche librerie, principalmente legate a React, e ha messo a disposizione alcuni strumenti per la conversione delle definizioni di tipo di TypeScript.
+          Purtroppo, la prima soluzione, \texttt{ts2kt}, è stata deprecata solo dopo qualche anno e il sostituto, \texttt{dukat}, al momento della scrittura non è ancora considerato stabile.
+
+          In assenza dei wrapper, è comunque possibile lavorare con moduli JavaScript attraverso il costrutto \texttt{dynamic}, ma si perde il controllo sui tipi.
+      \end{itemize}
+
+      JetBrains pare supportare attivamente la libreria React per la realizzazione di codice frontend, ma attualmente non viene ritenuto ancora sufficientemente stabile per un uso reale.
+      Sul sito ufficiale sono invece specificati numerosi framework per la realizzazione di backend che offrono supporto di prima classe al linguaggio.

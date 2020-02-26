@@ -4,11 +4,11 @@
 % !TeX program = arara
 % !TeX options = --log --verbose --language=it "%DOC%"
 
-% arara: lualatex:      { interaction: batchmode }
-% arara: frontespizio:  { interaction: batchmode, engine: lualatex }
+% arara: lualatex:      { interaction: batchmode, shell: yes }
+% arara: frontespizio:  { interaction: batchmode, engine: lualatex, shell: yes }
 % arara: biber
-% arara: lualatex:      { interaction: batchmode }
-% arara: lualatex:      { interaction: nonstopmode, synctex: yes }
+% arara: lualatex:      { interaction: batchmode, shell: yes }
+% arara: lualatex:      { interaction: nonstopmode, shell: yes, synctex: yes }
 
 \documentclass[%
   a4paper,                % formato di pagina A4

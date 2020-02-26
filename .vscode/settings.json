@@ -39,11 +39,17 @@
   ],
   "cSpell.language": "it,it-IT,en",
   "cSpell.words": [
+    "LLVM",
+    "Multiplatform",
     "POJO",
     "Protelis",
     "approssimabile",
+    "autocompletamento",
+    "bytecode",
     "componibilità",
     "dall",
+    "etereogeneità",
+    "interoperare",
     "modularizzazione"
   ],
   "editor.fontLigatures": false,
