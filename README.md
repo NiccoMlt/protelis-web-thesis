@@ -8,6 +8,15 @@
 La tesi riguarda la progettazione di un sistema web per la simulazione di programmi aggregati.
 Nel repository [NiccoMlt/Protelis-Web](https://github.com/NiccoMlt/Protelis-Web) è possibile trovare il codice del sistema realizzato per l'esecuzione di codice [Protelis](https://protelis.github.io) tramite un frontend web realizzato in [React](https://reactjs.org) su un backend basato su [Alchemist](https://alchemistsimulator.github.io) e [Vert.x](https://vertx.io).
 
+## Progetto
+
+In questo repository è contenuto unicamente il codice LaTeX del documento della tesi.
+
+Il codice Kotlin e TypeScript del prototipo implementato per questa tesi è disponibile nei seguenti repository:
+
+- [NiccoMlt/Protelis-Web](https://github.com/NiccoMlt/Protelis-Web) contiene il codice del server di backend realizzato con Vert.x in Kotlin e basato su [Alchemist](https://github.com/AlchemistSimulator/Alchemist);
+- [NiccoMlt/protelis-web-frontend](https://github.com/NiccoMlt/protelis-web-frontend) contiene il codice del frontend React che funge da client; è realizzato completamente in TypeScript.
+
 ## [Requisiti](https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/volume-pdf-e-deposito-online-dellelaborato) e [Norme redazionali](https://corsi.unibo.it/magistrale/IngegneriaScienzeInformatiche/redazione-tesi-voto-finale) della tesi
 
 - È vietato riprodurre il logo dell'Ateneo di Bologna su qualunque parte dell'elaborato;
