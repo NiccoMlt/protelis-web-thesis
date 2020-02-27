@@ -1,0 +1,48 @@
+@startuml ExecutionContext
+
+' skinparam groupInheritance 2
+' skinparam linetype polyline
+' skinparam linetype ortho
+skinparam linetype straight
+' skinparam monochrome true
+skinparam ClassBorderColor black
+skinparam ArrowColor black
+skinparam backgroundColor transparent
+skinparam classBackgroundColor transparent
+' skinparam style strictuml
+
+class ProtelisVM {
+    - ctx: ExecutionContext
+    - prog: ProtelisProgram
+    + runCylce()
+}
+
+interface ExecutionContext {
+  + deviceUID
+  + currentTime
+}
+
+together {
+  interface TimeAwareDevice extends ExecutionContext
+  interface SpatiallyEmbeddedDevice extends ExecutionContext
+  interface LocalizedDevice extends ExecutionContext {
+    + coordinates
+  }
+  abstract class AbstractExecutionContext extends ExecutionContext
+}
+
+interface NetworkManager
+
+AbstractExecutionContext o.up. NetworkManager: features
+
+ProtelisVM o.. ExecutionContext: uses
+
+interface ProtelisProgram {
+    + name
+    + currentValue
+    + compute(executionContext)
+}
+
+ProtelisVM o.left. ProtelisProgram: executes
+
+@enduml

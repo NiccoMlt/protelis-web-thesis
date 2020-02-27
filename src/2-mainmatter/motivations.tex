@@ -1,9 +1,92 @@
 \chapter{Motivazioni}\label{ch:motivations}
+  Come detto nell'\nameref{ch:intro}, il rapido aumento di dispositivi capaci di computare e distribuiti nell'ambiente ha reso necessario ideare nuovi paradigmi di programmazione.
+  Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si tratterà più nel dettaglio nel~\Cref{ch:aggregate}.
+  In questo \nameCref{ch:motivations}, invece, verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
+  mettendo in evidenza le ragioni per la quale è stato realizzato questo progetto di tesi.
 
+  \section{Stato dell'arte}\label{sec:state-of-art}
 
-  \section{Stato dell'arte}
+  Prima di partire con la progettazione del sistema, è stato necessario valutare lo stato dell'arte nel quale il software va ad inserirsi.
+  Si è dunque deciso di analizzare nel dettaglio quali sono i punti critici dello stato dell'arte;
+  in particolare, si è preso in considerazione la procedura di configurazione di un progetto realizzato in un linguaggio aggregato,
+  confrontandolo con l'esperienza di sviluppo ottenuta con altri linguaggi in altri contesti.
 
-  \section{Prospettive}
+  \subsection{Iniziare un progetto Protelis}\label{subsec:setup}
 
-  \section{Dettaglio del problema e approccio}
+  I due principali linguaggi di programmazione aggregata che implementano il modello teorico del field calculus sono Protelis e ScaFi.
+  ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di questo linguaggio;
+  poiché sono già state realizzate tesi~\cite{amslaurea12188,amslaurea16824} incentrate sull'esecuzione di ScaFi, è stato richiesto di concentrarsi, in questa tesi, su Protelis.
 
+  Protelis è un linguaggio \emph{Java-hosted} e, come tale, deve essere caricato in un progetto JVM che esegue un'istanza del suo interprete.
+
+  \begin{description}
+    \item[Alchemist]\cite{ProtelisSAC14}
+      Una prima possibilità di utilizzo è tramite il simulatore Alchemist~\cite{alchemist-jos2013}.
+      Esso mette infatti a disposizione all'interno del proprio meta-modello un'incarnazione specifica per Protelis.
+      Esso permette la simulazione di reti con pattern anche complessi con semplici file di configurazione.
+      In~\Cref{fig:alchemis-protelis} sono riportate le entità in gioco.
+
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.52\textwidth]{res/fig/protelis-alchemist-arch.eps}%
+        \caption[
+          Implementazione dell'architettura di Protelis in Alchemist
+        ]{
+          Implementazione dell'architettura di Protelis in Alchemist.
+
+          \nameCref{fig:alchemis-protelis} ripresa da~\cite{ProtelisSAC14}.
+        }%
+        \label{fig:alchemis-protelis}
+      \end{figure}
+
+      Alchemist può essere utilizzato all'interno di altro software in ambiente Java come libreria di virtualizzazione, oppure in modo indipendente tramite linea di comando\footnote{\url{https://github.com/Protelis/Protelis-Alchemist-tutorial}}.
+      In questo secondo caso, è possibile definire il codice Protelis insieme a file YAML di configurazione ed utilizzare il file jar eseguibile di Alchemist.
+      Il simulatore mette a disposizione un'interfaccia grafica minimale per la visualizzazione e il controllo della simulazione.
+
+    \item[ProtelisVM]\cite{amslaurea19778}
+      Un'altra possibilità, più moderna, è tramite l'importazione del framework di Protelis nel \emph{classpath} di un progetto Java, ad esempio prelevandolo come dipendenza Maven.
+      Il framework mette a disposizione un oggetto denominato \texttt{ProtelisVM} (\Cref{fig:protelisvm}), che si occupa di eseguire un programma Protelis in un \texttt{ExecutionContext},
+      ossia un'astrazione del dispositivo esecutore che si frappone tra la macchina virtuale e l'ambiente fisico.
+
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.87\textwidth]{res/uml/ExecutionContext.eps}%
+        \caption{UML delle principali entità del framework di Protelis}%
+        \label{fig:protelisvm}
+      \end{figure}
+
+      Attraverso la libreria è possibile definire dispositivi virtuali o, potenzialmente, collegare implementazioni fisiche.
+      Su GitHub\footnote{\url{https://github.com/Protelis/Protelis-Demo}} sono riportati alcuni esempi.
+
+    \item[NASA WorldWind]\cite{4161692}
+      Un'ultima possibilità vede invece l'utilizzo del framework di visualizzazione open-source WorldWind, sviluppato dalla NASA\@.
+      Esso è stato utilizzato per dimostrare come Protelis possa essere uno strumento che permette di controllare anche dispositivi reali come uno sciame di droni.
+      Il codice della demo è pubblico su GitHub\footnote{\url{https://github.com/Protelis/Protelis-Demo-Visualized}}.
+  \end{description}
+
+  In ciascuno di questi esempi risulta evidente che la configurazione di un progetto per Protelis, anche estremamente minimale, coinvolge strumenti esterni la cui complessità può non essere banale.
+  Sarebbe interessante avere a disposizione un ambiente di sviluppo che non richieda configurazione e permetta di provare prototipi di codice durante l'apprendimento del linguaggio.
+
+  \subsection{Ambienti di sviluppo online}\label{subsec:online-ide}
+
+  Con il progredire delle capacità delle applicazioni JavaScript per browser e della popolarità del linguaggio stesso, sono nate numerose implementazioni di IDE (\emph{Integrated Development Environment}) in grado di eseguire all'interno di una pagina web, comunicando al più con un \emph{language server} remoto.
+  Inizialmente appannaggio di ambienti per l'esecuzione di codice JavaScript (in quanto si avvalevano del motore integrato nel browser), recentemente molti linguaggi offrono un ambiente, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
+
+  Alcuni ambienti di questo tipo, addirittura, sono in grado di offrire un'esperienza utente tanto immediata e completa da venire preferiti a installazioni desktop tradizionali.
+  È questo il caso, ad esempio, di Overleaf.
+
+  Overleaf\footnote{\url{https://www.overleaf.com}} è un editor per \LaTeX{} completamente online che permette all'utente di scrivere documenti tramite browser;
+  il sorgente del markup viene compilato in modo trasparente all'utente, il quale deve preoccuparsi unicamente del contenuto che sta scrivendo.
+  Questo risparmia agli utenti inesperti la fase di installazione e configurazione di una distribuzione \LaTeX{} e la scelta di un editor tra i tanti disponibili.
+
+  Potrebbe essere interessante offrire all'utente novizio di Protelis un'esperienza simile:
+  la rete di dispositivi (reale o simulata) viene configurata nel server, insieme all'interprete per il linguaggio.
+  L'utente avrebbe dunque a disposizione, tramite il proprio browser, solo un semplice editor per scrivere il codice e metterlo in esecuzione.
+
+  \section{Prospettive e approccio al problema}\label{sec:prospective}
+
+  Terminata la disamina dello stato dell'arte, è possibile delineare un approccio concreto al problema.
+  L'intenzione è quella di realizzare un sistema software distribuito che offra all'utente la possibilità di utilizzare un linguaggio di programmazione aggregata nel modo più trasparente possibile.
+  In particolare, tramite un'interfaccia Single-Page accessibile tramite browser, l'utente dovrebbe poter accedere alle API di un server che nascondono completamente tutta la complessità di configurazione di una rete (reale o simulata) e di un progetto Java/Scala.
+
+  Il linguaggio di riferimento per il prototipo dovrebbe essere Protelis, ma il sistema dovrebbe, potenzialmente, essere estendibile a ScaFi e ad altri linguaggi futuri simili.
