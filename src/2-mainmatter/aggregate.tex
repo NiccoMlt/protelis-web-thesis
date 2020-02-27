@@ -1,5 +1,11 @@
 \chapter{Programmazione aggregata}\label{ch:aggregate}
 
+\unsure[inline]{
+  Alcuni concetti di programmazione aggregata, come le dicevo per mail, mi hanno richiesto un po' di tempo per saperli spiegare.
+
+  Spero di non aver capito male delle cose o essere stato impreciso.
+}
+
 La crescita esponenziale di dispositivi informatici di varia natura inseriti in contesti quotidiani ha avuto un impatto globale notevole.
 Questo insieme di entità connesse (\Cref{fig:iot}) ha dato luogo a ciò che viene definito \emph{Internet of Things} (\emph{IoT}).
 
@@ -18,7 +24,7 @@ Questo insieme di entità connesse (\Cref{fig:iot}) ha dato luogo a ciò che vie
 
 L'approccio tradizionale per la realizzazione di sistemi in questo contesto è sempre stato con paradigma ``\emph{single device view point}'',
 in cui l'unità fondamentale è il singolo dispositivo connesso con il mondo fisico e con gli altri device, il cui insieme dei comportamenti individuali determinava il funzionamento del sistema.
-Tale approccio si è ben presto rivelato inadeguato, in quanto un elevato numero di dispositivi (possibilmente eterogenei) pone diversi problemi legati all'organizzazione della rete
+Tale approccio si è rivelato inadeguato, in quanto un elevato numero di dispositivi (possibilmente eterogenei) pone diversi problemi legati all'organizzazione della rete
 e la sua gestione che non dovrebbero essere gestiti in questo livello di astrazione.
 
 L'\emph{aggregate programming}, o \emph{programmazione aggregata}, costituisce un'alternativa all'approccio ``classico''
@@ -26,7 +32,8 @@ volta a semplificare la progettazione, creazione e manutenzione di sistemi distr
 La programmazione aggregata, infatti, ragiona su più larga scala, cercando di spostare l'attenzione sul \emph{collettivo di dispositivi} che collaborano;
 i dettagli relativi al singolo device devono essere ignorabili, per quanto possibile~\cite{7274429}.
 
-L'idea alla base è dunque di definire una modalità di deduzione del comportamento locale al singolo dispositivo a partire dal comportamento globale, di più alto livello, effettuando un \emph{mapping da globale a locale}.
+L'idea alla base è dunque di definire una modalità di deduzione del comportamento locale al singolo dispositivo a partire dal comportamento globale, di più alto livello,
+effettuando un \emph{mapping da globale a locale}.
 I due punti di vista necessari per poter raggiungere un tale livello di astrazione sono due~\cite{aggregatescala-pmldc2016}:
 
 \begin{itemize}
@@ -35,10 +42,11 @@ I due punti di vista necessari per poter raggiungere un tale livello di astrazio
         Questa può essere considerata la vista tradizionale.
     \item
         il secondo, detto globale o \emph{aggregate view}, si riferisce invece alla computazione svolta dal sistema aggregato come singola unità.
-        Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare al \emph{cosa} effettivamente si desidera che faccia.
+        Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare
+        al \emph{cosa} effettivamente si desidera che faccia.
 \end{itemize}
 
-In generale, le strategie principali per adottare un livello di astrazione così elevato sono state formalizzate~\cite{7274429} nelle seguenti possibilità:
+In generale, le strategie principali per adottare un livello di astrazione così elevato sono state formalizzate nelle seguenti possibilità~\cite{7274429}:
 
 % TODO: rielabora traduzione
 \begin{itemize}
@@ -46,7 +54,7 @@ In generale, le strategie principali per adottare un livello di astrazione così
   \item comporre comporre costruzioni geometriche e topologiche (ad esempio, \emph{Origami Shape Language}~\cite{nagpal2001programmable});
   \item dividere la computazione in modo automatico per le esecuzioni sullo stile di modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492};
   \item sintetizzare i dati provenienti da regioni spazio-temporali e inviarli come stream ad altre regioni (ad esempio, \emph{TinyDB}~\cite{1017485});
-  \item fornire costrutti generalizzabili per la computazione spazio temporale (ad esempio, \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}).
+  \item fornire costrutti generalizzabili per la computazione spazio-temporale (ad esempio, \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}).
 \end{itemize}
 
 Studiando i suddetti approcci, sono state osservate le seguenti proprietà dei sistemi situati su larga scala:
@@ -71,7 +79,7 @@ In particolare, il paradigma si struttura su più livelli di astrazione, come è
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.65\textwidth]{res/fig/stack-2.eps}%
+  \includegraphics[width=0.6\textwidth]{res/fig/stack-2.eps}%
   \caption[
     Principali livelli dell'\emph{Aggregate Programming}.
   ]{
@@ -97,6 +105,12 @@ verso un oggetto computazionale (un valore) che rappresenta il risultato della c
 I \emph{campi} sono strutture dati distribuite a livello di aggregazione che gradualmente si adattano ai cambiamenti della topologia sottostante e alle interazioni con l'ambiente.
 
 I campi vengono generati e manipolati attraverso cinque costrutti fondamentali~\cite{BV-FOCAS2014,computationalfields-forte2015}:
+
+\unsure[inline]{
+  Qui ho espresso gli operatori con la sintassi (mi pare di capire LISP-like, credo ripresa da Proto) che veniva utilizzata nei primi paper sull'argomento.
+
+  Va bene? Oppure dovrei usare le notazioni che avete usato nei paper più recenti (che invece penso si appoggino alla sintassi Protelis)?
+}
 
 \begin{description}
   % TODO: should I use new notation?
@@ -134,7 +148,12 @@ Tramite questi operatori, inoltre, sono garantite:
   \item \emph{integrazione} con servizi non aggregati.
 \end{inparaitem}
 
-% TODO: aggiungi:  Tali campi possono essere composti per implementare pattern di coordinazione in grado di organizzarsi in modo autonomo.
+\unsure[inline]{
+  Gli elenchi in-line a me piacciono per elenchi di singole parole, al posto di una semplice riga separata da virgole.
+
+  So che da molti sono considerati accettabili solo per i paper con limite di lunghezza per risparmiare spazio in elenchi veri e propri, non per questo uso.
+  Lei che ne pensa?
+}
 
 Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
 gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
@@ -153,6 +172,10 @@ Tale proprietà è garantita per tutti i campi ottenuti tramite composizione fun
 
 Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati in aggiunta al costrutto \texttt{if} del \emph{field calculus} sono tre operatori di coordinazione~\cite{7274429,BV-FOCAS2014}:
 
+\unsure[inline]{Qui mi rendo conto che le traduzioni sono brutte e verbose. Posso metterle in inglese?}
+
+\unsure[inline]{Dovrei espandere la descrizione? Dovrei riportare il costrutto comprensivo di parametri? (con l'italiano non ci sta nella riga)}
+
 \begin{description}
   \item[Diffusione dell'informazione nello spazio] \texttt{G} \\ % Spreading Information Across Space
     % \texttt{G(source, init, metric, accumulate)} \\ % ChkTeX 36
@@ -160,7 +183,7 @@ Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati i
   \item[Raccoglimento di informazione attraverso lo spazio] \texttt{C} \\ % Collecting Information From Across Space
     % \texttt{C(potential, accumulate, local, null)} \\ % ChkTeX 36
     Quest'operatore aggrega le informazioni verso la sorgente attraverso il gradiente di un campo specificato.
-  \item[Riassunto dell'informazione nel tempo] \texttt{T} \\ % Summarising Information Across Time
+  \item[Riassunto dell'informazione nel tempo] \texttt{T} \\ % Summarizing Information Across Time
     % \texttt{T(init, floor, decay)} \\ % ChkTeX 36
     Quest'operatore generalizza un timer il cui rateo di aggiornamento può variare nel tempo.
 \end{description}
@@ -181,20 +204,40 @@ Esse possono essere usate e composte tra loro per scrivere applicazioni distribu
 %   \end{center}
 % \end{wrapfigure}
 
-\begin{wrapfigure}{r}{0pt}
-  \centering
-  % \vspace{-52pt}
-  \includegraphics[width=0.2\textwidth]{res/fig/protelis-logo.png}
-  % \vspace{50pt}
-  \caption{Logo}%
-  \label{fig:protelis}
-\end{wrapfigure}
+% \begin{wrapfigure}{r}{0pt}
+%   \centering
+%   % \vspace{-52pt}
+%   \includegraphics[width=0.2\textwidth]{res/fig/protelis-logo.png}
+%   % \vspace{50pt}
+%   \caption{Logo}%
+%   \label{fig:protelis}
+% \end{wrapfigure}
 
-Field calculus è solamente un impianto teorico;
-vista la necessità di un'architettura portabile in grado di gestire gli aspetti di comunicazione, esecuzione e interfacciamento con hardware e sistema operativo, è stato realizzato Protelis.
+Field calculus è solamente un impianto teorico.
+Vista la necessità di un'architettura portabile in grado di gestire gli aspetti di comunicazione, esecuzione e interfacciamento con hardware e sistema operativo, è stato realizzato Protelis.
 
 \emph{Protelis}~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione aggregato di paradigma funzionale fortemente influenzato da Proto~\cite{Beal2006}.
-Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus.
+Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus in una sintassi più simile ai linguaggi strutturati tradizionali come C o Java.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{res/fig/protelis-abstract-arch.eps}
+  \caption[
+    Architettura di Protelis
+  ]{
+    Architettura di Protelis.
+
+    Figura ripresa da~\cite{ProtelisSAC14}.
+  }%
+  \label{fig:protelis-stack}
+\end{figure}
+
+% \begin{wrapfigure}{l}{0pt}
+%   \centering
+%   \includegraphics[width=0.4\textwidth]{res/fig/protelis-abstract-arch.eps}
+%   \caption{Architettura di Protelis}%
+%   \label{fig:protelis-stack}
+% \end{wrapfigure}
 
 Un nodo Protelis è costituito da un parser che traduce il programma in codice eseguibile, il quale è poi eseguito a intervalli regolari da un interprete, che si fa carico degli aspetti di interazione con il vicinato e con l'ambiente.
 Ogni esecuzione è chiamata \emph{computational round}.
@@ -202,16 +245,51 @@ Ogni esecuzione è chiamata \emph{computational round}.
 Il linguaggio e l'interprete sono basati su Java e possono essere inseriti in contesti virtuali~\cite{ProtelisSAC14} o reali indifferentemente.
 Questo offre, da un lato, la portabilità e il supporto alle differenti piattaforme che la JVM (\emph{Java Virtual Machine}) mette a disposizione, dall'altro l'estendibilità che l'ecosistema di librerie Java può offrire.
 
-Nel mondo scientifico, il linguaggio è già stato utilizzato per la realizzazione di diversi algoritmi aggregati, come ad esempio:
+Nel mondo scientifico, il linguaggio è già stato utilizzato per la realizzazione di diversi algoritmi aggregati.
+Di seguito sono riportati alcuni esempi.
 
-\begin{itemize}
-  \item \emph{renderzvous} durante un evento di massa~\cite{ProtelisSAC14};
-  \item gestione di reti di servizi~\cite{7306601};
-  \item integrazione con servizi di realtà aumentata~\cite{PCRV-SCOPES2015}.
-  % TODO: ne devo aggiungere altri?
-\end{itemize}
+% \begin{itemize}
+%   \item \emph{rendezvous} durante un evento di massa~\cite{ProtelisSAC14};
+%   \item gestione di reti di servizi~\cite{7306601};
+%   \item integrazione con servizi di realtà aumentata~\cite{PCRV-SCOPES2015}.
+% \end{itemize}
 
-% TODO: vedi di fare almeno una pagina
+\begin{description}
+  % \item[Rendezvous durante un evento di massa]\cite{ProtelisSAC14}
+  %   % Un problema tipico degli eventi di massa è la possibilità di due individui di incontrarsi in un determinato punto, in quanto la presenza elevata di dispositivi complica l'accesso a servizi cloud.
+  %   Tramite Protelis, è stato possibile definire un algoritmo che consente a due persone che partecipano ad un evento di massa di incontrarsi in un punto intermedio, evitando le zone ad alta densità.
+
+  % \item[Stima di pericolosità di una zona]\cite{BV-FOCAS2014}
+  %   Basandosi sulla densità dei dispositivi in una zona, è stato possibile stimarne la pericolosità e definire modalità di dispersione efficaci.
+
+  % \item[Algoritmi legati all'affollamento]
+  %   Un problema tipico degli eventi di massa è la possibilità di due individui di incontrarsi in un determinato punto.
+  %   Tramite Protelis, è stato possibile definire un algoritmo di \emph{rendezvous}~\cite{ProtelisSAC14} in grado di evitare le zone ad alta densità.
+
+  %   In un altro progetto, basandosi sulla densità dei dispositivi in una zona, è stato possibile stimarne la pericolosità e definire modalità di dispersione efficaci.
+
+  \item[Algoritmi legati all'affollamento]
+    Tramite Protelis, è stato possibile~\cite{BV-FOCAS2014} stimarne la pericolosità di una data zona nell'ambiente basandosi sulla densità dei dispositivi presenti e definire modalità di dispersione efficaci.
+
+    In un altro progetto~\cite{ProtelisSAC14}, è stata definito un algoritmo di \emph{rendezvous} in grado di evitare le zone ad alta densità nel contesto di un evento di massa, permettendo l'incontro di due individui in un punto intermedio.
+
+  \item[Gestione di reti di servizi]\cite{7306601}
+    Un altro utilizzo significativo è stato per la realizzazione di un sistema di gestione tra servizi in rete.
+    Tali servizi, talvolta datati, possono avere molte dipendenze tra loro e scarse capacità di coordinazione.
+    Per evitare stati di inconsistenza, spesso l'ordine di arresto dei server è strettamente legato alle dipendenze e rende difficile l'automazione.
+
+    Utilizzando Protelis è stato possibile realizzare un sistema in grado di organizzarsi per riavviare lo stack.
+    In particolare, sono state definite entità chiamate \emph{daemon} che monitorano ciascuna uno specifico servizio e comunicano con le altre al fine di garantire l'ordine necessario.
+
+  \item[Integrazione con servizi di realtà aumentata]\cite{PCRV-SCOPES2015}
+    La programmazione aggregata è stata testata anche nell'ambito dell'AR (\emph{Augmented Reality}).
+
+    % In particolare, è stato introdotto il concetto di \emph{campo aumentato} che combina i campi computazionali con le capacità dell'AR\@.
+    Ad esempio, è possibile utilizzare visori di realtà aumentata per visualizzare nell'ambiente i campi computazionali
+    o, viceversa, modellare i dati raccolti da sensori AR come campi (detti \emph{augmented fields}).
+\end{description}
+
+\unsure[inline]{Dovrei aggiungere altri dettagli su Protelis?}
 
 % \section[ScaFi]{ScaFi, Aggregate Programming Toolkit}\label{sec:scafi}
 \section{ScaFi}\label{sec:scafi}
@@ -222,12 +300,47 @@ si tratta di un framework in Scala per la realizzazione di programmi aggregati a
 
 Il framework è composto principalmente da due parti:
 
-\begin{itemize}
-  \item una piattaforma distribuita che permette la configurazione e l'esecuzione di sistemi aggregati.
-  \item un \emph{internal DSL} (\emph{Domain Specific Language}) di Scala che fornisce la sintassi e la semantica per i costrutti base del field calculus.
-\end{itemize}
+% \begin{itemize}
+%   \item una piattaforma distribuita che permette la configurazione e l'esecuzione di sistemi aggregati.
+%   \item un \emph{internal DSL} (\emph{Domain Specific Language}) di Scala che fornisce la sintassi e la semantica per i costrutti base del field calculus.
+% \end{itemize}
+
+\begin{description}
+  \item[Aggregate programming support]
+    La seconda parte è un \emph{internal DSL} (\emph{Domain Specific Language}) di Scala che fornisce la sintassi e la semantica per i costrutti base del field calculus.
+
+  \item[Aggregate platform support]
+    La prima parte è una piattaforma distribuita basata sul modello ad attori di Akka che permette la configurazione e l'esecuzione di sistemi aggregati.
+    Essa può essere utilizzata in modalità decentralizzata (\emph{peer-to-peer} %, \Cref{fig:scafi:p2p}
+    ) o in modalità centralizzata (\emph{server-based}%, \Cref{fig:scafi:server-based}
+    ).
+
+    % \begin{figure}[htbp]
+    %   \centering
+    %   \begin{subfigure}{0.35\textwidth}
+    %     \includegraphics[width=\textwidth]{res/fig/scafi-p2p.png}
+    %     \caption{Architettura \emph{peer-to-peer}}%
+    %     \label{fig:scafi:p2p}
+    %   \end{subfigure}
+    %   \hspace{0.15\textwidth} % a differenza di \hfill il commento serve per non aggiungere spazi
+    %   \begin{subfigure}{0.35\textwidth}
+    %     \includegraphics[width=\textwidth]{res/fig/scafi-server-based.png}
+    %     \caption{Architettura \emph{server-based}}%
+    %     \label{fig:scafi:server-based}
+    %   \end{subfigure}
+    %   \caption[
+    %     Architetture della piattaforma distribuita di ScaFi
+    %   ]{
+    %     Architetture della piattaforma distribuita di ScaFi.
+
+    %     Figura ripresa da~\cite{AggregatecomputingVlsubicomp16}.
+    %   }%
+    %   \label{fig:scafi}
+    % \end{figure}
+
+    Nel caso centralizzato, la piattaforma mantiene le posizione spaziali dei dispositivi e gestisce il vicinato, secondo il modello tradizionale client-server.
+\end{description}
 
 Basandosi su Scala come linguaggio ospite, è in grado di interoperare con Java e gli altri linguaggi in grado si eseguire in ambiente JVM, mantenendo il solido \emph{type-system} messo a disposizione da Scala e i suoi costrutti funzionali.
 
-% Il framework si struttura su diversi package:
-%  TODO: serve scendere nel dettaglio?
+\unsure[inline]{Dovrei aggiungere altri dettagli su Scafi?}

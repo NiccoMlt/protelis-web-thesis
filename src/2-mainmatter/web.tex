@@ -6,37 +6,58 @@
   Anche i pattern di progettazione e le tecnologie implementative sono cresciute altrettanto velocemente negli ultimi anni, cambiando anche radicalmente gli approcci di interazione possibili.
   Risulta dunque importante prestare attenzione allo stato dell'arte in tal senso, chiarendo quali siano i pattern più adatti e moderni per il contesto d'uso di questa tesi.
 
-  \section{Evoluzione delle architetture}\label{sec:web-architecture}
+  \section{Architetture \& paradigmi}\label{sec:web-architecture}
 
   Con \emph{sistema web} si intende genericamente un sistema software distribuito che coinvolge una o più entità server che espongono in rete API di varia natura, con le quali entità client possono comunicare per usufruire dei servizi.
   Generalmente, in contesto web i client sono costituiti da pagine web aperte nei browser degli utenti.
 
-  Le possibilità di progettazione di un'applicazione web possono essere molto differenti e nel tempo si è vista una vera e propria evoluzione in tal senso:
+  Le possibilità di progettazione di un'applicazione web possono essere molto differenti e nel tempo si è vista una vera e propria evoluzione in tal senso.
 
-  \begin{enumerate}
-    \item
-      nel periodo iniziale del web, ciascuna pagina web era inviata al client come un documento statico;
-      l'interazione dell'utente con il sistema avveniva attraverso la navigazione, che comportava l'apertura di una sequenza di pagine a seconda delle esigenze.
-      Questo tipo di interazione era però lenta, in quanto coinvolgeva sempre la ricezione di una nuova pagina dal server.
-    \item
-      successivamente, nel 1995, con l'introduzione da parte di NetScape di JavaScript (di cui tratteremo meglio nella~\Cref{subsec:js}) come linguaggio di scripting client-side, i programmatori hanno avuto la possibilità di inserire elementi dinamici nelle pagine web.
-      In questo modo, era possibile effettuare alcune operazioni anche localmente, riducendo di fatto il numero di pagine intere scambiate con il server.
-    \item
-      un'ulteriore innovazione apparve l'anno seguente, quando Macromedia introdusse \emph{Flash}:
-      esso era un plugin per i browser che permetteva di riprodurre animazioni vettoriali e gestire le interazioni con l'utente, in modo simile a quanto fatto da JavaScript.
-    \item
-      il termine ``\emph{web application}'' nasce però con l'introduzione della versione 2.2 della Java Servlet Specification~\cite{java1999specification} nel 1999.
-      anche in questo caso, però, il server ha un ruolo centrale e ancora il concetto di \emph{ajax} (\emph{Asynchronous JavaScript + XML}) non è stato introdotto.
-    \item
-      successivamente vi sono stati diversi miglioramenti incrementali, fino ad arrivare allo standard HTML5~\cite{Smith2008}:
-      con quest'ultimo, infatti, introduce il supporto nativo ai contenuti multimediali ed arricchisce la semantica del documento, oltre a migliorare l'integrazione con JS\@.
-      Con questo standard, diventa sempre più comune il concetto di \emph{Single-page application} (SPA), secondo il quale la pagina viene caricata una sola volta, e poi modificata dinamicamente tramite chiamate specifiche al server.
-      Nascono numerosi framework client-side (come Angular, Ember o React) e l'impiego del server viene sempre più circoscritto al fornire API per accesso controllato ai dati (ad esempio, un database) o per computazioni complesse.
-  \end{enumerate}
+  % \begin{enumerate}
+  %   \item
+  %     Nel periodo iniziale del web, ciascuna pagina web era inviata al client come un documento statico;
+  %     l'interazione dell'utente con il sistema avveniva attraverso la navigazione, che comportava l'apertura di una sequenza di pagine a seconda delle esigenze.
+  %     Questo tipo di interazione era però lenta, in quanto coinvolgeva sempre la ricezione di una nuova pagina dal server.
+  %   \item
+  %     Successivamente, nel 1995, con l'introduzione da parte di NetScape di JavaScript (di cui tratteremo meglio nella~\Cref{subsec:js}) come linguaggio di scripting client-side, i programmatori hanno avuto la possibilità di inserire elementi dinamici nelle pagine web.
+  %     In questo modo, era possibile effettuare alcune operazioni anche localmente, riducendo di fatto il numero di pagine intere scambiate con il server.
+  %   \item
+  %     Un'ulteriore innovazione apparve l'anno seguente, quando Macromedia introdusse \emph{Flash}:
+  %     esso era un plugin per i browser che permetteva di riprodurre animazioni vettoriali e gestire le interazioni con l'utente, in modo simile a quanto fatto da JavaScript.
+  %   \item
+  %     Il termine ``\emph{web application}'' nasce però con l'introduzione della versione 2.2 della Java Servlet Specification~\cite{java1999specification} nel 1999.
+  %     anche in questo caso, però, il server ha un ruolo centrale e ancora il concetto di \emph{ajax} (\emph{Asynchronous JavaScript + XML}) non è stato introdotto.
+  %   \item
+  %     Successivamente vi sono stati diversi miglioramenti incrementali, fino ad arrivare allo standard HTML5~\cite{Smith2008}:
+  %     quest'ultimo, infatti, introduce il supporto nativo ai contenuti multimediali ed arricchisce la semantica del documento, oltre a migliorare l'integrazione con JS\@.
+  %     Con questo standard, diventa sempre più comune il concetto di \emph{Single-page application} (SPA), secondo il quale la pagina viene caricata una sola volta, e poi modificata dinamicamente tramite chiamate specifiche al server.
+  %     Nascono numerosi framework client-side (come Angular, Ember o React) e l'impiego del server viene sempre più circoscritto al fornire API per accesso controllato ai dati (ad esempio, un database) o per computazioni complesse.
+  % \end{enumerate}
 
-  % TODO: Service-Oriented Architecture e Resource-Oriented architecture
+  Mentre nel periodo iniziale del web ciascuna pagina era inviata al client come documento statico, nel corso degli anni sono stati sviluppati linguaggi di scripting (come JavaScript e Macromedia Flash) in grado di offrire possibilità di interazione lato client.
+  Questo ha permesso di ridurre la quantità di dati trasferiti tra il server web e il browser:
+  non viene infatti più scaricata una nuova pagina ad ogni azione dell'utente, bensì solo i dati richiesti tramite chiamate \emph{ajax} (\emph{Asynchronous JavaScript And XML});
+  il documento viene poi manipolato inserendo i dati ricevuti.
 
-  % In un sistema moderno,
+  Con l'avvento di HTML5~\cite{Smith2008}, viene introdotto il supporto nativo ai contenuti multimediali ed arricchita la semantica del documento;
+  inoltre JavaScript riceve un supporto di prima classe e la necessità di plugin esterni come Flash diminuisce.
+
+  Vengono sviluppati numerosi framework per la realizzazione di applicazioni costituite da una singola pagina (\emph{SPA}, \emph{Single-Page Application}), in grado di offrire l'esperienza d'uso di un applicativo desktop.
+  Un applicazione web moderna normalmente è di questo tipo.
+
+  \improvement[inline]{Dovrei aggiungere qualche immagine per ridurre l'effetto wall-of-text?}
+
+  Anche per quanto riguarda la componente lato server vi è stata un'evoluzione.
+  Se inizialmente il server web si occupava dell'intero processo di costruzione della pagina, un po' alla volta le operazioni da effettuare per l'invio si sono sempre più ridotte.
+
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=.8\textwidth]{res/fig/server-evolution.eps}
+    \caption{Il controllo sulla costruzione della pagina è cambiato nel tempo}%
+    \label{fig:server-evolution}
+  \end{figure}
+
+  % TODO: descrivi le architetture dei server
 
   \section{Linguaggi ad uso web}\label{sec:lang}
     In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.

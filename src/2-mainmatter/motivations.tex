@@ -1,4 +1,11 @@
 \chapter{Motivazioni}\label{ch:motivations}
+
+  \unsure[inline]{
+    Secondo me, questo capitolo dovrebbe essere inserito DOPO aver illustrato la programmazione aggregata e le tecnologie web.
+
+    In questo modo, si avrebbe anche meno la sensazione di ``ripetuto'' avuta da abstract -> introduzione -> motivazioni tutte in fila.
+  }
+
   Come detto nell'\nameref{ch:intro}, il rapido aumento di dispositivi capaci di computare e distribuiti nell'ambiente ha reso necessario ideare nuovi paradigmi di programmazione.
   Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si tratterà più nel dettaglio nel~\Cref{ch:aggregate}.
   In questo \nameCref{ch:motivations}, invece, verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
@@ -7,17 +14,20 @@
   \section{Stato dell'arte}\label{sec:state-of-art}
 
   Prima di partire con la progettazione del sistema, è stato necessario valutare lo stato dell'arte nel quale il software va ad inserirsi.
-  Si è dunque deciso di analizzare nel dettaglio quali sono i punti critici dello stato dell'arte;
-  in particolare, si è preso in considerazione la procedura di configurazione di un progetto realizzato in un linguaggio aggregato,
+  % Si è dunque deciso di analizzare nel dettaglio quali sono i punti critici dello stato dell'arte;
+  % i
+  In particolare, si è preso in considerazione la procedura di configurazione di un progetto realizzato in un linguaggio aggregato,
   confrontandolo con l'esperienza di sviluppo ottenuta con altri linguaggi in altri contesti.
 
   \subsection{Iniziare un progetto Protelis}\label{subsec:setup}
 
   I due principali linguaggi di programmazione aggregata che implementano il modello teorico del field calculus sono Protelis e ScaFi.
   ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di questo linguaggio;
-  poiché sono già state realizzate tesi~\cite{amslaurea12188,amslaurea16824} incentrate sull'esecuzione di ScaFi, è stato richiesto di concentrarsi, in questa tesi, su Protelis.
+  poiché sono già state realizzate tesi~\cite{amslaurea12188,amslaurea16824} incentrate sull'esecuzione di ScaFi,
+  è stato richiesto di concentrarsi, in questa tesi, solamente su Protelis.
 
   Protelis è un linguaggio \emph{Java-hosted} e, come tale, deve essere caricato in un progetto JVM che esegue un'istanza del suo interprete.
+  Di seguito sono riportate le possibili modalità di esecuzione documentate nello stato dell'arte.
 
   \begin{description}
     \item[Alchemist]\cite{ProtelisSAC14}
@@ -45,7 +55,7 @@
 
     \item[ProtelisVM]\cite{amslaurea19778}
       Un'altra possibilità, più moderna, è tramite l'importazione del framework di Protelis nel \emph{classpath} di un progetto Java, ad esempio prelevandolo come dipendenza Maven.
-      Il framework mette a disposizione un oggetto denominato \texttt{ProtelisVM} (\Cref{fig:protelisvm}), che si occupa di eseguire un programma Protelis in un \texttt{ExecutionContext},
+      Il framework mette a disposizione una classe denominata \texttt{ProtelisVM} (\Cref{fig:protelisvm}), che si occupa di eseguire un programma Protelis in un \texttt{ExecutionContext},
       ossia un'astrazione del dispositivo esecutore che si frappone tra la macchina virtuale e l'ambiente fisico.
 
       \begin{figure}[htbp]
@@ -56,7 +66,7 @@
       \end{figure}
 
       Attraverso la libreria è possibile definire dispositivi virtuali o, potenzialmente, collegare implementazioni fisiche.
-      Su GitHub\footnote{\url{https://github.com/Protelis/Protelis-Demo}} sono riportati alcuni esempi.
+      Su GitHub\footnote{\url{https://github.com/Protelis/Protelis-Demo}} sono riportati alcuni esempi con diverse opzioni di integrazione.
 
     \item[NASA WorldWind]\cite{4161692}
       Un'ultima possibilità vede invece l'utilizzo del framework di visualizzazione open-source WorldWind, sviluppato dalla NASA\@.
@@ -70,10 +80,10 @@
   \subsection{Ambienti di sviluppo online}\label{subsec:online-ide}
 
   Con il progredire delle capacità delle applicazioni JavaScript per browser e della popolarità del linguaggio stesso, sono nate numerose implementazioni di IDE (\emph{Integrated Development Environment}) in grado di eseguire all'interno di una pagina web, comunicando al più con un \emph{language server} remoto.
-  Inizialmente appannaggio di ambienti per l'esecuzione di codice JavaScript (in quanto si avvalevano del motore integrato nel browser), recentemente molti linguaggi offrono un ambiente, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
+  Inizialmente appannaggio di ambienti per la prototipazione di codice JavaScript (in quanto si avvalevano del motore nativamente integrato nel browser per l'esecuzione), recentemente molti linguaggi offrono un ambiente, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
 
   Alcuni ambienti di questo tipo, addirittura, sono in grado di offrire un'esperienza utente tanto immediata e completa da venire preferiti a installazioni desktop tradizionali.
-  È questo il caso, ad esempio, di Overleaf.
+  È questo il caso, ad esempio, di Overleaf. \unsure{Dovrei inserire delle immagini descrittive (come uno screenshot)? Secondo me sono più corrette nella sezione di design, ma potrebbero starci anche qua}
 
   Overleaf\footnote{\url{https://www.overleaf.com}} è un editor per \LaTeX{} completamente online che permette all'utente di scrivere documenti tramite browser;
   il sorgente del markup viene compilato in modo trasparente all'utente, il quale deve preoccuparsi unicamente del contenuto che sta scrivendo.
@@ -84,6 +94,12 @@
   L'utente avrebbe dunque a disposizione, tramite il proprio browser, solo un semplice editor per scrivere il codice e metterlo in esecuzione.
 
   \section{Prospettive e approccio al problema}\label{sec:prospective}
+
+  \unsure[inline]{
+    Dovrei dire altro nella descrizione dell'approccio al problema?
+
+    Temo di ripetermi con quello che dirò più avanti nei requisiti (e un po' nella loro analisi e nella progettazione).
+  }
 
   Terminata la disamina dello stato dell'arte, è possibile delineare un approccio concreto al problema.
   L'intenzione è quella di realizzare un sistema software distribuito che offra all'utente la possibilità di utilizzare un linguaggio di programmazione aggregata nel modo più trasparente possibile.
