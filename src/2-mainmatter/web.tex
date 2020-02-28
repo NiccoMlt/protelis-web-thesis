@@ -34,8 +34,10 @@
   %     Nascono numerosi framework client-side (come Angular, Ember o React) e l'impiego del server viene sempre più circoscritto al fornire API per accesso controllato ai dati (ad esempio, un database) o per computazioni complesse.
   % \end{enumerate}
 
-  Mentre nel periodo iniziale del web ciascuna pagina era inviata al client come documento statico, nel corso degli anni sono stati sviluppati linguaggi di scripting (come JavaScript e Macromedia Flash) in grado di offrire possibilità di interazione lato client.
-  Questo ha permesso di ridurre la quantità di dati trasferiti tra il server web e il browser:
+  Nel periodo iniziale del web ciascuna pagina era inviata al client come documento statico;
+  in questo caso, i server si occupavano della computazione di quanto richiesto dall'utente (anche appoggiandosi a servizi esterni tramite \emph{Common Gateway Interface}~\cite{Coar2004}) e della composizione del documento.
+
+  Nel corso degli anni, sono stati sviluppati linguaggi di scripting (come JavaScript e Macromedia Flash) in grado di aumentare le possibilità di interazione lato client, riducendo la quantità di dati trasferiti tra il server web e il browser:
   non viene infatti più scaricata una nuova pagina ad ogni azione dell'utente, bensì solo i dati richiesti tramite chiamate \emph{ajax} (\emph{Asynchronous JavaScript And XML});
   il documento viene poi manipolato inserendo i dati ricevuti.
 
@@ -47,17 +49,25 @@
 
   \improvement[inline]{Dovrei aggiungere qualche immagine per ridurre l'effetto wall-of-text?}
 
-  Anche per quanto riguarda la componente lato server vi è stata un'evoluzione.
-  Se inizialmente il server web si occupava dell'intero processo di costruzione della pagina, un po' alla volta le operazioni da effettuare per l'invio si sono sempre più ridotte.
+  \improvement[inline]{
+    Inizialmente avevo inserito una storia dell'evoluzione delle architetture client-side e server-side, ma poi mi sono reso conto che risultava un po' fuori contesto e l'ho tolta.
 
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=.8\textwidth]{res/fig/server-evolution.eps}
-    \caption{Il controllo sulla costruzione della pagina è cambiato nel tempo}%
-    \label{fig:server-evolution}
-  \end{figure}
+    Ritenete invece che potesse avere il suo senso come background? Nel caso posso reintegrarla velocemente.
+  }
 
-  % TODO: descrivi le architetture dei server
+  % % Se inizialmente il server web si occupava dell'intero processo di costruzione della pagina, un po' alla volta le operazioni da effettuare per l'invio si sono sempre più ridotte.
+
+  % % \begin{figure}[htbp]
+  % %   \centering
+  % %   \includegraphics[width=.8\textwidth]{res/fig/server-evolution.eps}
+  % %   \caption{Il controllo sulla costruzione della pagina si è spostato sempre più verso il client}%
+  % %   \label{fig:server-evolution}
+  % % \end{figure}
+
+  % % In applicazioni l server diventa sempre più dedicato al memorizzare i dati (tramite database, ad esempio) e il codice client, mentre il browser si occupa di buona parte della logica applicativa.
+  % Il primo approccio alla gestione della logica applicativa via rete fu quello di demandare la generazione dei contenuti a processi esterni tramite l'interfaccia standard CGI (\emph{Common Gateway Interface}~\cite{Coar2004}).
+  % Essa permetteva al web server di lanciare un processo per ogni richiesta, passando i parametri necessari per l'elaborazione e di ricevere il risultato.
+  % L'approccio era però poco scalabile e molto pesante per le risorse.
 
   \section{Linguaggi ad uso web}\label{sec:lang}
     In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.
