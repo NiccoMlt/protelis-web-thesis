@@ -58,7 +58,8 @@
     "interoperare",
     "l'estendibilità",
     "modularizzazione",
-    "prototipazione"
+    "prototipazione",
+    "riduttivamente"
   ],
   "editor.fontLigatures": false,
   "plantuml.exportOutDir": ".",
