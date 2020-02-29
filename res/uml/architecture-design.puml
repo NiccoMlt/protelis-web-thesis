@@ -1,0 +1,33 @@
+@startuml "architecture-design"
+
+  skinparam {
+    linetype ortho
+    monochrome true
+    ArrowColor black
+    backgroundColor transparent
+    classBackgroundColor transparent
+    ' style strictuml
+    actorBackgroundColor transparent
+    componentBackgroundColor transparent
+  }
+
+  left to right direction
+
+  actor :user: as user
+
+  component [client] as react
+
+  user --> react
+
+  component [backend] {
+    component [server] as vertx
+
+    react --> vertx
+    react <-- vertx
+
+    component [executor] as alchemist
+
+    vertx -0)- alchemist
+  }
+
+@enduml

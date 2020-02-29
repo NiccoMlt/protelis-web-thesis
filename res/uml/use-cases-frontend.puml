@@ -1,6 +1,7 @@
 @startuml use-cases-frontend
 
 skinparam monochrome true
+left to right direction
 
 :User: as user
 
@@ -8,15 +9,11 @@ rectangle {
   (Learn from example) as learn
   (Run example) as run
   (Write their own source code) as write
-  ' (Create multiple files) as create
-  learn -[hidden]up-> run
-  run -[hidden]up-> write
-  ' write -[hidden]up-> create
 }
 
-user --right-> learn
-user --right-> run
-user --right-> write
-' user --right-> create
+user --> learn
+user --> run
+user --> write
+' user -right-> create
 
 @enduml

@@ -31,7 +31,7 @@
 \begin{VerbatimOut}{\jobname.xmpdata}
 \Title{Progettazione di una piattaforma web per la simulazione di programmi aggregati}
 \Author{Niccolò Maltoni}
-\Keywords{Aggregate programming\sep{}Protelis\sep{}Applicazione web}
+\Keywords{Aggregate programming\sep{}Protelis\sep{}Applicazione web\sep{}Simulazione}
 \Copyright{Questo documento è fornito sotto licenza Creative Commons Attribution-ShareAlike 4.0 International}
 \CopyrightURL{http://creativecommons.org/licenses/by-sa/4.0}
 \end{VerbatimOut}
@@ -70,14 +70,18 @@
 
   \part{Contributo: Protelis on Web}\label{part:contribution}
     \input{src/2-mainmatter/requirements.tex}
-    \chapter{Progettazione}
-      \section{Design dell'architettura}
-      \section{Mockup dell'interfaccia}
+    \input{src/2-mainmatter/project.tex}
     \chapter{Implementazione}
-    % \chapter{Testing}
+      \section{Tecnologie utilizzate}
+        \subsection{Librerie esterne}
+        \subsection{Strumenti di sviluppo}
+      \section{Dettagli implementativi: Frontend}
+      \section{Dettagli implementativi: Backend}
 
   \part{Conclusioni}\label{part:conclusion}
     \chapter{Valutazione dei risultati}\label{ch:evaluation}
+      \section{Testing}
+      \section{Performance}
     \chapter{Lavori futuri}\label{ch:future}
     \chapter{Considerazioni finali}\label{ch:considerations}
 
