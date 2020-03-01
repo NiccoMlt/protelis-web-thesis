@@ -199,7 +199,7 @@
     In questo caso, dunque, è stato ritenuto più adeguato scegliere un'architettura monolitica, favorendo la semplicità di progettazione
     e delegando la gestione dello scaling al livello di piattaforma di deploy.
 
-    \subsection{Pattern reactor}
+    \subsection{Pattern reactor}\label{subsec:reactor}
 
       Il giusto livello di reattività ed efficienza è stato trovato nell'approccio \emph{event-driven} con \emph{event-loop}.
       Tramite questo modello di concorrenza, denominato \emph{pattern Reactor}~\cite{Schmidt1995ReactorAO}, il server gestisce le richieste dei client attraverso una coda:
@@ -214,7 +214,37 @@
 
       Per questo progetto, il modello è stato considerato adatto, in quanto in grado di garantire il giusto livello di astrazione e i criteri di reattività richiesti.
 
-      % TODO: continua descrivendo i vari verticle
+    \subsection{Verticle individuati}
+      Il sistema progettato è composto da due componenti principali.
+
+      \begin{itemize}
+        \item
+          Il primo, chiamato \texttt{BridgeVerticle}, è dedicato alla gestione delle API per la comunicazione da e verso l'esterno.
+          % Esso si avvale dell'EventBus di Vert.x per comunicare con l'esterno
+          In particolare, esso implementa il pattern Bridge relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
+          % In questo modo, all'interno dell'applicazione, tutte le istanze dei verticle interessati possono essere
+          Gestendo le comunicazioni con l'esterno, esso astrae l'intero processo di gestione del protocollo di comunicazione dalle altre componenti dell'applicazione.
+        \item
+          Il secondo è invece chiamato \texttt{AlchemistVerticle} e costituisce l'entità che si interfaccia con un motore di esecuzione esterno,
+          come detto nell'architettura generale delineata all'inizio di questa fase di progettazione (\Cref{fig:architecture-design}).
+          In particolare, per eseguire il codice si è scelto di utilizzare il simulatore Alchemist, che verrà analizzato più nel dettaglio nella~\Cref{subsec:alchemist}.
+      \end{itemize}
+
+      Oltre a questi, è stato anche progettato l'uso di un verticle principale \texttt{MainVerticle}, che viene lanciato dall'avviatore di Vert.x e che coordina l'avvio dei due verticle descritti sopra.
+
+    \input{src/2-mainmatter/alchemist.tex}
 
   \section{Interazioni}\label{sec:arch:interaction}
-    % TODO: metti i due UML lato client e lato server
+
+    Una volta analizzato il comportamento delle due entità in gioco, è necessario delineare anche la loro interazione remota.
+
+    \subsection{Scelta del modello di comunicazione e del protocollo}
+
+      % Innanzitutto, è stato necessario chiarire quale tipo di comunicazione è necessario instaurare.
+      Come detto nella \Cref{subsec:reactor}, per la progettazione del server di backend si è scelto di utilizzare un modello a event-loop multipli comunicanti tramite EventBus;
+      inoltre, anche il pattern di gestione dello stato scelto per il funzionamento del client (\Cref{subsec:state-manage}) è event-driven.
+      È risultato dunque naturale strutturare anche la comunicazione tra client e server utilizzando un modello a eventi.
+
+      % TODO: continua descrizione
+
+      % TODO: inserisci UML
