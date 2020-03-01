@@ -57,9 +57,11 @@
     "etereogeneità",
     "interoperare",
     "l'estendibilità",
+    "microservizi",
     "modularizzazione",
     "prototipazione",
-    "riduttivamente"
+    "riduttivamente",
+    "verticle"
   ],
   "editor.fontLigatures": false,
   "plantuml.exportOutDir": ".",
