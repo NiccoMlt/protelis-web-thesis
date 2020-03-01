@@ -236,6 +236,12 @@
 
   \section{Interazioni}\label{sec:arch:interaction}
 
+    \unsure[inline]{
+      Ho deciso di descrivere le interazioni in una sezione dedicata, anziché separarle nelle sezioni del client e del server.
+
+      È accettabile? O sarebbe meglio spezzare?
+    }
+
     Una volta analizzato il comportamento delle due entità in gioco, è necessario delineare anche la loro interazione remota.
 
     \subsection{Scelta del modello di comunicazione e del protocollo}
@@ -245,6 +251,58 @@
       inoltre, anche il pattern di gestione dello stato scelto per il funzionamento del client (\Cref{subsec:state-manage}) è event-driven.
       È risultato dunque naturale strutturare anche la comunicazione tra client e server utilizzando un modello a eventi.
 
-      % TODO: continua descrizione
+      In particolare, l'EventBus di Vert.x supporta l'utilizzo di \emph{bridge} per la comunicazione remota attraverso numerosi protocolli.
+      Tra questi, quello identificato come più adatto è \emph{SockJS}\@.
 
-      % TODO: inserisci UML
+      SockJS è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
+      Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando su \emph{polling} tramite HTTP standard in caso assenza.
+      Tramite un protocollo di questo tipo, è possibile realizzare un canale di comunicazione bidirezionale veloce, adatto per il trasferimento di un elevato numero di eventi come nel caso di questo progetto di tesi.
+
+      Dunque, il \texttt{BridgeVerticle} esporrà tramite API (alla percorso ``\texttt{/eventbus}'' relativamente all'\emph{host} principale) l'accesso all'EventBus per i messaggi previsti.
+      L'applicazione web si dovrà connettere attraverso un client generando azioni sullo store interno.
+
+    \subsection{Comportamento}
+
+      Una volta chiarite le modalità di trasferimento delle informazioni, viene progettato il comportamento che permette al sistema di essere reattivo.
+      In~\Cref{fig:event:vertx} viene rappresentata la sequenza di operazioni svolte dal server sulla base degli eventi inoltrati sull'EventBus di Vert.x;
+      in~\Cref{fig:event:redux}, invece, il diagramma UML riassume la sequenza di azioni che permutano lo stato di Redux con il procedere dell'esecuzione.
+      Di seguito, invece, sono riassunti i passaggi nel loro complesso.
+
+      \begin{itemize}
+        \item
+          il primo passo è instaurare la connessione.
+          La pressione di un bottone genera un'azione sullo store che abilita la connessione SockJS verso il backend.
+          L'utente viene notificato del risultato dell'operazione attraverso la generazione, da parte del sistema, di azioni con le relative permutazioni dello stato.
+          % In questo modo, l'interfaccia permette all'utente di trovare un backend valido e di collegarcisi attraverso socket.
+        \item
+          una volta che il codice Protelis è pronto per essere lanciato, l'utente utilizzerà il bottone dedicato per eseguirlo.
+          Questo causa la creazione di un'azione di richiesta di upload del codice;
+          esso è già presente nello store, dal quale viene prelevato e inoltrato tramite socket al server.
+        \item
+          il verticle riceve l'evento tramite EventBus;
+          procede dunque costruendo un simulatore, al quale viene assegnato un identificativo univoco e un componente osservatore.
+          Dopodiché, tramite EventBus viene inviato l'identificativo.
+        \item
+          il client riceve questo ID tramite socket e un'azione di Redux viene generata.
+          La vista viene aggiornata di conseguenza, informando l'utente dell'avvenuta configurazione e dell'imminente avvio dell'esecuzione.
+        \item
+          quando il motore di simulazione esegue uno step, il componente osservatore viene notificato.
+          Viene dunque generato un evento sul bus degli eventi diretto verso l'esterno, su un indirizzo legato all'identificativo iniziale e alla tipologia di variazione avvenuta nella simulazione (step iniziale, \emph{round} d'esecuzione, terminazione).
+        \item
+          quando l'esecuzione viene terminata sul simulatore, il client viene notificato dell'evento nello stesso modo con cui ha ricevuto i vari aggiornamenti.
+          Sul server, l'ID verrà classificato come terminato e il simulatore potrà essere riutilizzato o distrutto a seconda delle necessità.
+      \end{itemize}
+
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=.9\textwidth]{res/uml/redux-eventbus.eps}%
+        \caption{Diagramma UML di sequenza rappresentante il flusso delle azioni sullo store di Redux.}%
+        \label{fig:event:redux}
+      \end{figure}
+
+      \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=.9\textwidth]{res/uml/data-flow.eps}%
+        \caption{Diagramma UML di sequenza che rappresenta la gestione degli eventi sul bus di Vert.x.}%
+        \label{fig:event:vertx}
+      \end{figure}

@@ -48,16 +48,9 @@ eb <--: <i>Receive execution ID</i>
 eb -> store: { connection = "connected", execution.status = "connecting" }
 store -> user: <i>React updates view</i>
 deactivate store
-' ...
-' eb <--: <i>Initialization step done</i>
-' eb -> store: { execution.status = "INIT" }
-' store -> user: <i>React updates view</i>
 
 == Execution lifecycle ==
 
-' user -> store: { play = true }
-' store -> eb: <i>Send start message on</i>: protelis.web.exec.{id}.init
-' eb -->: <i>Send start message</i>
 eb <--: <i>Receive update message on</i> protelis.web.exec.{id}.init
 eb -> store: <I>Dispatch</i> drawInit <i>action</i>
 store -> user: <i>React renders update graphically</i>
