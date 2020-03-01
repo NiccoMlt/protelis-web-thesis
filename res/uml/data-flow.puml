@@ -1,4 +1,30 @@
-@startuml "Simulation data flow"
+@startuml data-flow
+
+skinparam {
+  linetype ortho
+  monochrome true
+  ArrowColor black
+  backgroundColor transparent
+  classBackgroundColor transparent
+  ' style strictuml
+
+  participantBackgroundColor transparent
+  ' participantBorderColor black
+
+  databaseBackgroundColor transparent
+  ' databaseBorderColor FireBrick
+  ' databaseBorderColor Crimson
+  databaseBorderColor Maroon
+  ' databaseBorderColor brown
+  ' databaseBorderColor DarkRed
+  ' databaseBorderColor black
+
+  actorBackgroundColor transparent
+  ' actorBorderColor black
+
+  componentBackgroundColor transparent
+  ' componentBorderColor black
+}
 
 actor "Web GUI" as react
 
