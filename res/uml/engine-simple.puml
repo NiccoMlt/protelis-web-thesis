@@ -1,4 +1,4 @@
-@startuml engine
+@startuml engine-simple
 
 skinparam {
   linetype ortho
@@ -31,33 +31,33 @@ skinparam {
   ' componentBorderColor black
 }
 
-package it.unibo.alchemist.boundary.interfaces {
-  interface OutputMonitor <T concentration type\nP position type> << from Alchemist >> {
-    + initialized(env)
-    + stepDone(env, reaction, time, step)
-    + finished(env, time, step)
-  }
-}
+' package it.unibo.alchemist.boundary.interfaces {
+'   interface OutputMonitor <T concentration type\nP position type> << from Alchemist >> {
+'     + initialized(env)
+'     + stepDone(env, reaction, time, step)
+'     + finished(env, time, step)
+'   }
+' }
 
-package io.vertx {
-  package io.vertx.core {
-    interface Verticle {
-      + init()
-      + start()
-      + stop()
-    }
+' package io.vertx {
+'   package io.vertx.core {
+'     interface Verticle {
+'       + init()
+'       + start()
+'       + stop()
+'     }
 
-    package io.vertx.core.eventbus {
-      interface EventBus
-    }
-  }
+'     package io.vertx.core.eventbus {
+'       interface EventBus
+'     }
+'   }
 
-  package io.vertx.kotlin.coroutines {
-    abstract class CoroutineVerticle
-  }
+'   package io.vertx.kotlin.coroutines {
+'     abstract class CoroutineVerticle
+'   }
 
-  Verticle <|-- CoroutineVerticle
-}
+'   Verticle <|-- CoroutineVerticle
+' }
 
 package it.unibo.protelis.web.execution {
   package it.unibo.protelis.web.execution.simulated {
@@ -110,7 +110,7 @@ package it.unibo.protelis.web.execution {
     - engine: ProtelisEngine?
   }
 
-  CoroutineVerticle <|-- AlchemistVerticle
+  ' CoroutineVerticle <|-- AlchemistVerticle
 
   AlchemistVerticle o-- SimulatedProtelisEngine
 

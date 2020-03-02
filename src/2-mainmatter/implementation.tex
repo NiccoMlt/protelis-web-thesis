@@ -6,4 +6,30 @@
   \input{src/2-mainmatter/tech.tex}
 
   \section{Dettagli implementativi: Frontend}
+
+    % TODO
+
   \section{Dettagli implementativi: Backend}
+
+    Come progettato nella~\Cref{sec:arch:server}, il server è stato realizzato con due verticle di Vert.x che modellano la logica applicativa e uno dedicato all'avvio del sistema.
+    Tali verticle comunicano tra loro e con l'esterno tramite EventBus.
+
+    L'EventBus viene esposto verso l'esterno tramite la libreria ufficiale di Vert.x per la realizzazione di bridge con SockJS\@.
+    In particolare, la classe \texttt{BridgeVerticle} si occupa di costruire un router HTTP e HTTPS sul quale viene montato il bridge.
+
+    La gestione della simulazione avviene, come detto, appoggiandosi ad Alchemist (il diagramma UML in~\Cref{fig:server:uml} mostra le principali classi coinvolte).
+
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=\textwidth]{res/uml/engine-simple.eps}
+      \caption{Rappresentazione UML delle classi coinvolte nella simulazione}%
+      \label{fig:server:uml}
+    \end{figure}
+
+    Come è possibile vedere, Alchemist non viene utilizzato direttamente, bensì incapsulato all'interno di un \texttt{SimulatedProtelisEngine}.
+    Tale classe implementa l'interfaccia \texttt{ProtelisEngine}, che astrae il concetto di esecutore per codice Protelis;
+    in questo modo, il sistema non è vincolato all'implementazione simulata, né essa è legata strettamente ad Alchemist.
+
+    Anche l'astrazione di Alchemist per l'osservazione del motore di esecuzione è stata incapsulata, definendo una classe di \emph{boundary}, \texttt{ProtelisOutputMonitor}, che agisce da adattatore.
+
+    \improvement[inline]{Possono essere interessanti altri dettagli?}
