@@ -1,3 +1,13 @@
+% \addpart*{\appendixname}
+
 \begin{appendices}
-  Appendice
+  \renewcommand{\thesection}{\Alph{section}}
+  \renewcommand{\thesubsection}{A.\arabic{subsection}}
+
+  \addcontentsline{toc}{section}{\appendixname}
+  \addchap{\appendixname}
+
+  \section{Dockerfile del server}\label{app:docker}
+  % \chapter{Dockerfile del server}\label{app:docker}
+    \inputminted{dockerfile}{res/code/Dockerfile}
 \end{appendices}
