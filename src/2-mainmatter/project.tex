@@ -258,7 +258,7 @@
       Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando su \emph{polling} tramite HTTP standard in caso assenza.
       Tramite un protocollo di questo tipo, è possibile realizzare un canale di comunicazione bidirezionale veloce, adatto per il trasferimento di un elevato numero di eventi come nel caso di questo progetto di tesi.
 
-      Dunque, il \texttt{BridgeVerticle} esporrà tramite API (alla percorso ``\texttt{/eventbus}'' relativamente all'\emph{host} principale) l'accesso all'EventBus per i messaggi previsti.
+      Dunque, il \texttt{BridgeVerticle} esporrà tramite API (al percorso ``\texttt{/eventbus}'' relativamente all'\emph{host} principale) l'accesso all'EventBus per i messaggi previsti.
       L'applicazione web si dovrà connettere attraverso un client generando azioni sullo store interno.
 
     \subsection{Comportamento}
