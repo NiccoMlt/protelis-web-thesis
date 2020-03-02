@@ -7,7 +7,36 @@
 
   \section{Dettagli implementativi: Frontend}
 
-    % TODO
+    Per l'implementazione dei componenti di base del frontend, si è fatto largo uso della libreria Material-UI\@.
+    Essa mette a disposizione una grande quantità di componenti React di base (come elementi per il layout e elementi di controllo) aderenti al design Material scelto in fase di progettazione.
+    Inoltre, tramite la libreria è stato possibile definire un tema specifico per il progetto Protelis on Web nelle due varianti chiara e scura, caricate a seconda delle preferenze del browser dell'utente.
+
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=\textwidth]{res/screenshot/Screenshot_2020-03-02 Protelis on the Web(6).png}
+      \caption{Screenshot della schermata intera durante l'esecuzione}%
+      \label{fig:screenshot:all}
+    \end{figure}
+
+    La struttura del frontend, visibile in~\Cref{fig:screenshot:all}, è composta da tre elementi principali:
+
+    \begin{itemize}
+      \item
+        la \texttt{AppBar} superiore, nella quale è posizionato il selettore con il quale è possibile indicare quale server di backend utilizzare.
+      \item
+        la \texttt{Card} di sinistra ospita tutti i controlli principali.
+        In essa è presente un editor realizzato con l'ausilio della libreria Monaco Editor, realizzata da Microsoft e utilizzata, ad esempio, per Visual Studio Code;
+        Essa supporta buona parte dei plugin disponibili per tale IDE e lascia spazio, in futuro, all'integrazione di \emph{language server} dedicati all'autocompletamento.
+
+        Sotto l'editor sono presenti i bottoni dedicati al salvataggio del codice e all'avvio dell'esecuzione.
+      \item
+        la \texttt{Card} di destra ospita invece principalmente un canvas, realizzato tramite la libreria Konva.
+        Essa permette di realizzare canvas performanti modellando ciascuna operazione di disegno come componenti React.
+
+        È risultato dunque semplice delegare le operazioni di disegno al motore di React, attraverso un'operazione di binding dei componenti di Konva con lo store di Redux.
+    \end{itemize}
+
+    \improvement[inline]{Possono essere interessanti altri dettagli?}
 
   \section{Dettagli implementativi: Backend}
 

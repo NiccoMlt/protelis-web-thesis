@@ -199,27 +199,28 @@
     \end{description}
 
   \subsection{Deployment}
-  Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar.
+    Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar.
 
-  Per motivi di test, il server è in esecuzione su due differenti piattaforme:
+    Per motivi di test, il server è in esecuzione su due differenti piattaforme:
 
-  \begin{itemize}
-    \item
-      Al termine della pipeline di Travis CI per il branch principale, l'eseguibile viene automaticamente caricato e lanciato su Heroku.
+    \begin{itemize}
+      \item
+        Al termine della pipeline di Travis CI per il branch principale, l'eseguibile viene automaticamente caricato e lanciato su Heroku.
 
-      \emph{Heroku} è un servizio online di tipo PaaS (\emph{\emph{P}latform as a \emph{S}ervice}) di proprietà di SalesForce e compatibile con diversi linguaggi.
-      Informazioni sulla VM utilizzata non sono disponibili.
-    \item
-      Per performance migliori, viene utilizzato anche un server fornito dall'Università di Bologna.
-      Su di esso viene effettuato il deploy tramite SSH avvalendosi del \texttt{docker-engine} in esecuzione all'interno di Linux.
+        \emph{Heroku} è un servizio online di tipo PaaS (\emph{\emph{P}latform as a \emph{S}ervice}) di proprietà di SalesForce e compatibile con diversi linguaggi.
+        Informazioni sulla VM utilizzata non sono disponibili.
+      \item
+        Per performance migliori, viene utilizzato anche un server fornito dall'Università di Bologna.
+        Su di esso viene effettuato il deploy tramite SSH avvalendosi del \texttt{docker-engine} in esecuzione all'interno di Linux.
 
-      \emph{Docker} è uno strumento per la virtualizzazione a livello di sistema operativo (\emph{container}) molto utilizzato per la pacchettizzazione delle applicazioni.
-      Il Dockerfile per la costruzione dell'immagine utilizzata, basato su AdoptOpenJDK con Eclipse OpenJ9, è allegato a questo documento in~\Cref{app:docker}.
-  \end{itemize}
+        \emph{Docker} è uno strumento per la virtualizzazione a livello di sistema operativo (\emph{container}) molto utilizzato per la pacchettizzazione delle applicazioni.
+        Il Dockerfile per la costruzione dell'immagine utilizzata, basato su AdoptOpenJDK con Eclipse OpenJ9, è allegato a questo documento in~\Cref{app:docker}.
+    \end{itemize}
+
+    Il client React è compilato come un bundle JavaScript importato da una pagina HTML\@.
+    Esso non viene servito dal server Vert.x, bensì dalla piattaforma Zeit Now, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
 
     % Per quanto riguarda il \emph{continuous deployment} (CD), sarà trattato nel dettaglio nella sottosezione successiva.
-
-    % TODO
 
       % \subsection{Librerie esterne}
   % \subsection{Strumenti di sviluppo}
