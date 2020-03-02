@@ -43,9 +43,9 @@
         Vert.x offre inoltre una estensione della propria libreria \emph{core} per sfruttare al meglio la sintassi di Kotlin.
 
       \subsubsection{Linguaggio per il frontend: TypeScript}
-
-        Per la realizzazione dell'applicazione web che costituisce il frontend del sistema si è deciso di utilizzare TypeScript.
-        Sono stati presi in considerazione tutti i quattro linguaggi introdotti nella~\Cref{sec:lang}, ma si è preferito impiegare TypeScript per i seguenti motivi:
+        Per la realizzazione del frontend era necessario l'impiego di un linguaggio in grado di eseguire su browser, quindi che fornisse come target di compilazione JavaScript o WebAssembly.
+        A differenza del backend, il framework scelto, React, vincolava la scelta a un numero limitato di linguaggi in grado di generare codice JS\@.
+        In particolare, sono stati presi in considerazione i quattro linguaggi introdotti nella~\Cref{sec:lang}, ma si è preferito impiegare TypeScript per i seguenti motivi:
 
         \begin{description}
           \item[Supporto ufficiale]
@@ -99,7 +99,7 @@
 
       \subsubsection{Backend}
 
-        Il backend utilizza Gradle per la risoluzione delle dipendenze, la costruzione del software e la verifica della qualità.
+        Il progetto di backend utilizza Gradle per la risoluzione delle dipendenze, la costruzione del software e la verifica della qualità.
         Gradle è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy e, più recentemente, in Kotlin.
         Pensato per i linguaggi che compilano per JVM, questo sistema permette di scaricare le dipendenze da diversi repository Maven durante la fase di compilazione.
         Nello script di costruzione sono stati utilizzati i seguenti plugin:
@@ -121,7 +121,7 @@
             Il plugin, realizzato da Jonathan Leitschuh, è un wrapper dello strumento di analisi statica di codice Kotlin \emph{ktlint}, realizzato da Pinterest.
             Si è scelto di utilizzare ktlint anziché \emph{detekt}, altro strumento simile, in quanto non richiede una configurazione personalizzata, bensì impone un insieme standard di regole, comunemente studiate e accettate dalla community.
 
-          \item[refreshVersions]
+          \item[refreshVersions]\unsure{Qui la minuscola è \emph{voluta}, in quanto il plugin non ha un nome formale. Dovrei metterlo comunque maiuscolo come gli altri?}
             Il plugin, sviluppato da Jean-Michel Fayard, permette una migliore gestione delle dipendenze automatizzandone gli aggiornamenti.
 
           \item[JUnit]
@@ -140,7 +140,72 @@
 
       \subsubsection{Frontend}
 
-        % TODO
+        Il progetto frontend è un modulo Node.js generato tramite lo strumento ufficiale \texttt{create-react-app} fornito da Facebook.
+        Si seguito vengono riportate tutte le tecnologie utilizzate durante lo sviluppo:
+
+        \begin{description}
+          \item[Yarn]
+            Come \emph{package manager} per la gestione delle dipendenze è stato scelto yarn anziché NPM\@.
+            Esso, oltre a essere la scelta consigliata da React, presenta alcuni vantaggi rispetto alla controparte:
+            \begin{itemize}
+              \item La cartella delle dipendenze risulta generalmente più compatta in quanto utilizza collegamenti simbolici per le dipendenze condivise dai moduli JS risolti.
+              \item La velocità di risoluzione delle dipendenze è generalmente più elevata, in quanto sfrutta una strategia di cache più efficiente.
+            \end{itemize}
+
+          \item[react-scripts]
+            Lo strumento \texttt{create-react-app} astrae la complessità di configurazione di un progetto attraverso l'utilizzo di \texttt{react-scripts}.
+            Essi incapsulano strumenti quali WebPack, Babel, ESLint e Jest, mettendo a disposizione semplici script che si appoggiano alle configurazioni ufficiali di riferimento per:
+            \begin{inparaitem}
+              \item compilazione,
+              \item esecuzione,
+              \item verifica
+            \end{inparaitem}
+            del codice realizzato.
+
+          \item[ESLint \& stile Airbnb]
+            ESLint è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
+            Il pacchetto \texttt{react-scripts} fornisce una configurazione minimale, ma consiglia di adottare uno stile (insieme di regole) tra quelli più famosi;
+            è stato scelto quello fornito da Airbnb. % , in quanto uno dei più popolari.
+
+          \item[Jest]
+            Jest è un framework di test per JavaScript sviluppato da Facebook che fornisce tutti gli strumenti per la scrittura e l'esecuzione dei test e per la raccolta della loro copertura sul codice.
+        \end{description}
+
+        Per lo sviluppo del codice è stato utilizzato l'ambiente di sviluppo integrato \emph{JetBrains WebStorm} in versione \emph{2019.3.3}.
+
+    \subsection{Controllo di versione e CI/CD}
+      Il controllo di versione utilizzato per questo progetto è affidato al DVCS (\engEmph{Distributed Version Control System}) Git, utilizzato con flusso di lavoro di tipo \emph{Git flow}.
+
+      % Il codice è disponibile su GitHub nei repository seguenti:
+      % \begin{itemize}
+      %     \item \url{https://github.com/NiccoMlt/Protelis-Web} per il backend;
+      %     \item \url{https://github.com/NiccoMlt/protelis-web-frontend} per il frontend.
+      % \end{itemize}
+
+      Il codice è disponibile su GitHub nei repository GitHub Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}
+      e protelis-web-frontend\footnote{\url{https://github.com/NiccoMlt/protelis-web-frontend}}.
+      % Si è preferito utilizzare due depositi separati anziché raggruppare in ciò che viene generalmente definito \emph{monorepo} poiché le differenti ...
+
+      Attraverso GitHub sono allacciate ai repository le soluzioni di \emph{continuous integration} (CI):
+
+      \begin{description}
+        \item[Travis CI]
+          Travis CI è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub.
+          Ad ogni operazione di push sul repository, il codice viene testato su tutte le maggiori piattaforme (Linux, Windows, MacOS) e le differenti versioni degli SDK (NodeJS LTS, AdoptOpenJDK con OpenJDK HotSpot e AdoptOpenJDK con Eclipse OpenJ9).
+          Viene inoltre fatto un controllo sulla qualità del codice.
+
+        \item[Codecov]
+          Tramite Codecov vengono raccolti i report di copertura del codice generati da JaCoCo e Jest, permettendo la visualizzazione online di grafici di dettaglio.
+          Al termine di ogni esecuzione di una \emph{pipeline} in Travis CI, i report sulla piattaforma di riferimento vengono pubblicati qui.
+
+        \item[Codacy]
+          Codacy è uno strumento online per l'automazione della \emph{code review} che aggrega diversi strumenti di analisi del codice per numerosi linguaggi, generando report dettagliati.
+          Ad ogni operazione di push sul repository, il codice viene verificato.
+      \end{description}
+
+      % Per quanto riguarda il \emph{continuous deployment} (CD), sarà trattato nel dettaglio nella sottosezione successiva.
+
+      % TODO
 
         % \subsection{Librerie esterne}
     % \subsection{Strumenti di sviluppo}
