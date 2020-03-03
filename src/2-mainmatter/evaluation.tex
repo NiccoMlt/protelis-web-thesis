@@ -1,0 +1,33 @@
+\chapter{Valutazione dei risultati}\label{ch:evaluation}
+
+  \section{Qualità del codice \& testing}
+    Durante lo sviluppo, si è cercato di prestare particolare attenzione alla qualità del codice prodotto.
+
+    Si è ritenuto fondamentale, innanzitutto, per favorire la consistenza dello stile, che il codice fosse conforme a uno stile di programmazione riconosciuto.
+    Come detto nella~\Cref{subec:quality}, sono stati utilizzati diversi \emph{linter} (ESLint e ktlint)
+    per imporre lo stile Airbnb~\cite{airbnb-javascript} per TypeScript e lo stile ufficiale~\cite{pinterest-ktlint} per Kotlin in tutta la codebase.
+    Questo ha permesso di evitare bug comuni riconoscibili attraverso analisi statica
+    e potenzialmente permette di rendere il codice, che è pubblico e open-source, maggiormente comprensibile per chi vorrà estenderlo in futuro.
+
+    Inoltre, per garantire il corretto funzionamento delle componenti più cruciali, sono stati creati degli specifici unit test in grado di coprire il codice per quanto possibile.
+    L'esecuzione dei test viene effettuata automaticamente da Travis CI su diverse piattaforma ad ogni operazione di push.
+
+    Per quanto riguarda il backend è stato utilizzato JUnit 5 con l'ausilio delle estensioni di Vert.x.
+    I report sulla copertura vengono raccolti tramite JaCoCo.
+
+    \unsure[inline]{Quali dettagli dovrei fornire dei test del backend?}
+
+    Anche il frontend è stato testato tramite unit testing.
+    In particolare, si è utilizzato la suite Jest per l'esecuzione dei test e la raccolta dei dati di copertura.
+
+    \unsure[inline]{Quali dettagli dovrei fornire dei test del frontend?}
+
+  \section{Valutazione dell'interfaccia}
+    % TODO
+    \todo[inline]{Qui andrò a inserire i report di Lighthouse}
+
+    % TODO inserisci lighthouse
+
+  \section{Performance}
+    % TODO
+    \unsure[inline]{Come valuto i risultati? Misure di Performance?}

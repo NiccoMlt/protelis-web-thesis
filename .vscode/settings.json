@@ -39,6 +39,7 @@
   ],
   "cSpell.language": "it,it-IT,en",
   "cSpell.words": [
+    "Airbnb",
     "Akka",
     "Intellij",
     "Kubernetes",
@@ -47,6 +48,7 @@
     "Multiplatform",
     "POJO",
     "Protelis",
+    "Viroli",
     "all'Event",
     "all'autocompletamento",
     "approssimabile",
@@ -65,6 +67,7 @@
     "footnotetext",
     "intercompatibile",
     "interoperare",
+    "ktlint",
     "l'Event",
     "l'estendibilità",
     "microservizi",
