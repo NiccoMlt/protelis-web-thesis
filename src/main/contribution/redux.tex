@@ -10,14 +10,19 @@ Questo tipo di soluzione può risultare limitante in caso di un numero elevato d
 
 \subsubsection{Flux architecture}
 Come alternativa al più classico \emph{Model-View-Controller} (MVC)~\cite{Reenskaug2003TheM},
-Facebook propone per le applicazioni React un nuovo pattern architetturale denominato Flux\footnote{\url{https://facebook.github.io/flux}}. % TODO: move to biblio
+Facebook propone per le applicazioni React un nuovo pattern architetturale denominato Flux~\cite{10.1145/2742580.2742818}.
 Esso sottolinea la natura unidirezionale del flusso di dati in un'applicazione React (di qui il nome)
 e può essere di fatto considerato una variante del \emph{pattern Observer}~\cite{10.5555/186897} applicato all'architettura del sistema.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=.9\textwidth]{res/fig/flux-diagram-white-background.png}
-  \caption{Rappresentazione del flusso unidirezionale dei dati in un'applicazione React con Flux}% % TODO: add figure reference
+  \caption[
+    Rappresentazione del flusso unidirezionale dei dati in un'applicazione React con Flux.
+  ]{
+    Rappresentazione del flusso unidirezionale dei dati in un'applicazione React con Flux.
+    Figura ripresa dalla documentazione ufficiale.
+  }%
   \label{fig:flux}
 \end{figure}
 
@@ -69,7 +74,13 @@ lo stato dell'applicazione è descritto da un singolo POJO (\emph{Plain Old Java
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=.9\textwidth]{res/fig/redux-diagram.png}
-  \caption{Rappresentazione del flusso unidirezionale dei dati in Redux}% % TODO: add figure reference
+  \caption[
+    Rappresentazione del flusso unidirezionale dei dati in Redux.
+  ]{
+    Rappresentazione del flusso unidirezionale dei dati in Redux.
+
+    Figura ripresa dalla documentazione ufficiale.
+  }%
   \label{fig:redux}
 \end{figure}
 
