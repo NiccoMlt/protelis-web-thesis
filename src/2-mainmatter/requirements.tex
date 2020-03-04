@@ -3,9 +3,9 @@
 
   Nella~\Cref{part:background} è stato più volte sottolineato che il linguaggio Protelis si appoggia alla piattaforma JVM per la sua esecuzione.
   Al momento della scrittura, l'unico supporto da parte delle tecnologie browser per Java ritenuto stabile era dato dal plugin per le Applet API\@.
-  Tale plugin è stato deprecato da alcuni anni~\cite{jep289} a seguito del rilascio di Java 9;
-  la quasi totalità dei browser ne ha ormai dismesso la compatibilità o lo faranno a breve.
-  si assume già in questa fase, dunque, che realizzare un'applicazione web solamente client-side sia, al momento, impraticabile.
+  Tale plugin è stato deprecato da alcuni anni~\cite{jep289}, in concomitanza con il rilascio di Java 9;
+  la quasi totalità dei browser ne ha ormai dismesso la compatibilità o lo farà a breve.
+  Si assume già in questa fase, dunque, che realizzare un'applicazione web solamente client-side sia, al momento, impraticabile.
 
   Di seguito saranno dunque distinti i requisiti per il server esecutore dai requisiti dell'applicazione front-end che svolgerà il ruolo di client.
 
@@ -21,7 +21,7 @@
           In particolare, nel prototipo non deve essere necessario configurare una rete di alcun tipo per poter realizzare codice aggregato ed eseguirlo.
         \item[Modificare il programma]
           Per quanto possa essere utile avere codice di esempio già inserito nel campo di testo, l'applicazione web deve permettere all'utente di sperimentare con i costrutti del linguaggio, avendo la possibilità di scrivere il proprio codice nell'editor.
-          Tale editor deve offrire per quanto possibile un'esperienza di scrittura che ricorda quella di un editor di codice desktop.
+          Tale editor deve offrire per quanto possibile un'esperienza di scrittura che ricordi quella di un editor di codice desktop.
         \item[Lanciare l'esecuzione]
           L'applicazione deve permettere di lanciare il codice scritto dall'utente su una rete predeterminata di dispositivi.
           Tale rete deve essere trasparente all'utente.
@@ -71,10 +71,13 @@
       \item[Scalabilità]
         Il sistema deve essere aperto alla possibilità di essere scalato efficacemente.
         In particolare, non è necessario che il prototipo sia in grado di scalare autonomamente, ma deve permettere l'introduzione di un eventuale orchestratore senza particolare difficoltà.
+
       \item[Protocollo di connessione efficiente]
         Il server deve esporre le proprie API tramite un protocollo efficiente dal punto di vista delle performance, non andando a limitare in modo sensibile la velocità con cui il frontend viene informato dei progressi dell'esecuzione.
         Inoltre, tali API dovrebbero permettere di sostituire lo standard di comunicazione senza la necessità di effettuare modifiche notevoli nel motore.
-        Infine, il protocollo utilizzato dal prototipo dovrebbe essere supportato da quante più piattaforme possibile (con particolare attenzione ai browser più usati).
+
+      \item[Compatibilità con i browser]
+        Il protocollo utilizzato dal prototipo dovrebbe essere supportato da quante più piattaforme possibile (con particolare attenzione ai browser più usati).
     \end{description}
 
     \improvement[inline]{Il capitolo dovrebbe essere espanso un po'? Magari aggiungendo maggiori dettagli o diagrammi?}

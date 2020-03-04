@@ -6,7 +6,7 @@
     \subsubsection{Linguaggio per il backend: Kotlin}
 
       Per la realizzazione del backend, come è stato specificato nel~\Cref{ch:requirements}, era necessario l'impiego di un linguaggio in grado di eseguire su piattaforma JVM\@.
-      Il framework scelto, Vert.x, è presentato come poliglotta (supporta Java, JavaScript, Groovy, Ruby, Ceylon, Scala e Kotlin) e non vincolava la scelta.
+      Il framework scelto, Vert.x, è presentato come poliglotta (supporta Java, JavaScript, Groovy, Ruby, Ceylon, Scala e Kotlin), non vincolando dunque la scelta.
 
       Si è deciso di procedere con Kotlin per le seguenti motivazioni:
 
@@ -25,7 +25,7 @@
           Inoltre, il compilatore di Kotlin supporta diversi altri target, come browser, piattaforme mobile e binario nativo X86 e ARM, lasciando dunque aperte ulteriori possibilità di espansione future.
 
         \item[Approccio funzionale]
-          Kotlin è un linguaggio orientato agli oggetti, ma supporta molti costrutti tipici della programmazione funzionale, come espressioni \emph{lambda}, \emph{function types} e le funzioni di ordine superiore.
+          Kotlin è principalmente un linguaggio orientato agli oggetti, ma supporta molti costrutti tipici della programmazione funzionale, come espressioni \emph{lambda}, \emph{function types} e le funzioni di ordine superiore.
 
         % \item[Performance]
           % Kotlin  pone  alcuni  miglioramenti  prestazionali nelle funzioni di ordine superiore e lambda, dimostrandosi più ottimizzato e veloce nei confronti di Java
@@ -55,7 +55,7 @@
           Se questo aspetto da un lato aggiunge flessibilità al linguaggio, dall'altro aumenta la possibilità di bug e situazioni non previste.
           TypeScript offre un sistema di tipi completo e flessibile, che permette di definire una struttura chiara e flessibile, rendendo il processo di sviluppo più sicuro.
 
-          Facebook supporta ufficialmente Flow e la libreria \texttt{prop-types} come alternativa all'utilizzo di un diverso linguaggio.
+          Facebook supporta ufficialmente anche Flow e la libreria \texttt{prop-types} come alternativa all'utilizzo di un diverso linguaggio.
           Flow non offre però la medesima espressività di TypeScript e non può vantare un supporto altrettanto vasto da parte della comunità per la tipizzazione delle librerie JavaScript.
           La libreria \texttt{prop-types} invece offre un controllo dei tipi unicamente a tempo di esecuzione, richiedendo la definizione del tipo atteso manualmente.
           Questo non permette di adottare un approccio ``\emph{fail-fast}'' come quello vantato da TypeScript.
@@ -75,7 +75,7 @@
 
       \end{description}
 
-      L'unica alternativa presa in considerazione al posto di TypeScript era Kotlin.
+      L'unica alternativa ritenuta valida al posto di TypeScript era Kotlin.
       L'impiego di Kotlin per tutta l'applicazione sarebbe stato infatti molto interessante per utilizzare un unico linguaggio in tutto il sistema, migliorando l'integrazione e il supporto a dipendenze condivise.
 
       Purtroppo, per quanto JetBrains supporti ufficialmente React per Kotlin/JS, l'integrazione all'inizio dei lavori di questa tesi era ancora troppo instabile per un uso reale.
@@ -95,7 +95,7 @@
     \subsubsection{Backend}
 
       Il progetto di backend utilizza Gradle per la risoluzione delle dipendenze, la costruzione del software e la verifica della qualità.
-      Gradle è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy e, più recentemente, in Kotlin.
+      Gradle è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} originariamente in Groovy e più recentemente anche in Kotlin.
       Pensato per i linguaggi che compilano per JVM, questo sistema permette di scaricare le dipendenze da diversi repository Maven durante la fase di compilazione.
       Nello script di costruzione sono stati utilizzati i seguenti plugin:
 
@@ -159,8 +159,8 @@
 
         \item[ESLint \& stile Airbnb]
           ESLint è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
-          Il pacchetto \texttt{react-scripts} fornisce una configurazione minimale, ma consiglia di adottare uno stile (insieme di regole) tra quelli più famosi;
-          è stato scelto quello fornito da Airbnb. % , in quanto uno dei più popolari.
+          Il pacchetto \texttt{react-scripts} fornisce una configurazione minimale, ma è consigliato di adottare uno stile (insieme di regole) tra quelli più famosi.
+          In questo caso è stato scelto quello fornito da Airbnb. % , in quanto uno dei più popolari.
 
         \item[Jest]
           Jest è un framework di test per JavaScript sviluppato da Facebook che fornisce tutti gli strumenti per la scrittura e l'esecuzione dei test e per la raccolta della loro copertura sul codice.
@@ -199,7 +199,7 @@
     \end{description}
 
   \subsection{Deployment}
-    Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar.
+    Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar, senza la necessità di un hosting per Java EE\@.
 
     Per motivi di test, il server è in esecuzione su due differenti piattaforme:
 
@@ -218,7 +218,7 @@
     \end{itemize}
 
     Il client React è compilato come un bundle JavaScript importato da una pagina HTML\@.
-    Esso non viene servito dal server Vert.x, bensì dalla piattaforma Zeit Now, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
+    Esso non viene servito dal server Vert.x, bensì attraverso la piattaforma di hosting statico ZEIT Now, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
 
     % Per quanto riguarda il \emph{continuous deployment} (CD), sarà trattato nel dettaglio nella sottosezione successiva.
 

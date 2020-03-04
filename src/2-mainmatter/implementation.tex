@@ -42,6 +42,7 @@
     Per memorizzare le informazioni sullo stato del sistema, le due \emph{slice} illustrate alla~\Cref{subsec:state-manage} sono state sufficienti.
 
     Per quanto riguarda la gestione del protocollo di comunicazione, invece, è stato necessario realizzare un \emph{middleware} che incapsulasse la comunicazione.
+
     In Redux, un \emph{middleware} è una funzione che si frappone tra il \emph{dispatcher} e il \emph{reducer} e permette l'elaborazione dell'azione prima che essa venga gestita.
     Attraverso un middleware, è possibile definire comportamenti asincroni senza rallentare la gestione delle permutazioni sullo stato:
     esso può infatti ``catturare'' azioni provenienti da componenti di controllo nella pagina richiedenti operazioni bloccanti e, una volta che il processo asincrono è terminato, generare un'azione per aggiornare lo stato.

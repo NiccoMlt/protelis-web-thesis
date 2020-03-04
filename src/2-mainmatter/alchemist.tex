@@ -1,7 +1,7 @@
 \subsection{Simulatore scelto: Alchemist}\label{subsec:alchemist}
-  Alchemist~\cite{alchemist-jos2013} è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine} (JVM), nato all'interno dell'Università di Bologna.
+  Alchemist~\cite{alchemist-jos2013} è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine}, nato all'interno dell'Università di Bologna.
 
-  \subsubsection{Introduzione ad Alchemist}\label{subsec:introAlchemist}
+  \subsubsection{Simulazione}\label{subsec:introAlchemist}
     In generale, una \emph{simulazione}~\cite{des3} è una riproduzione del modo di operare di un sistema o un processo del mondo reale nel tempo.
     L'imitazione del processo del mondo reale è detta \emph{modello};
     esso risulta essere una riproduzione più o meno semplificata del mondo reale, che viene aggiornata ad ogni passo di esecuzione della simulazione.
@@ -14,7 +14,7 @@
     Nonostante siano presenti algoritmi in grado di eseguire un numero di reazioni addirittura in tempo costante, la scelta dell'algoritmo è infine ricaduta su una versione migliorata dell'algoritmo SSA di Gillespie, il Next Reaction Method~\cite{nextReactionMethod} di Gibson e Bruck:
     ad ogni passo di simulazione, esso è in grado di selezionare la reazione successiva in tempo costante e richiede un tempo logaritmico per aggiornare le strutture dati interne al termine dell'esecuzione dell'evento.
 
-  \subsubsection{Astrazioni e modello di Alchemist}\label{subsec:modello}
+  \subsubsection{Astrazioni e modello}\label{subsec:modello}
     \begin{figure}[htbp]
       \centering
       \includegraphics[width=.85\textwidth]{res/fig/alchemist_model.png}
@@ -110,4 +110,4 @@
 
   % TODO: inserisci qualcosa su come Alchemist permette a Protelis di girare
 
-  \improvement[inline]{Immagino qui di dover descrivere anche l'incarnazione di Protelis per Alchemist}
+  \improvement[inline]{Qui dovrei descrivere anche l'incarnazione di Protelis per Alchemist?}

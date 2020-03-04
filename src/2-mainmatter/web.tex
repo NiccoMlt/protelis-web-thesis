@@ -115,12 +115,12 @@
 
         \item[Orientamento agli oggetti Prototype-based]
           A differenza di altri linguaggi orientato agli oggetti (come Java o C++), JavaScript non fornisce un'implementazione del concetto di \emph{classe}~\cite{Ungar1991}:
-          la stessa keyword \texttt{class}, introdotta con ES6, non è altro che zucchero sintattico per migliorare l'interazione da parte dei nuovi sviluppatori con il prototipo.
+          la stessa keyword \texttt{class}, introdotta con ES6, non è altro che zucchero sintattico per migliorare l'interazione da parte degli sviluppatori con il prototipo dell'oggetto.
 
           In termini di ereditarietà, infatti, JS prevede un solo costrutto: gli \emph{oggetti}.
           Ogni oggetto ha un collegamento interno ad un altro oggetto chiamato \emph{prototype}.
           Questo oggetto prototipo ha a sua volta un suo prototype, e così via finché si raggiunge un oggetto con la proprietà prototipo settata a \texttt{null}.
-          \texttt{null}, per definizione, non ha un prototype ed agisce come link finale nella \emph{catena di prototipi}.
+          Per definizione, \texttt{null} non ha un prototype ed agisce come anello finale nella \emph{catena di prototipi}.
 
           Quasi tutti gli oggetti in JavaScript sono istanze di \texttt{Object}, che risiede in cima alla catena dei prototipi.
           % In JavaScript, è possibile aggiungere proprietà a qualsiasi oggetto in fase di esecuzione.
@@ -131,7 +131,7 @@
 
           Ciascuna funzione costituisce una chiusura lessicale.
 
-          All'interno di oggetti, proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
+          All'interno degli oggetti, le proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
           Infine, le funzioni possono essere utilizzate anche per l'implementazione di \emph{pattern di ruolo} come i \emph{tratti} e i \emph{mixin}.
 
         \item[Web APIs]
@@ -148,8 +148,8 @@
       \end{description}
 
     \subsection{TypeScript}\label{subsec:ts}
-      TypeScript è un linguaggio di programmazione open-source sviluppato da Microsoft.
-      Esso è un super-set sintatticamente rigoroso di JavaScript ES6, che si pone come obiettivi principali:
+      \emph{TypeScript} è un linguaggio di programmazione open-source sviluppato da Microsoft.
+      Esso è un super-set sintatticamente rigoroso di JavaScript ES6, nato con i seguenti obiettivi principali:
 
       \begin{itemize}
         \item
@@ -170,7 +170,7 @@
               Definiti sulla base di una precedente proposta ECMAScript~\cite{optional}, solo più tardi integrata, sono stati introdotti con la versione 3.7.3 di TypeScript.
           \end{description}
         \item
-          l'introduzione di un sistema di tipizzazione statica opzionale che possa integrarsi nel modo più trasparente possibile nella sintassi JavaScript standard;
+          l'introduzione di un sistema di \emph{tipizzazione statica} opzionale che possa integrarsi nel modo più trasparente possibile nella sintassi JavaScript standard;
           in particolare, viene data la possibilità di definire tipi complessi tramite \emph{sintassi postfissa}.
       \end{itemize}
 
@@ -197,10 +197,10 @@
       % \end{itemize}
 
       La generazione dei metadati per la descrizione dei tipi permette un'integrazione migliore di TypeScript e JavaScript con gli ambienti di sviluppo;
-      inoltre, negli anni è diventato lo standard de-facto per la documentazione dei moduli per il linguaggio sostituendo le soluzioni basate sul parsing dei commenti come JSDoc.
+      inoltre, negli anni è diventato lo standard de-facto per la documentazione dei moduli per il linguaggio, sostituendo le soluzioni basate sul parsing dei commenti come JSDoc.
 
     \subsection{Scala.js}\label{subsec:scalajs}
-      Scala.js è un compilatore per il linguaggio di programmazione Scala che genera codice JavaScript invece di bytecode per la JVM\@.
+      \emph{Scala.js} è un compilatore per il linguaggio di programmazione Scala che genera codice JavaScript invece di bytecode per la JVM\@.
       % Questo permette l'impiego di tutte le funzionalità di Scala in contesto web, massimizzando il riuso di codice condiviso con la componente backend potenzialmente scritto con il medesimo linguaggio e in esecuzione su JVM\@.
 
       I principali vantaggi dell'impiego di un linguaggio come Scala all'interno del contesto web sono i seguenti:
@@ -208,7 +208,7 @@
         \item[Struttura più solida]
           Come detto, JavaScript è un linguaggio debolmente tipizzato;
           se questo aggiunge notevole flessibilità durante lo sviluppo, d'altro canto aggiunge una maggiore possibilità di bug.
-          Anche TypeScript, che offre un sistema di tipi molto più completo, risulta anomalo per via della natura strutturale della tipizzazione implementata.
+          Anche TypeScript, che offre un sistema di tipi molto più completo, risulta talvolta anomalo per via della natura strutturale della tipizzazione implementata.
 
           Scala mette a disposizione un type system allo stesso tempo più espressivo e più rigoroso, di conseguenza può risultare più \emph{user-friendly} sia durante lo sviluppo che in fase di debug.
 
@@ -239,13 +239,13 @@
       Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
 
     \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}
-      Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato Koltin/JS~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
-      Il progetto si colloca in un progetto di più ampio respiro, ossia Kotlin/Multiplatform~\cite{Jemerov2017}, presentato al termine dello stesso anno in concomitanza con Kotlin 1.2, che mira a integrare anche il supporto a LLVM\@.
+      Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato \emph{Koltin/JS}~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
+      Il progetto si colloca in un progetto di più ampio respiro, ossia \emph{Kotlin/Multiplatform}~\cite{Jemerov2017}, presentato al termine dello stesso anno in concomitanza con Kotlin 1.2, che mira a integrare anche il supporto ad altri target, tra cui ad esempio LLVM\@.
 
       L'intento è molto simile a quello di Scala.js:
-      fornire un linguaggio solido per la realizzazione di componenti web (ad esempio un frontend) con lo stesso codice in esecuzione sul server su cui dialogare, in modo da coprire l'intero sistema nel modo più omogeneo possibile.
+      fornire un linguaggio solido per la realizzazione di componenti web (ad esempio un frontend) con lo stesso codice in esecuzione sul server con cui dialogare, in modo da coprire l'intero sistema nel modo più omogeneo possibile.
 
-      Kotlin, a differenza di quanto avviene in Scala.js, però, prevede l'utilizzo di sorgenti differenti per la parte comune (\emph{common source set}), che modella il sistema in Kotlin puro, e per la parte specifica di un particolare target:
+      Kotlin, a differenza di quanto avviene in Scala.js, però, prevede l'utilizzo di sorgenti separati per la parte comune (\emph{common source set}), che modella il sistema in Kotlin puro, e per la parte specifica di ciascun particolare target:
       in questo modo, differenti piattaforme possono avere implementazioni più vicine alle rispettive native, avvalendosi di librerie specifiche fornite dal sistema o da terze parti.
       % Questo pattern è realizzato attraverso le parole chiave \texttt{expected} e \texttt{actual} anteposte alle definizioni che
 
@@ -253,7 +253,7 @@
       \begin{itemize}
         \item
           per quanto l'intera libreria standard sia stata portata da JetBrains sulle diverse piattaforme nel modo più trasparente possibile, le piattaforme di esecuzione rimangono differenti.
-          Di conseguenza, alcuni costrutti molto specifici strettamente legati alla JVM come la reflection non sono disponibili sul target JS\@.
+          Di conseguenza, alcuni costrutti molto specifici strettamente legati alla JVM (come ad esempio la reflection) non sono disponibili sul target JS\@.
         \item
           per garantire il supporto corretto ai tipi, è necessaria la presenza di codice \emph{wrapper} che li modelli.
           JetBrains ha realizzato gli adattamenti solo per poche librerie, principalmente legate a React, e ha messo a disposizione alcuni strumenti per la conversione delle definizioni di tipo di TypeScript.

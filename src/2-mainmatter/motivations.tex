@@ -1,14 +1,8 @@
 \chapter{Motivazioni}\label{ch:motivations}
 
-  \unsure[inline]{
-    Secondo me, questo capitolo dovrebbe essere inserito DOPO aver illustrato la programmazione aggregata e le tecnologie web.
-
-    In questo modo, si avrebbe anche meno la sensazione di ``ripetuto'' avuta da abstract -> introduzione -> motivazioni tutte in fila.
-  }
-
   Come detto nell'\nameref{ch:intro}, il rapido aumento di dispositivi capaci di computare e distribuiti nell'ambiente ha reso necessario ideare nuovi paradigmi di programmazione.
-  Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si tratterà più nel dettaglio nel~\Cref{ch:aggregate}.
-  In questo \nameCref{ch:motivations}, invece, verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
+  Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si è trattato nel dettaglio nel~\Cref{ch:aggregate}.
+  In questo \nameCref{ch:motivations} verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
   mettendo in evidenza le ragioni per la quale è stato realizzato questo progetto di tesi.
 
   \section{Stato dell'arte}\label{sec:state-of-art}
@@ -22,7 +16,7 @@
   \subsection{Iniziare un progetto Protelis}\label{subsec:setup}
 
   I due principali linguaggi di programmazione aggregata che implementano il modello teorico del field calculus sono Protelis e ScaFi.
-  ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di questo linguaggio;
+  ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di progetti utilizzanti tale linguaggio;
   poiché sono già state realizzate tesi~\cite{amslaurea12188,amslaurea16824} incentrate sull'esecuzione di ScaFi,
   è stato richiesto di concentrarsi, in questa tesi, solamente su Protelis.
 
@@ -50,11 +44,11 @@
       \end{figure}
 
       Alchemist può essere utilizzato all'interno di altro software in ambiente Java come libreria di virtualizzazione, oppure in modo indipendente tramite linea di comando\footnote{\url{https://github.com/Protelis/Protelis-Alchemist-tutorial}}.
-      In questo secondo caso, è possibile definire il codice Protelis insieme a file YAML di configurazione ed utilizzare il file jar eseguibile di Alchemist.
+      In questo secondo caso, è possibile definire il codice Protelis insieme a file di configurazione in formato YAML e specificarli al lancio del file jar eseguibile di Alchemist.
       Il simulatore mette a disposizione un'interfaccia grafica minimale per la visualizzazione e il controllo della simulazione.
 
     \item[ProtelisVM]\cite{amslaurea19778}
-      Un'altra possibilità, più moderna, è tramite l'importazione del framework di Protelis nel \emph{classpath} di un progetto Java, ad esempio prelevandolo come dipendenza Maven.
+      Un'altra possibilità è tramite l'importazione del framework di Protelis nel \emph{classpath} di un progetto Java, ad esempio prelevandolo come dipendenza Maven.
       Il framework mette a disposizione una classe denominata \texttt{ProtelisVM} (\Cref{fig:protelisvm}), che si occupa di eseguire un programma Protelis in un \texttt{ExecutionContext},
       ossia un'astrazione del dispositivo esecutore che si frappone tra la macchina virtuale e l'ambiente fisico.
 
@@ -80,12 +74,13 @@
   \subsection{Ambienti di sviluppo online}\label{subsec:online-ide}
 
   Con il progredire delle capacità delle applicazioni JavaScript per browser e della popolarità del linguaggio stesso, sono nate numerose implementazioni di IDE (\emph{Integrated Development Environment}) in grado di eseguire all'interno di una pagina web, comunicando al più con un \emph{language server} remoto.
-  Inizialmente appannaggio di ambienti per la prototipazione di codice JavaScript (in quanto si avvalevano del motore nativamente integrato nel browser per l'esecuzione), recentemente molti linguaggi offrono un ambiente, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
+  Inizialmente sono stati appannaggio di ambienti per la prototipazione di codice JavaScript, in quanto si avvalevano del motore nativamente integrato nel browser per l'esecuzione;
+  attualmente molti linguaggi offrono un ambiente di questo tipo, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
 
   Alcuni ambienti di questo tipo, addirittura, sono in grado di offrire un'esperienza utente tanto immediata e completa da venire preferiti a installazioni desktop tradizionali.
   È questo il caso, ad esempio, di Overleaf. \unsure{Dovrei inserire delle immagini descrittive (come uno screenshot)? Secondo me sono più corrette nella sezione di design, ma potrebbero starci anche qua}
 
-  Overleaf\footnote{\url{https://www.overleaf.com}} è un editor per \LaTeX{} completamente online che permette all'utente di scrivere documenti tramite browser;
+  \emph{Overleaf}\footnote{\url{https://www.overleaf.com}} è un editor per \LaTeX{} completamente online che permette all'utente di scrivere documenti tramite browser;
   il sorgente del markup viene compilato in modo trasparente all'utente, il quale deve preoccuparsi unicamente del contenuto che sta scrivendo.
   Questo risparmia agli utenti inesperti la fase di installazione e configurazione di una distribuzione \LaTeX{} e la scelta di un editor tra i tanti disponibili.
 
@@ -105,4 +100,5 @@
   L'intenzione è quella di realizzare un sistema software distribuito che offra all'utente la possibilità di utilizzare un linguaggio di programmazione aggregata nel modo più trasparente possibile.
   In particolare, tramite un'interfaccia Single-Page accessibile tramite browser, l'utente dovrebbe poter accedere alle API di un server che nascondono completamente tutta la complessità di configurazione di una rete (reale o simulata) e di un progetto Java/Scala.
 
-  Il linguaggio di riferimento per il prototipo dovrebbe essere Protelis, ma il sistema dovrebbe, potenzialmente, essere estendibile a ScaFi e ad altri linguaggi futuri simili.
+  Il linguaggio di riferimento per il prototipo dovrebbe essere Protelis.
+  Il sistema dovrebbe comunque essere potenzialmente estendibile a ScaFi e ad altri linguaggi futuri simili.

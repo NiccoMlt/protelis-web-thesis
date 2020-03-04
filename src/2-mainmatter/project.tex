@@ -17,14 +17,14 @@
     \label{fig:architecture-design}
   \end{figure}
 
-  Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project}, si intende analizzare più nel dettaglio questa struttura (di cui si ha una rappresentazione grafica in~\Cref{fig:architecture-design}),
+  Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project}, si intende analizzare più nel dettaglio questa struttura (della quale si ha una rappresentazione grafica in~\Cref{fig:architecture-design}),
   focalizzandosi sui dettagli di ciascun componente.
 
   \section{Design dell'applicazione}\label{sec:client-design}
     % TODO: inserire breve introduzione sulle GUI
 
     \subsection{Mockup dell'interfaccia}\label{subsec:mockup}
-      Una volta chiariti i requisiti e le possibili fonti di ispirazione per la struttura della GUI da realizzare, sono stati disegnati dei mockup che potessero rappresentare una linea guida
+      Una volta chiariti i requisiti e le possibili fonti di ispirazione per la struttura della UI da realizzare, sono stati disegnati dei mockup che potessero rappresentare una linea guida
       per l'implementazione concreta dell'interfaccia.
 
       Come detto anche nella~\Cref{subsec:online-ide}, la struttura grafica dell'applicazione dovrebbe ispirarsi a quella di altri ambienti di sviluppo online,
@@ -49,19 +49,19 @@
       \end{figure}
 
       Nel mockup finale, riportato in~\Cref{fig:mockup}, si è preso molto ispirazione da questo tipo di struttura.
-      L'interfaccia dovrebbe infatti essere costituita dalle seguenti parti:
+      L'interfaccia dovrebbe infatti essere costituita dalle parti seguenti:
 
       \begin{itemize}
         \item
-          Una barra superiore, nella quale è riportato il nome e il logo del progetto, insieme a un selettore per il backend.
+          Una \emph{barra superiore}, nella quale è riportato il nome e il logo del progetto, insieme a un selettore per il backend.
           Nei primi mockup, tale selettore era posizionato nella sezione principale della pagina, ma successivamente si è preferito spostarlo per sfruttare al meglio lo spazio a disposizione.
         \item
-          Un blocco di sinistra, che costituisce la parte con cui l'utente può interagire per lavorare sul codice.
-          Il componente principale è appunto l'editor, un campo di testo ``avanzato'' che permette di visualizzare il codice Protelis di esempio e modificarlo.
+          Un \emph{blocco di sinistra}, che costituisce la parte con cui l'utente può interagire per lavorare sul codice.
+          Il componente principale è appunto l'editor, un campo di testo avanzato che permette di visualizzare il codice Protelis di esempio e modificarlo.
           Sotto di esso sono presenti i bottoni di controllo per interagire con l'esecuzione.
         \item
-          Un blocco di destra, che ospita un canvas in cui l'esecuzione viene rappresentata.
-          Al suo interno, verranno visualizzati i nodi su cui il codice sta eseguendo.
+          Un \emph{blocco di destra}, che ospita un canvas in cui l'esecuzione viene rappresentata.
+          Al suo interno verranno visualizzati i nodi su cui il codice sta eseguendo.
           % In questa sezione, i componenti principali sono:
           % \begin{description}
           %   \item[Editor]
@@ -90,7 +90,7 @@
 
   \section{Architettura del client}\label{sec:arch:client}
 
-    L'applicazione web che svolge il ruolo di client è a tutti gli effetti un'applicazione indipendente e dotata di interfaccia grafica.
+    L'applicazione web che svolge il ruolo di client è a tutti gli effetti un'applicazione indipendente dotata di interfaccia grafica.
     % Sono stati valutati i numerosi pattern di modellazione documentati in letteratura e, alla fine,
     Sono numerosi i pattern di modellazione documentati in letteratura.
     % Molti di questi (genericamente definiti ``MV*'', ossia \emph{\emph{M}odel, \emph{V}iew} e qualsiasi cosa, generalmente \emph{Controller} o \emph{ViewModel}) tendono a distinguere entità che modellano il dominio
@@ -109,7 +109,7 @@
 
       Per l'implementazione di questo prototipo, è stato scelto il framework React, sviluppato da Facebook e compatibile, ufficialmente o meno, con numerosi linguaggi.
       Tecnicamente React, senza prendere in considerazione gli strumenti sviluppati intorno ad esso, sarebbe una libreria per la costruzione di pagine web reattive e \emph{data-driven};
-      esso potrebbe essere considerato, riduttivamente, il \emph{view layer} dei pattern architetturali MV*.
+      esso potrebbe essere considerato, riduttivamente, il \emph{view layer} dei pattern architetturali \emph{MV*} (\emph{Model View Anything}).
       React non è però vincolato al pattern MVC come AngularJS o a MVVM come Angular dalla versione 2 in poi.
 
       % In AngularJS, ogni vista è associata ad un controller, che si occupa della gestione dei dati e della loro visualizzazione.
@@ -147,12 +147,6 @@
     \input{src/2-mainmatter/redux.tex}
       Nel caso di questo progetto, tale soluzione è stata ritenuta ottimale per il tipo di architettura che si intende realizzare.
 
-      \unsure[inline]{
-        A mio parere, analizzare Redux e il pattern Flux è \strong{fondamentale} per dare una rappresentazione dettagliata dell'architettura del client.
-
-        Però, non sono sicuro se il posto corretto in cui introdurla sia questo o prima. Nello stato dell'arte \emph{non} mi sembra corretto.
-      }
-
       Prendendo dunque in considerazione il mockup delineato alla~\Cref{subsec:mockup}, lo store sarebbe costituito dalle seguenti parti (dette \emph{slice}):
 
       \begin{description}
@@ -185,10 +179,10 @@
     \begin{itemize}
       \item
         un sistema composto da microservizi indipendenti è più semplice da scalare,
-        in quanto è possibile scalare ciascun servizio in modo indipendente dagli altri, a seconda delle esigenze.
+        in quanto è possibile replicare ciascun servizio in modo indipendente dagli altri, a seconda delle esigenze.
       \item
         l'approccio a microservizi risulta generalmente più semplice da manutenere,
-        in quanto disaccoppia i servizi tra loro, rendendo chiare le dipendenze e permettendo lo sviluppo indipendente delle componenti.
+        in quanto disaccoppia i servizi tra loro, rendendo chiare le dipendenze condivise e permettendo lo sviluppo indipendente delle componenti.
       \item
         offrono un'integrazione migliore con orchestratori cloud e permettono di impiegare tecnologie di \emph{continuous deployment} (CD) in modo più efficiente.
     \end{itemize}
@@ -221,7 +215,7 @@
         \item
           Il primo, chiamato \texttt{BridgeVerticle}, è dedicato alla gestione delle API per la comunicazione da e verso l'esterno.
           % Esso si avvale dell'EventBus di Vert.x per comunicare con l'esterno
-          In particolare, esso implementa il pattern Bridge relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
+          In particolare, esso implementa il pattern \emph{bridge} relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
           % In questo modo, all'interno dell'applicazione, tutte le istanze dei verticle interessati possono essere
           Gestendo le comunicazioni con l'esterno, esso astrae l'intero processo di gestione del protocollo di comunicazione dalle altre componenti dell'applicazione.
         \item
