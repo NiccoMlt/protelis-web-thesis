@@ -3,7 +3,7 @@
 % Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo sempre crescente,
 Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo notevole.
 Grazie all'incremento della potenza computazionale disponibile a basso costo, alla riduzione delle dimensioni delle unità di calcolo e alla diffusione delle reti wireless,
-ormai gli ambienti in cui vive la maggior parte della popolazione sono pervasi di sensori (il cosiddetto \emph{IoT}, Internet delle Cose) e di dispositivi ``smart'' (come smartphone e tablet).
+ormai molti degli ambienti in cui vive la maggior parte della popolazione sono pervasi di sensori (il cosiddetto \emph{IoT}, Internet delle Cose) e di dispositivi ``smart'' (come smartphone e tablet).
 
 Questo ha portato alla necessità di programmare sistemi distribuiti composti da numerosi dispositivi che devono potersi coordinare tra loro
 per poter portare a termine la computazione.
@@ -13,7 +13,7 @@ Tale paradigma è basato sull'impianto teorico del \emph{field calculus} e ha vi
 da parte dell'Università di Bologna, di linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale:
 \emph{Protelis} e \emph{ScaFi}.
 
-Entrambi si avvalgono della piattaforma JVM per poter essere eseguiti;
+Entrambi si avvalgono della piattaforma JVM (\emph{\emph{J}ava \emph{V}irtual \emph{M}achine}) per poter essere eseguiti;
 come vedremo, questo garantisce numerose proprietà, ma può essere limitante in contesti didattici.
 Infatti, la necessità di possedere una rete reale di dispositivi o di configurare un simulatore per l'esecuzione
 aggiunge ulteriore complessità per un novizio che voglia approcciarsi alla tecnologia.
@@ -27,21 +27,21 @@ bensì sfruttarle solo quando necessario, appoggiandosi alla potenza computazion
 
 Si è dunque ritenuto utile realizzare un sistema web semplice e immediato da usare che permetta di abbozzare esempi di codice aggregato
 (Protelis, nel prototipo implementato per questa tesi) e poterlo eseguire senza disporre di una rete di dispositivi o di un simulatore configurati per lo scopo.
-In particolare, si è deciso di propendere per l'implementazione di un backend reattivo su piattaforma JVM che esegue, su una rete di dispositivi simulata tramite il simulatore Alchemist, il codice inviato da un client.
-Il client è una \emph{Single-Page Application} statica che permette lo sviluppo di codice direttamente dal browser e comunica con il server tramite bus di eventi.
+In particolare, si è deciso di propendere per l'implementazione di un backend reattivo su piattaforma JVM che esegue il codice inviato dal client su una rete di dispositivi simulata tramite il simulatore Alchemist~\cite{alchemist-jos2013}.
+Il client è una \emph{Single-Page Application} statica che permette lo sviluppo di codice direttamente dal browser e comunica con il server tramite un bus di eventi via socket.
 
 \bigskip
 
 Il documento è suddiviso in tre \nameCrefs{part:background} principali.
 
 Nella~\Cref{part:background} viene fatta una disamina del contesto nel quale l'elaborato di tesi va a inserirsi.
-In particolare, nel~\Cref{ch:motivations} vengono esaminate più nel dettaglio le ragioni per le quali il progetto è stato realizzato,
-con particolare attenzione allo stato dell'arte e a possibili soluzioni a problemi simili.
-Nel~\Cref{ch:aggregate} del documento viene fatta un'introduzione alla programmazione aggregata, con particolare attenzione all'impianto teorico su cui si basa e ai linguaggi ad essa collegati.
+In particolare, nel~\Cref{ch:aggregate} del documento viene fatta un'introduzione alla programmazione aggregata, con particolare attenzione all'impianto teorico su cui si basa e ai linguaggi ad essa collegati.
 Nel~\Cref{ch:web} viene invece fatta riportato il risultato della fase di studio dello stato dell'arte in merito allo sviluppo di sistemi web,
 con particolare attenzione ai linguaggi che permettono la realizzazione di applicazioni frontend in esecuzione sui browser degli utenti.
+Nel~\Cref{ch:motivations} vengono esaminate più nel dettaglio le ragioni per le quali il progetto è stato realizzato,
+con particolare attenzione allo stato dell'arte e a possibili soluzioni a problemi simili.
 
 Nella~\Cref{part:contribution} viene analizzato il processo di progettazione del sistema a cui questo elaborato di tesi si riferisce e di sviluppo del prototipo.
 Ciascuna fase del processo è descritta in un \nameCref{ch:requirements} dedicato.
 
-Infine, nella~\Cref{part:conclusion} vengono raccolti i risultati del processo di sviluppo (\Cref{ch:evaluation}), presentate le prospettive future (\Cref{ch:future}) ed enunciate brevemente le considerazioni finali (\Cref{ch:considerations}).
+Infine, nella~\Cref{part:conclusion} vengono raccolti i risultati del processo di sviluppo (\Cref{ch:evaluation}), presentate le prospettive future del sistema prodotto (\Cref{ch:future}) ed enunciate brevemente le considerazioni finali (\Cref{ch:considerations}) a conclusione di questa tesi.

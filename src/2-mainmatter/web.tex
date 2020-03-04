@@ -34,14 +34,14 @@
   %     Nascono numerosi framework client-side (come Angular, Ember o React) e l'impiego del server viene sempre più circoscritto al fornire API per accesso controllato ai dati (ad esempio, un database) o per computazioni complesse.
   % \end{enumerate}
 
-  Nel periodo iniziale del web ciascuna pagina era inviata al client come documento statico;
+  Nel periodo iniziale del web, ciascuna pagina era inviata al client come documento statico;
   in questo caso, i server si occupavano della computazione di quanto richiesto dall'utente (anche appoggiandosi a servizi esterni tramite \emph{Common Gateway Interface}~\cite{Coar2004}) e della composizione del documento.
 
   Nel corso degli anni, sono stati sviluppati linguaggi di scripting (come JavaScript e Macromedia Flash) in grado di aumentare le possibilità di interazione lato client, riducendo la quantità di dati trasferiti tra il server web e il browser:
-  non viene infatti più scaricata una nuova pagina ad ogni azione dell'utente, bensì solo i dati richiesti tramite chiamate \emph{ajax} (\emph{Asynchronous JavaScript And XML});
-  il documento viene poi manipolato inserendo i dati ricevuti.
+  non viene infatti più scaricata una nuova pagina ad ogni azione dell'utente, bensì solo i dati richiesti tramite chiamate \emph{AJAX} (\emph{Asynchronous JavaScript And XML});
+  il documento viene poi manipolato localmente inserendo i dati ricevuti.
 
-  Con l'avvento di HTML5~\cite{Smith2008}, viene introdotto il supporto nativo ai contenuti multimediali ed arricchita la semantica del documento;
+  Con l'avvento di HTML~5~\cite{Smith2008}, viene introdotto il supporto nativo ai contenuti multimediali ed arricchita la semantica del documento;
   inoltre JavaScript riceve un supporto di prima classe e la necessità di plugin esterni come Flash diminuisce.
 
   Vengono sviluppati numerosi framework per la realizzazione di applicazioni costituite da una singola pagina (\emph{SPA}, \emph{Single-Page Application}), in grado di offrire l'esperienza d'uso di un applicativo desktop.
@@ -50,7 +50,7 @@
   \improvement[inline]{Dovrei aggiungere qualche immagine per ridurre l'effetto wall-of-text?}
 
   \improvement[inline]{
-    Inizialmente avevo inserito una storia dell'evoluzione delle architetture client-side e server-side, ma poi mi sono reso conto che risultava un po' fuori contesto e l'ho tolta.
+    Inizialmente avevo inserito una storia dell'evoluzione delle architetture client-side e \strong{server-side}, ma poi mi sono reso conto che risultava un po' fuori contesto e l'ho tolta.
 
     Ritenete invece che potesse avere il suo senso come background? Nel caso posso reintegrarla velocemente.
   }
@@ -71,7 +71,7 @@
 
   \section{Linguaggi ad uso web}\label{sec:lang}
     In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.
-    In particolare, verranno presi in considerazione i due linguaggi più popolari, ossia \emph{JavaScript} e il suo super-set \emph{TypeScript}, e due linguaggi di nicchia che offrono una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
+    In particolare, verranno presi in considerazione i due linguaggi più popolari in questo contesto, ossia \emph{JavaScript} e il suo super-set \emph{TypeScript}, e due linguaggi provenienti da una diversa nicchia che possono offrire una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
 
     \subsection{JavaScript e ECMAScript}\label{subsec:js}
 
@@ -84,18 +84,18 @@
       %   \label{fig:js}
       % \end{wrapfigure}
 
-      \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato multi-paradigma, con supporto agli stili di programmazione funzionale, ad eventi, orientato agli oggetti.
-      % \begin{inparaitem}
-      %   \item funzionale,
-      %   \item ad eventi,
-      %   \item orientato agli oggetti.
-      % \end{inparaitem}
-      Sviluppato originariamente nel 1995 da Brendan Eich della Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
+      \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato multi-paradigma, con supporto agli stili di programmazione % funzionale, ad eventi, orientato agli oggetti.
+      \begin{inparaitem}
+        \item funzionale,
+        \item ad eventi,
+        \item orientato agli oggetti.
+      \end{inparaitem}
+      Sviluppato originariamente nel 1995 da Brendan Eich per Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
       esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
       JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISO:1998} e l'attuale versione è la decima.
 
       Il linguaggio è attualmente il più popolare per uso web, in quanto l'unico ad essere supportato da tutti i browser moderni, almeno nelle sue feature principali.
-      Diversi linguaggi, come quelli che vedremo in seguito, vengono transcompilati in una versione sufficientemente supportata di JS per poter essere eseguiti nei browser.
+      Diversi linguaggi, come quelli che vedremo in seguito, vengono transcompilati in una versione sufficientemente supportata di JS da poter essere eseguiti nei browser.
 
       Analizzato dal punto di vista tecnico, esso presenta i seguenti aspetti strutturali:
 
