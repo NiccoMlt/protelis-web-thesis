@@ -95,7 +95,7 @@
     \subsubsection{Backend}
 
       Il progetto di backend utilizza Gradle per la risoluzione delle dipendenze, la costruzione del software e la verifica della qualità.
-      Gradle è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} originariamente in Groovy e più recentemente anche in Kotlin.
+      \emph{Gradle} è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} originariamente in Groovy e più recentemente anche in Kotlin.
       Pensato per i linguaggi che compilano per JVM, questo sistema permette di scaricare le dipendenze da diversi repository Maven durante la fase di compilazione.
       Nello script di costruzione sono stati utilizzati i seguenti plugin:
 
@@ -104,7 +104,7 @@
           Il plugin, sviluppato da John Engelman, permette la generazione di ``shadow jar'', ossia pacchetti jar contenenti anche tutte le dipendenze oltre al codice compilato.
 
         \item[Vert.x Gradle Plugin]
-          Il plugin, sviluppato da Julien Ponge e adottato semi-ufficialmente dai manutentori del progetto Vert.x, fornisce una configurazione del progetto ottimizzata per progetti Vert.x.
+          Il plugin, sviluppato da Julien Ponge e adottato quasi ufficialmente dai manutentori del progetto Vert.x, fornisce una configurazione del progetto ottimizzata per progetti Vert.x.
           Rende possibile il lancio dei verticle in modo indipendente e con la ricompilazione automatica, molto comodo in sede di sviluppo e debug.
 
         \item[Kotlin]
@@ -120,12 +120,12 @@
           Il plugin, sviluppato da Jean-Michel Fayard, permette una migliore gestione delle dipendenze automatizzandone gli aggiornamenti.
 
         \item[JUnit]
-          JUnit è uno dei più noti framework di unit testing per Java e linguaggi derivati.
+          \emph{JUnit} è uno dei più noti framework di unit testing per Java e linguaggi derivati.
           Il plugin, integrato ufficialmente in Gradle, permette l'esecuzione di test automatizzati con tale framework.
 
           In questo progetto è stata utilizzata la versione 5 di JUnit, utilizzando il motore di esecuzione \emph{jupiter}.
         \item[JaCoCo]
-          JaCoCo è uno strumento per la misura della copertura del codice da parte dei test realizzati.
+          \emph{JaCoCo} è uno strumento per la misura della copertura del codice da parte dei test realizzati.
           Si integra con JUnit ed è pensato per Java e linguaggi derivati.
           Il plugin, integrato ufficialmente in Gradle, offre una dettagliata configurazione e permette la generazione di report in diversi formati.
       \end{description}
@@ -140,7 +140,7 @@
 
       \begin{description}
         \item[Yarn]
-          Come \emph{package manager} per la gestione delle dipendenze è stato scelto yarn anziché NPM\@.
+          Come \emph{package manager} per la gestione delle dipendenze è stato scelto \emph{Yarn} anziché NPM\@.
           Esso, oltre a essere la scelta consigliata da React, presenta alcuni vantaggi rispetto alla controparte:
           \begin{itemize}
             \item La cartella delle dipendenze risulta generalmente più compatta in quanto utilizza collegamenti simbolici per le dipendenze condivise dai moduli JS risolti.
@@ -158,12 +158,12 @@
           del codice realizzato.
 
         \item[ESLint \& stile Airbnb]
-          ESLint è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
+          \emph{ESLint} è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
           Il pacchetto \texttt{react-scripts} fornisce una configurazione minimale, ma è consigliato di adottare uno stile (insieme di regole) tra quelli più famosi.
           In questo caso è stato scelto quello fornito da Airbnb. % , in quanto uno dei più popolari.
 
         \item[Jest]
-          Jest è un framework di test per JavaScript sviluppato da Facebook che fornisce tutti gli strumenti per la scrittura e l'esecuzione dei test e per la raccolta della loro copertura sul codice.
+          \emph{Jest} è un framework di test per JavaScript sviluppato da Facebook che fornisce tutti gli strumenti per la scrittura e l'esecuzione dei test e per la raccolta della loro copertura sul codice.
       \end{description}
 
       Per lo sviluppo del codice è stato utilizzato l'ambiente di sviluppo integrato \emph{JetBrains WebStorm} in versione \emph{2019.3.3}.
@@ -177,7 +177,7 @@
     %     \item \url{https://github.com/NiccoMlt/protelis-web-frontend} per il frontend.
     % \end{itemize}
 
-    Il codice è disponibile su GitHub nei repository GitHub Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}\improvement{Dovrei creare un DOI con Zotero?}
+    Il codice è disponibile su GitHub nei repository Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}\improvement{Dovrei creare un DOI con Zotero?}
     e protelis-web-frontend\footnote{\url{https://github.com/NiccoMlt/protelis-web-frontend}}.
     % Si è preferito utilizzare due depositi separati anziché raggruppare in ciò che viene generalmente definito \emph{monorepo} poiché le differenti ...
 
@@ -185,21 +185,21 @@
 
     \begin{description}
       \item[Travis CI]
-        Travis CI è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub.
+        \emph{Travis CI} è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub.
         Ad ogni operazione di push sul repository, il codice viene testato su tutte le maggiori piattaforme (Linux, Windows, MacOS) e le differenti versioni degli SDK (NodeJS LTS, AdoptOpenJDK con OpenJDK HotSpot e AdoptOpenJDK con Eclipse OpenJ9).
         Viene inoltre fatto un controllo sulla qualità del codice.
 
       \item[Codecov]
-        Tramite Codecov vengono raccolti i report di copertura del codice generati da JaCoCo e Jest, permettendo la visualizzazione online di grafici di dettaglio.
+        Tramite \emph{Codecov} vengono raccolti i report di copertura del codice generati da JaCoCo e Jest, permettendo la visualizzazione online di grafici di dettaglio.
         Al termine di ogni esecuzione di una \emph{pipeline} in Travis CI, i report sulla piattaforma di riferimento vengono pubblicati qui.
 
       \item[Codacy]
-        Codacy è uno strumento online per l'automazione della \emph{code review} che aggrega diversi strumenti di analisi del codice per numerosi linguaggi, generando report dettagliati.
+        \emph{Codacy} è uno strumento online per l'automazione della \emph{code review} che aggrega diversi strumenti di analisi del codice per numerosi linguaggi, generando report dettagliati.
         Ad ogni operazione di push sul repository, il codice viene verificato.
     \end{description}
 
   \subsection{Deployment}
-    Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar, senza la necessità di un hosting per Java EE\@.
+    Vert.x non si basa su \emph{servlet} e può essere eseguito su qualsiasi piattaforma permetta il lancio di un jar, senza la necessità di un hosting specifico per Java EE\@.
 
     Per motivi di test, il server è in esecuzione su due differenti piattaforme:
 
@@ -218,7 +218,7 @@
     \end{itemize}
 
     Il client React è compilato come un bundle JavaScript importato da una pagina HTML\@.
-    Esso non viene servito dal server Vert.x, bensì attraverso la piattaforma di hosting statico ZEIT Now, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
+    Esso non viene servito dal server Vert.x, bensì attraverso la piattaforma di hosting statico \emph{ZEIT Now}, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
 
     % Per quanto riguarda il \emph{continuous deployment} (CD), sarà trattato nel dettaglio nella sottosezione successiva.
 

@@ -47,29 +47,29 @@
 
     \begin{description}
       \item[Molecola]\label{itm:mol}
-        Una \emph{Molecola} rappresenta il nome dato ad un particolare dato all'interno di un \emph{Nodo}, del quale ne astrae parte dello stato.
+        Una \emph{molecola} rappresenta il nome dato ad un particolare dato all'interno di un \emph{nodo}, del quale ne astrae parte dello stato.
 
-        Un parallelismo con la programmazione imperativa vedrebbe la \emph{Molecola} come un'astrazione del nome di una variabile.
+        Un parallelismo con la programmazione imperativa vedrebbe la \emph{molecola} come un'astrazione del nome di una variabile.
 
       \item[Concentrazione]\label{itm:conc}
-        La \emph{Concentrazione} di una \emph{Molecola} è il valore associato alla proprietà rappresentata dalla \emph{Molecola}.
+        La \emph{concentrazione} di una \emph{molecola} è il valore associato alla proprietà rappresentata dalla \emph{molecola}.
 
-        Mantenendo il parallelismo con la programmazione imperativa, la \emph{Concentrazione} rappresenterebbe il valore della variabile.
+        Mantenendo il parallelismo con la programmazione imperativa, la \emph{concentrazione} rappresenterebbe il valore della variabile.
 
       \item[Nodo]\label{itm:node}
-        Il \emph{Nodo} è un contenitore di \emph{Molecole} e \emph{Reazioni} che risiede all'interno di un \emph{Ambiente} e che astrae una singola entità.
+        Il \emph{nodo} è un contenitore di \emph{molecole} e \emph{reazioni} che risiede all'interno di un \emph{ambiente} e che astrae una singola entità.
 
       \item[Ambiente]\label{itm:env}
-        L'\emph{Ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i \emph{Nodi}.
+        L'\emph{ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i \emph{nodi}.
 
-        Esso è in grado di fornire informazioni in merito alla posizione dei \emph{Nodi} nello spazio, alla distanza tra loro e al loro vicinato;
-        opzionalmente, l'\emph{Ambiente} può offrire il supporto allo spostamento dei \emph{Nodi}.
+        Esso è in grado di fornire informazioni in merito alla posizione dei \emph{nodi} nello spazio, alla distanza tra loro e al loro vicinato;
+        opzionalmente, l'\emph{ambiente} può offrire il supporto allo spostamento dei \emph{nodi}.
 
       \item[Regola di collegamento]\label{itm:linkr}
-        La \emph{Regola di collegamento} è una funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
+        La \emph{regola di collegamento} è una funzione dello stato dell'\emph{ambiente} che associa ad ogni \emph{nodo} un \emph{vicinato}.
 
       \item[Vicinato]\label{itm:neigh}
-        Un \emph{Vicinato} è un'entità costituita da un \emph{Nodo} detto ``centro'' e da un insieme di altri \emph{Nodi} (i ``vicini'').
+        Un \emph{vicinato} è un'entità costituita da un \emph{nodo} detto ``centro'' e da un insieme di altri \emph{nodi} (i ``vicini'').
 
         L'astrazione dovrebbe avere un'accezione il più possibile generale e flessibile, in modo da poter modellare qualsiasi tipo di legame di vicinato, non solo spaziale.
 
@@ -81,29 +81,28 @@
         \end{figure}
 
       \item[Reazione]\label{itm:react}
-        Il concetto di \emph{Reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica:
-        in questo caso, si può considerare come un insieme di \emph{Condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
+        Il concetto di \emph{reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica:
+        in questo caso, si può considerare come un insieme di \emph{condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{azioni}.
 
-        Una \emph{Reazione} (di cui è si ha una rappresentazione grafica in \Cref{fig:alchemist:reaction}) è dunque un qualsiasi evento che può cambiare lo stato dell'\emph{Ambiente} e si compone di un insieme di \emph{Condizioni}, una o più \emph{Azioni} e una distribuzione temporale.
+        Una \emph{reazione} (di cui si ha una rappresentazione grafica in~\Cref{fig:alchemist:reaction}) è dunque un qualsiasi evento che può cambiare lo stato dell'\emph{ambiente} e si compone di un insieme di \emph{condizioni}, una o più \emph{azioni} e una distribuzione temporale.
 
         La frequenza di accadimento può dipendere da:
         \begin{itemize}
             \item Un tasso statico;
-            \item Il valore di ciascuna \emph{Condizione};
-            \item Una equazione che combina il tasso statico e il valore delle \emph{Condizioni}, restituendo un ``tasso istantaneo'';
+            \item Il valore di ciascuna \emph{condizione};
+            \item Una equazione che combina il tasso statico e il valore delle \emph{condizioni}, restituendo un ``tasso istantaneo'';
             \item Una distribuzione temporale.
         \end{itemize}
 
-        Ogni \emph{Nodo} è costituito da un insieme (anche vuoto) di \emph{Reazioni}.
+        Ogni \emph{nodo} è costituito da un insieme (anche vuoto) di \emph{reazioni}.
 
       \item[Condizione]\label{itm:cond}
-        Una \emph{Condizione} è una funzione che associa un valore numerico e un valore booleano allo stato corrente di un \emph{Ambiente}.
+        Una \emph{condizione} è una funzione che associa un valore numerico e un valore booleano allo stato corrente di un \emph{ambiente}.
 
       \item[Azione]\label{itm:act}
-        Un'\emph{Azione} è una procedura che provoca una modifica allo stato dell'\emph{Ambiente}.
+        Un'\emph{azione} è una procedura che provoca una modifica allo stato dell'\emph{ambiente}.
 
       \end{description}
 
-  % TODO: inserisci qualcosa su come Alchemist permette a Protelis di girare
-
-  \improvement[inline]{Qui dovrei descrivere anche l'incarnazione di Protelis per Alchemist?}
+    % TODO: inserisci qualcosa su come Alchemist permette a Protelis di girare
+    \improvement[inline]{Dovrei descrivere anche l'incarnazione di Protelis per Alchemist?}

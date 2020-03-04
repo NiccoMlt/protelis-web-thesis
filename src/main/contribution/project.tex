@@ -95,7 +95,7 @@
     Sono numerosi i pattern di modellazione documentati in letteratura.
     % Molti di questi (genericamente definiti ``MV*'', ossia \emph{\emph{M}odel, \emph{V}iew} e qualsiasi cosa, generalmente \emph{Controller} o \emph{ViewModel}) tendono a distinguere entità che modellano il dominio
     % Tra tutti quelli considerati, si è scelto di adottare il \emph{pattern Flux} nella variazione chiamata \emph{pattern Redux}.
-    La caratteristica maggiormente ricercata durante la progettazione è la reattività:
+    La caratteristica maggiormente ricercata durante la progettazione è la \emph{reattività}:
     il sistema dovrebbe aggiornarsi rapidamente sia quando l'utente lo richiede, interagendo via browser, sia quando il server manda un aggiornamento.
 
     % È stato dunque ritenuto necessario scegliere un approccio che ponesse al centro lo \emph{stato} del sistema, per poi scegliere, nella prossima fase, le tecnologie più adatte a reagire rapidamente alle sue variazioni.
@@ -246,9 +246,9 @@
       È risultato dunque naturale strutturare anche la comunicazione tra client e server utilizzando un modello a eventi.
 
       In particolare, l'EventBus di Vert.x supporta l'utilizzo di \emph{bridge} per la comunicazione remota attraverso numerosi protocolli.
-      Tra questi, quello identificato come più adatto è \emph{SockJS}\@.
+      Tra questi, quello identificato come più adatto è SockJS\@.
 
-      SockJS è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
+      \emph{SockJS} è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
       Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando su \emph{polling} tramite HTTP standard in caso assenza.
       Tramite un protocollo di questo tipo, è possibile realizzare un canale di comunicazione bidirezionale veloce, adatto per il trasferimento di un elevato numero di eventi come nel caso di questo progetto di tesi.
 
@@ -264,26 +264,26 @@
 
       \begin{itemize}
         \item
-          il primo passo è instaurare la connessione.
+          Il primo passo consiste nell'instaurare la connessione.
           La pressione di un bottone genera un'azione sullo store che abilita la connessione SockJS verso il backend.
           L'utente viene notificato del risultato dell'operazione attraverso la generazione, da parte del sistema, di azioni con le relative permutazioni dello stato.
           % In questo modo, l'interfaccia permette all'utente di trovare un backend valido e di collegarcisi attraverso socket.
         \item
-          una volta che il codice Protelis è pronto per essere lanciato, l'utente utilizzerà il bottone dedicato per eseguirlo.
+          Una volta che il codice Protelis è pronto per essere lanciato, l'utente utilizzerà il bottone dedicato per eseguirlo.
           Questo causa la creazione di un'azione di richiesta di upload del codice;
           esso è già presente nello store, dal quale viene prelevato e inoltrato tramite socket al server.
         \item
-          il verticle riceve l'evento tramite EventBus;
+          Il verticle riceve l'evento tramite EventBus;
           procede dunque costruendo un simulatore, al quale viene assegnato un identificativo univoco e un componente osservatore.
           Dopodiché, tramite EventBus viene inviato l'identificativo.
         \item
-          il client riceve questo ID tramite socket e un'azione di Redux viene generata.
+          Il client riceve questo ID tramite socket e un'azione di Redux viene generata.
           La vista viene aggiornata di conseguenza, informando l'utente dell'avvenuta configurazione e dell'imminente avvio dell'esecuzione.
         \item
-          quando il motore di simulazione esegue uno step, il componente osservatore viene notificato.
+          Quando il motore di simulazione esegue uno step, il componente osservatore viene notificato.
           Viene dunque generato un evento sul bus degli eventi diretto verso l'esterno, su un indirizzo legato all'identificativo iniziale e alla tipologia di variazione avvenuta nella simulazione (step iniziale, \emph{round} d'esecuzione, terminazione).
         \item
-          quando l'esecuzione viene terminata sul simulatore, il client viene notificato dell'evento nello stesso modo con cui ha ricevuto i vari aggiornamenti.
+          Quando l'esecuzione viene terminata sul simulatore, il client viene notificato dell'evento nello stesso modo con cui ha ricevuto i vari aggiornamenti.
           Sul server, l'ID verrà classificato come terminato e il simulatore potrà essere riutilizzato o distrutto a seconda delle necessità.
       \end{itemize}
 

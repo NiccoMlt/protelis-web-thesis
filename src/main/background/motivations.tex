@@ -2,6 +2,7 @@
 
   Come detto nell'\nameref{ch:intro}, il rapido aumento di dispositivi capaci di computare e distribuiti nell'ambiente ha reso necessario ideare nuovi paradigmi di programmazione.
   Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si è trattato nel dettaglio nel~\Cref{ch:aggregate}.
+
   In questo \nameCref{ch:motivations} verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
   mettendo in evidenza le ragioni per la quale è stato realizzato questo progetto di tesi.
 
@@ -16,7 +17,7 @@
   \subsection{Iniziare un progetto Protelis}\label{subsec:setup}
 
   I due principali linguaggi di programmazione aggregata che implementano il modello teorico del field calculus sono Protelis e ScaFi.
-  ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di progetti utilizzanti tale linguaggio;
+  ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di progetti basati su tale linguaggio;
   poiché sono già state realizzate tesi~\cite{amslaurea12188,amslaurea16824} incentrate sull'esecuzione di ScaFi,
   è stato richiesto di concentrarsi, in questa tesi, solamente su Protelis.
 
@@ -74,9 +75,9 @@
   \subsection{Ambienti di sviluppo online}\label{subsec:online-ide}
 
   Con il progredire delle capacità delle applicazioni JavaScript per browser e della popolarità del linguaggio stesso, sono nate numerose implementazioni di IDE (\emph{Integrated Development Environment}) in grado di eseguire all'interno di una pagina web, comunicando al più con un \emph{language server} remoto.
+
   Inizialmente sono stati appannaggio di ambienti per la prototipazione di codice JavaScript, in quanto si avvalevano del motore nativamente integrato nel browser per l'esecuzione;
   attualmente molti linguaggi offrono un ambiente di questo tipo, spesso chiamato \emph{playground}, in cui sperimentare (ad esempio Kotlin, TypeScript o Scala).
-
   Alcuni ambienti di questo tipo, addirittura, sono in grado di offrire un'esperienza utente tanto immediata e completa da venire preferiti a installazioni desktop tradizionali.
   È questo il caso, ad esempio, di Overleaf. \unsure{Dovrei inserire delle immagini descrittive (come uno screenshot)? Secondo me sono più corrette nella sezione di design, ma potrebbero starci anche qua}
 

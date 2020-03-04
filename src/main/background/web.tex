@@ -71,7 +71,8 @@
 
   \section{Linguaggi ad uso web}\label{sec:lang}
     In questa \nameCref{sec:lang} verranno analizzati i principali linguaggi di programmazione utilizzati recentemente per lo sviluppo della componente frontend delle applicazioni web.
-    In particolare, verranno presi in considerazione i due linguaggi più popolari in questo contesto, ossia \emph{JavaScript} e il suo super-set \emph{TypeScript}, e due linguaggi provenienti da una diversa nicchia che possono offrire una valida alternativa: \emph{Scala.js} e \emph{Kotlin/JS}\@.
+    In particolare, verranno presi in considerazione i due linguaggi più popolari in questo contesto, ossia \emph{JavaScript} e il suo super-set \emph{TypeScript}, e due linguaggi non nativi della piattaforma che possono offrire una valida alternativa:
+    \emph{Scala.js} e \emph{Kotlin/JS}\@.
 
     \subsection{JavaScript e ECMAScript}\label{subsec:js}
 
@@ -129,7 +130,7 @@
           JavaScript offre un supporto di prima classe alle funzioni, che sono considerate oggetti;
           come tali, esse possono avere delle proprietà, come ad esempio \texttt{.bind()} e \texttt{.call()}. % ChkTeX 36
 
-          Ciascuna funzione costituisce una chiusura lessicale.
+          Ciascuna funzione costituisce una \emph{chiusura lessicale}.
 
           All'interno degli oggetti, le proprietà di tipo funzione vengono utilizzate come costruttori e come metodi.
           Infine, le funzioni possono essere utilizzate anche per l'implementazione di \emph{pattern di ruolo} come i \emph{tratti} e i \emph{mixin}.
@@ -167,7 +168,7 @@
               In JavaScript, sono considerati \emph{falsy} valori come \texttt{NaN}, \texttt{0} e la stringa vuota che, pur non essendo \texttt{null} o \texttt{undefined},
               vengono trattati come valori ``non presenti'' e dunque come \texttt{false} dagli operatori booleani.
               Per ridurre la possibilità di bug dovuto a questo tipo di valori, sono stati definiti gli operatori di \emph{nullish coalescing} ``\texttt{??}'' e di \emph{safe navigation} ``\texttt{.?}''.
-              Definiti sulla base di una precedente proposta ECMAScript~\cite{optional}, solo più tardi integrata, sono stati introdotti con la versione 3.7.3 di TypeScript.
+              Definiti sulla base di una precedente proposta ECMAScript~\cite{optional}, solo più tardi integrata, sono stati introdotti con la versione 3.7 di TypeScript.
           \end{description}
         \item
           l'introduzione di un sistema di \emph{tipizzazione statica} opzionale che possa integrarsi nel modo più trasparente possibile nella sintassi JavaScript standard;
@@ -178,23 +179,6 @@
       Il sistema di tipi viene presentato come \emph{class-based} (in contrapposizione al \emph{prototype-based} tipico di JavaScript, soprattutto prima dell'introduzione dello zucchero sintattico per le classi), ma mantiene le caratteristiche di structural subtyping citate precedentemente.
       Avvalendosi di ciò, il linguaggio permette la definizione di tipi complessi;
       è garantito il supporto ai generici, esteso da un'algebra dei tipi molto flessibile che permette unione, intersezione e condizionalità, oltre alla possibilità di accesso ai tipi delle singole proprietà.
-
-      % Il linguaggio permette la definizione di interfacce che descrivono la struttura delle proprietà attese al compilatore.
-      % Tali interfacce offrono la possibilità di definire tipi complessi:
-
-      % \begin{description}
-      %   \item[Tipi funzione]
-      %     Tramite le interfacce è possibile definire le strutture di funzioni, che possono essere implementate in modo anonimo nel codice attraverso il costrutto \texttt{function} o ``\emph{fat arrow}'' (\texttt{=>}).
-      %     % \inputminted{typescript}{res/code/functionType.ts}
-      %   \item[Indexable Types]
-      %     È possibile
-      % \end{description}
-
-      % \begin{itemize}
-      %   \item \emph{tipi funzione}, che definiscono l'oggetto come una funzione di una determinata struttura;
-      %   \item \emph{tipi indicizzabili}, che definiscono oggetti che possono fornire l'accesso a proprietà interne tramite \emph{bracket notation} (ad esempio, l'\texttt{Array});
-      %   \item \emph{tipi ibridi}, con i quali è possibile interagire tramite differenti notazioni
-      % \end{itemize}
 
       La generazione dei metadati per la descrizione dei tipi permette un'integrazione migliore di TypeScript e JavaScript con gli ambienti di sviluppo;
       inoltre, negli anni è diventato lo standard de-facto per la documentazione dei moduli per il linguaggio, sostituendo le soluzioni basate sul parsing dei commenti come JSDoc.
@@ -219,10 +203,7 @@
           secondo il sito ufficiale, generalmente si parte dai \(\SI{45}{\kilo\byte}\) per un'intera applicazione compressa in gzip.
           Questo permette di avere buone performance al primo caricamento dell'applicazione web.
 
-        % \item[Interoperabilità \& riuso]
         \item[Interoperabilità con JavaScript]
-          % Un terzo vantaggio risiede nelle possibilità di interoperare con codice già esistente, sia con JavaScript che con Scala.
-          % In particolare,
           Scala.js è dichiaratamente compatibile con qualsiasi modulo JavaScript, purché sia dotato del codice \emph{façade} necessario per garantirne il type checking.
           Il team che mantiene il progetto ha effettuato il wrapping di numerose librerie di uso comune (50 al momento della scrittura) e mette a disposizione uno strumento di conversione automatico per le definizioni di tipo generate dal compilatore di TypeScript.
           Data la popolarità di quest'ultimo, la copertura può essere dunque considerata elevata.
@@ -238,7 +219,7 @@
       % Oltre al supporto semi-ufficiale a React e altri framework e librerie per la realizzazione di SPA, Scala offre un'integrazione di prima classe anche con tecnologie backend molto famose come il Play Framework di Lightbend.
       Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
 
-    \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}
+    \subsection{Kotlin/Multiplatform \& Kotlin/JS}\label{subsec:kotlinjs}
       Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato \emph{Koltin/JS}~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
       Il progetto si colloca in un progetto di più ampio respiro, ossia \emph{Kotlin/Multiplatform}~\cite{Jemerov2017}, presentato al termine dello stesso anno in concomitanza con Kotlin 1.2, che mira a integrare anche il supporto ad altri target, tra cui ad esempio LLVM\@.
 
@@ -247,7 +228,6 @@
 
       Kotlin, a differenza di quanto avviene in Scala.js, però, prevede l'utilizzo di sorgenti separati per la parte comune (\emph{common source set}), che modella il sistema in Kotlin puro, e per la parte specifica di ciascun particolare target:
       in questo modo, differenti piattaforme possono avere implementazioni più vicine alle rispettive native, avvalendosi di librerie specifiche fornite dal sistema o da terze parti.
-      % Questo pattern è realizzato attraverso le parole chiave \texttt{expected} e \texttt{actual} anteposte alle definizioni che
 
       Anche in questo caso, le criticità sono simili a quelle citate nella \nameCref{subsec:scalajs} precedente:
       \begin{itemize}
