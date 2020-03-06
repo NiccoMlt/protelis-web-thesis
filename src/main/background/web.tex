@@ -1,7 +1,7 @@
 \chapter{Progettazione di sistemi web}\label{ch:web}
   Il World Wide Web ha assunto un ruolo sempre più centrale nella quotidianità delle persone e nelle dinamiche di business.
   In particolare, il modello di comunicazione è sempre più virato verso scenari distribuiti,
-  nei quali piattaforme eterogenee riescono a comunicare tra loro condividendo informazioni di diverso tipo attraverso la rete internet.
+  nei quali piattaforme eterogenee riescono a comunicare tra loro condividendo informazioni di diverso tipo attraverso la rete Internet.
 
   Anche i pattern di progettazione e le tecnologie implementative sono cresciute altrettanto velocemente negli ultimi anni, cambiando anche radicalmente gli approcci di interazione possibili.
   Risulta dunque importante prestare attenzione allo stato dell'arte in tal senso, chiarendo quali siano i pattern più adatti e moderni per il contesto d'uso di questa tesi.
@@ -36,7 +36,6 @@
 
   Nel periodo iniziale del web, ciascuna pagina era inviata al client come documento statico;
   in questo caso, i server si occupavano della computazione di quanto richiesto dall'utente (anche appoggiandosi a servizi esterni tramite \emph{Common Gateway Interface}~\cite{Coar2004}) e della composizione del documento.
-
   Nel corso degli anni, sono stati sviluppati linguaggi di scripting (come JavaScript e Macromedia Flash) in grado di aumentare le possibilità di interazione lato client, riducendo la quantità di dati trasferiti tra il server web e il browser:
   non viene infatti più scaricata una nuova pagina ad ogni azione dell'utente, bensì solo i dati richiesti tramite chiamate \emph{AJAX} (\emph{Asynchronous JavaScript And XML});
   il documento viene poi manipolato localmente inserendo i dati ricevuti.
@@ -46,8 +45,6 @@
 
   Vengono sviluppati numerosi framework per la realizzazione di applicazioni costituite da una singola pagina (\emph{SPA}, \emph{Single-Page Application}), in grado di offrire l'esperienza d'uso di un applicativo desktop.
   Un applicazione web moderna normalmente è di questo tipo.
-
-  \improvement[inline]{Dovrei aggiungere qualche immagine per ridurre l'effetto wall-of-text?}
 
   \improvement[inline]{
     Inizialmente avevo inserito una storia dell'evoluzione delle architetture client-side e \strong{server-side}, ma poi mi sono reso conto che risultava un po' fuori contesto e l'ho tolta.
@@ -85,12 +82,7 @@
       %   \label{fig:js}
       % \end{wrapfigure}
 
-      \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato multi-paradigma, con supporto agli stili di programmazione % funzionale, ad eventi, orientato agli oggetti.
-      \begin{inparaitem}
-        \item funzionale,
-        \item ad eventi,
-        \item orientato agli oggetti.
-      \end{inparaitem}
+      \emph{JavaScript} è un linguaggio di scripting debolmente tipizzato multi-paradigma, con supporto agli stili di programmazione funzionale, ad eventi, orientato agli oggetti.
       Sviluppato originariamente nel 1995 da Brendan Eich per Netscape Communications (inizialmente con il nome di \emph{Mocha} e poi \emph{LiveScript}),
       esso è stato concepito con lo scopo di avere un linguaggio di scripting per il browser Netscape Navigator più semplice da apprendere rispetto a quelli esistenti.
       JavaScript è stato standardizzato per la prima volta nel 1997 dalla ECMA con il nome di \emph{ECMAScript}~\cite{ECMA-262,ISO:1998} e l'attuale versione è la decima.
@@ -150,7 +142,7 @@
 
     \subsection{TypeScript}\label{subsec:ts}
       \emph{TypeScript} è un linguaggio di programmazione open-source sviluppato da Microsoft.
-      Esso è un super-set sintatticamente rigoroso di JavaScript ES6, nato con i seguenti obiettivi principali:
+      Esso è un super-set di JavaScript ES6 nato con i seguenti obiettivi principali:
 
       \begin{itemize}
         \item
@@ -185,8 +177,6 @@
 
     \subsection{Scala.js}\label{subsec:scalajs}
       \emph{Scala.js} è un compilatore per il linguaggio di programmazione Scala che genera codice JavaScript invece di bytecode per la JVM\@.
-      % Questo permette l'impiego di tutte le funzionalità di Scala in contesto web, massimizzando il riuso di codice condiviso con la componente backend potenzialmente scritto con il medesimo linguaggio e in esecuzione su JVM\@.
-
       I principali vantaggi dell'impiego di un linguaggio come Scala all'interno del contesto web sono i seguenti:
       \begin{description}
         \item[Struttura più solida]
@@ -197,7 +187,7 @@
           Scala mette a disposizione un type system allo stesso tempo più espressivo e più rigoroso, di conseguenza può risultare più \emph{user-friendly} sia durante lo sviluppo che in fase di debug.
 
         \item[Prestazioni]
-          Secondo benchmark~\cite{Doeraene:256862} realizzati tramite una suite estensiva già utilizzata in letteratura~\cite{10.1145/3093334.2989232}, per quanto Scala.js risulti più lento della controparte JVM, riesce ad essere fino al 33\% più veloce della controparte scritta in JavaScript.
+          Secondo benchmark~\cite{Doeraene:256862} realizzati tramite una suite estensiva già utilizzata in letteratura~\cite{10.1145/3093334.2989232}, per quanto Scala.js risulti più lento della controparte JVM, riesce ad essere fino al 33\% più veloce di un programma equivalente scritto in JavaScript.
 
           Inoltre, il compilatore risulta molto efficiente in termini di dimensioni finali del \emph{bundle}:
           secondo il sito ufficiale, generalmente si parte dai \(\SI{45}{\kilo\byte}\) per un'intera applicazione compressa in gzip.
@@ -219,8 +209,8 @@
       % Oltre al supporto semi-ufficiale a React e altri framework e librerie per la realizzazione di SPA, Scala offre un'integrazione di prima classe anche con tecnologie backend molto famose come il Play Framework di Lightbend.
       Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
 
-    \subsection{Kotlin/Multiplatform \& Kotlin/JS}\label{subsec:kotlinjs}
-      Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato \emph{Koltin/JS}~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
+    \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}
+      Con il rilascio della versione 1.1 di Kotlin nel 2017, JetBrains ha annunciato \emph{Kotlin/JS}~\cite{Belov2017}, un target del compilatore in grado di generare codice JavaScript ES5 invece che bytecode per la JVM, in modo simile a quanto fatto da Scala.js.
       Il progetto si colloca in un progetto di più ampio respiro, ossia \emph{Kotlin/Multiplatform}~\cite{Jemerov2017}, presentato al termine dello stesso anno in concomitanza con Kotlin 1.2, che mira a integrare anche il supporto ad altri target, tra cui ad esempio LLVM\@.
 
       L'intento è molto simile a quello di Scala.js:
@@ -233,7 +223,7 @@
       \begin{itemize}
         \item
           per quanto l'intera libreria standard sia stata portata da JetBrains sulle diverse piattaforme nel modo più trasparente possibile, le piattaforme di esecuzione rimangono differenti.
-          Di conseguenza, alcuni costrutti molto specifici strettamente legati alla JVM (come ad esempio la reflection) non sono disponibili sul target JS\@.
+          Di conseguenza, alcuni costrutti molto specifici strettamente legati alla JVM (come ad esempio la reflection) non sono disponibili o hanno limitazioni sul target JS\@.
         \item
           per garantire il supporto corretto ai tipi, è necessaria la presenza di codice \emph{wrapper} che li modelli.
           JetBrains ha realizzato gli adattamenti solo per poche librerie, principalmente legate a React, e ha messo a disposizione alcuni strumenti per la conversione delle definizioni di tipo di TypeScript.

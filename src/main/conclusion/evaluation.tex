@@ -1,6 +1,6 @@
 \chapter{Valutazione dei risultati}\label{ch:evaluation}
 
-  \section{Qualità del codice \& unit testing}
+  \section{Qualità del codice e unit testing}
     Durante lo sviluppo, si è cercato di prestare particolare attenzione alla qualità del codice prodotto.
 
     Si è ritenuto fondamentale, innanzitutto, per favorire la consistenza dello stile, che il codice fosse conforme a uno stile di programmazione riconosciuto.
@@ -27,13 +27,7 @@
     Per avere una misura quantitativa di quanto l'applicazione web si presenti adeguata, si è deciso di utilizzare lo strumento Lighthouse messo a disposizione da Google.
 
     \emph{Lighthouse} è uno strumento automatizzato open-source, fornito inizialmente con la suite di strumenti \emph{Chrome DevTools}, che permette l'\emph{auditing} di pagine web secondo gli standard premiati dal motore di ricerca di Google.
-    Esso verifica
-    \begin{inparaitem}
-      \item prestazioni di caricamento e navigazione,
-      \item accessibilità,
-      \item SEO (\emph{\emph{S}earch \emph{E}ngine \emph{O}ptimization}),
-      \item buone pratiche di programmazione.
-    \end{inparaitem}
+    Esso verifica le prestazioni di caricamento e navigazione, l'accessibilità, la SEO (\emph{\emph{S}earch \emph{E}ngine \emph{O}ptimization}), e in generale le buone pratiche di programmazione.
     Supporta inoltre controlli aggiuntivi per le PWA (\emph{\emph{P}rogressive \emph{W}eb \emph{A}pp}) se abilitati.
 
     \begin{figure}
@@ -54,8 +48,8 @@
     Le performance, sulle quali si ha avuto maggiore controllo durante l'implementazione, sono buone, con tempi di primo disegno inferiori al secondo e un ritardo prima di avere possibilità di interazione intorno a \SI{1.6}{\second}.
     A pesare sul punteggio vi è l'assenza di gestione della cache delle richieste, funzionalità non ritenuta importante in questo progetto.
 
-    Volendo ottimizzare, si potrebbe aggiungere il supporto allo standard PWA, secondo le \emph{best practices} documentate da Google.
+    Volendo ottimizzare ulteriormente, si potrebbe aggiungere il supporto allo standard PWA, secondo le \emph{best practices} documentate da Google.
 
-  \section{Performance}
-    % TODO
-    \unsure[inline]{Come valuto i risultati? Misure di Performance?}
+  % \section{Performance}
+  %   % TODO
+  %   \unsure[inline]{Come valuto i risultati? Misure di Performance?}

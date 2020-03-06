@@ -1,6 +1,6 @@
 \chapter{Implementazione}\label{ch:implementation}
   In questo \nameCref{ch:implementation} sono esposti tutti i dettagli legati al processo di sviluppo e all'implementazione.
-  In particolare, per quanto possibile verranno motivate le scelte tecnologiche che in fase di progettazione non erano state considerate rilevanti.
+  In particolare, verranno motivate le scelte tecnologiche che in fase di progettazione non erano state considerate rilevanti.
   Inoltre, verranno analizzati alcuni dettagli implementativi ritenuti importanti alla descrizione del funzionamento del progetto.
 
   \input{src/main/contribution/tech.tex}
@@ -49,11 +49,9 @@
     esso può infatti ``catturare'' azioni provenienti da componenti di controllo nella pagina richiedenti operazioni bloccanti e, una volta che il processo asincrono è terminato, generare un'azione per aggiornare lo stato.
 
     Sono stati sviluppati numerosi middleware per la gestione delle websocket, ma non ne sono stati trovati in grado di supportare SockJS\@.
-    Si è deciso dunque di definirne uno che nasconde l'intera procedura di connessione, gestendo le azioni che permettono la connessione, la disconnessione e l'invio di messaggi e aggiornando lo stato quando necessario.
+    Si è deciso dunque di definirne uno che nascondesse l'intera procedura di connessione, gestendo le azioni che permettono la connessione, la disconnessione e l'invio di messaggi e aggiornando lo stato quando necessario.
 
     Poiché l'intera logica di connessione è nascosta, in futuro sarà possibile, se necessario, sostituire il protocollo di comunicazione senza che altre modifiche siano necessarie al sistema.
-
-    \improvement[inline]{Possono essere interessanti altri dettagli?}
 
   \section{Dettagli implementativi: Backend}
 
@@ -77,5 +75,3 @@
     in questo modo, il sistema non è vincolato all'implementazione simulata, né essa è legata strettamente ad Alchemist.
 
     Anche l'astrazione di Alchemist per l'osservazione del motore di esecuzione è stata incapsulata, definendo una classe di \emph{boundary}, \texttt{ProtelisOutputMonitor}, che agisce da adattatore.
-
-    \improvement[inline]{Possono essere interessanti altri dettagli?}

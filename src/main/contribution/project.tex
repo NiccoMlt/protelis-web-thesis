@@ -1,14 +1,10 @@
-\chapter{Analisi del problema \& Progettazione}\label{ch:project}
+\chapter{Analisi del problema e Progettazione}\label{ch:project}
   Una volta chiariti i requisiti del sistema, il passo successivo riguarda la progettazione dello stesso.
   In particolare, occorre delineare più nel dettaglio l'architettura di massima del sistema, per poi spostare l'attenzione su ciascuna entità interagente.
 
   % \section{Architettura del sistema}
   Come preventivato già in fase di analisi dei requisiti, il sistema vede la presenza di due principali entità:
-
-  \begin{itemize}
-    \item una pagina web che costituisce il client del sistema.
-    \item un server di backend, che esegue su piattaforma JVM interfacciandosi con un esecutore di codice Protelis.
-  \end{itemize}
+  una pagina web che costituisce il client del sistema e un server di backend, che esegue su piattaforma JVM interfacciandosi con un esecutore di codice Protelis.
 
   \begin{figure}[htbp]
     \centering
@@ -48,7 +44,7 @@
         \label{fig:mockup}
       \end{figure}
 
-      Nel mockup finale, riportato in~\Cref{fig:mockup}, si è preso molto ispirazione da questo tipo di struttura.
+      Nel mockup finale, riportato in~\Cref{fig:mockup}, ci si è ispirati a questo tipo di struttura.
       L'interfaccia dovrebbe infatti essere costituita dalle parti seguenti:
 
       \begin{itemize}
@@ -178,16 +174,16 @@
 
     \begin{itemize}
       \item
-        un sistema composto da microservizi indipendenti è più semplice da scalare,
+        Un sistema composto da microservizi indipendenti è più semplice da scalare,
         in quanto è possibile replicare ciascun servizio in modo indipendente dagli altri, a seconda delle esigenze.
       \item
-        l'approccio a microservizi risulta generalmente più semplice da manutenere,
+        L'approccio a microservizi risulta generalmente più semplice da manutenere,
         in quanto disaccoppia i servizi tra loro, rendendo chiare le dipendenze condivise e permettendo lo sviluppo indipendente delle componenti.
       \item
-        offrono un'integrazione migliore con orchestratori cloud e permettono di impiegare tecnologie di \emph{continuous deployment} (CD) in modo più efficiente.
+        Offrono un'integrazione migliore con orchestratori cloud e permettono di impiegare tecnologie di \emph{continuous deployment} (CD) in modo più efficiente.
     \end{itemize}
 
-    Tali vantaggi sono però maggiormente evidenti quando le funzionalità che devono essere offerte sono \emph{tante}.
+    Tali vantaggi sono però maggiormente evidenti quante più sono le funzionalità che devono essere offerte.
     Nel caso di questo progetto, di contro, il sistema deve essere in grado di gestire in modo efficiente un solo tipo di servizio, ossia l'esecuzione di codice su una rete simulata.
 
     In questo caso, dunque, è stato ritenuto più adeguato scegliere un'architettura monolitica, favorendo la semplicità di progettazione
@@ -207,7 +203,7 @@
 
       Per questo progetto, il modello è stato considerato adatto, in quanto in grado di garantire il giusto livello di astrazione e i criteri di reattività richiesti.
 
-    \subsection{Verticle individuati}
+    \subsection{Progettazione dei verticle}
       Il sistema progettato è composto da due componenti principali.
 
       \begin{itemize}
@@ -229,12 +225,6 @@
 
   \section{Interazioni}\label{sec:arch:interaction}
 
-    \unsure[inline]{
-      Ho deciso di descrivere le interazioni in una sezione dedicata, anziché separarle nelle sezioni del client e del server.
-
-      È accettabile? O sarebbe meglio spezzare?
-    }
-
     Una volta analizzato il comportamento delle due entità in gioco, è necessario delineare anche la loro interazione remota.
 
     \subsection{Scelta del modello di comunicazione e del protocollo}
@@ -245,9 +235,7 @@
       È risultato dunque naturale strutturare anche la comunicazione tra client e server utilizzando un modello a eventi.
 
       In particolare, l'EventBus di Vert.x supporta l'utilizzo di \emph{bridge} per la comunicazione remota attraverso numerosi protocolli.
-      Tra questi, quello identificato come più adatto è SockJS\@.
-
-      \emph{SockJS} è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
+      Tra questi, \emph{SockJS} è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
       Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando su \emph{polling} tramite HTTP standard in caso assenza.
       Tramite un protocollo di questo tipo, è possibile realizzare un canale di comunicazione bidirezionale veloce, adatto per il trasferimento di un elevato numero di eventi come nel caso di questo progetto di tesi.
 

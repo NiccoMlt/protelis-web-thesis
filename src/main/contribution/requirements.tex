@@ -1,6 +1,5 @@
 \chapter{Analisi dei requisiti}\label{ch:requirements}
   In questo capitolo saranno enunciati ed analizzati i requisiti del progetto realizzato per questa tesi.
-
   Nella~\Cref{part:background} è stato più volte sottolineato che il linguaggio Protelis si appoggia alla piattaforma JVM per la sua esecuzione.
   Al momento della scrittura, l'unico supporto da parte delle tecnologie browser per Java ritenuto stabile era dato dal plugin per le Applet API\@.
   Tale plugin è stato deprecato da alcuni anni~\cite{jep289}, in concomitanza con il rilascio di Java 9;
@@ -36,14 +35,13 @@
 
       \begin{description}
         \item[Single-Page Application]
-          L'applicativo web deve presentarsi come una singola pagina, gestendo tutte le interazioni dell'utente senza appoggiarsi al server.
-          Deve connettersi al backend solo per l'esecuzione del codice inserito.
+          Dal punto di vista dell'utente, l'applicativo web deve presentarsi come una singola pagina, gestendo tutte le interazioni in un unico luogo.
         \item[Agnostico rispetto al backend]
           La rete dispositivi a cui si collega per l'esecuzione deve poter essere reale o virtuale senza che questo influenzi l'esperienza utente con il frontend.
           Le tecnologie utilizzate per l'implementazione del backend devono essere trasparenti al client.
         \item[Efficienza]
           L'esecuzione non deve appesantire il dispositivo client su cui esegue.
-          Deve sfruttare in modo efficace le risorse messe a disposizione dalla macchina dell'utente, delegando al server solo le operazioni computazionalmente più pesanti.
+          Deve sfruttare in modo efficace le risorse messe a disposizione dalla macchina dell'utente. %, delegando al server solo le operazioni computazionalmente più pesanti.
         \item[Responsive, ma desktop-first]
           L'applicazione ha come destinazione d'uso il desktop, dunque non è necessaria un'interfaccia \emph{mobile-first}.
           È comunque necessario che il layout della pagina sia \emph{responsive}, ossia possa adattarsi a schermi di differenti misure e proporzioni.
@@ -79,8 +77,6 @@
       \item[Compatibilità con i browser]
         Il protocollo utilizzato dal prototipo dovrebbe essere supportato da quante più piattaforme possibile (con particolare attenzione ai browser più usati).
     \end{description}
-
-    \improvement[inline]{Il capitolo dovrebbe essere espanso un po'? Magari aggiungendo maggiori dettagli o diagrammi?}
 
     \begin{figure}[htbp]
       \centering

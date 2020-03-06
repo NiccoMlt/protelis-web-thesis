@@ -14,7 +14,7 @@
         \item[Brevità ed espressività]
           Kotlin si presenta come molto meno verboso di Java, supportando un maggior numero di costrutti che permettono di ridurre il codice ``\emph{boilerplate}''.
 
-        \item[Sicurezza]
+        \item[Robustezza]
           Una delle funzionalità che è stata pubblicizzata maggiormente alla presentazione di Kotlin è la \emph{null-safety}.
           Kotlin permette di evitare le comuni eccezioni di tipo \texttt{NullPointerException} gestendo il valore \texttt{null} in modo maggiormente chiaro tramite notazione opzionale e controllo da parte del compilatore.
 
@@ -116,7 +116,7 @@
           Il plugin, realizzato da Jonathan Leitschuh, è un wrapper dello strumento di analisi statica di codice Kotlin \emph{ktlint}, realizzato da Pinterest.
           Si è scelto di utilizzare ktlint anziché \emph{detekt}, altro strumento simile, in quanto non richiede una configurazione personalizzata, bensì impone un insieme standard di regole, comunemente studiate e accettate dalla community.
 
-        \item[refreshVersions]\unsure{Qui la minuscola è \emph{voluta}, in quanto il plugin non ha un nome formale. Dovrei metterlo comunque maiuscolo come gli altri?}
+        \item[RefreshVersions]
           Il plugin, sviluppato da Jean-Michel Fayard, permette una migliore gestione delle dipendenze automatizzandone gli aggiornamenti.
 
         \item[JUnit]
@@ -135,7 +135,7 @@
 
     \subsubsection{Frontend}
 
-      Il progetto frontend è un modulo Node.js generato tramite lo strumento ufficiale \texttt{create-react-app} fornito da Facebook.
+      Il progetto frontend è un modulo Node.js generato tramite lo strumento ufficiale \texttt{create-react-app} (spesso abbreviato in \emph{CRA}) fornito da Facebook.
       Si seguito vengono riportate tutte le tecnologie utilizzate durante lo sviluppo:
 
       \begin{description}
@@ -147,8 +147,8 @@
             \item La velocità di risoluzione delle dipendenze è generalmente più elevata, in quanto sfrutta una strategia di cache più efficiente.
           \end{itemize}
 
-        \item[react-scripts]
-          Lo strumento \texttt{create-react-app} astrae la complessità di configurazione di un progetto attraverso l'utilizzo di \texttt{react-scripts}.
+        \item[React Scripts]
+          Lo strumento CRA astrae la complessità di configurazione di un progetto attraverso l'utilizzo di un pacchetto denominato \texttt{react-scripts}.
           Essi incapsulano strumenti quali WebPack, Babel, ESLint e Jest, mettendo a disposizione semplici script che si appoggiano alle configurazioni ufficiali di riferimento per:
           \begin{inparaitem}
             \item compilazione,
@@ -160,7 +160,7 @@
         \item[ESLint \& stile Airbnb]
           \emph{ESLint} è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
           Il pacchetto \texttt{react-scripts} fornisce una configurazione minimale, ma è consigliato di adottare uno stile (insieme di regole) tra quelli più famosi.
-          In questo caso è stato scelto quello fornito da Airbnb. % , in quanto uno dei più popolari.
+          In questo caso è stato scelto quello fornito da Airbnb.
 
         \item[Jest]
           \emph{Jest} è un framework di test per JavaScript sviluppato da Facebook che fornisce tutti gli strumenti per la scrittura e l'esecuzione dei test e per la raccolta della loro copertura sul codice.
@@ -171,13 +171,7 @@
   \subsection{Controllo di versione e CI/CD}
     Il controllo di versione utilizzato per questo progetto è affidato al DVCS (\emph{\emph{D}istributed \emph{V}ersion \emph{C}ontrol \emph{S}ystem}) Git, utilizzato con flusso di lavoro di tipo \emph{Git flow}.
 
-    % Il codice è disponibile su GitHub nei repository seguenti:
-    % \begin{itemize}
-    %     \item \url{https://github.com/NiccoMlt/Protelis-Web} per il backend;
-    %     \item \url{https://github.com/NiccoMlt/protelis-web-frontend} per il frontend.
-    % \end{itemize}
-
-    Il codice è disponibile su GitHub nei repository Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}\improvement{Dovrei creare un DOI con Zotero?}
+    Il codice è disponibile su GitHub nei repository Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}
     e protelis-web-frontend\footnote{\url{https://github.com/NiccoMlt/protelis-web-frontend}}.
     % Si è preferito utilizzare due depositi separati anziché raggruppare in ciò che viene generalmente definito \emph{monorepo} poiché le differenti ...
 
@@ -206,13 +200,11 @@
     \begin{itemize}
       \item
         Al termine della pipeline di Travis CI per il branch principale, l'eseguibile viene automaticamente caricato e lanciato su Heroku.
-
         \emph{Heroku} è un servizio online di tipo PaaS (\emph{\emph{P}latform as a \emph{S}ervice}) di proprietà di SalesForce e compatibile con diversi linguaggi.
         Informazioni sulla VM utilizzata non sono disponibili.
       \item
         Per performance migliori, viene utilizzato anche un server fornito dall'Università di Bologna.
         Su di esso viene effettuato il deploy tramite SSH avvalendosi del \texttt{docker-engine} in esecuzione all'interno di Linux.
-
         \emph{Docker} è uno strumento per la virtualizzazione a livello di sistema operativo (\emph{container}) molto utilizzato per la pacchettizzazione delle applicazioni.
         Il Dockerfile per la costruzione dell'immagine utilizzata, basato su AdoptOpenJDK con Eclipse OpenJ9, è allegato a questo documento in~\Cref{app:docker}.
     \end{itemize}

@@ -1,6 +1,5 @@
 \addchap{Introduzione}\label{ch:intro}
 
-% Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo sempre crescente,
 Nel corso degli ultimi anni i sistemi informatici hanno avuto uno sviluppo notevole.
 Grazie all'incremento della potenza computazionale disponibile a basso costo, alla riduzione delle dimensioni delle unità di calcolo e alla diffusione delle reti wireless,
 ormai molti degli ambienti in cui vive la maggior parte della popolazione sono pervasi di sensori e di dispositivi ``smart'', tanto che si parla sempre più spesso di \emph{IoT}~\cite{ashton2009internet}, ovvero Internet delle Cose.
@@ -13,29 +12,35 @@ Tale paradigma è basato sull'impianto teorico del \emph{field calculus} e ha vi
 da parte dell'Università di Bologna, di linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale:
 \emph{Protelis} e \emph{ScaFi}.
 
-Entrambi si avvalgono della piattaforma JVM (\emph{\emph{J}ava \emph{V}irtual \emph{M}achine}) per poter essere eseguiti;
-come vedremo, questo garantisce numerose proprietà, ma può essere limitante in contesti didattici.
-Infatti, la necessità di possedere una rete reale di dispositivi o di configurare un simulatore per l'esecuzione
-aggiunge ulteriore complessità per un novizio che voglia approcciarsi alla tecnologia.
-Inoltre, non è da ignorare nemmeno la necessità di configurazione di un progetto Gradle o SBT completo per poter realizzare un prototipo minimale.
+% Entrambi si avvalgono della piattaforma JVM (\emph{\emph{J}ava \emph{V}irtual \emph{M}achine}) per poter essere eseguiti;
+% come vedremo, questo garantisce numerose proprietà, ma può essere limitante in contesti didattici.
+% Infatti, la necessità di possedere una rete reale di dispositivi o di configurare un simulatore per l'esecuzione
+% aggiunge ulteriore complessità per un novizio che voglia approcciarsi alla tecnologia.
+% Inoltre, non è da ignorare nemmeno la necessità di configurazione di un progetto Gradle o SBT completo per poter realizzare un prototipo minimale.
 
-In tempi recenti anche il web è maturato molto:
-l'evoluzione tecnologica ha permesso di realizzare applicazioni utilizzabili tramite browser con livelli di complessità comparabili alle controparti desktop,
+La principale criticità legata a questo tipo di linguaggi, soprattutto in contesto didattico, è correlata alla configurazione del sistema per l'esecuzione.
+Infatti, affinché la programmazione aggregata risulti significativa, è richiesta la presenza di diversi dispositivi sui quali il codice possa essere eseguito.
+Poiché avere a disposizione una rete di dispositivi è costoso, molto spesso si decide di appoggiarsi a simulatori compatibili,
+la cui configurazione in molti casi non è banale e può coinvolgere anche la realizzazione di un progetto strutturato e completo per poter realizzare un prototipo minimale,
+aggiungendo aggiunge un ulteriore gradino di complessità rispetto ai linguaggi tradizionali.
+
+In tempi recenti, anche il web ha visto una rapida evoluzione a livello tecnologico,
+la quale ha permesso di realizzare applicazioni utilizzabili tramite browser con livelli di complessità comparabili alle controparti desktop,
 senza il carico aggiuntivo, dal punto di vista dell'utente, dell'installazione e della configurazione.
 Inoltre, servizi complessi possono non dipendere esclusivamente dalle risorse computazionali dei dispositivi dell'utente,
-bensì sfruttarle solo quando necessario, appoggiandosi alla potenza computazionale di un server di backend per le operazioni più complesse.
+bensì sfruttarle solo quando necessario, appoggiandosi alla potenza computazionale di un server di backend per le operazioni più onerose.
 
 Si è dunque ritenuto utile realizzare un sistema web semplice e immediato da usare che permetta di abbozzare esempi di codice aggregato
-(Protelis, nel prototipo implementato per questa tesi) e poterlo eseguire senza disporre di una rete di dispositivi o di un simulatore configurati per lo scopo.
+(Protelis, nel prototipo implementato per questa tesi) e poterlo eseguire senza la necessità di configurare una rete di dispositivi o un simulatore.
 In particolare, si è deciso di propendere per l'implementazione di un backend reattivo su piattaforma JVM che esegue il codice inviato dal client su una rete di dispositivi simulata tramite il simulatore Alchemist~\cite{alchemist-jos2013}.
-Il client è una \emph{Single-Page Application} statica che permette lo sviluppo di codice direttamente dal browser e comunica con il server tramite un bus di eventi via socket.
+Il client è una \emph{Single-Page Application} statica che permette lo sviluppo di codice direttamente dal browser e comunica con il server tramite un bus di eventi.
 
-\bigskip
+\medskip
 
 Il documento è suddiviso in tre \nameCrefs{part:background} principali.
 
 Nella~\Cref{part:background} viene fatta una disamina del contesto nel quale l'elaborato di tesi va a inserirsi.
-In particolare, nel~\Cref{ch:aggregate} del documento viene fatta un'introduzione alla programmazione aggregata, con particolare attenzione all'impianto teorico su cui si basa e ai linguaggi ad essa collegati.
+In particolare, nel~\Cref{ch:aggregate} del documento viene fatta un'introduzione alla programmazione aggregata, con particolare attenzione ai linguaggi ad essa collegati.
 Nel~\Cref{ch:web} viene invece fatta riportato il risultato della fase di studio dello stato dell'arte in merito allo sviluppo di sistemi web,
 con particolare attenzione ai linguaggi che permettono la realizzazione di applicazioni frontend in esecuzione sui browser degli utenti.
 Nel~\Cref{ch:motivations} vengono esaminate più nel dettaglio le ragioni per le quali il progetto è stato realizzato,

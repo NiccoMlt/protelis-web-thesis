@@ -54,9 +54,9 @@ Questo garantisce le seguenti proprietà:
 
 \begin{description}
   \item[Asincronismo]
-    Per come funziona il motore che interpreta JavaScript, ciascuna callback è eseguita al ciclo successivo, non bloccando l'esecuzione attuale.
+    Il motore che interpreta JavaScript gestisce ciascuna callback eseguendola al ciclo successivo, non bloccando l'esecuzione attuale.
   \item[Consistenza di rappresentazione]
-    Essendo ciascuno store unico per l'intera applicazione, lo stato rappresentato dovrebbe essere unico indipendentemente dalla pagina attuale.
+    Essendo ciascuno store centralizzato per l'intera applicazione, lo stato rappresentato dovrebbe essere univoco indipendentemente dalla pagina attuale.
   \item[Disaccoppiamento]
     Essendo lo store esterno ai componenti grafici, essi risultano maggiormente disaccoppiati rispetto al dominio e più riusabili.
   \item[Determinismo]
