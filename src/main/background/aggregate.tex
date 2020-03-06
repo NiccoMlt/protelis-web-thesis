@@ -39,7 +39,7 @@ Questo può essere considerato il punto di vista tradizionale.
 \begin{figure}[htbp]
   \centering
   % \includesvg[width=.5\textwidth]{res/fig/device-centric.svg}
-  \includegraphics[width=.5\textwidth]{res/fig/device-centric.png}
+  \includegraphics[width=.55\textwidth]{res/fig/device-centric.png}
   \caption{Livello di astrazione \emph{device-centric}}%
   \label{fig:device-centric}
 \end{figure}
@@ -50,36 +50,23 @@ al \emph{cosa} effettivamente si desidera che faccia.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=.5\textwidth]{res/fig/aggregate.png}
+  \includegraphics[width=.55\textwidth]{res/fig/aggregate.png}
   % \includesvg[width=.5\textwidth]{res/fig/aggregate.svg}
   \caption{Livello di astrazione \emph{aggregate view}}%
   \label{fig:aggregate}
 \end{figure}
 
-% TODO: trasforma elenco puntato in una frase così:
-% In letteratura, sono state formalizzate diverse possibili strategie~\cite{7274429} per adottare un livello di astrazione così elevato.
-% Una prima strategia, adottata ad esempio nell'approccio \emph{TOTA} (``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945}), prevede di rendere le interazioni tra i dispositivi implicite.
-% Un secondo approccio, utilizzato nell'\emph{Origami Shape Language}~\cite{nagpal2001programmable}, si basa sulla composizione di costruzioni geometriche e topologiche attraverso operazioni di \emph{folding}.
-% Anche modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492} hanno affrontato il problema dell'astrazione della computazione
+In letteratura, sono state adottate diverse strategie~\cite{7274429} ad un livello di astrazione così elevato.
+Ad esempio, l'approccio \emph{TOTA} (``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945}) prevede di rendere le interazioni tra i dispositivi implicite,
+mentre l'\emph{Origami Shape Language}~\cite{nagpal2001programmable} si basa sulla composizione di costruzioni geometriche e topologiche attraverso operazioni di \emph{folding}.
+Altri esempi sono le tecniche di sintesi dei dati provenienti da alcune regioni spazio-temporali per inviarli come stream ad altre regioni delineate con \emph{TinyDB}~\cite{1017485}
+o le modalità con cui modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492} dividono la computazione in modo automatico tra i nodi.
+Infine, linguaggi come \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}, forniscono costrutti generalizzabili per la computazione spazio-temporale che si prestano ad un uso in ambiente IoT.
 
-In letteratura, sono state formalizzate diverse strategie principali~\cite{7274429} per adottare un livello di astrazione così elevato:
-\begin{itemize}
-  \item rendere le interazioni tra i dispositivi implicite (come ad esempio nell'approccio \emph{TOTA}, ``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945});
-  \item comporre costruzioni geometriche e topologiche (ad esempio, \emph{Origami Shape Language}~\cite{nagpal2001programmable});
-  \item dividere la computazione in modo automatico per le esecuzioni sullo stile di modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492};
-  \item sintetizzare i dati provenienti da alcune regioni spazio-temporali e inviarli come stream ad altre regioni (ad esempio, \emph{TinyDB}~\cite{1017485});
-  \item fornire costrutti generalizzabili per la computazione spazio-temporale (ad esempio, \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}).
-\end{itemize}
-
-% TODO: collassa elenco puntato
-Studiando i suddetti approcci, sono state osservate le seguenti proprietà dei sistemi situati su larga scala:
-
-\begin{itemize}
-  \item laddove non è richiesta al programmatore alcuna interazione, i meccanismi per la coordinazione devono essere nascosti ``\emph{under the hood}''~\cite{7274429};
-  \item la composizione dei moduli deve essere tanto semplice quanto trasparente;
-  % \item % TODO: modulare + componibile ^
-  \item sottoinsiemi differenti necessitano di meccanismi di coordinazione differenti per regioni e tempi distinti.
-\end{itemize}
+Lo studio dei suddetti approcci ha permesso di fare considerazioni sulle modalità di programmazione dei sistemi situati di larga scala;
+innanzitutto, laddove non sia richiesto al programmatore di gestire i meccanismi di interazione, le modalità di coordinazione dovrebbero essere robuste e nascoste ``\emph{under the hood}''~\cite{7274429}.
+Poi, il framework di programmazione dovrebbe essere modulare, e tali moduli dovrebbero essere componibili in modo semplice e trasparente.
+Infine, deve essere possibile fornire meccanismi di coordinazione differenti per diverse parti del sistema aventi regioni dello spazio e tempi distinti.
 
 La programmazione aggregata cerca di rispondere alle seguenti esigenze~\cite{7274429}:
 
