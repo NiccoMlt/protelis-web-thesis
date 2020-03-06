@@ -17,44 +17,52 @@ sistemi costituiti da reti di oggetti fisici, tipicamente embedded, che interagi
   \label{fig:iot}
 \end{figure}
 
-L'approccio tradizionale per la realizzazione di sistemi in questo contesto è sempre stato con paradigma ``\emph{single device view point}'',
-in cui l'unità fondamentale è il singolo dispositivo connesso con il mondo fisico e con gli altri device, il cui insieme dei comportamenti individuali determinava il funzionamento del sistema.
-Tale approccio si è rivelato inadeguato, in quanto un elevato numero di dispositivi (possibilmente eterogenei) pone diversi problemi legati all'organizzazione della rete
-e la sua gestione che non dovrebbero essere gestiti a questo livello di astrazione.
+L'approccio tradizionale per la realizzazione di sistemi in questo contesto è sempre stato dal punto di vista del singolo dispositivo,
+il quale è preso come unità fondamentale, connessa con il mondo fisico e con gli altri device.
+In questo punto di vista, l'insieme di tutti i comportamenti individuali delle unità determina il funzionamento del sistema.
+Tale approccio, per quanto valido, può risultare limitante in sistemi distribuiti eterogenei, nei quali possono presentarsi diversi problemi legati all'organizzazione della rete
+e alla sua gestione a causa delle dimensioni e delle differenze tra i dispositivi.
+Tali problematiche, generalmente, vorrebbero essere gestite ad un livello di astrazione più elevato.
 
 L'\emph{aggregate programming}, o \emph{programmazione aggregata}, costituisce un'alternativa all'approccio ``classico''
 volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
-La programmazione aggregata, infatti, ragiona su più larga scala, cercando di spostare l'attenzione sul \emph{collettivo di dispositivi} che collaborano;
-i dettagli relativi al singolo device devono essere ignorabili, per quanto possibile~\cite{7274429}.
-
+La programmazione aggregata, infatti, ragiona su larga scala, cercando di spostare l'attenzione sul \emph{collettivo di dispositivi} che collaborano,
+astraendo dai dettagli relativi al singolo device~\cite{7274429} per quanto possibile.
+% a capo rimosso
+% TODO: rifai
 L'idea alla base è dunque di definire una modalità di deduzione del comportamento locale al singolo dispositivo a partire dal comportamento globale, di più alto livello,
 effettuando un \emph{mapping da globale a locale}.
-I due punti di vista necessari per poter raggiungere un tale livello di astrazione sono due~\cite{aggregatescala-pmldc2016}:
+In contesti distribuiti, sono stati individuati principalmente due punti di vista a questo livello di astrazione~\cite{aggregatescala-pmldc2016}: locale o globale.
+Il primo, detto anche \emph{device-centric} (\Cref{fig:device-centric}), fa riferimento alla computazione aggregata eseguita dal singolo dispositivo.
+Questo può essere considerato il punto di vista tradizionale.
 
-\begin{itemize}
-    \item
-        il primo, detto locale o \emph{device-centric}, è quello che si riferisce alla computazione aggregata eseguita dal dispositivo singolo.
-        Questo può essere considerato il punto di vista tradizionale.
+\begin{figure}[htbp]
+  \centering
+  % \includesvg[width=.5\textwidth]{res/fig/device-centric.svg}
+  \includegraphics[width=.5\textwidth]{res/fig/device-centric.png}
+  \caption{Livello di astrazione \emph{device-centric}}%
+  \label{fig:device-centric}
+\end{figure}
 
-        % TODO: ci può stare, ma sfasa altre immagini
-        % \begin{figure}[htbp]
-        %   \centering
-        %   \includesvg[width=.5\textwidth]{res/fig/device-centric.svg}
-        % \end{figure}
-    \item
-        il secondo, detto globale o \emph{aggregate view}, si riferisce invece alla computazione svolta dal sistema aggregato come singola unità.
-        Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare
-        al \emph{cosa} effettivamente si desidera che faccia.
+Il secondo punto di vista, detto \emph{aggregate view} (\Cref{fig:aggregate}), sposta invece l'attenzione sulla computazione svolta dal sistema aggregato come singola unità.
+Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare
+al \emph{cosa} effettivamente si desidera che faccia.
 
-        % TODO: ci può stare, ma sfasa altre immagini
-        % \begin{figure}[htbp]
-        %   \centering
-        %   \includesvg[width=.5\textwidth]{res/fig/aggregate.svg}
-        % \end{figure}
-\end{itemize}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.5\textwidth]{res/fig/aggregate.png}
+  % \includesvg[width=.5\textwidth]{res/fig/aggregate.svg}
+  \caption{Livello di astrazione \emph{aggregate view}}%
+  \label{fig:aggregate}
+\end{figure}
 
-In generale, le strategie principali per adottare un livello di astrazione così elevato sono state formalizzate nelle seguenti possibilità~\cite{7274429}:
+% TODO: trasforma elenco puntato in una frase così:
+% In letteratura, sono state formalizzate diverse possibili strategie~\cite{7274429} per adottare un livello di astrazione così elevato.
+% Una prima strategia, adottata ad esempio nell'approccio \emph{TOTA} (``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945}), prevede di rendere le interazioni tra i dispositivi implicite.
+% Un secondo approccio, utilizzato nell'\emph{Origami Shape Language}~\cite{nagpal2001programmable}, si basa sulla composizione di costruzioni geometriche e topologiche attraverso operazioni di \emph{folding}.
+% Anche modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492} hanno affrontato il problema dell'astrazione della computazione
 
+In letteratura, sono state formalizzate diverse strategie principali~\cite{7274429} per adottare un livello di astrazione così elevato:
 \begin{itemize}
   \item rendere le interazioni tra i dispositivi implicite (come ad esempio nell'approccio \emph{TOTA}, ``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945});
   \item comporre costruzioni geometriche e topologiche (ad esempio, \emph{Origami Shape Language}~\cite{nagpal2001programmable});
@@ -63,19 +71,23 @@ In generale, le strategie principali per adottare un livello di astrazione così
   \item fornire costrutti generalizzabili per la computazione spazio-temporale (ad esempio, \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}).
 \end{itemize}
 
+% TODO: collassa elenco puntato
 Studiando i suddetti approcci, sono state osservate le seguenti proprietà dei sistemi situati su larga scala:
 
 \begin{itemize}
   \item laddove non è richiesta al programmatore alcuna interazione, i meccanismi per la coordinazione devono essere nascosti ``\emph{under the hood}''~\cite{7274429};
   \item la composizione dei moduli deve essere tanto semplice quanto trasparente;
+  % \item % TODO: modulare + componibile ^
   \item sottoinsiemi differenti necessitano di meccanismi di coordinazione differenti per regioni e tempi distinti.
 \end{itemize}
 
-Per affrontare queste problematiche, la programmazione aggregata si basa sui seguenti tre principi~\cite{7274429}:
+La programmazione aggregata cerca di rispondere alle seguenti esigenze~\cite{7274429}:
 
+% TODO: collassa elenco puntato
 \begin{itemize}
-  \item la ``macchina'' programmata non deve essere il singolo dispositivo, bensì la \emph{regione} dell'ambiente computazionale che astrae dai dettagli specifici;
-  \item il ``programma'' è specificato come \emph{manipolazione di costrutti di dati} con estensioni spaziali e temporali in tutta la regione;
+  \item la ``macchina'' programmata non è il singolo dispositivo, bensì il loro agglomerato; % a \emph{regione} dell'ambiente computazionale che astrae dai dettagli specifici
+  \item il ``programma'' è specificato come manipolazione di strutture dati distribuite che evolvono nel tempo dette \emph{computational fields};
+  % TODO: modularità e componibilità
   \item tali manipolazioni vengono eseguite dai dispositivi inseriti all'interno della regione, tramite l'uso di meccanismi di coordinazione resilienti e di interazioni basate sulla prossimità.
 \end{itemize}
 
@@ -97,68 +109,51 @@ Nelle \nameCrefs{sec:field-calculus} successive analizzeremo più nel dettaglio 
   \label{fig:stack}
 \end{figure}
 
-\section{Field calculus \& Building Blocks}\label{sec:field-calculus}
+\section{Field calculus e Building Blocks}\label{sec:field-calculus}
 
-Al livello più basso della struttura rappresentata in \Cref{fig:stack} si trova il \emph{field calculus}~\cite{FieldCalculusFOCLASA2013}.
+Al livello più basso della struttura rappresentata in \Cref{fig:stack} si trova il \emph{field calculus}~\cite{tocl}.
 Esso è un \emph{core calculus}, ovvero un modello teorico di programmazione che riassume la semantica operazionale minimale necessaria alla progettazione di un sistema aggregato.
 
-Il field calculus si basato sul concetto di \emph{campo computazionale}~\cite{FieldCalculusFOCLASA2013}:
+Il field calculus si basato sul concetto di \emph{campo computazionale}~\cite{FieldCalculusFOCLASA2013,tocl}:
 il termine riprende la nozione di campo in fisica~\cite{mcmullin2002origins}, esteso al concetto di computazione
 e inteso come \enquote{\emph{una proiezione di ciascun dispositivo computazionale nello spazio verso un oggetto computazionale arbitrario}},
 ossia l'applicazione di una funzione che, in un dato momento nel tempo, mappa ogni punto dello spazio (un dispositivo o un nodo),
 verso un oggetto computazionale (un valore) che rappresenta il risultato della computazione su quel device.
-I \emph{campi} sono strutture dati distribuite a livello di aggregazione che gradualmente si adattano ai cambiamenti della topologia sottostante e alle interazioni con l'ambiente.
+I \emph{campi} sono strutture dati distribuite che si adattano ai cambiamenti della topologia sottostante e alle interazioni con l'ambiente.
 
-I campi vengono generati e manipolati attraverso cinque costrutti fondamentali~\cite{BV-FOCAS2014,computationalfields-forte2015}:
-
-\unsure[inline]{
-  Qui ho espresso gli operatori con la sintassi (mi pare di capire LISP-like, credo ripresa da Proto) che veniva utilizzata nei primi paper sull'argomento.
-
-  Va bene? Oppure dovrei usare le notazioni che avete usato nei paper più recenti (che invece penso si appoggino alla sintassi Protelis)?
-}
+I campi vengono generati e manipolati attraverso cinque costrutti fondamentali~\cite{tocl}:
 
 \begin{description}
-  % TODO: nuova notazione?
+
   \item[Built-in operator] \((\,\texttt{b\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\) \\
     Un operatore \emph{built-in} \texttt{b} modella in modo uniforme operazioni basate su valori puntuali, cioè che non coinvolgono né lo stato, né la comunicazione.
     Esso determina il valore del campo in output all'evento \texttt{m} (un punto nello spazio-tempo) solo dai valori dello spazio \texttt{e}
     e dei campi in input \(\texttt{e\textsubscript{1}\:\dots{}\:e\textsubscript{n}}\).
     Possono essere funzioni \emph{stateless} matematiche, logiche o algoritmiche, ma anche sensori, attuatori, funzioni di libreria, ecc.
-  % TODO: nuova notazione?
+
   \item[Function definition and call] \((\,\texttt{def\ f\,(x\textsubscript{1}\:\dots{}\:x\textsubscript{n})\ e}\,)\) \\
     Astrazione e ricorsione sono supportate attraverso la definizione di funzione:
     una funzione \texttt{f} con parametri formali \(\texttt{x\textsubscript{1}\:\dots{}\:x\textsubscript{n}}\) e corpo \texttt{e}
-    può essere dichiarata con la sintassi \emph{Lisp-like} di cui sopra e invocata con \((\,\texttt{f\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\).
-  % TODO: nuova notazione?
+    può essere invocata con \((\,\texttt{f\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\).
+
   \item[Time evolution] \((\,\texttt{rep\ x\;e\textsubscript{0}\;e}\,)\) \\
     Il costrutto di ripetizione supporta l'evoluzione dinamica dei campi, assumendo che ciascun dispositivo computi il proprio programma ripetutamente in \emph{round} asincroni.
     La variabile di stato \texttt{x} è inizializzata con il risultato della valutazione dell'espressione \texttt{e\textsubscript{0}} e aggiornato ad ogni step computando \texttt{e} in relazione al precedente valore di \texttt{x}.
-  % TODO: nuova notazione?
+
   \item[Neighborhood values] \((\,\texttt{nbr\ e}\,)\) \\
     L'interazione diretta tra i dispositivi è incapsulata nel costrutto \texttt{nbr};
-    con esso, si ottiene campo per ogni dispositivo, il quale è una mappa da tutti i vicini al loro più recente valore di \texttt{s}.
+    con esso, si ottiene il \emph{neighbouring field}, ossia una mappa da ciascun vicino al proprio valore corrente di \texttt{s}.
     Funzioni ``\emph{hood}'' \emph{built-in} possono poi riassumere queste mappe.
-  % TODO: nuova notazione?
+
   \item[Domain restriction] \((\,\texttt{if\ e\textsubscript{0}\;e\textsubscript{1}\;e\textsubscript{2}}\,)\) \\
     La ramificazione distribuita è implementata dal costrutto \texttt{if}, che permette di suddividere la rete in due regioni:
     una nella quale l'espressione \texttt{e\textsubscript{0}} è vera, nel quale \texttt{e\textsubscript{1}} viene computato, e una nella quale è falsa, che invece computerà \texttt{e\textsubscript{2}}.
     Tali suddivisioni sono incapsulate e non possono avere effetti al di fuori dei relativi sottospazi.
 \end{description}
 
-Questi costrutti permettono al \emph{field calculus} di essere universale~\cite{beal2014towards}, supportando ogni computazione spazio-temporale causale e approssimabile.
-Tramite questi operatori, inoltre, sono garantite:
-\begin{inparaitem}
-  \item \emph{portabilità},
-  \item \emph{indipendenza} dall'infrastruttura,
-  \item \emph{integrazione} con servizi non aggregati.
-\end{inparaitem}
-
-\unsure[inline]{
-  Gli elenchi in-line a me piacciono per elenchi di singole parole, al posto di una semplice riga separata da virgole.
-
-  So che da molti sono considerati accettabili solo per i paper con limite di lunghezza per risparmiare spazio in elenchi veri e propri, non per questo uso.
-  Lei che ne pensa?
-}
+Questi costrutti permettono al \emph{field calculus} di essere universale~\cite{10.1007/978-3-319-92408-3_1},
+supportando ogni computazione spazio-temporale causale e approssimabile.
+Tramite questi operatori, inoltre, sono garantite \emph{portabilità}, \emph{indipendenza} dall'infrastruttura e \emph{integrazione} con servizi non aggregati.
 
 Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
 gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
@@ -171,7 +166,7 @@ Tale proprietà è garantita per tutti i campi ottenuti tramite composizione fun
 \begin{figure}[htbp]
   \centering
   \includesvg[width=0.8\textwidth]{res/fig/stack-detail-crop.svg}%
-  \caption{Dettaglio dei livelli più bassi dell'\emph{Aggregate Programming}.}%
+  \caption{Dettaglio dei livelli più bassi dell'\emph{aggregate programming}.}%
   \label{fig:stack-detail}
 \end{figure}
 
@@ -213,7 +208,7 @@ Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati i
     \(\texttt{T\,(init,\:floor,\:decay)}\)
 \end{description}
 
-Questi operatori sono sufficientemente espressivi da poter coprire, da soli o combinati tra loro, tutti i pattern di coordinazione usati nei sistemi a larga scala.
+Questi operatori sono sufficientemente espressivi da poter coprire, da soli o combinati tra loro, molti dei pattern di coordinazione usati nei sistemi a larga scala.
 
 Come livello di astrazione ulteriore (il secondo dall'alto nella~\Cref{fig:stack}), volto a semplificare la composizione dei \emph{building blocks}, si aggiungono le \emph{API general-purpose}~\cite{amslaurea13090}.
 Esse possono essere usate e composte tra loro per scrivere applicazioni distribuite senza preoccuparsi dei meccanismi di coordinazione, la cui robustezza è garantita dagli operatori descritti sopra.
@@ -237,10 +232,10 @@ Esse possono essere usate e composte tra loro per scrivere applicazioni distribu
 %   \label{fig:protelis}
 % \end{wrapfigure}
 
-Field calculus è solamente un impianto teorico.
+Field calculus è un impianto teorico sul quale devono essere costruiti linguaggi ``pratici''.
 Vista la necessità di un'architettura portabile in grado di gestire gli aspetti di comunicazione, esecuzione e interfacciamento con hardware e sistema operativo, è stato realizzato Protelis.
 
-\emph{Protelis}~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione aggregato di paradigma funzionale fortemente influenzato da \emph{Proto}~\cite{Beal2006}.
+\emph{Protelis}~\cite{PianiniSASOTutorial2017} è un linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}~\cite{Beal2006}.
 Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus in una sintassi più simile ai linguaggi strutturati tradizionali come C o Java.
 
 \begin{figure}[htbp]
@@ -266,7 +261,7 @@ Il linguaggio incorpora le principali funzionalità di computazione spaziale di 
 Un nodo Protelis è costituito da un \emph{parser} che traduce il programma in codice eseguibile, il quale è poi eseguito a intervalli regolari da un \emph{interprete}, che si fa carico degli aspetti di interazione con il vicinato e con l'ambiente.
 Ogni esecuzione è chiamata \emph{computational round}.
 
-Il linguaggio e l'interprete sono basati su Java e possono essere inseriti in contesti virtuali~\cite{ProtelisSAC14} o reali indifferentemente.
+Il linguaggio e l'interprete sono basati su Java e possono essere inseriti in contesti virtuali~\cite{ProtelisSAC14} o reali indifferentemente~\cite{AggregatecomputingVlsubicomp16}.
 Questo offre, da un lato, la portabilità e il supporto alle differenti piattaforme che la JVM (\emph{Java Virtual Machine}) mette a disposizione, dall'altro l'estendibilità che l'ecosistema di librerie Java può offrire.
 
 Nel mondo scientifico, il linguaggio è già stato utilizzato per la realizzazione di diversi algoritmi aggregati.
@@ -274,9 +269,9 @@ Di seguito sono riportati alcuni esempi.
 
 \begin{description}
   \item[Algoritmi legati all'affollamento]
-    Tramite Protelis, è stato possibile~\cite{BV-FOCAS2014} stimarne la pericolosità di una data zona nell'ambiente basandosi sulla densità dei dispositivi presenti e definire modalità di dispersione efficaci.
+    Tramite Protelis, è stato possibile~\cite{7274429} stimarne la pericolosità di una data zona nell'ambiente basandosi sulla densità dei dispositivi presenti e definire modalità di dispersione efficaci.
 
-    In un altro progetto~\cite{ProtelisSAC14}, è stata definito un algoritmo di \emph{rendezvous} in grado di evitare le zone ad alta densità nel contesto di un evento di massa, permettendo l'incontro di due individui in un punto intermedio.
+    In un altro progetto~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, è stata definito un algoritmo di \emph{rendezvous} in grado di evitare le zone ad alta densità nel contesto di un evento di massa, permettendo l'incontro di due individui in un punto intermedio.
 
   \item[Gestione di reti di servizi]
     Un altro utilizzo significativo è stato per la realizzazione di un sistema di gestione tra servizi in rete.
@@ -292,8 +287,6 @@ Di seguito sono riportati alcuni esempi.
     Ad esempio, è possibile utilizzare visori di realtà aumentata per visualizzare nell'ambiente i campi computazionali
     o, viceversa, modellare i dati raccolti da sensori AR come campi (detti \emph{augmented fields}).
 \end{description}
-
-\unsure[inline]{Dovrei aggiungere altri dettagli su Protelis?}
 
 \section{ScaFi}\label{sec:scafi}
 
@@ -339,5 +332,3 @@ Il framework è composto principalmente da due parti:
 \end{description}
 
 Dato che si appoggia su Scala come linguaggio ospite, è in grado di interoperare con Java e gli altri linguaggi in grado si eseguire in ambiente JVM, mantenendo il solido \emph{type-system} messo a disposizione da Scala e i suoi costrutti funzionali.
-
-\unsure[inline]{Dovrei aggiungere altri dettagli su Scafi?}

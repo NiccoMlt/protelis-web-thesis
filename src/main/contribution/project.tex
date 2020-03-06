@@ -110,7 +110,7 @@
       Per l'implementazione di questo prototipo, è stato scelto il framework React, sviluppato da Facebook e compatibile, ufficialmente o meno, con numerosi linguaggi.
       Tecnicamente React, senza prendere in considerazione gli strumenti sviluppati intorno ad esso, sarebbe una libreria per la costruzione di pagine web reattive e \emph{data-driven};
       esso potrebbe essere considerato, riduttivamente, il \emph{view layer} dei pattern architetturali \emph{MV*} (\emph{Model View Anything}).
-      React non è però vincolato al pattern MVC come AngularJS o a MVVM come Angular dalla versione 2 in poi.
+      React non è però vincolato al pattern MVC come AngularJS o a MVVM~\cite{Anderson2012} come Angular dalla versione 2 in poi.
 
       % In AngularJS, ogni vista è associata ad un controller, che si occupa della gestione dei dati e della loro visualizzazione.
       % La view è definita da un template, formata da elementi HTML, ed è compito dello sviluppatore associare la logica di controllo alla rappresentazione.
@@ -202,9 +202,8 @@
 
       \emph{Vert.x} è un framework applicativo event-driven che esegue su JVM (nonostante offra un supporto poliglotta a diversi linguaggi).
       Del modello architetturale messo a disposizione dal framework, è stato considerato interessante il concetto di \emph{Verticle}:
-      esso è un'astrazione che incapsula un event-loop insieme al suo stato e interagisce tramite gli eventi provenienti da un event-bus.
-      La documentazione\footnote{\url{https://vertx.io/docs/vertx-core/kotlin/\#_verticles}} % TODO: move to biblio
-      specifica che l'approccio non può essere considerato pienamente \emph{ad attori}, bensì solo \emph{actor-like}.
+      esso è un'astrazione, simile al pattern ad attori~\cite{DBLP:conf/ijcai/HewittBS73} ma non considerato pienamente aderente al modello teorico dalla stessa documentazione ufficiale\footnote{\url{https://vertx.io/docs/vertx-core/kotlin/\#_verticles}},
+      che incapsula un event-loop insieme al suo stato e interagisce tramite gli eventi provenienti da un EventBus.
 
       Per questo progetto, il modello è stato considerato adatto, in quanto in grado di garantire il giusto livello di astrazione e i criteri di reattività richiesti.
 

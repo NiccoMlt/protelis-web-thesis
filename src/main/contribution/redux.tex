@@ -5,7 +5,8 @@ Nel contesto applicativo di software orientati all'interazione con l'utente tram
 è spesso consigliato definire chiaramente la gestione dello stato e del flusso informativo, quando questi non sono imposti da eventuali framework utilizzati.
 
 Per esempio, come accennato nella~\Cref{subsec:react}, React prevede che la struttura dei componenti sia definita da un albero:
-lo stato di questi può fluire solo verso il basso, dunque si consiglia di mantenerlo il più alto possibile nella gerarchia (``\emph{state lift-up}''~\cite{react-docs}).
+lo stato di questi può fluire solo verso il basso, dunque si consiglia di mantenerlo il più alto possibile nella gerarchia;
+si parla infatti di ``\emph{state lift-up}''.
 Questo tipo di soluzione può risultare limitante in caso di un numero elevato di componenti, dunque sono stati elaborati pattern specifici per la gestione dello stato.
 
 \subsubsection{Flux architecture}
