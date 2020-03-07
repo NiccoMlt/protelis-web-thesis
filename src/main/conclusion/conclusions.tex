@@ -1,11 +1,9 @@
-\chapter{Considerazioni finali}\label{ch:considerations}
-  L'obiettivo della tesi era quello di progettare un sistema che permettesse, senza particolari configurazioni,
-  di scrivere codice aggregato ed eseguirlo su una rete di esempio.
+\chapter{Considerazioni finali e lavori futuri}\label{ch:considerations}
+  L'obiettivo della tesi era quello di progettare un sistema che permettesse, senza particolari configurazioni, di scrivere codice aggregato ed eseguirlo su una rete di esempio.
   Esso doveva essere facilmente accessibile e immediatamente utilizzabile, dunque si è scelto di indirizzarsi verso tecnologie web.
 
   Per la realizzazione del prototipo, ci si è focalizzati su un solo linguaggio di programmazione aggregata: Protelis.
-  Inoltre, per motivi di realizzabilità concreta, si è deciso di simulare la rete di dispositivi su cui eseguire il codice,
-  anziché utilizzarne una fisica.
+  Inoltre, per motivi di realizzabilità concreta, si è deciso di simulare la rete di dispositivi su cui eseguire il codice, anziché utilizzarne una fisica.
 
   La realizzazione del sistema nel suo complesso ha comportato la progettazione di due applicazioni su differenti piattaforme e con diverse tecnologie e linguaggi:
   la componente server è stata realizzata avvalendosi del framework Vert.x nel linguaggio Kotlin,
@@ -13,8 +11,30 @@
 
   Per la soddisfazione dei requisiti è stato dunque richiesto uno studio approfondito, anche a causa della profonda diversità di questi due sistemi.
   La decisione di appoggiarsi a soluzioni per la programmazione web moderne è stata però fondamentale per ottenere un sistema davvero di uso immediato come richiesto.
-
-  Nonostante il sistema realizzato sia correttamente funzionante e soddisfi i requisiti, esso è da considerarsi un prototipo e, soprattutto con l'impiego di piattaforme economiche come quelle fornite con il piano \emph{Free} di Heroku, non sarebbe in grado di reggere il carico di un elevato numero di utenti.
-  L'attenzione dedicata in fase di progettazione, però, lascia aperte molte strade per l'implementazione in modo semplice di soluzioni maggiormente adatte a casi d'uso complessi.
-
   Si ritiene dunque che il lavoro svolto abbia raggiunto gli obiettivi prefissati, diventando un'occasione formativa notevole e portando alla realizzazione di un sistema potenzialmente molto utile per la divulgazione della programmazione aggregata.
+
+  Il lavoro realizzato per questa tesi, per quanto sia un prototipo, si pone come punto di partenza per diverse possibili modifiche.
+  In primo luogo, l'implementazione attuale si focalizza sulla \emph{simulazione} di una rete di dispositivi, ma rimane aperto ad altre alternative.
+  Ad esempio, è possibile rimpiazzare Alchemist con un utilizzo di più basso livello degli strumenti offerti dal framework di Protelis, andando a definire una differente implementazione dell'interfaccia \texttt{ProtelisEngine}.
+
+  Oppure, il sistema potrebbe essere riadattato facilmente per essere impiegato come interfaccia di monitoring per reti reali:
+  utilizzando infatti un verticle come \emph{bridge}, sarebbe possibile allacciare al sistema una rete di dispositivi fisici, eventualmente necessitando che uno di questi funga da entry-point.
+
+  Un altro aspetto su cui sarebbe interessante porre l'attenzione in futuro sarebbe la scalabilità:
+  come detto nella~\Cref{sec:arch:server}, il prototipo è stato realizzato con un architettura considerabile monolitica, ma il framework offre molte libertà.
+  Vert.x permette infatti l'esecuzione di singoli verticle (ed eventuali dipendenze) in modo indipendente, realizzando, di fatto, dei microservizi.
+  Esso offre inoltre il supporto a diversi strumenti per l'integrazione con tecnologie per il \emph{service discovery}, per lo scambio di messaggi e per il bilanciamento del carico.
+
+  Una soluzione interessante di deploy potrebbe vedere, ad esempio, diversi verticle pacchettizzati come container Docker ed eseguiti in una piattaforma basata su Kubernetes o OpenShift,
+  delegando a quest'ultimo livello PaaS il deploy di repliche per l'incremento delle performance on-demand.
+
+  Spostando l'attenzione sul client, potrebbe essere utile aumentare le possibilità di interazione con l'esecuzione.
+  Potrebbe, ad esempio, risultare utile la possibilità di interagire con i nodi rappresentati, spostandoli e vedendo così l'esecuzione adattarsi alla perturbazione.
+  Funzionalità di questo tipo possono essere inserite in modo abbastanza semplice tramite la realizzazione di eventi specifici, generati dai componenti React e inoltrati tramite SockJS verso il server.
+
+  Infine, un ultimo approccio di miglioramento potrebbe coinvolgere il cambio di parte delle tecnologie impiegate.
+  Per la realizzazione di questo prototipo si è ritenuto l'uso di TypeScript ottimale per le ragioni espresse nelle \Cref{subsec:ts,subsec:kotlinjs,subsub:ts},
+  ma, potenzialmente, Kotlin potrebbe essere una soluzione molto interessante una volta che avrà raggiunto una stabilità accettabile per il target JS\@.
+  Tale migrazione permettere una condivisione più efficiente delle componenti di modello condivise e potenzialmente delle dipendenze.
+  Inoltre, collaborando con il team che mantiene il progetto Protelis, sarebbe potenzialmente possibile realizzare un'implementazione dell'interprete locale al client.
+  In questo modo, il ruolo del server potrebbe diventare non più necessario per piccoli progetti a scopo educativo come quelli a cui questo progetto ha fatto riferimento fin dall'inizio.
