@@ -112,27 +112,27 @@ I campi vengono generati e manipolati attraverso cinque costrutti fondamentali~\
 
 \begin{description}
 
-  \item[Built-in operator] \((\,\texttt{b\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\) \\
+  \item[Operatori built-in] \((\,\texttt{b\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\) \\
     Un operatore \emph{built-in} \texttt{b} modella in modo uniforme operazioni basate su valori puntuali, cioè che non coinvolgono né lo stato, né la comunicazione.
     Esso determina il valore del campo in output all'evento \texttt{m} (un punto nello spazio-tempo) solo dai valori dello spazio \texttt{e}
     e dei campi in input \(\texttt{e\textsubscript{1}\:\dots{}\:e\textsubscript{n}}\).
     Possono essere funzioni \emph{stateless} matematiche, logiche o algoritmiche, ma anche sensori, attuatori, funzioni di libreria, ecc.
 
-  \item[Function definition and call] \((\,\texttt{def\ f\,(x\textsubscript{1}\:\dots{}\:x\textsubscript{n})\ e}\,)\) \\
+  \item[Definizione e chiamata di funzione] \((\,\texttt{def\ f\,(x\textsubscript{1}\:\dots{}\:x\textsubscript{n})\ e}\,)\) \\
     Astrazione e ricorsione sono supportate attraverso la definizione di funzione:
     una funzione \texttt{f} con parametri formali \(\texttt{x\textsubscript{1}\:\dots{}\:x\textsubscript{n}}\) e corpo \texttt{e}
     può essere invocata con \((\,\texttt{f\,(e\textsubscript{1}\:\dots{}\:e\textsubscript{n})}\,)\).
 
-  \item[Time evolution] \((\,\texttt{rep\ x\;e\textsubscript{0}\;e}\,)\) \\
+  \item[Evoluzione nel tempo] \((\,\texttt{rep\ x\;e\textsubscript{0}\;e}\,)\) \\
     Il costrutto di ripetizione supporta l'evoluzione dinamica dei campi, assumendo che ciascun dispositivo computi il proprio programma ripetutamente in \emph{round} asincroni.
     La variabile di stato \texttt{x} è inizializzata con il risultato della valutazione dell'espressione \texttt{e\textsubscript{0}} e aggiornato ad ogni step computando \texttt{e} in relazione al precedente valore di \texttt{x}.
 
-  \item[Neighborhood values] \((\,\texttt{nbr\ e}\,)\) \\
+  \item[Valori di vicinato] \((\,\texttt{nbr\ e}\,)\) \\
     L'interazione diretta tra i dispositivi è incapsulata nel costrutto \texttt{nbr};
     con esso, si ottiene il \emph{neighbouring field}, ossia una mappa da ciascun vicino al proprio valore corrente di \texttt{s}.
     Funzioni ``\emph{hood}'' \emph{built-in} possono poi riassumere queste mappe.
 
-  \item[Domain restriction] \((\,\texttt{if\ e\textsubscript{0}\;e\textsubscript{1}\;e\textsubscript{2}}\,)\) \\
+  \item[Restrizione di dominio] \((\,\texttt{if\ e\textsubscript{0}\;e\textsubscript{1}\;e\textsubscript{2}}\,)\) \\
     La ramificazione distribuita è implementata dal costrutto \texttt{if}, che permette di suddividere la rete in due regioni:
     una nella quale l'espressione \texttt{e\textsubscript{0}} è vera, nel quale \texttt{e\textsubscript{1}} viene computato, e una nella quale è falsa, che invece computerà \texttt{e\textsubscript{2}}.
     Tali suddivisioni sono incapsulate e non possono avere effetti al di fuori dei relativi sottospazi.
@@ -159,35 +159,22 @@ Tale proprietà è garantita per tutti i campi ottenuti tramite composizione fun
 
 Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati in aggiunta al costrutto \texttt{if} del \emph{field calculus} sono tre operatori di coordinazione~\cite{7274429,BV-FOCAS2014}:
 
-% TODO: alternativa in italiano
-% \begin{description}
-%   \item[Diffusione dell'informazione nello spazio] \texttt{G} \\ % Spreading Information Across Space
-%     % \texttt{G(source, init, metric, accumulate)} \\ % ChkTeX 36
-%     Quest'operatore generalizza operazioni molto comuni come la stima della distanza e messaggi broadcast.
-%   \item[Raccoglimento di informazione attraverso lo spazio] \texttt{C} \\ % Collecting Information From Across Space
-%     % \texttt{C(potential, accumulate, local, null)} \\ % ChkTeX 36
-%     Quest'operatore aggrega le informazioni verso la sorgente attraverso il gradiente di un campo specificato.
-%   \item[Riassunto dell'informazione nel tempo] \texttt{T} \\ % Summarizing Information Across Time
-%     % \texttt{T(init, floor, decay)} \\ % ChkTeX 36
-%     Quest'operatore generalizza un timer il cui rateo di aggiornamento può variare nel tempo.
-% \end{description}
-
 \begin{description}
-  \item[Spreading Information Across Space]
+  \item[Diffusione dell'informazione nello spazio]
     Letteralmente \enquote{diffusione dell'informazione nello spazio},
     quest'operatore generalizza operazioni molto comuni come la stima della distanza e messaggi broadcast.
     È definito come:
 
     \(\texttt{G\,(source,\:init,\:metric,\:accumulate)}\)
 
-  \item[Collecting Information From Across Space]
+  \item[Raccoglimento di informazione attraverso lo spazio]
     Letteralmente \enquote{raccoglimento di informazione attraverso lo spazio},
     quest'operatore aggrega le informazioni verso la sorgente attraverso il gradiente di un campo specificato.
     È definito come:
 
     \(\texttt{C\,(potential,\:accumulate,\:local,\:null)}\)
 
-  \item[Summarizing Information Across Time]
+  \item[Riassunto dell'informazione nel tempo]
     Letteralmente \enquote{riassunto dell'informazione nel tempo},
     quest'operatore generalizza un timer il cui rateo di aggiornamento può variare nel tempo.
     È definito come:
