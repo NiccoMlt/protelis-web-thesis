@@ -1,20 +1,15 @@
-\chapter{Motivazioni}\label{ch:motivations}
+\chapter{Motivazioni e Stato dell'arte}\label{ch:motivations}
 
   Come detto nell'\nameref{ch:intro}, il rapido aumento di dispositivi capaci di computare e distribuiti nell'ambiente ha reso necessario ideare nuovi paradigmi di programmazione.
   Uno di questi è senza dubbio l'\emph{aggregate programming}, di cui si è trattato nel dettaglio nel~\Cref{ch:aggregate}.
+  Prima di partire con la progettazione del sistema, è stato necessario valutare lo stato dell'arte nel quale il software va ad inserirsi.
+  In particolare, si è preso in considerazione la procedura di configurazione di un progetto realizzato in un linguaggio aggregato,
+  confrontandolo con l'esperienza di sviluppo ottenuta con altri linguaggi in altri contesti.
 
   In questo \nameCref{ch:motivations} verrà analizzato lo stato dell'arte relativamente alla creazione di un programma aggregato,
   mettendo in evidenza le ragioni per la quale è stato realizzato questo progetto di tesi.
 
-  \section{Stato dell'arte}\label{sec:state-of-art}
-
-  Prima di partire con la progettazione del sistema, è stato necessario valutare lo stato dell'arte nel quale il software va ad inserirsi.
-  % Si è dunque deciso di analizzare nel dettaglio quali sono i punti critici dello stato dell'arte;
-  % i
-  In particolare, si è preso in considerazione la procedura di configurazione di un progetto realizzato in un linguaggio aggregato,
-  confrontandolo con l'esperienza di sviluppo ottenuta con altri linguaggi in altri contesti.
-
-  \subsection{Accessibilità allo sviluppo in Protelis}\label{subsec:setup}
+  \section{Accessibilità allo sviluppo in Protelis}\label{subsec:setup}
 
   I due principali linguaggi di programmazione aggregata che implementano il modello teorico del field calculus sono Protelis e ScaFi.
   ScaFi è un DSL interno a Scala e, come tale, richiede di essere utilizzato all'interno di progetti basati su tale linguaggio;
@@ -72,7 +67,7 @@
   In ciascuno di questi esempi risulta evidente che la configurazione di un progetto per Protelis, anche estremamente minimale, coinvolge strumenti esterni la cui complessità può non essere banale.
   Sarebbe interessante avere a disposizione un ambiente di sviluppo che non richieda configurazione e permetta di provare prototipi di codice durante l'apprendimento del linguaggio.
 
-  \subsection{Ambienti di sviluppo online}\label{subsec:online-ide}
+  \section{Ambienti di sviluppo online}\label{subsec:online-ide}
 
   Con il progredire delle capacità delle applicazioni JavaScript per browser e della popolarità del linguaggio stesso, sono nate numerose implementazioni di IDE (\emph{Integrated Development Environment}) in grado di eseguire all'interno di una pagina web, comunicando al più con un \emph{language server} remoto.
 
@@ -88,18 +83,3 @@
   Potrebbe essere interessante offrire all'utente novizio di Protelis un'esperienza simile:
   la rete di dispositivi (reale o simulata) viene configurata nel server, insieme all'interprete per il linguaggio.
   L'utente avrebbe dunque a disposizione, tramite il proprio browser, solo un semplice editor per scrivere il codice e metterlo in esecuzione.
-
-  \section{Prospettive e approccio al problema}\label{sec:prospective}
-
-  \unsure[inline]{
-    Dovrei dire altro nella descrizione dell'approccio al problema?
-
-    Temo di ripetermi con quello che dirò più avanti nei requisiti (e un po' nella loro analisi e nella progettazione).
-  }
-
-  Terminata la disamina dello stato dell'arte, è possibile delineare un approccio concreto al problema.
-  L'intenzione è quella di realizzare un sistema software distribuito che offra all'utente la possibilità di utilizzare un linguaggio di programmazione aggregata nel modo più trasparente possibile.
-  In particolare, tramite un'interfaccia Single-Page accessibile tramite browser, l'utente dovrebbe poter accedere alle API di un server che nascondono completamente tutta la complessità di configurazione di una rete (reale o simulata) e di un progetto Java/Scala.
-
-  Il linguaggio di riferimento per il prototipo dovrebbe essere Protelis.
-  Il sistema dovrebbe comunque essere potenzialmente estendibile a ScaFi e ad altri linguaggi futuri simili.
