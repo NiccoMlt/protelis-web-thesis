@@ -99,7 +99,10 @@
 %% Altri pacchetti
 \RequirePackage{graphicx}           % serve per includere immagini e grafici
 \RequirePackage{svg}
-\RequirePackage{subcaption}         % serve per ottenere sottofigure
+\RequirePackage[
+  subrefformat=parens,
+  labelformat=parens
+]{subcaption}                       % serve per ottenere sottofigure
 \RequirePackage{caption}            % permette di controllare la formattazione delle didascalie
 \RequirePackage{adjustbox}          % permette di effettuare il crop delle immagini
 \RequirePackage{wrapfig}            % permette di inserire immagini wrappate dal testo
