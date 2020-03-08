@@ -11,16 +11,16 @@
 % arara: lualatex:      { interaction: nonstopmode, shell: yes, synctex: yes }
 
 \documentclass[%
-  a4paper,                % formato di pagina A4
-  fontsize=12pt,          % corpo del testo a 12pt
+  a4paper,                  % formato di pagina A4
+  fontsize=12pt,            % corpo del testo a 12pt
   % la dimensione 12pt automaticamente imposta \footnotesize a 10pt
-  oneside,                % TODO: change (oneside|twoside) documento a singola o doppia facciata,
-  openany,              % (openany|openright) fa cominciare un capitolo nella successiva pagina a disposizione o sempre in una pagina destra
-  % twocolumn,            % dà a LaTeX le istruzioni per comporre l'intero documento su due colonne
-  titlepage,              % (titlepage|notitlepage) se dopo il titolo del documento debbaavere  inizio  una  nuova  pagina
-  % fleqn,                % allinea le formule a sinistra rispetto a un margine rientrato
-  % leqno,                % mette la numerazione delle formule a sinistra anziché a destra
-  final                   % (draft|final) scelta tra bozza o finale, influenza il comportamento degli altri pacchetti
+  oneside,                  % TODO: change (oneside|twoside) documento a singola o doppia facciata,
+  openany,                  % (openany|openright) fa cominciare un capitolo nella successiva pagina a disposizione o sempre in una pagina destra
+  % twocolumn,              % dà a LaTeX le istruzioni per comporre l'intero documento su due colonne
+  titlepage,                % (titlepage|notitlepage) se dopo il titolo del documento debbaavere  inizio  una  nuova  pagina
+  % fleqn,                  % allinea le formule a sinistra rispetto a un margine rientrato
+  % leqno,                  % mette la numerazione delle formule a sinistra anziché a destra
+  final,                    % (draft|final) scelta tra bozza o finale, influenza il comportamento degli altri pacchetti
   headings=standardclasses, % changes the font of all section heading levels to serif
   headings=big,             % revert to default heading size that headings=standardclasses changes
   chapterprefix=false       % reverse the chapterprefix=true option that headings=standardclasses sets
