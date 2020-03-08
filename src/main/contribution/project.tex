@@ -1,17 +1,21 @@
 \chapter{Progettazione}\label{ch:project}
 
-  Come preventivato nella~\Cref{sec:arch-logica}, l'architettura logica del sistema vede la presenza di due principali entità:
-  una pagina web che costituisce il client del sistema e un server di backend, che esegue su piattaforma JVM interfacciandosi con un esecutore di codice Protelis.
+  % Come preventivato nella~\Cref{sec:arch-logica}, l'architettura logica del sistema vede la presenza di due principali entità:
+  % una pagina web che costituisce il client del sistema e un server di backend, che esegue su piattaforma JVM interfacciandosi con un esecutore di codice Protelis.
 
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=.8\textwidth]{res/uml/architecture-design.eps}%
-    \caption{Il diagramma UML riporta l'architettura di massima dei componenti del sistema}%
-    \label{fig:architecture-design}
-  \end{figure}
+  % \begin{figure}[htbp]
+  %   \centering
+  %   \includegraphics[width=.8\textwidth]{res/uml/architecture-design.eps}%
+  %   \caption{Il diagramma UML riporta l'architettura di massima dei componenti del sistema}%
+  %   \label{fig:architecture-design}
+  % \end{figure}
 
-  Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project}, si intende analizzare più nel dettaglio questa struttura (della quale si ha una rappresentazione grafica in~\Cref{fig:architecture-design}),
-  focalizzandosi sui dettagli di ciascun componente.
+  % Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project}, si intende analizzare più nel dettaglio questa struttura (della quale si ha una rappresentazione grafica in~\Cref{fig:architecture-design}),
+  % focalizzandosi sui dettagli di ciascun componente.
+
+  Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project} si intende descrivere la progettazione di dettaglio del sistema:
+  in particolare, si intende partire con lo studio dell'interfaccia grafica, per poi prendere in considerazione l'architettura logica riportata in~\Cref{fig:architecture-design},
+  focalizzandosi sulla progettazione dell'architettura di dettaglio di ciascun componente.
 
   \section{Design dell'applicazione}\label{sec:client-design}
     % TODO: inserire breve introduzione sulle GUI
@@ -34,13 +38,6 @@
       nella parte sinistra è solitamente presente un editor che ricorda quello disponibile in diverse IDE desktop, mentre nella parte destra viene generalmente inserita una visualizzazione dell'output.
       Ad esempio, in Overleaf è possibile, alternativamente, visualizzare il log degli errori o il documento compilato.
 
-      \begin{figure}[htbp]
-        \centering
-        \includesvg[width=.85\textwidth]{res/mockup/gui-actual.svg}%
-        \caption{Mockup dell'interfaccia che dovrà presentare la pagina web}%
-        \label{fig:mockup}
-      \end{figure}
-
       Nel mockup finale, riportato in~\Cref{fig:mockup}, ci si è ispirati a questo tipo di struttura.
       L'interfaccia dovrebbe infatti essere costituita dalle parti seguenti:
 
@@ -49,11 +46,11 @@
           Una \emph{barra superiore}, nella quale è riportato il nome e il logo del progetto, insieme a un selettore per il backend.
           Nei primi mockup, tale selettore era posizionato nella sezione principale della pagina, ma successivamente si è preferito spostarlo per sfruttare al meglio lo spazio a disposizione.
         \item
-          Un \emph{blocco di sinistra}, che costituisce la parte con cui l'utente può interagire per lavorare sul codice.
+          Una \emph{sezione di sinistra}, che costituisce la parte con cui l'utente può interagire per lavorare sul codice.
           Il componente principale è appunto l'editor, un campo di testo avanzato che permette di visualizzare il codice Protelis di esempio e modificarlo.
           Sotto di esso sono presenti i bottoni di controllo per interagire con l'esecuzione.
         \item
-          Un \emph{blocco di destra}, che ospita un canvas in cui l'esecuzione viene rappresentata.
+          Una \emph{sezione di destra}, che ospita un canvas in cui l'esecuzione viene rappresentata.
           Al suo interno verranno visualizzati i nodi su cui il codice sta eseguendo.
           % In questa sezione, i componenti principali sono:
           % \begin{description}
@@ -65,6 +62,13 @@
           %   % TODO
           % \end{description}
       \end{itemize}
+
+      \begin{figure}[htbp]
+        \centering
+        \includesvg[width=.85\textwidth]{res/mockup/gui-actual.svg}%
+        \caption{Mockup dell'interfaccia che dovrà presentare la pagina web}%
+        \label{fig:mockup}
+      \end{figure}
 
     \subsection{Design di riferimento}\label{subsec:material}
       Come è stato già sottolineato, l'applicazione vede come utilizzo principale quello dell'utente inesperto del linguaggio.
@@ -147,20 +151,9 @@
           In \texttt{editorSlice} saranno inserite tutte le informazioni relative allo stato dei file.
           In particolare, è possibile definire al suo interno una struttura ad albero riguardante i file e lo stato di apertura degli stessi.
         \item[Esecuzione]
-          In \texttt{execSlice} saranno invece inseriti i dati relativi all'esecuzione, come:
-          \begin{itemize}
-            \item lo stato della connessione,
-            \item lo stato della simulazione,
-            \item l'ID della simulazione,
-            \item i dati dei nodi da rappresentare.
-          \end{itemize}
+          In \texttt{execSlice} saranno invece inseriti i dati relativi all'esecuzione;
+          saranno dunque presenti lo stato della connessione, l'ID e lo stato della simulazione e i dati dei nodi da rappresentare.
       \end{description}
-
-      \improvement[inline]{
-        Mi piacerebbe aggiungere maggiori dettagli ``formali'', ad esempio graficamente con UML, ma non saprei come.
-
-        Da quanto leggo online, non è esattamente il tipo di grafico adatto a questo tipo di pattern architetturale.
-      }
 
   \section{Architettura del server}\label{sec:arch:server}
 
@@ -168,17 +161,11 @@
 
     Innanzitutto, è stato necessario chiarire se l'architettura dovesse essere monolitica o separata in microservizi.
     In tempi recenti, l'approccio a microservizi viene preferito a causa di diversi vantaggi:
-
-    \begin{itemize}
-      \item
-        Un sistema composto da microservizi indipendenti è più semplice da scalare,
-        in quanto è possibile replicare ciascun servizio in modo indipendente dagli altri, a seconda delle esigenze.
-      \item
-        L'approccio a microservizi risulta generalmente più semplice da manutenere,
-        in quanto disaccoppia i servizi tra loro, rendendo chiare le dipendenze condivise e permettendo lo sviluppo indipendente delle componenti.
-      \item
-        Offrono un'integrazione migliore con orchestratori cloud e permettono di impiegare tecnologie di \emph{continuous deployment} (CD) in modo più efficiente.
-    \end{itemize}
+    in primo luogo, un sistema composto da microservizi indipendenti è solitamente più semplice da scalare,
+    in quanto è possibile replicare ciascun servizio in modo indipendente dagli altri, a seconda delle esigenze.
+    Inoltre, l'approccio a microservizi risulta generalmente più semplice da manutenere,
+    in quanto disaccoppia i servizi tra loro, rendendo chiare le dipendenze condivise e permettendo lo sviluppo indipendente delle componenti.
+    Infine, un sistema di questo tipo offre un'integrazione migliore con orchestratori cloud e permette di impiegare tecnologie di \emph{continuous deployment} (CD) in modo più efficiente.
 
     Tali vantaggi sono però maggiormente evidenti quante più sono le funzionalità che devono essere offerte.
     Nel caso di questo progetto, di contro, il sistema deve essere in grado di gestire in modo efficiente un solo tipo di servizio, ossia l'esecuzione di codice su una rete simulata.
@@ -201,20 +188,17 @@
       Per questo progetto, il modello è stato considerato adatto, in quanto in grado di garantire il giusto livello di astrazione e i criteri di reattività richiesti.
 
     \subsection{Progettazione dei verticle}
-      Il sistema progettato è composto da due componenti principali.
+      Il sistema progettato è composto da due componenti principali, che possono essere facilmente mappati su altrettante entità verticle secondo il lessico di Vert.x.
 
-      \begin{itemize}
-        \item
-          Il primo, chiamato \texttt{BridgeVerticle}, è dedicato alla gestione delle API per la comunicazione da e verso l'esterno.
-          % Esso si avvale dell'EventBus di Vert.x per comunicare con l'esterno
-          In particolare, esso implementa il pattern \emph{bridge} relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
-          % In questo modo, all'interno dell'applicazione, tutte le istanze dei verticle interessati possono essere
-          Gestendo le comunicazioni con l'esterno, esso astrae l'intero processo di gestione del protocollo di comunicazione dalle altre componenti dell'applicazione.
-        \item
-          Il secondo è invece chiamato \texttt{AlchemistVerticle} e costituisce l'entità che si interfaccia con un motore di esecuzione esterno,
-          come detto nell'architettura generale delineata all'inizio di questa fase di progettazione (\Cref{fig:architecture-design}).
-          In particolare, per eseguire il codice si è scelto di utilizzare il simulatore Alchemist, che verrà analizzato più nel dettaglio nella~\Cref{subsec:alchemist}.
-      \end{itemize}
+      Il primo, chiamato \texttt{BridgeVerticle}, è dedicato alla gestione delle API per la comunicazione da e verso l'esterno.
+      % Esso si avvale dell'EventBus di Vert.x per comunicare con l'esterno
+      In particolare, esso implementa il pattern \emph{bridge} relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
+      % In questo modo, all'interno dell'applicazione, tutte le istanze dei verticle interessati possono essere
+      Gestendo le comunicazioni con l'esterno, esso astrae l'intero processo di gestione del protocollo di comunicazione dalle altre componenti dell'applicazione.
+
+      Il secondo è invece chiamato \texttt{AlchemistVerticle} e costituisce l'entità che si interfaccia con un motore di esecuzione esterno,
+      a cui ci si è riferiti già nell'architettura logica delineata al termine della fase di analisi del problema (\Cref{fig:architecture-design}).
+      In particolare, per eseguire il codice si è scelto di utilizzare il simulatore Alchemist, che verrà analizzato più nel dettaglio nella~\Cref{subsec:alchemist}.
 
       Oltre a questi, è stato anche progettato l'uso di un verticle principale \texttt{MainVerticle}, che viene lanciato dall'avviatore di Vert.x e che coordina l'avvio dei due verticle descritti sopra.
 
@@ -273,14 +257,14 @@
 
       \begin{figure}[htbp]
         \centering
-        \includegraphics[width=.9\textwidth]{res/uml/redux-eventbus.eps}%
+        \includegraphics[width=.95\textwidth]{res/uml/redux-eventbus.eps}%
         \caption{Diagramma UML di sequenza rappresentante il flusso delle azioni sullo store di Redux.}%
         \label{fig:event:redux}
       \end{figure}
 
       \begin{figure}[htbp]
         \centering
-        \includegraphics[width=.9\textwidth]{res/uml/data-flow.eps}%
+        \includegraphics[width=.95\textwidth]{res/uml/data-flow.eps}%
         \caption{Diagramma UML di sequenza che rappresenta la gestione degli eventi sul bus di Vert.x.}%
         \label{fig:event:vertx}
       \end{figure}

@@ -66,9 +66,11 @@
         \item[Estensione della sintassi JSX e TSX]
           Una delle maggiori particolarità del framework React è la sintassi \emph{JSX}\@.
           L'acronimo sta per \emph{\emph{J}ava\emph{S}cript e\emph{X}tension} e identifica un particolare zucchero sintattico non presente in JavaScript ``standard''.
-          Esso permette la definizione di ``\texttt{element}'', ossia di componenti direttamente rappresentabili, attraverso una sintassi dichiarativa di markup che ricorda HTML\@. \unsure{Dovrei inserire uno snippet di confronto?}
+          Esso permette la definizione di ``\texttt{element}'', ossia di componenti direttamente rappresentabili, attraverso una sintassi dichiarativa di markup che ricorda HTML\@.
 
-          Essendo in React la logica rappresentativa strettamente legata agli elementi non grafici del componente, essere in grado di distinguere in modo chiaro i \emph{concetti}\improvement{Non sono sicuro di aver espresso correttamente in italiano ``separation of concerns'', che sarebbe da traduzione separazione di interessi}
+          Essendo in React la logica rappresentativa strettamente legata agli elementi non grafici del componente,
+          essere in grado di applicare una corretta ``\emph{separation of concerns}''
+          % essere in grado di distinguere in modo chiaro i \emph{concetti}\improvement{Non sono sicuro di aver espresso correttamente in italiano ``separation of concerns'', che sarebbe da traduzione separazione di interessi}
           all'interno dello stesso componente e file senza doversi affidare a markup esterno è un vantaggio notevole.
 
           TypeScript supporta questa estensione della sintassi, denominandola \emph{TSX}.
@@ -79,7 +81,7 @@
       L'impiego di Kotlin per tutta l'applicazione sarebbe stato infatti molto interessante per utilizzare un unico linguaggio in tutto il sistema, migliorando l'integrazione e il supporto a dipendenze condivise.
 
       Purtroppo, per quanto JetBrains supporti ufficialmente React per Kotlin/JS, l'integrazione all'inizio dei lavori di questa tesi era ancora troppo instabile per un uso reale.
-      Si sono riscontrati problemi con lo strumento di generazione dei \emph{wrapper} per i tipi\unsure{Dovrei citare la issue GitHub che avevamo creato?} e l'output del compilatore genera codice JS datato e pesante.
+      Si sono riscontrati problemi\footnote{\url{https://github.com/Kotlin/dukat/issues/120\#issuecomment-560423099}} con lo strumento di generazione dei \emph{wrapper} per i tipi \texttt{dukat} e l'output del compilatore genera codice JS datato e pesante.
       Fintanto che la versione 1.4 di Kotlin non sarà rilasciata in pianta stabile, si ritiene che il linguaggio non sia ancora pronto per un uso frontend su browser.
 
   \subsection{Strumenti per lo sviluppo e il controllo del software}\label{subec:quality}

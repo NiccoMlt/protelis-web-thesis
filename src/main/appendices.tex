@@ -1,14 +1,30 @@
 \addpart*{\appendixname}
-% \renewcommand{\thesection}{\Alph{section}}
-% \renewcommand{\thesubsection}{A.\arabic{subsection}}
 
-% \addcontentsline{toc}{section}{\appendixname}
-% \addchap{\appendixname}
-% \chapter*[]{\appendixname}
+% % \renewcommand{\thesection}{\Alph{section}}
+% % \renewcommand{\thesubsection}{A.\arabic{subsection}}
+
+% % \addcontentsline{toc}{section}{\appendixname}
+% % \addchap{\appendixname}
+% % \chapter*[]{\appendixname}
 
 \appendix
 \begin{appendices}
+
   % \section{Dockerfile del server}\label{app:docker}
   \chapter{Dockerfile del server}\label{app:docker}
+  % \addchap*{Dockerfile del server}\label{app:docker}
+
+    Di seguito è riportato il codice del Dockerfile che permette il deploy del server come container Docker.
+    L'immagine costruita durante lo sviluppo è anche disponibile su Docker Hub con il nome \texttt{niccomlt/protelis-web}.
+
     \inputminted{dockerfile}{res/code/Dockerfile}
+
+  % \section{YAML di configurazione per Alchemist}
+  \chapter{YAML di configurazione per Alchemist}\label{app:yaml}
+  % \addchap*{YAML di configurazione per Alchemist}
+
+    Di seguito è riportata la configurazione in formato YAML che permette ad Alchemist di costruire la rete simulata sulla quale viene eseguito il codice.
+
+    \inputminted{yaml}{res/code/simulation.yml}
+
 \end{appendices}

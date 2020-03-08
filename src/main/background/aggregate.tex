@@ -68,15 +68,16 @@ innanzitutto, laddove non sia richiesto al programmatore di gestire i meccanismi
 Poi, il framework di programmazione dovrebbe essere modulare, e tali moduli dovrebbero essere componibili in modo semplice e trasparente.
 Infine, deve essere possibile fornire meccanismi di coordinazione differenti per diverse parti del sistema aventi regioni dello spazio e tempi distinti.
 
-La programmazione aggregata cerca di rispondere alle seguenti esigenze~\cite{7274429}:
+In letteratura~\cite{7274429}, sono stati individuati tre principi % della programmazione aggregata
+per rispondere a queste esigenze:
 
 % TODO: collassa elenco puntato
-\begin{itemize}
+\begin{enumerate}
   \item la ``macchina'' programmata non è il singolo dispositivo, bensì il loro agglomerato; % a \emph{regione} dell'ambiente computazionale che astrae dai dettagli specifici
   \item il ``programma'' è specificato come manipolazione di strutture dati distribuite che evolvono nel tempo dette \emph{computational fields};
   % TODO: modularità e componibilità
   \item tali manipolazioni vengono eseguite dai dispositivi inseriti all'interno della regione, tramite l'uso di meccanismi di coordinazione resilienti e di interazioni basate sulla prossimità.
-\end{itemize}
+\end{enumerate}
 
 In questo modo, i meccanismi di coordinazione, spesso complessi, vengono nascosti facilitando la costruzione e favorendo la modularità.
 In particolare, il paradigma si struttura su più livelli di astrazione, come è possibile vedere in~\Cref{fig:stack}.
@@ -85,7 +86,7 @@ Nelle \nameCrefs{sec:field-calculus} successive analizzeremo più nel dettaglio 
 
 \begin{figure}[htbp]
   \centering
-  \includesvg[width=0.55\textwidth]{res/fig/stack-2.svg}%
+  \includesvg[width=0.6\textwidth]{res/fig/stack-2.svg}%
   \caption[
     Principali livelli dell'\emph{Aggregate Programming}.
   ]{
@@ -142,13 +143,16 @@ Questi costrutti permettono al \emph{field calculus} di essere universale~\cite{
 supportando ogni computazione spazio-temporale causale e approssimabile.
 Tramite questi operatori, inoltre, sono garantite \emph{portabilità}, \emph{indipendenza} dall'infrastruttura e \emph{integrazione} con servizi non aggregati.
 
-Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
-gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
+Il livello di astrazione successivo è costituito dagli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
+
+% Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
+% gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
 
 Questo layer consiste di un insieme di operatori generici e di più alto livello, che offrono allo sviluppatore un ambiente di programmazione più espressivo,
 contribuendo in particolare alla cosiddetta \emph{self-stabilization}, ossia la capacità di raggiungere uno stato atteso in un numero finito di passi,
 indipendentemente dallo stato di partenza.
-Tale proprietà è garantita per tutti i campi ottenuti tramite composizione funzionale~\cite{BV-FOCAS2014}.
+Qualora il sistema sia auto-stabilizzante, tale proprietà è garantita anche per tutti i campi ottenuti tramite composizione funzionale~\cite{BV-FOCAS2014}.
+% TODO: va bene?
 
 \begin{figure}[htbp]
   \centering
@@ -214,7 +218,7 @@ Il linguaggio incorpora le principali funzionalità di computazione spaziale di 
 
 \begin{figure}[htbp]
   \centering
-  \includesvg[width=0.4\textwidth]{res/fig/protelis-abstract-arch.svg}
+  \includesvg[width=0.45\textwidth]{res/fig/protelis-abstract-arch.svg}
   \caption[
     Architettura di Protelis
   ]{
@@ -254,6 +258,9 @@ Di seguito sono riportati alcuni esempi.
 
     Utilizzando Protelis è stato possibile~\cite{7306601} realizzare un sistema in grado di organizzarsi per riavviare lo stack.
     In particolare, sono state definite entità chiamate \emph{daemon} che monitorano ciascuna uno specifico servizio e comunicano con le altre al fine di garantire l'ordine necessario.
+
+  \item[Coordinazione di droni]
+    Il linguaggio Protelis è stato utilizzato anche per la realizzazione di un sistema di coordinazione per una rete di sensori aerotrasportati~\cite{7536289,7789463} tramite droni.
 
   \item[Integrazione con servizi di realtà aumentata]
     La programmazione aggregata è stata testata anche nell'ambito dell'AR (\emph{Augmented Reality})~\cite{PCRV-SCOPES2015}.

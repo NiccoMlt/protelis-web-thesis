@@ -1,5 +1,5 @@
 \subsection{Simulatore scelto: Alchemist}\label{subsec:alchemist}
-  Alchemist~\cite{alchemist-jos2013} è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine}, nato all'interno dell'Università di Bologna.
+  Alchemist~\cite{alchemist-jos2013} è un meta-simulatore estendibile completamente \emph{open-source} che esegue su \engEmph{Java~Virtual~Machine}, nato all'interno dell'Università di Bologna.
 
   \subsubsection{Simulazione}\label{subsec:introAlchemist}
     In generale, una \emph{simulazione}~\cite{des3} è una riproduzione del modo di operare di un sistema o un processo del mondo reale nel tempo.
@@ -15,32 +15,6 @@
     ad ogni passo di simulazione, esso è in grado di selezionare la reazione successiva in tempo costante e richiede un tempo logaritmico per aggiornare le strutture dati interne al termine dell'esecuzione dell'evento.
 
   \subsubsection{Astrazioni e modello}\label{subsec:modello}
-    \begin{figure}[htbp]
-      \centering
-      \includegraphics[width=.85\textwidth]{res/fig/alchemist_model.png}
-      % \caption[%
-      %   Rappresentazione grafica delle diverse entità di Alchemist.
-
-      %   All'interno di un ambiente, che modella il sistema, si trovano i nodi connessi tra loro attraverso dei collegamenti;
-      %   ogni nodo è composto da reazioni e molecole, ognuna delle quali ha associata una concentrazione.
-      % ]{%
-      %   Rappresentazione grafica delle diverse entità di Alchemist.
-
-      %   All'interno di un ambiente, che modella il sistema, si trovano i nodi connessi tra loro attraverso dei collegamenti;
-      %   ogni nodo è composto da reazioni e molecole, ognuna delle quali ha associata una concentrazione.
-
-      %   Figura ripresa dal sito ufficiale\footnote{\url{http://alchemistsimulator.github.io}}.
-      % }%
-      \caption[%
-        Rappresentazione grafica delle diverse entità di Alchemist.
-      ]{%
-        Rappresentazione grafica delle diverse entità di Alchemist.
-
-        Figura ripresa dal sito ufficiale\footnotemark.
-      }%
-      \label{fig:alchemist:model}
-    \end{figure}
-    \footnotetext{\url{http://alchemistsimulator.github.io}}
 
     Il modello di astrazione di Alchemist è ispirato dal lavoro della comunità scientifica nell'ambito dei simulatori a scopo di ricerca chimica e ne riprende dunque la nomenclatura.
     Le entità (visibili in \Cref{fig:alchemist:model}) su cui lavora sono le seguenti:
@@ -55,6 +29,19 @@
         La \emph{concentrazione} di una \emph{molecola} è il valore associato alla proprietà rappresentata dalla \emph{molecola}.
 
         Mantenendo il parallelismo con la programmazione imperativa, la \emph{concentrazione} rappresenterebbe il valore della variabile.
+
+        \begin{figure}[tbp] % h rimosso per posizionare correttamente la footnote
+          \centering
+          \includegraphics[width=.85\textwidth]{res/fig/alchemist_model.png}
+          \caption[%
+            Rappresentazione grafica delle diverse entità di Alchemist.
+          ]{%
+            Rappresentazione grafica delle diverse entità di Alchemist.\\
+            Figura ripresa dal sito ufficiale\protect\footnotemark.
+          }%
+          \label{fig:alchemist:model}
+        \end{figure}
+        \footnotetext{\url{http://alchemistsimulator.github.io}}
 
       \item[Nodo]\label{itm:node}
         Il \emph{nodo} è un contenitore di \emph{molecole} e \emph{reazioni} che risiede all'interno di un \emph{ambiente} e che astrae una singola entità.
@@ -102,7 +89,18 @@
       \item[Azione]\label{itm:act}
         Un'\emph{azione} è una procedura che provoca una modifica allo stato dell'\emph{ambiente}.
 
-      \end{description}
+    \end{description}
 
-    % TODO: inserisci qualcosa su come Alchemist permette a Protelis di girare
-    \improvement[inline]{Dovrei descrivere anche l'incarnazione di Protelis per Alchemist?}
+    Per quanto la terminologia sia ripresa dalla chimica, il meta-modello del simulatore è estendibile, adottando interpretazioni più o meno lasche dei termini ``molecola'' e ``concentrazione''.
+    In particolare, in Alchemist esiste il concetto di \emph{incarnazione}, che definisce l'istanza concreta del meta-modello, delineando le modalità con le quali le astrazioni vengono implementate.
+
+  \subsubsection{Incarnazione Protelis}
+
+  Alchemist fornisce l'implementazione di diverse incarnazioni;
+  per lo scopo di questa tesi, ci si propone di utilizzare l'incarnazione Protelis.
+  In essa, la molecola identifica il nome di un sensore, mentre la sua concentrazione è il valore misurato.
+
+  Attraverso la configurazione di Alchemist, è possibile definire il posizionamento dei nodi e le modalità di collegamento.
+  Per ciascun nodo, è possibile definire una molecola che conterrà il codice Protelis che ciascun nodo deve eseguire;
+  in questo modo, il sistema può caricare dinamicamente il codice ottenendo la relativa concentrazione.
+  Un esempio di configurazione è riportato in~\Cref{app:yaml}.
