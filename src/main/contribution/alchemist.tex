@@ -21,7 +21,7 @@
 
     \begin{description}
       \item[Molecola]\label{itm:mol}
-        Una \emph{molecola} rappresenta il nome dato ad un particolare dato all'interno di un \emph{nodo}, del quale ne astrae parte dello stato.
+        Una \emph{molecola} rappresenta il nome assegnato ad un particolare dato all'interno di un \emph{nodo}, del quale ne astrae parte dello stato.
 
         Un parallelismo con la programmazione imperativa vedrebbe la \emph{molecola} come un'astrazione del nome di una variabile.
 
@@ -96,11 +96,11 @@
 
   \subsubsection{Incarnazione Protelis}
 
-  Alchemist fornisce l'implementazione di diverse incarnazioni;
-  per lo scopo di questa tesi, ci si propone di utilizzare l'incarnazione Protelis.
-  In essa, la molecola identifica il nome di un sensore, mentre la sua concentrazione è il valore misurato.
+    Alchemist fornisce l'implementazione di diverse incarnazioni;
+    per lo scopo di questa tesi, ci si propone di utilizzare l'incarnazione Protelis.
+    In essa, la molecola identifica il nome di un sensore, mentre la sua concentrazione è il valore misurato.
 
-  Attraverso la configurazione di Alchemist, è possibile definire il posizionamento dei nodi e le modalità di collegamento.
-  Per ciascun nodo, è possibile definire una molecola che conterrà il codice Protelis che ciascun nodo deve eseguire;
-  in questo modo, il sistema può caricare dinamicamente il codice ottenendo la relativa concentrazione.
-  Un esempio di configurazione è riportato in~\Cref{app:yaml}.
+    Attraverso la configurazione di Alchemist, è possibile definire il posizionamento dei nodi e le modalità di collegamento, nonché la presenza di specifiche molecole.
+    In questo modo, è possibile definire una molecola che conterrà il codice Protelis che ciascun nodo deve eseguire;
+    il sistema può così caricare dinamicamente il codice ottenendo la relativa concentrazione.
+    Un esempio di configurazione è riportato in~\Cref{app:yaml}.

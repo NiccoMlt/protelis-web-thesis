@@ -72,7 +72,7 @@
 
     \subsection{Design di riferimento}\label{subsec:material}
       Come è stato già sottolineato, l'applicazione vede come utilizzo principale quello dell'utente inesperto del linguaggio.
-      L'interfaccia non deve essere solo semplice, ma anche moderna, gradevole e intuitiva.
+      L'interfaccia non doveva dunque essere solo semplice, ma anche moderna, gradevole e intuitiva.
       Era dunque necessario scegliere uno stile grafico familiare, moderno e facilmente adattabile a quella che sarebbe essere la nuova interfaccia che si stava progettando.
 
       Prendendo come esempio l'interfaccia di Overleaf (\Cref{fig:overleaf}), è possibile notare come il design di base abbia uno stile di tipo \emph{flat};
@@ -101,10 +101,10 @@
 
     \subsection{Framework di sviluppo}\label{subsec:react}
 
-      Sono disponibili numerosi framework per lo sviluppo di applicazioni web \emph{single-page}, ciascuna dei quali ottimizzata per determinati pattern di progettazione.
+      Sono disponibili numerosi framework per lo sviluppo di applicazioni web \emph{single-page}, ciascuno dei quali ottimizzato per determinati pattern di progettazione.
       Essendo un requisito la realizzazione di una SPA, la scelta di quale framework impiegare è fondamentale già in fase di progetto, in quando può notevolmente condizionare il piano di lavoro.
 
-      Per l'implementazione di questo prototipo, è stato scelto il framework React, sviluppato da Facebook e compatibile, ufficialmente o meno, con numerosi linguaggi.
+      Per l'implementazione di questo prototipo è stato scelto il framework React, sviluppato da Facebook e compatibile, ufficialmente o meno, con numerosi linguaggi.
       Tecnicamente React, senza prendere in considerazione gli strumenti sviluppati intorno ad esso, sarebbe una libreria per la costruzione di pagine web reattive e \emph{data-driven};
       esso potrebbe essere considerato, riduttivamente, il \emph{view layer} dei pattern architetturali \emph{MV*} (\emph{Model View Anything}).
       React non è però vincolato al pattern MVC come AngularJS o a MVVM~\cite{Anderson2012} come Angular dalla versione 2 in poi.
@@ -157,7 +157,7 @@
 
   \section{Architettura del server}\label{sec:arch:server}
 
-    Il server costituisce l'entità del sistema che si occupa dell'esecuzione del codice Protelis; è un esecutore remoto.
+    Il server costituisce l'entità del sistema che si occupa dell'esecuzione del codice Protelis; è un esecutore remoto a tutti gli effetti.
 
     Innanzitutto, è stato necessario chiarire se l'architettura dovesse essere monolitica o separata in microservizi.
     In tempi recenti, l'approccio a microservizi viene preferito a causa di diversi vantaggi:
@@ -217,7 +217,7 @@
 
       In particolare, l'EventBus di Vert.x supporta l'utilizzo di \emph{bridge} per la comunicazione remota attraverso numerosi protocolli.
       Tra questi, \emph{SockJS} è un protocollo pensato per realizzare una comunicazione \emph{WebSocket-like} sul maggior numero di piattaforme possibili.
-      Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando su \emph{polling} tramite HTTP standard in caso assenza.
+      Esso gestisce in modo autonomo la verifica del supporto del protocollo WebSocket~\cite{Melnikov2011} da parte del client e del server, migrando verso una soluzione a \emph{polling} tramite HTTP standard in caso assenza.
       Tramite un protocollo di questo tipo, è possibile realizzare un canale di comunicazione bidirezionale veloce, adatto per il trasferimento di un elevato numero di eventi come nel caso di questo progetto di tesi.
 
       Dunque, il \texttt{BridgeVerticle} esporrà tramite API (al percorso ``\texttt{/eventbus}'' relativamente all'\emph{host} principale) l'accesso all'EventBus per i messaggi previsti.

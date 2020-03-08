@@ -1,10 +1,10 @@
 \chapter{Requisiti e Analisi}\label{ch:requirements}
   In questo \nameCref{ch:requirements} saranno enunciati ed analizzati i requisiti del progetto realizzato per questa tesi;
-  ne sarà valutata la fattibilità e verrà descritta una prima architettura logica.
+  ne sarà poi valutata la fattibilità e verrà descritta una prima architettura logica.
 
   \section{Requisiti della piattaforma}
-    Partendo dalle considerazioni fatte analizzando lo stato dell'arte nel \Cref{ch:motivations}, sono stati identificati diversi requisiti per la piattaforma WebProtelis.
-    In particolare, l'obiettivo principale di questa tesi è progettare un sistema in grado di permettere all'utente di iniziare a utilizzare un linguaggio aggregato come Protelis richiedendo meno configurazioni possibile.
+    Partendo dalle considerazioni fatte analizzando lo stato dell'arte nel \Cref{ch:motivations}, sono stati identificati diversi requisiti per la piattaforma che si è deciso di denominare WebProtelis.
+    In particolare, l'obiettivo principale di questa tesi è progettare un sistema che permetta all'utente di iniziare a utilizzare un linguaggio aggregato come Protelis richiedendo meno configurazioni possibile.
     La componente che deve interfacciarsi con l'utente, il quale si assume essere inesperto della piattaforma, dovrebbe astrarre la maggior parte della complessità e modellare esclusivamente le funzionalità che l'utente potrà utilizzare.
 
     \subsection{Requisiti funzionali}\label{subsec:req:fun}
@@ -120,8 +120,8 @@
   \section{Architettura logica}\label{sec:arch-logica}
 
   Una volta terminata l'analisi dei requisiti e del problema, è possibile delineare un'architettura logica che possa essere un punto di partenza per la fase di progettazione, descritta nel~\Cref{ch:project}.
-  In particolare, la piattaforma da realizzare appare come un sistema software distribuito con struttura client-server composta da due entità principali:
-  un'interfaccia Single-Page accessibile tramite browser permette all'utente di avere accesso alle API di un server che nascondono completamente tutta la complessità di configurazione della rete (reale o simulata), permettendo l'esecuzione del codice e il monitoring remoto.
+  In particolare, la piattaforma da realizzare appare come un sistema software distribuito con struttura client-server, come è possibile vedere in \Cref{fig:architecture-design}:
+  un'interfaccia Single-Page accessibile tramite browser (il client) permette all'utente di avere accesso alle API di un server, le quali nascondono completamente tutta la complessità di configurazione della rete (reale o simulata), permettendo l'esecuzione del codice e il monitoring remoto.
 
   \begin{figure}[htbp]
     \centering

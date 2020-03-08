@@ -87,7 +87,7 @@
   \subsection{Strumenti per lo sviluppo e il controllo del software}\label{subec:quality}
     Per gestire le dipendenze in sistemi moderni, l'uso di applicazioni per la \emph{build-automation} dotati di risoluzione delle dipendenze è l'approccio più comune.
 
-    L'utilizzo di strumenti che controllino la qualità del codice e diano la possibilità di testarlo in modo immediato è invece fondamentale per la realizzazione di un sistema complesso.
+    L'utilizzo di strumenti che controllino la qualità del codice e diano la possibilità di testarlo in modo immediato è fondamentale per la realizzazione di un sistema complesso.
     Essi permettono infatti di revisionare il codice in modo sistematico, così da evitare errori che a volte possono verificarsi, senza bisogno che il programma venga realmente eseguito:
     analizzano il codice sorgente per individuare potenziali bug e spesso indicano possibili miglioramenti e ottimizzazioni.
     % Spesso tali strumenti vengono integrati nel processo di costruzione del codice.
@@ -143,21 +143,14 @@
       \begin{description}
         \item[Yarn]
           Come \emph{package manager} per la gestione delle dipendenze è stato scelto \emph{Yarn} anziché NPM\@.
-          Esso, oltre a essere la scelta consigliata da React, presenta alcuni vantaggi rispetto alla controparte:
-          \begin{itemize}
-            \item La cartella delle dipendenze risulta generalmente più compatta in quanto utilizza collegamenti simbolici per le dipendenze condivise dai moduli JS risolti.
-            \item La velocità di risoluzione delle dipendenze è generalmente più elevata, in quanto sfrutta una strategia di cache più efficiente.
-          \end{itemize}
+          Esso, oltre a essere la scelta consigliata da React, presenta diversi vantaggi rispetto alla controparte.
+          Ad esempio, la cartella delle dipendenze risulta generalmente più compatta in quanto utilizza collegamenti simbolici per le dipendenze condivise dai moduli JS risolti.
+          Inoltre, la velocità di risoluzione delle dipendenze è generalmente più elevata, in quanto sfrutta una strategia di caching più efficiente.
 
         \item[React Scripts]
           Lo strumento CRA astrae la complessità di configurazione di un progetto attraverso l'utilizzo di un pacchetto denominato \texttt{react-scripts}.
-          Essi incapsulano strumenti quali WebPack, Babel, ESLint e Jest, mettendo a disposizione semplici script che si appoggiano alle configurazioni ufficiali di riferimento per:
-          \begin{inparaitem}
-            \item compilazione,
-            \item esecuzione,
-            \item verifica
-          \end{inparaitem}
-          del codice realizzato.
+          Essi incapsulano strumenti quali WebPack, Babel, ESLint e Jest, mettendo a disposizione semplici script che si appoggiano alle configurazioni ufficiali di riferimento
+          per la compilazione, l'esecuzione e la verifica del codice realizzato.
 
         \item[ESLint \& stile Airbnb]
           \emph{ESLint} è uno strumento estendibile per l'analisi statica del codice, che supporta nativamente JavaScript e TypeScript.
@@ -177,7 +170,7 @@
     e protelis-web-frontend\footnote{\url{https://github.com/NiccoMlt/protelis-web-frontend}}.
     % Si è preferito utilizzare due depositi separati anziché raggruppare in ciò che viene generalmente definito \emph{monorepo} poiché le differenti ...
 
-    Attraverso GitHub sono allacciate ai repository le soluzioni di \emph{continuous integration} (CI):
+    Attraverso GitHub sono allacciate ai repository diverse soluzioni di \emph{continuous integration} (CI):
 
     \begin{description}
       \item[Travis CI]

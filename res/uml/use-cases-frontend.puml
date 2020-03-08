@@ -1,6 +1,15 @@
 @startuml use-cases-frontend
 
-skinparam monochrome true
+skinparam {
+  linetype ortho
+  monochrome true
+  ArrowColor black
+  backgroundColor transparent
+  classBackgroundColor transparent
+  ' style strictuml
+  actorBackgroundColor transparent
+  componentBackgroundColor transparent
+}
 left to right direction
 
 :User: as user
@@ -14,6 +23,5 @@ rectangle {
 user --> learn
 user --> run
 user --> write
-' user -right-> create
 
 @enduml

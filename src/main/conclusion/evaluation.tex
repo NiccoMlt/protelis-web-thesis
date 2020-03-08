@@ -3,7 +3,7 @@
   \section{Considerazioni sul contributo}
     Il problema delineato nei~\Cref{ch:requirements,ch:project} prevedeva la realizzazione di un sistema per l'esecuzione di codice Protelis attraverso una piattaforma web, appoggiandosi ad una rete di dispositivi simulata.
     I requisiti funzionali sono stati tutti soddisfatti:
-    la Single-Page Application realizzata permette di visualizzare e modificare il codice Protelis all'interno del campo editor e ne permetta la rappresentazione dei risultati attraverso un canvas che disegna l'output.
+    la Single-Page Application realizzata permette di visualizzare e modificare il codice Protelis all'interno del campo editor e fornisce una rappresentazione dei risultati attraverso un canvas che disegna l'output.
     L'utente non deve configurare impostazioni complesse:
     l'unica configurazione messa a disposizione, oltre ovviamente al codice da eseguire, è la selezione del server di backend.
     Anche il server soddisfa i propri requisiti funzionali:
@@ -20,8 +20,8 @@
     Si tratterà meglio questo aspetto nel~\Cref{ch:considerations}.
 
     L'unica problematica individuata riguarda l'efficienza:
-    la costruzione di una nuova simulazione Alchemist per ogni utente che richieda l'esecuzione comporta tempi di costruzione e impiego di memoria non banali (soprattutto su piattaforme cloud gratuite come Heroku \emph{Free}).
-    Questo problema è strettamente legato alla necessità di esecuzione su una rete e può essere solamente aggirato tramite meccanismi di caching o scalando il sistema aumentando le risorse a disposizione.
+    la costruzione di una nuova simulazione Alchemist per ogni utente che richieda un'esecuzione comporta tempi di costruzione e impiego di memoria non banali (soprattutto su piattaforme cloud gratuite come Heroku \emph{Free}).
+    Questo problema è strettamente legato alla necessità dei linguaggi aggregati di eseguire su una rete e può essere solamente aggirato tramite meccanismi di caching o scalando il sistema aumentando le risorse a disposizione.
 
   \section{Valutazione dell'interfaccia}
     Per quanto riguarda la valutazione della qualità dell'interfaccia web realizzata, è stata presa in considerazione principalmente l'esperienza finale dal punto di vista dell'utente web.

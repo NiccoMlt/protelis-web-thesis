@@ -8,9 +8,9 @@ sistemi costituiti da reti di oggetti fisici, tipicamente embedded, che interagi
   \centering
   \includegraphics[width=0.8\textwidth]{res/fig/iot.eps}%
   \caption[
-    Possibile scenario di rete in contesto urbano.
+    Possibile scenario di rete in un contesto urbano.
   ]{
-    Possibile scenario di rete in contesto urbano.
+    Possibile scenario di rete in un contesto urbano.
 
     \nameCref{fig:iot} ripresa da~\cite{7274429}.
   }%
@@ -28,33 +28,14 @@ L'\emph{aggregate programming}, o \emph{programmazione aggregata}, costituisce u
 volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
 La programmazione aggregata, infatti, ragiona su larga scala, cercando di spostare l'attenzione sul \emph{collettivo di dispositivi} che collaborano,
 astraendo dai dettagli relativi al singolo device~\cite{7274429} per quanto possibile.
-% a capo rimosso
-% TODO: rifai
 L'idea alla base è dunque di definire una modalità di deduzione del comportamento locale al singolo dispositivo a partire dal comportamento globale, di più alto livello,
 effettuando un \emph{mapping da globale a locale}.
 In contesti distribuiti, sono stati individuati principalmente due punti di vista a questo livello di astrazione~\cite{7274429,aggregatescala-pmldc2016}: locale o globale.
 Il primo, detto anche \emph{device-centric} (\Cref{fig:device-centric}), fa riferimento alla computazione aggregata eseguita dal singolo dispositivo.
 Questo può essere considerato il punto di vista tradizionale.
-
-% \begin{figure}[htbp]
-%   \centering
-%   % \includesvg[width=.5\textwidth]{res/fig/device-centric.svg}
-%   \includegraphics[width=.55\textwidth]{res/fig/device-centric.png}
-%   \caption{Livello di astrazione \emph{device-centric}}%
-%   \label{fig:device-centric}
-% \end{figure}
-
 Il secondo punto di vista, detto \emph{aggregate view} (\Cref{fig:aggregate}), sposta invece l'attenzione sulla computazione svolta dal sistema aggregato come singola unità.
 Rispetto all'approccio tradizionale, tale punto di vista sposta maggiormente l'attenzione dal \emph{come} il sistema possa funzionare
 al \emph{cosa} effettivamente si desidera che faccia.
-
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=.55\textwidth]{res/fig/aggregate.png}
-%   % \includesvg[width=.5\textwidth]{res/fig/aggregate.svg}
-%   \caption{Livello di astrazione \emph{aggregate view}}%
-%   \label{fig:aggregate}
-% \end{figure}
 
 \begin{figure}[htbp]
   \begin{subfigure}{.95\textwidth}
@@ -77,22 +58,22 @@ al \emph{cosa} effettivamente si desidera che faccia.
   ]{%
     Le figure, riprese da~\cite{7274429}, mostrano un esempio di sistema distribuito costituito da smartphone che monitorano la pericolosità di un luogo affollato.
     In~\subref*{fig:device-centric}, il programmatore deve focalizzarsi sia sul protocollo di interazione, sia sulle modalità con le quali le interazioni locali possono definire il comportamento globale desiderato.
-    In~\subref*{fig:aggregate}, invece, deve ragionare solamente sul flusso di trasformazione delle strutture dati necessarie.
+    In~\subref*{fig:aggregate}, invece, egli deve ragionare solamente sul flusso di trasformazione delle strutture dati necessarie.
   }%
   \label{fig:pov}
 \end{figure}
 
-In letteratura, sono state adottate diverse strategie~\cite{7274429} ad un livello di astrazione così elevato.
+In letteratura, sono state adottate diverse strategie per la progettazione~\cite{7274429} ad un livello di astrazione così elevato.
 Ad esempio, l'approccio \emph{TOTA} (``\emph{Tuples On The Air}''~\cite{10.1145/1538942.1538945}) prevede di rendere le interazioni tra i dispositivi implicite,
 mentre l'\emph{Origami Shape Language}~\cite{nagpal2001programmable} si basa sulla composizione di costruzioni geometriche e topologiche attraverso operazioni di \emph{folding}.
-Altri esempi sono le tecniche di sintesi dei dati provenienti da alcune regioni spazio-temporali per inviarli come stream ad altre regioni delineate con \emph{TinyDB}~\cite{1017485}
+Altri esempi sono le tecniche di sintesi dei dati provenienti da alcune regioni spazio-temporali per inviarli come stream ad altre regioni (delineate con \emph{TinyDB}~\cite{1017485})
 o le modalità con cui modelli di \emph{computazione cloud} come \emph{MapReduce}~\cite{10.1145/1327452.1327492} dividono la computazione in modo automatico tra i nodi.
 Infine, linguaggi come \emph{Protelis}~\cite{PianiniSASOTutorial2017}, di cui tratteremo meglio in~\Cref{sec:protelis}, forniscono costrutti generalizzabili per la computazione spazio-temporale che si prestano ad un uso in ambiente IoT.
 
 Lo studio dei suddetti approcci ha permesso di fare considerazioni sulle modalità di programmazione dei sistemi situati di larga scala;
 innanzitutto, laddove non sia richiesto al programmatore di gestire i meccanismi di interazione, le modalità di coordinazione dovrebbero essere robuste e nascoste ``\emph{under the hood}''~\cite{7274429}.
-Poi, il framework di programmazione dovrebbe essere modulare, e tali moduli dovrebbero essere componibili in modo semplice e trasparente.
-Infine, deve essere possibile fornire meccanismi di coordinazione differenti per diverse parti del sistema aventi regioni dello spazio e tempi distinti.
+Poi, il framework di programmazione dovrebbe essere modulare, e tali moduli dovrebbero essere componibili in modo semplice e trasparente, come avviene nella programmazione funzionale.
+Infine, dovrebbe essere possibile fornire meccanismi di coordinazione differenti per diverse parti del sistema collocate in regioni dello spazio e tempi distinti.
 
 In letteratura~\cite{7274429}, sono stati individuati tre principi % della programmazione aggregata
 per rispondere a queste esigenze:
@@ -128,7 +109,7 @@ Nelle \nameCrefs{sec:field-calculus} successive analizzeremo più nel dettaglio 
 Al livello più basso della struttura rappresentata in \Cref{fig:stack} si trova il \emph{field calculus}~\cite{tocl}.
 Esso è un \emph{core calculus}, ovvero un modello teorico di programmazione che riassume la semantica operazionale minimale necessaria alla progettazione di un sistema aggregato.
 
-Il field calculus si basato sul concetto di \emph{campo computazionale}~\cite{FieldCalculusFOCLASA2013,tocl}:
+Il field calculus si basa sul concetto di \emph{campo computazionale}~\cite{FieldCalculusFOCLASA2013,tocl}:
 il termine riprende la nozione di campo in fisica~\cite{mcmullin2002origins}, esteso al concetto di computazione
 e inteso come \enquote{\emph{una proiezione di ciascun dispositivo computazionale nello spazio verso un oggetto computazionale arbitrario}},
 ossia l'applicazione di una funzione che, in un dato momento nel tempo, mappa ogni punto dello spazio (un dispositivo o un nodo),
@@ -170,15 +151,10 @@ supportando ogni computazione spazio-temporale causale e approssimabile.
 Tramite questi operatori, inoltre, sono garantite \emph{portabilità}, \emph{indipendenza} dall'infrastruttura e \emph{integrazione} con servizi non aggregati.
 
 Il livello di astrazione successivo è costituito dagli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
-
-% Per poter garantire anche \emph{resilienza} alla coordinazione, è necessario introdurre il livello di astrazione successivo:
-% gli operatori ``\emph{building block}''~\cite{BV-FOCAS2014}.
-
 Questo layer consiste di un insieme di operatori generici e di più alto livello, che offrono allo sviluppatore un ambiente di programmazione più espressivo,
 contribuendo in particolare alla cosiddetta \emph{self-stabilization}, ossia la capacità di raggiungere uno stato atteso in un numero finito di passi,
 indipendentemente dallo stato di partenza.
-Qualora il sistema sia auto-stabilizzante, tale proprietà è garantita anche per tutti i campi ottenuti tramite composizione funzionale~\cite{BV-FOCAS2014}.
-% TODO: va bene?
+Qualora il sistema sia auto-stabilizzante, tale proprietà è garantita anche per tutti i campi ottenuti tramite composizione funzionale di questi operatori~\cite{BV-FOCAS2014}.
 
 \begin{figure}[htbp]
   \centering
@@ -192,7 +168,7 @@ Come riportato in~\Cref{fig:stack-detail}, i \emph{building block} individuati i
 \begin{description}
   \item[Diffusione dell'informazione nello spazio]
     Letteralmente \enquote{diffusione dell'informazione nello spazio},
-    quest'operatore generalizza operazioni molto comuni come la stima della distanza e messaggi broadcast.
+    quest'operatore generalizza operazioni molto comuni come la stima della distanza e i messaggi broadcast.
     È definito come:
 
     \(\texttt{G\,(source,\:init,\:metric,\:accumulate)}\)
@@ -273,12 +249,12 @@ Di seguito sono riportati alcuni esempi.
 
 \begin{description}
   \item[Algoritmi legati all'affollamento]
-    Tramite Protelis, è stato possibile~\cite{7274429} stimarne la pericolosità di una data zona nell'ambiente basandosi sulla densità dei dispositivi presenti e definire modalità di dispersione efficaci.
+    Tramite Protelis, è stato possibile~\cite{7274429} stimare la pericolosità di una data zona nell'ambiente basandosi sulla densità dei dispositivi presenti e definire modalità di dispersione efficaci.
 
-    In un altro progetto~\cite{DBLP:journals/fgcs/CasadeiFPRSV19}, è stata definito un algoritmo di \emph{rendezvous} in grado di evitare le zone ad alta densità nel contesto di un evento di massa, permettendo l'incontro di due individui in un punto intermedio.
+    In un altro progetto~\cite{DBLP:journals/fgcs/CasadeiFPRSV19} è stato definito un algoritmo di \emph{rendezvous} in grado di evitare le zone ad alta densità nel contesto di un evento di massa, permettendo l'incontro di due individui in un punto intermedio.
 
   \item[Gestione di reti di servizi]
-    Un altro utilizzo significativo è stato per la realizzazione di un sistema di gestione tra servizi in rete.
+    Un altro utilizzo significativo è stato per la realizzazione di un sistema di gestione di servizi in una rete.
     Tali servizi, talvolta datati, possono avere molte dipendenze tra loro e scarse capacità di coordinazione.
     Per evitare stati di inconsistenza, spesso l'ordine di arresto dei server è strettamente legato alle dipendenze e rende difficile l'automazione.
 
@@ -291,7 +267,7 @@ Di seguito sono riportati alcuni esempi.
   \item[Integrazione con servizi di realtà aumentata]
     La programmazione aggregata è stata testata anche nell'ambito dell'AR (\emph{Augmented Reality})~\cite{PCRV-SCOPES2015}.
 
-    Ad esempio, è possibile utilizzare visori di realtà aumentata per visualizzare nell'ambiente i campi computazionali
+    Ad esempio, è stato possibile utilizzare visori di realtà aumentata per visualizzare nell'ambiente i campi computazionali
     o, viceversa, modellare i dati raccolti da sensori AR come campi (detti \emph{augmented fields}).
 \end{description}
 
@@ -338,4 +314,4 @@ Il framework è composto principalmente da due parti:
     Nel caso centralizzato, è la piattaforma a mantenere le posizioni spaziali dei dispositivi e a gestire il vicinato, secondo il modello tradizionale client-server.
 \end{description}
 
-Dato che si appoggia su Scala come linguaggio ospite, è in grado di interoperare con Java e gli altri linguaggi in grado si eseguire in ambiente JVM, mantenendo il solido \emph{type-system} messo a disposizione da Scala e i suoi costrutti funzionali.
+Dato che si appoggia a Scala come linguaggio ospite, è in grado di interoperare con Java e gli altri linguaggi in grado si eseguire in ambiente JVM, mantenendo il solido \emph{type-system} messo a disposizione da Scala e i suoi costrutti funzionali.
