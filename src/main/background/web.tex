@@ -5,7 +5,6 @@
 
   Anche i pattern di progettazione e le tecnologie implementative sono cresciute altrettanto velocemente negli ultimi anni, cambiando anche radicalmente gli approcci di interazione possibili.
   Risulta dunque importante prestare attenzione allo stato dell'arte in tal senso, chiarendo quali siano i pattern più adatti e moderni per il contesto d'uso di questa tesi.
-  % In questo \Cref{ch:web} verranno brevemente considerati
 
   \section{Architetture \& paradigmi}\label{sec:web-architecture}
 
@@ -46,12 +45,6 @@
 
   Vengono sviluppati numerosi framework per la realizzazione di applicazioni costituite da una singola pagina (\emph{SPA}, \emph{Single-Page Application}), in grado di offrire l'esperienza d'uso di un applicativo desktop.
   Un applicazione web moderna normalmente è di questo tipo.
-
-  % \improvement[inline]{
-  %   Inizialmente avevo inserito una storia dell'evoluzione delle architetture client-side e \strong{server-side}, ma poi mi sono reso conto che risultava un po' fuori contesto e l'ho tolta.
-
-  %   Ritenete invece che potesse avere il suo senso come background? Nel caso posso reintegrarla velocemente.
-  % }
 
   % % Se inizialmente il server web si occupava dell'intero processo di costruzione della pagina, un po' alla volta le operazioni da effettuare per l'invio si sono sempre più ridotte.
 
@@ -101,7 +94,6 @@
           con ECMAScript 6 è stato aggiunto il supporto alla visibilità a livello di blocco (\emph{block scope}).
 
         \item[Tipizzazione dinamica]
-          % https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
           JavaScript è un linguaggio debolmente tipizzato:
           alle variabili non sono associati dei tipi di dato, ma solo dei valori, che possono dinamicamente cambiare tipo durante il ciclo di vita della variabile.
           La tipizzazione dinamica consente lo stile di tipizzazione chiamato \emph{duck typing}~\cite{10.1145/2103621.2103686} o \emph{structural subtyping}~\cite{10.1145/3022671.2984017} a seconda delle definizioni:
@@ -117,7 +109,6 @@
           Per definizione, \texttt{null} non ha un prototype ed agisce come anello finale nella \emph{catena dei prototipi}.
 
           Quasi tutti gli oggetti in JavaScript sono istanze di \texttt{Object}, che risiede in cima alla catena dei prototipi.
-          % In JavaScript, è possibile aggiungere proprietà a qualsiasi oggetto in fase di esecuzione.
 
         \item[First-class function]
           JavaScript offre un supporto di prima classe alle funzioni, che sono considerate oggetti;
@@ -202,7 +193,6 @@
           Non è possibile riutilizzare codice che dipende strettamente da funzionalità della JVM (\emph{reflection}, eccezioni native di Java), in quanto porta a comportamenti indefiniti.
       \end{description}
 
-      % Oltre al supporto semi-ufficiale a React e altri framework e librerie per la realizzazione di SPA, Scala offre un'integrazione di prima classe anche con tecnologie backend molto famose come il Play Framework di Lightbend.
       Scala inoltre ha un'integrazione molto buona con ambienti di sviluppo comunemente utilizzati, che può portare a una rilevazione degli errori più veloce e ad un autocompletamento più preciso.
 
     \subsection{Kotlin/Multiplatform e Kotlin/JS}\label{subsec:kotlinjs}

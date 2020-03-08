@@ -1,18 +1,5 @@
 \chapter{Progettazione}\label{ch:project}
 
-  % Come preventivato nella~\Cref{sec:arch-logica}, l'architettura logica del sistema vede la presenza di due principali entità:
-  % una pagina web che costituisce il client del sistema e un server di backend, che esegue su piattaforma JVM interfacciandosi con un esecutore di codice Protelis.
-
-  % \begin{figure}[htbp]
-  %   \centering
-  %   \includegraphics[width=.8\textwidth]{res/uml/architecture-design.eps}%
-  %   \caption{Il diagramma UML riporta l'architettura di massima dei componenti del sistema}%
-  %   \label{fig:architecture-design}
-  % \end{figure}
-
-  % Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project}, si intende analizzare più nel dettaglio questa struttura (della quale si ha una rappresentazione grafica in~\Cref{fig:architecture-design}),
-  % focalizzandosi sui dettagli di ciascun componente.
-
   Nelle \nameCrefs{sec:arch:client} successive di questo \nameCref{ch:project} si intende descrivere la progettazione di dettaglio del sistema:
   in particolare, si intende partire con lo studio dell'interfaccia grafica, per poi prendere in considerazione l'architettura logica riportata in~\Cref{fig:architecture-design},
   focalizzandosi sulla progettazione dell'architettura di dettaglio di ciascun componente.
@@ -45,22 +32,15 @@
         \item
           Una \emph{barra superiore}, nella quale è riportato il nome e il logo del progetto, insieme a un selettore per il backend.
           Nei primi mockup, tale selettore era posizionato nella sezione principale della pagina, ma successivamente si è preferito spostarlo per sfruttare al meglio lo spazio a disposizione.
+
         \item
           Una \emph{sezione di sinistra}, che costituisce la parte con cui l'utente può interagire per lavorare sul codice.
           Il componente principale è appunto l'editor, un campo di testo avanzato che permette di visualizzare il codice Protelis di esempio e modificarlo.
           Sotto di esso sono presenti i bottoni di controllo per interagire con l'esecuzione.
+
         \item
           Una \emph{sezione di destra}, che ospita un canvas in cui l'esecuzione viene rappresentata.
           Al suo interno verranno visualizzati i nodi su cui il codice sta eseguendo.
-          % In questa sezione, i componenti principali sono:
-          % \begin{description}
-          %   \item[Editor]
-          %     Un campo di testo in cui visualizzare codice Protelis di esempio e modificarlo.
-          %   \item[Play]
-          %     Un bottone che permette di lanciare l'esecuzione del codice.
-          %   % \item[Add]
-          %   % TODO
-          % \end{description}
       \end{itemize}
 
       \begin{figure}[htbp]
@@ -80,24 +60,17 @@
 
       La scelta è infine ricaduta sul Material Design sviluppato da Google:
       dal suo annuncio nel giugno del 2014 al Google I/O 2014 Keynote esso è stato almeno parzialmente adottato in molte applicazioni web, mobile e desktop
-      e ben si si presta all'implementazione di un'interfaccia semplice e minimale. % TODO eventualmente cita evoluzioni successive
+      e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
 
       Per offrire un'esperienza coerente, si è deciso di utilizzare le icone e le direttive in merito a dimensioni e variazioni nella palette di colori fornite da Google\footnote{\url{https://material.io}}.
-      Il colore base utilizzato per generare la palette è stato ricavato dall'icona ufficiale di Protelis. % TODO: cite logo
+      Il colore base utilizzato per generare la palette è stato ricavato dall'icona ufficiale di Protelis.
 
   \section{Architettura del client}\label{sec:arch:client}
 
     L'applicazione web che svolge il ruolo di client è a tutti gli effetti un'applicazione indipendente dotata di interfaccia grafica.
-    % Sono stati valutati i numerosi pattern di modellazione documentati in letteratura e, alla fine,
     Sono numerosi i pattern di modellazione documentati in letteratura.
-    % Molti di questi (genericamente definiti ``MV*'', ossia \emph{\emph{M}odel, \emph{V}iew} e qualsiasi cosa, generalmente \emph{Controller} o \emph{ViewModel}) tendono a distinguere entità che modellano il dominio
-    % Tra tutti quelli considerati, si è scelto di adottare il \emph{pattern Flux} nella variazione chiamata \emph{pattern Redux}.
     La caratteristica maggiormente ricercata durante la progettazione è la \emph{reattività}:
     il sistema dovrebbe aggiornarsi rapidamente sia quando l'utente lo richiede, interagendo via browser, sia quando il server manda un aggiornamento.
-
-    % È stato dunque ritenuto necessario scegliere un approccio che ponesse al centro lo \emph{stato} del sistema, per poi scegliere, nella prossima fase, le tecnologie più adatte a reagire rapidamente alle sue variazioni.
-
-    % Nelle \nameCrefs{subsec:state-manage} che seguono verranno prese in considerazione le scelte fatte decidendo il piano di lavoro.
 
     \subsection{Framework di sviluppo}\label{subsec:react}
 
@@ -108,9 +81,6 @@
       Tecnicamente React, senza prendere in considerazione gli strumenti sviluppati intorno ad esso, sarebbe una libreria per la costruzione di pagine web reattive e \emph{data-driven};
       esso potrebbe essere considerato, riduttivamente, il \emph{view layer} dei pattern architetturali \emph{MV*} (\emph{Model View Anything}).
       React non è però vincolato al pattern MVC come AngularJS o a MVVM~\cite{Anderson2012} come Angular dalla versione 2 in poi.
-
-      % In AngularJS, ogni vista è associata ad un controller, che si occupa della gestione dei dati e della loro visualizzazione.
-      % La view è definita da un template, formata da elementi HTML, ed è compito dello sviluppatore associare la logica di controllo alla rappresentazione.
 
       La divisione principale che determina la struttura è quella tra \emph{componenti}.
       In React, un componente è un'astrazione che incapsula i dati, la loro manipolazione e la logica di rappresentazione e va a definire il più piccolo elemento costitutivo dell'applicazione.
@@ -123,24 +93,6 @@
 
       La progettazione dell'architettura deve dunque spostarsi sulla gestione dello stato.
 
-      % React, come buona parte dei framework per lo sviluppo di applicazioni web, si basa sul concetto di \emph{componente}.
-      %
-      % Il successo di React deriva dalla visione innovativa della struttura di un'applicazione web.
-      % React non presenta una separazione netta tra gli elementi di vista, presentazione e logica applicativa;
-
-      % non esiste un controller, né data-binding
-
-      % Anziché separare in modo deciso gli elementi di vista dal resto della logica applicativa (come invece accade tramite template e linguaggi di markup in Angular, ad esempio),
-
-      % React incapsula
-      % L'approccio tradizionale, adottato ad esempio da Angular, utilizza dei template realizzati tramite linguaggi di markup, dove la vista è realizzata tramite , sul quale vengono fatti
-
-      % React nasce fondamentalmente come risposta al problema del \emph{change detection} che affligge.
-
-      % start TODO
-      % È stato dunque ritenuto necessario scegliere un approccio che ponesse al centro lo \emph{stato} del sistema, per poi scegliere, nella prossima fase, le tecnologie più adatte a reagire rapidamente alle sue variazioni.
-      % end TODO
-
     \input{src/main/contribution/redux.tex}
       Nel caso di questo progetto, tale soluzione è stata ritenuta ottimale per il tipo di architettura che si intende realizzare.
 
@@ -150,6 +102,7 @@
         \item[Editor]
           In \texttt{editorSlice} saranno inserite tutte le informazioni relative allo stato dei file.
           In particolare, è possibile definire al suo interno una struttura ad albero riguardante i file e lo stato di apertura degli stessi.
+
         \item[Esecuzione]
           In \texttt{execSlice} saranno invece inseriti i dati relativi all'esecuzione;
           saranno dunque presenti lo stato della connessione, l'ID e lo stato della simulazione e i dati dei nodi da rappresentare.
@@ -191,9 +144,7 @@
       Il sistema progettato è composto da due componenti principali, che possono essere facilmente mappati su altrettante entità verticle secondo il lessico di Vert.x.
 
       Il primo, chiamato \texttt{BridgeVerticle}, è dedicato alla gestione delle API per la comunicazione da e verso l'esterno.
-      % Esso si avvale dell'EventBus di Vert.x per comunicare con l'esterno
       In particolare, esso implementa il pattern \emph{bridge} relativamente alle connessioni verso l'esterno, trasformando le chiamate HTTP eseguite dai client in eventi espliciti dell'EventBus.
-      % In questo modo, all'interno dell'applicazione, tutte le istanze dei verticle interessati possono essere
       Gestendo le comunicazioni con l'esterno, esso astrae l'intero processo di gestione del protocollo di comunicazione dalle altre componenti dell'applicazione.
 
       Il secondo è invece chiamato \texttt{AlchemistVerticle} e costituisce l'entità che si interfaccia con un motore di esecuzione esterno,
@@ -210,7 +161,6 @@
 
     \subsection{Scelta del modello di comunicazione e del protocollo}
 
-      % Innanzitutto, è stato necessario chiarire quale tipo di comunicazione è necessario instaurare.
       Come detto nella \Cref{subsec:reactor}, per la progettazione del server di backend si è scelto di utilizzare un modello a event-loop multipli comunicanti tramite EventBus;
       inoltre, anche il pattern di gestione dello stato scelto per il funzionamento del client (\Cref{subsec:state-manage}) è event-driven.
       È risultato dunque naturale strutturare anche la comunicazione tra client e server utilizzando un modello a eventi.
@@ -235,21 +185,25 @@
           Il primo passo consiste nell'instaurare la connessione.
           La pressione di un bottone genera un'azione sullo store che abilita la connessione SockJS verso il backend.
           L'utente viene notificato del risultato dell'operazione attraverso la generazione, da parte del sistema, di azioni con le relative permutazioni dello stato.
-          % In questo modo, l'interfaccia permette all'utente di trovare un backend valido e di collegarcisi attraverso socket.
+
         \item
           Una volta che il codice Protelis è pronto per essere lanciato, l'utente utilizzerà il bottone dedicato per eseguirlo.
           Questo causa la creazione di un'azione di richiesta di upload del codice;
           esso è già presente nello store, dal quale viene prelevato e inoltrato tramite socket al server.
+
         \item
           Il verticle riceve l'evento tramite EventBus;
           procede dunque costruendo un simulatore, al quale viene assegnato un identificativo univoco e un componente osservatore.
           Dopodiché, tramite EventBus viene inviato l'identificativo.
+
         \item
           Il client riceve questo ID tramite socket e un'azione di Redux viene generata.
           La vista viene aggiornata di conseguenza, informando l'utente dell'avvenuta configurazione e dell'imminente avvio dell'esecuzione.
+
         \item
           Quando il motore di simulazione esegue uno step, il componente osservatore viene notificato.
           Viene dunque generato un evento sul bus degli eventi diretto verso l'esterno, su un indirizzo legato all'identificativo iniziale e alla tipologia di variazione avvenuta nella simulazione (step iniziale, \emph{round} d'esecuzione, terminazione).
+
         \item
           Quando l'esecuzione viene terminata sul simulatore, il client viene notificato dell'evento nello stesso modo con cui ha ricevuto i vari aggiornamenti.
           Sul server, l'ID verrà classificato come terminato e il simulatore potrà essere riutilizzato o distrutto a seconda delle necessità.

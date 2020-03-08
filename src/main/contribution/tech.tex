@@ -70,7 +70,6 @@
 
           Essendo in React la logica rappresentativa strettamente legata agli elementi non grafici del componente,
           essere in grado di applicare una corretta ``\emph{separation of concerns}''
-          % essere in grado di distinguere in modo chiaro i \emph{concetti}\improvement{Non sono sicuro di aver espresso correttamente in italiano ``separation of concerns'', che sarebbe da traduzione separazione di interessi}
           all'interno dello stesso componente e file senza doversi affidare a markup esterno è un vantaggio notevole.
 
           TypeScript supporta questa estensione della sintassi, denominandola \emph{TSX}.
@@ -90,7 +89,6 @@
     L'utilizzo di strumenti che controllino la qualità del codice e diano la possibilità di testarlo in modo immediato è fondamentale per la realizzazione di un sistema complesso.
     Essi permettono infatti di revisionare il codice in modo sistematico, così da evitare errori che a volte possono verificarsi, senza bisogno che il programma venga realmente eseguito:
     analizzano il codice sorgente per individuare potenziali bug e spesso indicano possibili miglioramenti e ottimizzazioni.
-    % Spesso tali strumenti vengono integrati nel processo di costruzione del codice.
 
     Essendo le due componenti basate su ecosistemi completamente diversi, verranno trattate separatamente.
 
@@ -133,7 +131,6 @@
       \end{description}
 
       Per lo sviluppo del codice è stato utilizzato l'ambiente di sviluppo integrato \emph{JetBrains Intellij IDEA} in versione \emph{Ultimate 2019.3.3}.
-      % Si è scelto questo rispetto ad altri IDE (come ad esempio Eclipse) in quanto in grado di offrire un'integrazione migliore con Gradle e Kotlin.
 
     \subsubsection{Frontend}
 
@@ -168,7 +165,6 @@
 
     Il codice è disponibile su GitHub nei repository Protelis-Web\footnote{\url{https://github.com/NiccoMlt/Protelis-Web}}
     e protelis-web-frontend\footnote{\url{https://github.com/NiccoMlt/protelis-web-frontend}}.
-    % Si è preferito utilizzare due depositi separati anziché raggruppare in ciò che viene generalmente definito \emph{monorepo} poiché le differenti ...
 
     Attraverso GitHub sono allacciate ai repository diverse soluzioni di \emph{continuous integration} (CI):
 
@@ -206,18 +202,3 @@
 
     Il client React è compilato come un bundle JavaScript importato da una pagina HTML\@.
     Esso non viene servito dal server Vert.x, bensì attraverso la piattaforma di hosting statico \emph{ZEIT Now}, che ne esegue il \emph{continuous deployment} direttamente da GitHub.
-
-    % Per quanto riguarda il \emph{continuous deployment} (CD), sarà trattato nel dettaglio nella sottosezione successiva.
-
-      % \subsection{Librerie esterne}
-  % \subsection{Strumenti di sviluppo}
-  %   In questa sezione verranno presentati tutti gli strumenti utilizzati per sviluppare il codice del sistema,
-  %   descrivendone la loro utilità e il loro impiego.
-
-  %   \subsubsection{Ambiente di sviluppo}
-  %     Un IDE, o \emph{Integrated Development Environment} è un software che aiuta i programmatori nello sviluppo del codice sorgente di un software.\unsure{Non sono sicuro che questa parte sia necessaria}
-  %     Esso mette a disposizione tutta una serie di strumenti e funzionalità utili per lo sviluppo e il debugging.
-  %     Solitamente uno strumento di questo tipo mette a disposizione un editor di testo, un compilatore o un interprete (o entrambi) e un debugger.
-
-  %     Per lo sviluppo di questo sistema sono stati utilizzati due IDE forniti da JetBrains: Intellij IDEA e WebStorm.
-  %     In particolare,

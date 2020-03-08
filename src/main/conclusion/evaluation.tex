@@ -46,8 +46,7 @@
       i valori grezzi ottenuti per ciascuna metrica vengono mappati su una distribuzione log-normale derivata dalle metriche prestazionali ricavate da HTTPArchive\footnote{\url{https://httparchive.org/}}.
       0 è il minor valore possibile e generalmente indica un errore interno a Lighthouse, mentre 100 è il valore migliore, che posiziona la pagina analizzata nel 98-esimo percentile dei siti più performanti.
 
-      Secondo lo strumento, le performance %, sulle quali si ha avuto maggiore controllo durante l'implementazione,
-      del frontend di WebProtelis sono buone, con tempi di primo disegno inferiori al secondo e un ritardo prima di avere possibilità di interazione intorno a \SI{1.6}{\second}.
+      Secondo lo strumento, le performance del frontend di WebProtelis sono buone, con tempi di primo disegno inferiori al secondo e un ritardo prima di avere possibilità di interazione intorno a \SI{1.6}{\second}.
       A pesare un poco sul punteggio vi è l'assenza di gestione della cache delle richieste, funzionalità non ritenuta importante in questo progetto.
 
     \subsection{Accessibilità e Best Practices}
@@ -65,29 +64,3 @@
     Infine, con \emph{SEO} si intende \emph{\emph{S}earch \emph{E}ngine \emph{O}ptimization}, ovvero quanto la pagina web è ottimizzata per la ricerca tramite motori come Google.
     Il punteggio è determinato dalla presenza dei corretti tag nel documento, che permettono alla pagina di essere analizzata e descritta in modo accurato.
     Nel caso di questo progetto, ottimizzando manualmente la configurazione base generata da React seguendo le specifiche documentate da Google, si è riuscito ad ottenere il massimo punteggio, che dovrebbe garantire un buon ranking nelle ricerche.
-
-    % \section{Qualità del codice e unit testing}
-    %   Durante lo sviluppo, si è cercato di prestare particolare attenzione alla qualità del codice prodotto.
-
-    %   Si è ritenuto fondamentale, innanzitutto, per favorire la consistenza dello stile, che il codice fosse conforme a uno stile di programmazione riconosciuto.
-    %   Come detto nella~\Cref{subec:quality}, sono stati utilizzati diversi \emph{linter} (ESLint e ktlint)
-    %   per imporre lo stile Airbnb per TypeScript e lo stile ufficiale per Kotlin in tutta la codebase.
-    %   Questo ha permesso di evitare bug comuni riconoscibili attraverso analisi statica
-    %   e potenzialmente permette di rendere il codice, che è pubblico e open-source, maggiormente comprensibile per chi vorrà estenderlo in futuro.
-
-    %   Inoltre, per garantire il corretto funzionamento delle componenti più cruciali, sono stati creati degli specifici unit test in grado di coprire il codice per quanto possibile.
-    %   L'esecuzione dei test viene effettuata automaticamente da Travis CI su diverse piattaforma ad ogni operazione di push.
-
-    %   Per quanto riguarda il backend è stato utilizzato JUnit 5 con l'ausilio delle estensioni di Vert.x.
-    %   I report sulla copertura vengono raccolti tramite JaCoCo.
-
-    %   \unsure[inline]{Quali dettagli dovrei fornire dei test del backend?}
-
-    %   Anche il frontend è stato testato tramite unit testing.
-    %   In particolare, si è utilizzato la suite Jest per l'esecuzione dei test e la raccolta dei dati di copertura.
-
-    %   \unsure[inline]{Quali dettagli dovrei fornire dei test del frontend?}
-
-    % \section{Performance}
-    %   % TODO
-    %   \unsure[inline]{Come valuto i risultati? Misure di Performance?}
