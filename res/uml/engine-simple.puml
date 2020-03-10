@@ -2,7 +2,7 @@
 
 skinparam {
   linetype ortho
-  groupInheritance 2
+  ' groupInheritance 2
   ' monochrome true
   ' style strictuml
 

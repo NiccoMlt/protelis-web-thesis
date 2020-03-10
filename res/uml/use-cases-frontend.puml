@@ -1,7 +1,7 @@
 @startuml use-cases-frontend
 
 skinparam {
-  linetype ortho
+  ' linetype ortho
   monochrome true
   ArrowColor black
   backgroundColor transparent
