@@ -1,0 +1,119 @@
+% !TeX root = ./presentazione.tex
+% !TeX encoding = UTF-8 Unicode
+% !TeX spellcheck = it_IT
+% !TeX program = arara
+% !TeX options = --log --verbose --language=it "%DOC%"
+
+% arara: lualatex: { interaction: nonstopmode, shell: yes, synctex: yes }
+
+\documentclass[
+  usepdftitle=false,  % disabilta la generazione automatica delle info del PDF per titolo e autore
+  % notes,              % abilita le note
+  bigger,               % dimensione del font, in realtà più grande di 12pt ma minore dei 17pt usati da PPT
+  % aspectratio=169,    % formato 16:9
+  lualatex,           % configura Beamer per LuaLaTeX e carica fontspec
+  % handout,            % configura la presentazione per la stampa
+  italian             % configura l'italiano
+]{beamer}
+
+% \usepackage{fancyvrb}
+% \AtEndOfClass{\usepackage[a-1b]{pdfx}}
+
+% \begin{VerbatimOut}{\jobname.xmpdata}
+% \Title{Progettazione di una piattaforma web per la simulazione di programmi aggregati}
+% \Author{Niccolò Maltoni}
+% \Keywords{Aggregate computing\sep{}Aggregate programming\sep{}Protelis\sep{}Applicazione web\sep{}Simulazione}
+% \Copyright{Questo documento è fornito sotto licenza Creative Commons Attribution-ShareAlike 4.0 International}
+% \CopyrightURL{http://creativecommons.org/licenses/by-sa/4.0}
+% \end{VerbatimOut}
+
+\usepackage{pgfpages}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={TeX}}
+% \usepackage{amsmath}
+% \usepackage[math-style=ISO]{unicode-math}
+\usepackage[
+  output-decimal-marker={,},
+  binary-units
+]{siunitx}
+\usepackage[%
+  strict=true,
+  autostyle=true,
+  english=american,
+  italian=guillemets
+]{csquotes}
+\usepackage{polyglossia}
+\setmainlanguage[babelshorthands]{italian}
+\setotherlanguage[variant=american]{english}
+\usepackage{bookmark}
+\usepackage{graphicx}
+\usepackage{multimedia}
+% \usepackage{minted}
+\usepackage[
+  subrefformat=parens,
+  labelformat=parens
+]{subcaption}
+\usepackage{caption}
+\usepackage{adjustbox}
+\usepackage{paralist}
+\usepackage{microtype}
+
+\hypersetup{%
+  pdfpagemode={UseNone},
+  hidelinks,                  % nasconde i collegamenti (non vengono quadrettati)
+  hypertexnames=false,
+  linktoc=all,                % inserisce i link nell'indice
+  unicode=true,               % usa solo caratteri Latini nei segnalibri di Acrobat
+  pdftoolbar=false,           % nasconde la toolbar di Acrobat
+  pdfmenubar=false,           % nasconde il menu di Acrobat
+  plainpages=false,
+  breaklinks,
+  pdfstartview={Fit},
+  pdflang={it}
+}
+
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
+
+% \usefonttheme{professionalfonts}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+\title[%
+  WebProtelis%
+]{%
+  Progettazione di una piattaforma web per la simulazione di programmi aggregati%
+}
+
+\subtitle{Tesi in Pervasive Computing}
+
+\author[Niccolò~Maltoni (0000840825)]{%
+  Niccolò~Maltoni%
+  \\\small{Matricola: 0000840825}%
+  \\\vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}
+}
+
+\institute[]{%
+  Alma Mater Studiorum - Università di Bologna\\%
+  Campus di Cesena%
+}
+
+\date{\today}
+
+%% Permette di inserire l'outline prima di ogni sezione
+\AtBeginSection[]{%
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+  \frame{\titlepage}
+
+\end{document}
