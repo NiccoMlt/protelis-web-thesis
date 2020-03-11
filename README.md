@@ -50,10 +50,10 @@ Lo stile scelto per la bibliografia è quello [_IEEE_](https://ctan.org/pkg/bibl
 ## Licenze e riferimenti
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%203.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/3.0/)
 
 Il progetto è stato generato a partire dal [mio template per tesi Unibo](https://github.com/NiccoMlt/Unibo-Tesi-Template), costruito cercando di aderire alle norme redazionali dell'Università di Bologna e alle _best practices_ apprese dalle guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
 Il codice LaTeX personalmente realizzato per la struttura del documento di tesi sono forniti sotto licenza [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0) in accordo al file [`LICENSE`](./LICENSE) incluso in questo repository.
 
-Il contenuto dell'opera testuale da me personalmente scritto è fornito sotto licenza [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/).
+Il contenuto dell'opera testuale da me personalmente scritto è fornito sotto licenza [Creative Commons Attribution-ShareAlike 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
