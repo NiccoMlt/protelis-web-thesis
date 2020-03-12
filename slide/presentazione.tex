@@ -4,7 +4,8 @@
 % !TeX program = arara
 % !TeX options = --log --verbose --language=it "%DOC%"
 
-% arara: lualatex: { interaction: nonstopmode, shell: yes, synctex: yes }
+% arara: lualatex: { interaction: batchmode }
+% arara: lualatex: { interaction: nonstopmode, synctex: yes }
 
 \documentclass[
   usepdftitle=false,  % disabilta la generazione automatica delle info del PDF per titolo e autore
@@ -45,7 +46,6 @@
 \usepackage{polyglossia}
 \setmainlanguage[babelshorthands]{italian}
 \setotherlanguage[variant=american]{english}
-\usepackage{bookmark}
 \usepackage{graphicx}
 \usepackage{multimedia}
 % \usepackage{minted}
@@ -59,6 +59,10 @@
 \usepackage{microtype}
 
 \hypersetup{%
+  pdftitle={Progettazione di una piattaforma web per la simulazione di programmi aggregati},
+  pdfauthor={Niccolò Maltoni},
+  pdfsubject={La programmazione aggregata è un approccio innovativo nato in tempi recenti per far fronte alla necessità di un punto di vista nuovo nella programmazione di sistemi distribuiti. In particolare, basandosi sull'impianto teorico del field calculus, negli ultimi anni sono stati realizzati, da parte dell'Università di Bologna, linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale: Protelis e ScaFi. La principale criticità che mina la diffusione di questo tipo di linguaggi è legata alla configurazione del sistema per l'esecuzione: è infatti necessario avere a disposizione una rete, reale o fisica, di dispositivi per l'esecuzione del codice e, soprattutto in contesto didattico, la necessità di dispiegare un certo numero di dispositivi o configurare un simulatore può costituire un ulteriore gradino di complessità. Lo scopo di questa tesi è progettare una piattaforma web che permetta di realizzare semplici programmi aggregati senza configurazione alcuna. È stato realizzato un sistema composto da un server esecutore, che si avvale del simulatore Alchemist per eseguire il codice Protelis, e da un'applicazione web in React che permetta la scrittura del codice e il monitoring dell'esecuzione.}
+  pdfkeywords{Aggregate computing Aggregate programming Protelis Applicazione web Simulazione},
   pdfpagemode={UseNone},
   hidelinks,                  % nasconde i collegamenti (non vengono quadrettati)
   hypertexnames=false,
@@ -102,18 +106,38 @@
   Campus di Cesena%
 }
 
-\date{\today}
+\date{19 marzo 2020}
 
-%% Permette di inserire l'outline prima di ogni sezione
-\AtBeginSection[]{%
-  \begin{frame}<beamer>
-    \frametitle{Outline}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
+% TODO: uncomment
+% %% Permette di inserire l'outline prima di ogni sezione
+% \AtBeginSection[]{%
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
 
 \begin{document}
 
   \frame{\titlepage}
+
+  \section{Introduzione}
+    \subsection{Obiettivo}
+
+  \section{Analisi}
+    \subsection{Stato dell'arte}
+    \subsection{Requisiti e casi d'uso}
+
+  \section{Interfaccia grafica}
+    \subsection{Ispirazione}
+    \subsection{Mockup}
+
+  \section{Design e implementazione}
+    \subsection{Caratteristiche}
+    \subsection{Punteggi}
+
+  \section{Conclusioni}
+
+  \frame{\tableofcontents} % TODO: comment
 
 \end{document}
