@@ -12,7 +12,7 @@
   % notes,              % abilita le note
   bigger,               % dimensione del font, in realtà più grande di 12pt ma minore dei 17pt usati da PPT
   % aspectratio=169,    % formato 16:9
-  lualatex,           % configura Beamer per LuaLaTeX e carica fontspec
+  lualatex,           % configura Beamer per LuaLaTeX
   % handout,            % configura la presentazione per la stampa
   italian             % configura l'italiano
 ]{beamer}
@@ -53,6 +53,8 @@
   subrefformat=parens,
   labelformat=parens
 ]{subcaption}
+% \usepackage{enumitem}
+% \setlist[enumerate,itemize]{itemsep=10pt,topsep=10pt}
 \usepackage{caption}
 \usepackage{adjustbox}
 \usepackage{paralist}
@@ -61,8 +63,8 @@
 \hypersetup{%
   pdftitle={Progettazione di una piattaforma web per la simulazione di programmi aggregati},
   pdfauthor={Niccolò Maltoni},
-  pdfsubject={La programmazione aggregata è un approccio innovativo nato in tempi recenti per far fronte alla necessità di un punto di vista nuovo nella programmazione di sistemi distribuiti. In particolare, basandosi sull'impianto teorico del field calculus, negli ultimi anni sono stati realizzati, da parte dell'Università di Bologna, linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale: Protelis e ScaFi. La principale criticità che mina la diffusione di questo tipo di linguaggi è legata alla configurazione del sistema per l'esecuzione: è infatti necessario avere a disposizione una rete, reale o fisica, di dispositivi per l'esecuzione del codice e, soprattutto in contesto didattico, la necessità di dispiegare un certo numero di dispositivi o configurare un simulatore può costituire un ulteriore gradino di complessità. Lo scopo di questa tesi è progettare una piattaforma web che permetta di realizzare semplici programmi aggregati senza configurazione alcuna. È stato realizzato un sistema composto da un server esecutore, che si avvale del simulatore Alchemist per eseguire il codice Protelis, e da un'applicazione web in React che permetta la scrittura del codice e il monitoring dell'esecuzione.}
-  pdfkeywords{Aggregate computing Aggregate programming Protelis Applicazione web Simulazione},
+  pdfsubject={La programmazione aggregata è un approccio innovativo nato in tempi recenti per far fronte alla necessità di un punto di vista nuovo nella programmazione di sistemi distribuiti. In particolare, basandosi sull'impianto teorico del field calculus, negli ultimi anni sono stati realizzati, da parte dell'Università di Bologna, linguaggi e framework innovativi per la sua applicazione in contesti d'uso reale: Protelis e ScaFi. La principale criticità che mina la diffusione di questo tipo di linguaggi è legata alla configurazione del sistema per l'esecuzione: è infatti necessario avere a disposizione una rete, reale o fisica, di dispositivi per l'esecuzione del codice e, soprattutto in contesto didattico, la necessità di dispiegare un certo numero di dispositivi o configurare un simulatore può costituire un ulteriore gradino di complessità. Lo scopo di questa tesi è progettare una piattaforma web che permetta di realizzare semplici programmi aggregati senza configurazione alcuna. È stato realizzato un sistema composto da un server esecutore, che si avvale del simulatore Alchemist per eseguire il codice Protelis, e da un'applicazione web in React che permetta la scrittura del codice e il monitoring dell'esecuzione.},
+  pdfkeywords={Aggregate computing, Aggregate programming, Protelis, Applicazione web, Simulazione},
   pdfpagemode={UseNone},
   hidelinks,                  % nasconde i collegamenti (non vengono quadrettati)
   hypertexnames=false,
@@ -76,21 +78,25 @@
   pdflang={it}
 }
 
-\setbeameroption{hide notes}
+% \usefonttheme{professionalfonts}
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+\setbeameroption{hide notes} % Only slide
+%\setbeameroption{show only notes} % Only notes
+%\setbeameroption{show notes on second screen=right} % Both
 \setbeamertemplate{note page}[plain]
 
 \usetheme{default}
 \beamertemplatenavigationsymbolsempty
 \hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
 
-% \usefonttheme{professionalfonts}
-\usetheme{Madrid}
-\usecolortheme{beaver}
+% \setbeamertemplate{items}[triangle]
 
 \title[%
   WebProtelis%
 ]{%
-  Progettazione di una piattaforma web per la simulazione di programmi aggregati%
+  Progettazione di una piattaforma web per la\\simulazione di programmi aggregati%
 }
 
 \subtitle{Tesi in Pervasive Computing}
@@ -108,14 +114,13 @@
 
 \date{19 marzo 2020}
 
-% TODO: uncomment
-% %% Permette di inserire l'outline prima di ogni sezione
-% \AtBeginSection[]{%
-%   \begin{frame}<beamer>
-%     \frametitle{Outline}
-%     \tableofcontents[currentsection]
-%   \end{frame}
-% }
+%% Permette di inserire l'outline prima di ogni sezione
+\AtBeginSection[]{%
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 
@@ -123,21 +128,223 @@
 
   \section{Introduzione}
     \subsection{Obiettivo}
+    \begin{frame}{\insertsection}{\insertsubsection}
 
-  \section{Analisi}
+      Lo scopo di questa tesi è progettare una piattaforma web che permetta di realizzare semplici programmi aggregati senza configurazione alcuna.
+
+      \medskip
+      \pause
+
+      È stato realizzato un sistema composto da un server esecutore, che si avvale del simulatore Alchemist per eseguire il codice Protelis,
+      e da un'applicazione web in React che permetta la scrittura del codice e il \emph{monitoring} dell'esecuzione.
+
+    \end{frame}
+
+  \section{Background}
     \subsection{Stato dell'arte}
+
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+
+      % \subsubsection{Programmazione aggregata}
+      \begin{block}{Programmazione aggregata} % \insertsubsubsectionhead
+        La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
+      \end{block}
+
+      \pause
+
+      % \subsubsection{Linguaggi}
+      \begin{block}{Linguaggi} % \insertsubsubsectionhead
+        I principali linguaggi di programmazione aggregata sono:
+
+        \begin{itemize}[<+(1)->]
+          \item ScaFi
+          \item Protelis
+        \end{itemize}
+      \end{block}
+
+    \end{frame}
+
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+
+      % TODO: inserisci il logo
+
+      \begin{block}{Protelis}
+        \begin{itemize}[<+->]
+          % TODO: non è chiaro da dove salti fuori field calculus qua
+          \item Field calculus è un impianto teorico sul quale devono essere costruiti linguaggi ``pratici''.
+          % TODO: abbrevia
+          \item \emph{Protelis} è un linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}.
+          % TODO: abbrevia
+          \item Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus in una sintassi più simile ai linguaggi strutturati tradizionali come C o Java.
+        \end{itemize}
+      \end{block}
+    \end{frame}
+
+    \subsection{Problematiche}
+
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+
+      \begin{block}{\insertsubsectionhead}
+        \begin{itemize}[<+->]
+          \item
+            Il linguaggio è \emph{Java-hosted}
+            \begin{itemize}
+              \item Richiede un ambiente JVM in cui eseguire l'interprete
+            \end{itemize}
+          \item
+            Il linguaggio richiede una rete di dispositivi su cui eseguire
+            \begin{itemize}[<+->]
+              \item rete fisica
+              \item NASA WorldWind  % TODO: figura
+              \item ProtelisVM      % TODO: figura
+              \item Alchemist       % TODO: figura
+            \end{itemize}
+        \end{itemize}
+      \end{block}
+    \end{frame}
+
+    % \begin{frame}
+    %   \frametitle{\insertsection}
+    %   \framesubtitle{\insertsubsection}
+
+    %   % \begin{columns}[T] % align columns
+    %   %   \begin{column}{.58\textwidth}
+    %       Lo sviluppo in linguaggi di programmazione aggregata come ScaFi e Protelis richiede una rete di dispositivi in grado di eseguire il codice.
+
+    %       \medskip
+
+    %       Tale rete può essere:
+
+    %       \begin{itemize}[<+(1)->]
+    %         \item reale
+    %         \item simulata:
+    %         \begin{itemize}[<+(1)->]
+    %           \item NASA WorldWind
+    %           \item ProtelisVM
+    %           \item Alchemist
+    %         \end{itemize}
+    %       \end{itemize}
+    %   %   \end{column}%
+    %   %   \hfill%
+    %   %   \begin{column}{.38\textwidth}
+    %   %     \makebox[\linewidth][c]{
+    %   %       \resizebox{\linewidth}{!}{
+    %   %         % \includegraphics<2>{../res/fig/aggregate.png}
+    %   %         \includegraphics<4>{./nasaworldwind.png}
+    %   %         \includegraphics<5>{../res/uml/ExecutionContext.eps}
+    %   %         \includegraphics<6>{./alchemist.png}
+    %   %       }
+    %   %     }
+    %   %   \end{column}%
+    %   % \end{columns}
+    % \end{frame}
+
+  %   \subsection{Stato dell'arte}
     \subsection{Requisiti e casi d'uso}
 
-  \section{Interfaccia grafica}
-    \subsection{Ispirazione}
-    \subsection{Mockup}
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
 
-  \section{Design e implementazione}
-    \subsection{Caratteristiche}
-    \subsection{Punteggi}
+      \begin{block}{Requisiti}
+        \begin{itemize}
+          \item
+            L'obiettivo è progettare un sistema che permetta all'utente di iniziare a utilizzare Protelis richiedendo meno configurazioni possibile.
+            \begin{itemize}
+              \item nessun build-script
+              \item nessuna rete o simulatore
+            \end{itemize}
+          \item
+            l'utente si assume essere inesperto della piattaforma
+            \begin{itemize}
+              \item l'interfaccia deve essere semplice e immediata
+            \end{itemize}
+        \end{itemize}
+      \end{block}
+
+      % TODO: figure aside
+    \end{frame}
+
+    \begin{frame}{\insertsectionhead}
+      \framesubtitle{\insertsubsectionhead}
+
+      \begin{block}{Fattibilità}
+        \begin{itemize}
+          \item
+            non è possibile eseguire un interprete Protelis all'interno della sandbox un browser
+            \begin{itemize}
+              \item le Java applet sono deprecate da tempo
+            \end{itemize}
+          \item
+            è necessario suddividere l'architettura in due componenti
+            \begin{itemize}
+              \item un server che espone API per l'esecuzione del codice
+              \item un'interfaccia Single-Page accessibile tramite browser
+            \end{itemize}
+        \end{itemize}
+      \end{block}
+
+      % TODO: figure aside
+    \end{frame}
+
+  \section{WebProtelis}
+
+    \subsection{Progettazione del server}
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Entità individuate}
+          \begin{itemize}
+            \item API         % TODO: spiega meglio
+            \item esecuzione  % TODO: spiega meglio
+          \end{itemize}
+        \end{block}
+
+        \begin{block}{Scelte tecnologiche}
+          \begin{itemize}
+            \item Vert.x      % TODO: spiega meglio
+            \item Kotlin      % TODO: spiega meglio
+            \item Alchemist   % TODO: spiega meglio
+          \end{itemize}
+        \end{block}
+      \end{frame}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Vert.x}
+          % TODO: spiega meglio
+        \end{block}
+      % \end{frame}
+
+      % \begin{frame}{\insertsectionhead}
+      %   \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Pattern reactor}
+          % TODO: spiega meglio
+        \end{block}
+      \end{frame}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Alchemist}
+          % TODO: spiega meglio
+        \end{block}
+      \end{frame}
+
+    \subsection{Progettazione del client}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+        \begin{block}{Scelte tecnologiche}
+          \begin{itemize}
+            \item React   % TODO: spiega meglio
+            \item Sock.js % TODO: spiega meglio
+          \end{itemize}
+        \end{block}
+      \end{frame}
+
+    \subsection{Valutazione dei risultati}
 
   \section{Conclusioni}
-
-  \frame{\tableofcontents} % TODO: comment
 
 \end{document}
