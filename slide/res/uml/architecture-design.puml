@@ -1,0 +1,35 @@
+@startuml "architecture-design-tech"
+
+  skinparam {
+    linetype ortho
+    monochrome true
+    ArrowColor black
+    backgroundColor transparent
+    classBackgroundColor transparent
+    ' style strictuml
+    actorBackgroundColor transparent
+    componentBackgroundColor transparent
+
+    defaultTextAlignment center
+  }
+
+  left to right direction
+
+  actor :user: as user
+
+  component [<img:react-logo-64.png>\nReact page] as react
+
+  user --> react
+
+  component [backend] {
+    component [<img:vertx-logo-64.png>\nVert.x server] as vertx
+
+    react --> vertx
+    react <-- vertx
+
+    component [<img:alchemist-logo-64.png>\nAlchemist] as alchemist
+
+    vertx -0)- alchemist
+  }
+
+@enduml

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="152.355"
+   height="152.355"
+   viewBox="0 0 40.310665 40.310665"
+   version="1.1"
+   id="svg61"
+   sodipodi:docname="vertx-logo.svg"
+   inkscape:export-filename="/home/nicco/workspace/tesi/protelis-web-thesis/slide/fig/uml/vertx-logo-64.png"
+   inkscape:export-xdpi="40.545624"
+   inkscape:export-ydpi="40.545624"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata67">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs65" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1015"
+     id="namedview63"
+     showgrid="false"
+     inkscape:zoom="1.5490139"
+     inkscape:cx="-63.911627"
+     inkscape:cy="76.1775"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg61" />
+  <g
+     transform="translate(-71.357 -110.488)"
+     id="g59">
+    <rect
+       width="38.412"
+       height="38.412"
+       x="72.307"
+       y="111.438"
+       ry="3.985"
+       rx="4.675"
+       fill="#782a90"
+       stroke="#782a90"
+       stroke-width="1.899"
+       stroke-linejoin="round"
+       id="rect51" />
+    <path
+       d="M70.564 118.744h6.175l6.119 14.072 6.38-13.924h5.898l-10.71 23.526h-3.397z"
+       fill="#fff"
+       fill-rule="evenodd"
+       id="path53" />
+    <path
+       d="M89.179 118.78h7.459l4.59 6.657 4.59-6.656h7.345l-16.64 23.526h-7.23l8.378-11.706zM102.488 138.338l3.443-4.935 6.426 8.837h-7.23z"
+       fill="#fff"
+       fill-rule="evenodd"
+       id="path55" />
+    <circle
+       cx="88.728"
+       cy="142.316"
+       r="4.398"
+       fill="#fff"
+       stroke="#782a90"
+       stroke-width="2.111"
+       stroke-linejoin="round"
+       id="circle57" />
+  </g>
+</svg>

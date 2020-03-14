@@ -132,11 +132,11 @@ modules.xml
 *-frn.tex
 *.ps
 *.eps
-!res/**/*.eps
+!*/res/**/*.eps
 *.pdf
-!res/**/*.pdf
-res/**/*eps*.pdf
-res/**/*converted*.*
+!*/res/**/*.pdf
+*/res/**/*eps*.pdf
+*/res/**/*converted*.*
 svg-inkscape/**
 svg-extract/**
 

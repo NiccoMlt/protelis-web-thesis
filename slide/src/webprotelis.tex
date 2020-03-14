@@ -1,0 +1,63 @@
+\section{WebProtelis}
+
+    \subsection{Progettazione del server}
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Servizi offerti}
+          Il backend è composto da due entità principali
+          \begin{itemize}
+            \item server che espone API per la comunicazione remota
+            \item esecutore del codice Protelis
+          \end{itemize}
+        \end{block}
+
+        \begin{block}{Scelte tecnologiche}
+          \begin{itemize}
+            \item Vert.x      % TODO: spiega meglio
+            \item Kotlin      % TODO: spiega meglio
+            \item Alchemist   % TODO: spiega meglio
+          \end{itemize}
+        \end{block}
+      \end{frame}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Vert.x}
+          \emph{Vert.x} è un framework applicativo event-driven che esegue su JVM.
+          Del modello architetturale messo a disposizione dal framework, è stato considerato interessante il concetto di \emph{Verticle}:
+          esso è un'astrazione, simile al pattern ad attori ma non considerato pienamente aderente al modello teorico dalla stessa documentazione ufficiale,
+          che incapsula un event-loop insieme al suo stato e interagisce tramite gli eventi provenienti da un EventBus.
+        \end{block}
+
+      % \begin{frame}{\insertsectionhead}
+      %   \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Pattern reactor}
+          % TODO: spiega meglio
+        \end{block}
+      \end{frame}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+
+        \begin{block}{Alchemist}
+          % TODO: spiega meglio
+        \end{block}
+      \end{frame}
+
+    \subsection{Progettazione del client}
+
+      \begin{frame}{\insertsectionhead}
+        \framesubtitle{\insertsubsectionhead}
+        \begin{block}{Scelte tecnologiche}
+          \begin{itemize}
+            \item React   % TODO: spiega meglio
+            \item Sock.js % TODO: spiega meglio
+          \end{itemize}
+        \end{block}
+      \end{frame}
+
+    \subsection{Valutazione dei risultati}
+
