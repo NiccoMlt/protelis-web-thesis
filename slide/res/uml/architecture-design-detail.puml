@@ -1,0 +1,55 @@
+@startuml "architecture-design-detail"
+
+  skinparam {
+    linetype ortho
+    monochrome true
+    ArrowColor black
+    backgroundColor transparent
+    classBackgroundColor transparent
+    ' style strictuml
+    actorBackgroundColor transparent
+    componentBackgroundColor transparent
+    padding 5
+  }
+
+  left to right direction
+
+  actor :user: as user
+
+  component [client] as react {
+    database "Redux store" as store {
+      component [editorSlice] as editor
+      component [execSlice] as canvas
+    }
+    component [UI] as ui
+    component [Middleware] as mw
+
+    editor --> mw
+    mw -up-> canvas
+  }
+
+  user --> ui
+  ui --> editor
+  ui <-- editor
+  ui <-- canvas
+
+  component [backend] {
+    component [server] as vertx {
+      component [BridgeVerticle] as bridge
+      component [AlchemistVerticle] as exec
+
+      bridge --> exec
+      bridge <-- exec: EventBus
+    }
+
+    ' react --> bridge
+    ' react <-- bridge
+
+    mw -(0- bridge: SockJS
+
+    component [executor] as alchemist
+
+    exec -(0- alchemist
+  }
+
+@enduml

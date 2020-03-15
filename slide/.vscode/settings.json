@@ -3,5 +3,7 @@
   "cSpell.words": [
     "Protelis"
   ],
-  "cSpell.language": "en,it,it-IT"
+  "cSpell.language": "en,it,it-IT",
+  "plantuml.exportOutDir": ".",
+  "plantuml.exportSubFolder": false
 }

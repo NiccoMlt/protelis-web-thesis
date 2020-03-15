@@ -1,0 +1,29 @@
+@startuml use-cases-frontend
+
+skinparam {
+  ' linetype ortho
+  monochrome true
+  ArrowColor black
+  backgroundColor transparent
+  classBackgroundColor transparent
+  ' style strictuml
+  actorBackgroundColor transparent
+  componentBackgroundColor transparent
+}
+left to right direction
+
+title UI use cases
+
+:User: as user
+
+rectangle {
+  (Learn from example) as learn
+  (Run example) as run
+  (Write their own source code) as write
+}
+
+user --> learn
+user --> run
+user --> write
+
+@enduml

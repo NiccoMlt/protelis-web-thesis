@@ -1,93 +1,131 @@
 \section{Background}
     \subsection{Stato dell'arte}
 
+      \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+        \begin{columns}
+          \begin{column}{.7\textwidth}
+            \begin{block}{Programmazione aggregata}
+              La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
+            \end{block}
+
+            \begin{block}{Linguaggi}
+              I principali linguaggi di programmazione aggregata sono:
+
+              \begin{itemize}[<+(1)->]
+                \item ScaFi
+                \item Protelis
+              \end{itemize}
+            \end{block}
+          \end{column}
+          \begin{column}{.25\textwidth}
+            \begin{figure}
+              \includegraphics[height=.7\textheight]{res/fig/stack-partial.eps}
+            \end{figure}
+          \end{column}
+        \end{columns}
+      \end{frame}
+
+      \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+        \begin{columns}
+          \begin{column}{.8\textwidth}
+            \begin{block}{Protelis}
+              \begin{itemize}[<+->]
+              \item
+                  Linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}
+                \item
+                  Incorpora le principali funzionalità di computazione spaziale della programmazione aggregata
+                \item
+                  Possiede una sintassi più simile ai linguaggi strutturati tradizionali come C o Java
+                \item
+                  È \emph{Java-hosted}
+                  \begin{itemize}
+                    \item richiede un ambiente JVM in cui eseguire l'interprete
+                  \end{itemize}
+              \end{itemize}
+            \end{block}
+          \end{column}
+          \begin{column}{.15\textwidth}
+            \begin{figure}
+              \includegraphics[width=\textwidth]{../res/fig/protelis-logo.png}
+            \end{figure}
+          \end{column}
+        \end{columns}
+      \end{frame}
+
+    \subsection{Problematica}
+
     \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-
-      % \subsubsection{Programmazione aggregata}
-      \begin{block}{Programmazione aggregata} % \insertsubsubsectionhead
-        La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
-      \end{block}
-
-      \pause
-
-      % \subsubsection{Linguaggi}
-      \begin{block}{Linguaggi} % \insertsubsubsectionhead
-        I principali linguaggi di programmazione aggregata sono:
-
-        \begin{itemize}[<+(1)->]
-          \item ScaFi
-          \item Protelis
-        \end{itemize}
-      \end{block}
-
-    \end{frame}
-
-    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-
-      % TODO: inserisci il logo
-
-      \begin{block}{Protelis}
-        \begin{itemize}[<+->]
-          % TODO: non è chiaro da dove salti fuori field calculus qua
-          \item Field calculus è un impianto teorico sul quale devono essere costruiti linguaggi ``pratici''.
-          % TODO: abbrevia
-          \item \strong{Protelis} è un linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}.
-          % TODO: abbrevia
-          \item Il linguaggio incorpora le principali funzionalità di computazione spaziale di field calculus in una sintassi più simile ai linguaggi strutturati tradizionali come C o Java.
-        \end{itemize}
-      \end{block}
-    \end{frame}
-
-    \subsection{Problematiche}
-
-    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-
-      \begin{block}{\insertsubsectionhead}
-        \begin{itemize}[<+->]
-          \item
-            Il linguaggio è \emph{Java-hosted}
+      \begin{columns}
+        \begin{column}{.6\textwidth}
+          \begin{alertblock}{\insertsubsectionhead}
             \begin{itemize}
-              \item richiede un ambiente JVM in cui eseguire l'interprete
+              \item<1->
+                Il linguaggio richiede una rete di dispositivi su cui eseguire:
+                \begin{itemize}
+                  \item<2-> rete fisica
+                  \item<3-> NASA WorldWind
+                  \item<4-> ProtelisVM
+                  \item<5-> Alchemist
+                \end{itemize}
             \end{itemize}
-          \item
-            Il linguaggio richiede una rete di dispositivi su cui eseguire
-            \begin{itemize}[<+->]
-              \item rete fisica
-              \item NASA WorldWind  % TODO: figura
-              \item ProtelisVM      % TODO: figura
-              \item Alchemist       % TODO: figura
-            \end{itemize}
-        \end{itemize}
-      \end{block}
+          \end{alertblock}
+        \end{column}
+        \begin{column}{.35\textwidth}
+          \begin{figure}
+            \centering
+            \only<2>{%
+              \includegraphics[width=.8\textwidth]{res/fig/network.png}%
+            }%
+            \only<3>{%
+              \includegraphics[width=.85\textwidth]{res/fig/nasaworldwind.png}%
+            }%
+            \only<4>{%
+              \includegraphics[width=.85\textwidth]{res/uml/protelis-vm.eps}%
+            }%
+            \only<5>{%
+              \includegraphics[width=.85\textwidth]{res/fig/alchemist.png}%
+            }%
+            \only<6>{%
+              \includegraphics[width=.8\textwidth]{res/fig/protelis-alchemist-arch.eps}%
+            }%
+          \end{figure}
+        \end{column}
+      \end{columns}
     \end{frame}
 
     \subsection{Requisiti e casi d'uso}
 
     \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-
-      \begin{block}{Requisiti}
-        \begin{itemize}
-          \item
-            L'obiettivo è progettare un sistema che permetta all'utente di iniziare a utilizzare Protelis richiedendo meno configurazioni possibile.
+      \begin{columns}
+        \begin{column}{.5\textwidth}
+          \begin{block}{Requisiti}
             \begin{itemize}
-              \item nessun build-script
-              \item nessuna rete o simulatore
+              \item
+                Progettare un sistema che permetta di iniziare a utilizzare Protelis con meno configurazioni possibile.
+                \begin{itemize}
+                  \item nessun build-script
+                  \item nessuna rete o simulatore
+                \end{itemize}
+              \item
+                L'utente si assume essere inesperto della piattaforma
+                \begin{itemize}
+                  \item l'interfaccia deve essere semplice e immediata
+                \end{itemize}
+              \item La piattaforma dovrebbe essere accessibile tramite browser
             \end{itemize}
-          \item
-            l'utente si assume essere inesperto della piattaforma
-            \begin{itemize}
-              \item l'interfaccia deve essere semplice e immediata
-            \end{itemize}
-        \end{itemize}
-      \end{block}
-
-      % TODO: figure aside
+          \end{block}
+        \end{column}
+        \begin{column}{.45\textwidth}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{res/uml/use-cases-frontend.eps}
+          \end{figure}
+        \end{column}
+      \end{columns}
     \end{frame}
 
-    \begin{frame}{\insertsectionhead}
-      \framesubtitle{\insertsubsectionhead}
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
 
-      \begin{block}{Fattibilità}
+      \begin{block}{Analisi del problema}
         \begin{itemize}
           \item
             non è possibile eseguire un interprete Protelis all'interno della sandbox un browser
@@ -104,9 +142,6 @@
       \end{block}
 
       \begin{figure}
-        \includegraphics[width=.8\textwidth]{../res/uml/architecture-design.eps}
+        \includegraphics[width=.71\textwidth]{../res/uml/architecture-design.eps}
       \end{figure}
-
-      % TODO: figure aside
     \end{frame}
-
