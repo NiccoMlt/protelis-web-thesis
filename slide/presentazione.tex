@@ -94,21 +94,28 @@
 
 \date{19 marzo 2020}
 
-%% Permette di inserire l'outline prima di ogni sezione
-\AtBeginSection[]{%
-  \begin{frame}<beamer>
-    \frametitle{Outline}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
+% %% Permette di inserire l'outline prima di ogni sezione
+% \AtBeginSection[]{%
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
 
 \begin{document}
 
   \frame{\titlepage}
 
+  % \begin{frame}<beamer>
+  %   \frametitle{Outline}
+  %   \tableofcontents
+  % \end{frame}
+
   \input{src/intro.tex}
   \input{src/background.tex}
   \input{src/webprotelis.tex}
   \input{src/conclusion.tex}
+
+  % \frame{\titlepage}
 
 \end{document}

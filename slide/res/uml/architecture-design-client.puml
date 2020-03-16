@@ -1,4 +1,4 @@
-@startuml "architecture-design-detail"
+@startuml "architecture-design-client"
 
   skinparam {
     linetype ortho
@@ -14,7 +14,7 @@
 
   left to right direction
 
-  actor :user: as user
+  ' actor :user: as user
 
   component [client] as react {
     database "Store" as store {
@@ -28,28 +28,9 @@
     mw -up-> canvas
   }
 
-  user --> ui
+  ' user --> ui
   ui --> editor
   ui <-- editor
   ui <-- canvas
-
-  component [backend] {
-    component [server] as vertx {
-      component [BridgeVerticle] as bridge
-      component [AlchemistVerticle] as exec
-
-      bridge --> exec
-      bridge <-- exec: EventBus
-    }
-
-    ' react --> bridge
-    ' react <-- bridge
-
-    mw -(0- bridge: SockJS
-
-    component [executor] as alchemist
-
-    exec -(0- alchemist
-  }
 
 @enduml

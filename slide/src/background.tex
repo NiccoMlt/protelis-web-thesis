@@ -11,7 +11,7 @@
             \begin{block}{Linguaggi}
               I principali linguaggi di programmazione aggregata sono:
 
-              \begin{itemize}[<+(1)->]
+              \begin{itemize}
                 \item ScaFi
                 \item Protelis
               \end{itemize}
@@ -73,21 +73,11 @@
         \begin{column}{.35\textwidth}
           \begin{figure}
             \centering
-            \only<2>{%
-              \includegraphics[width=.8\textwidth]{res/fig/network.png}%
-            }%
-            \only<3>{%
-              \includegraphics[width=.85\textwidth]{res/fig/nasaworldwind.png}%
-            }%
-            \only<4>{%
-              \includegraphics[width=.85\textwidth]{res/uml/protelis-vm.eps}%
-            }%
-            \only<5>{%
-              \includegraphics[width=.85\textwidth]{res/fig/alchemist.png}%
-            }%
-            \only<6>{%
-              \includegraphics[width=.8\textwidth]{res/fig/protelis-alchemist-arch.eps}%
-            }%
+            \includegraphics<2>[width=.85\textwidth]{res/fig/network.png}
+            \includegraphics<3 | handout 0>[width=.85\textwidth]{res/fig/nasaworldwind.png}
+            \includegraphics<4 | handout 0>[width=.85\textwidth]{res/uml/protelis-vm.eps}
+            \includegraphics<5 | handout 0>[width=.85\textwidth]{res/fig/alchemist.png}
+            \includegraphics<6 | handout 0>[width=.85\textwidth]{res/fig/protelis-alchemist-arch.eps}
           \end{figure}
         \end{column}
       \end{columns}
@@ -101,10 +91,10 @@
           \begin{block}{Requisiti}
             \begin{itemize}
               \item
-                Progettare un sistema che permetta di iniziare a utilizzare Protelis con meno configurazioni possibile.
+                Progettare un sistema che permetta di iniziare a utilizzare Protelis senza configurazioni
                 \begin{itemize}
                   \item nessun build-script
-                  \item nessuna rete o simulatore
+                  \item nessun deploy di dispositivi
                 \end{itemize}
               \item
                 L'utente si assume essere inesperto della piattaforma
