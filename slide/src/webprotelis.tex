@@ -1,10 +1,11 @@
 \section{WebProtelis}
 
-  \begin{frame}{\insertsectionhead}
-    \begin{figure}
-      \includegraphics[width=\textwidth]{res/uml/architecture-design-detail.eps}
-    \end{figure}
-  \end{frame}
+  % TODO: dovrei reinserire il diagramma grosso???
+  % \begin{frame}{\insertsectionhead}
+  %   \begin{figure}
+  %     \includegraphics[width=\textwidth]{res/uml/architecture-design-detail.eps}
+  %   \end{figure}
+  % \end{frame}
 
   \subsection{Progettazione del server}
 
@@ -55,12 +56,16 @@
         \end{column}
       \end{columns}
 
-      \begin{block}<5->{Verticle modellati}
-        \begin{itemize}
-          \item \texttt{BridgeVerticle} gestisce le API attraverso \emph{SockJS} e \emph{EventBus}
-          \item \texttt{AlchemistVerticle} costruisce e monitora simulazioni Alchemist per eseguire il codice Protelis
-        \end{itemize}
-      \end{block}
+      \begin{columns}
+        \begin{column}{.99\textwidth}
+          \begin{block}<5->{Verticle modellati}
+            \begin{itemize}
+              \item \texttt{BridgeVerticle} gestisce le API attraverso \emph{SockJS} e \emph{EventBus}
+              \item \texttt{AlchemistVerticle} costruisce e monitora simulazioni Alchemist per eseguire il codice Protelis
+            \end{itemize}
+          \end{block}
+        \end{column}
+      \end{columns}
     \end{frame}
 
     \subsection{Progettazione del client}
@@ -129,44 +134,52 @@
                 \strong{Redux} è una delle più popolari varianti
             \end{itemize}
           \end{block}
-        \end{column}
-        \begin{column}{.45\textwidth}
-          \begin{figure}
-            \includegraphics<2->[width=.9\textwidth]{../res/fig/redux-diagram.png}
-          \end{figure}
-        \end{column}
-      \end{columns}
-    \end{frame}
-
-    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-
-      \begin{columns}
-        \begin{column}{.5\textwidth}
-          \begin{block}{Componenti e stato}
+          \begin{block}<3->{Componenti e stato}
             Sono state individuate due \emph{slice} dello stato, relativamente ai due elementi di layout principali:
             \begin{itemize}
-              \item<2-> \texttt{editorSlice}
-              \item<3-> \texttt{execSlice}
+              \item<3-> \texttt{editorSlice}
+              \item<4-> \texttt{execSlice}
             \end{itemize}
           \end{block}
         \end{column}
         \begin{column}{.45\textwidth}
           \begin{figure}
-            \includegraphics[width=.9\textwidth]{res/uml/architecture-design-client.eps}
+            \includegraphics<2>[width=.9\textwidth]{../res/fig/redux-diagram.png}
+            \includegraphics<3->[width=.9\textwidth]{res/uml/architecture-design-client.eps}
           \end{figure}
         \end{column}
       \end{columns}
-
-      % \begin{figure}
-      %   \centering
-      %   \only<2>{%
-      %     \includegraphics[width=.65\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(2).png}%
-      %   }%
-      %   \only<3>{%
-      %     \includegraphics[width=.65\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(7).png}%
-      %   }%
-      % \end{figure}
     \end{frame}
+
+    % \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+
+    %   \begin{columns}
+    %     \begin{column}{.5\textwidth}
+    %       \begin{block}{Componenti e stato}
+    %         Sono state individuate due \emph{slice} dello stato, relativamente ai due elementi di layout principali:
+    %         \begin{itemize}
+    %           \item<2-> \texttt{editorSlice}
+    %           \item<3-> \texttt{execSlice}
+    %         \end{itemize}
+    %       \end{block}
+    %     \end{column}
+    %     \begin{column}{.45\textwidth}
+    %       \begin{figure}
+    %         \includegraphics[width=.9\textwidth]{res/uml/architecture-design-client.eps}
+    %       \end{figure}
+    %     \end{column}
+    %   \end{columns}
+
+    %   \begin{figure}
+    %     \centering
+    %     \only<2>{%
+    %       \includegraphics[width=.65\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(2).png}%
+    %     }%
+    %     \only<3>{%
+    %       \includegraphics[width=.65\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(7).png}%
+    %     }%
+    %   \end{figure}
+    % \end{frame}
 
   \subsection{Valutazione dei risultati}
 
@@ -182,11 +195,10 @@
         transparent,%
         addresource=res/demo.mp4,%
         flashvars={source=res/demo.mp4}%
-      ]{\includegraphics[width=.9\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(1).png}}{VPlayer.swf}
+      ]{\includegraphics[width=.9\textwidth]{../res/screenshot/Screenshot_2020-03-02 Protelis on the Web(6).png}}{VPlayer.swf}
     \end{frame}
 
     \begin{frame}{\insertsectionhead}{\insertsubsectionhead{}: Google Lighthouse}
       \centering
       \includegraphics[width=\textwidth]{../res/tests/Screenshot_2020-03-04 Lighthouse Report Viewer.png}
     \end{frame}
-

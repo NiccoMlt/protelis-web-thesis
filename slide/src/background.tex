@@ -4,53 +4,61 @@
       \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
         \begin{columns}
           \begin{column}{.7\textwidth}
-            \begin{block}{Programmazione aggregata}
+            \begin{block}<1->{Programmazione aggregata}
               La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
             \end{block}
 
-            \begin{block}{Linguaggi}
-              I principali linguaggi di programmazione aggregata sono:
-
-              \begin{itemize}
-                \item ScaFi
-                \item Protelis
-              \end{itemize}
-            \end{block}
+            \begin{columns}
+              \begin{column}{.8\textwidth}
+                \begin{block}<2->{Linguaggi}
+                  \begin{itemize}
+                    \item<2-> \strong{Protelis}
+                    \item<3-> ScaFi
+                  \end{itemize}
+                  \onslide<4->{Entrambi eseguono su JVM}
+                \end{block}
+              \end{column}
+              \begin{column}{.15\textwidth}
+                \begin{figure}
+                  \includegraphics<2->[width=\textwidth]{../res/fig/protelis-logo.png}
+                \end{figure}
+              \end{column}
+            \end{columns}
           \end{column}
           \begin{column}{.25\textwidth}
             \begin{figure}
-              \includegraphics[height=.7\textheight]{res/fig/stack-partial.eps}
+              \includegraphics<1->[height=.7\textheight]{res/fig/stack-partial.eps}
             \end{figure}
           \end{column}
         \end{columns}
       \end{frame}
 
-      \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-        \begin{columns}
-          \begin{column}{.8\textwidth}
-            \begin{block}{Protelis}
-              \begin{itemize}[<+->]
-              \item
-                  Linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}
-                \item
-                  Incorpora le principali funzionalità di computazione spaziale della programmazione aggregata
-                \item
-                  Possiede una sintassi più simile ai linguaggi strutturati tradizionali come C o Java
-                \item
-                  È \emph{Java-hosted}
-                  \begin{itemize}
-                    \item richiede un ambiente JVM in cui eseguire l'interprete
-                  \end{itemize}
-              \end{itemize}
-            \end{block}
-          \end{column}
-          \begin{column}{.15\textwidth}
-            \begin{figure}
-              \includegraphics[width=\textwidth]{../res/fig/protelis-logo.png}
-            \end{figure}
-          \end{column}
-        \end{columns}
-      \end{frame}
+      % \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+      %   \begin{columns}
+      %     \begin{column}{.8\textwidth}
+      %       \begin{block}{Protelis}
+      %         \begin{itemize}[<+->]
+      %         \item
+      %             Linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}
+      %           \item
+      %             Incorpora le principali funzionalità di computazione spaziale della programmazione aggregata
+      %           \item
+      %             Possiede una sintassi più simile ai linguaggi strutturati tradizionali come C o Java
+      %           \item
+      %             È \emph{Java-hosted}
+      %             \begin{itemize}
+      %               \item richiede un ambiente JVM in cui eseguire l'interprete
+      %             \end{itemize}
+      %         \end{itemize}
+      %       \end{block}
+      %     \end{column}
+      %     \begin{column}{.15\textwidth}
+      %       \begin{figure}
+      %         \includegraphics[width=\textwidth]{../res/fig/protelis-logo.png}
+      %       \end{figure}
+      %     \end{column}
+      %   \end{columns}
+      % \end{frame}
 
     \subsection{Problematica}
 
@@ -125,8 +133,8 @@
           \item
             è necessario suddividere l'architettura in due componenti
             \begin{itemize}
-              \item un server che espone API per l'esecuzione del codice
               \item un'interfaccia Single-Page accessibile tramite browser
+              \item un server esecutore accessibile tramite API dal client
             \end{itemize}
         \end{itemize}
       \end{block}
@@ -134,4 +142,8 @@
       \begin{figure}
         \includegraphics[width=.71\textwidth]{../res/uml/architecture-design.eps}
       \end{figure}
+
+      % \begin{figure}
+      %   \includegraphics[width=.69\textwidth]{res/uml/architecture-design-detail.eps}
+      % \end{figure}
     \end{frame}
