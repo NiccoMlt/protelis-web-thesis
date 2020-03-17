@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="131px" preserveAspectRatio="none" style="width:430px;height:131px;" version="1.1" viewBox="0 0 430 131" width="430px" zoomAndPan="magnify"><defs><filter height="300%" id="fvhop3lcolcd0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--cluster backend--><rect fill="#FFFFFF" filter="url(#fvhop3lcolcd0)" height="90" style="stroke: #000000; stroke-width: 1.5;" width="226" x="193" y="24"/><rect fill="#FFFFFF" height="10" style="stroke: #000000; stroke-width: 1.5;" width="15" x="399" y="29"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="397" y="31"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="397" y="35"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="60" x="276" y="51.5332">backend</text><!--entity vertx--><rect fill="#FFFFFF" filter="url(#fvhop3lcolcd0)" height="37.6094" style="stroke: #383838; stroke-width: 1.5;" width="60" x="209" y="60"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="204" y="65"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="204" y="87.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="219" y="84.5332">server</text><!--entity alchemist--><rect fill="#FFFFFF" filter="url(#fvhop3lcolcd0)" height="37.6094" style="stroke: #383838; stroke-width: 1.5;" width="74" x="329" y="60"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="324" y="65"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="324" y="87.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="54" x="339" y="84.5332">executor</text><!--entity user--><ellipse cx="21" cy="46.5" fill="#FFFFFF" filter="url(#fvhop3lcolcd0)" rx="8" ry="8" style="stroke: #383838; stroke-width: 2.0;"/><path d="M21,54.5 L21,81.5 M8,62.5 L34,62.5 M21,81.5 L8,96.5 M21,81.5 L34,96.5 " fill="none" filter="url(#fvhop3lcolcd0)" style="stroke: #383838; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="28" x="7" y="118.0332">user</text><!--entity react--><rect fill="#FFFFFF" filter="url(#fvhop3lcolcd0)" height="37.6094" style="stroke: #383838; stroke-width: 1.5;" width="53" x="96" y="60"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="91" y="65"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="91" y="87.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="33" x="106" y="84.5332">client</text><!--link user to react--><path d="M36.4157,79 C36.4157,79 90.8611,79 90.8611,79 " fill="none" id="user-&gt;react" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="95.8611,79,86.8611,75,90.8611,79,86.8611,83,95.8611,79" style="stroke: #000000; stroke-width: 1.0;"/><!--link react to vertx--><path d="M149.227,72.6667 C149.227,72.6667 203.7,72.6667 203.7,72.6667 " fill="none" id="react-&gt;vertx" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="208.7,72.6667,199.7,68.6667,203.7,72.6667,199.7,76.6667,208.7,72.6667" style="stroke: #000000; stroke-width: 1.0;"/><!--reverse link react to vertx--><path d="M154.227,85.3333 C154.227,85.3333 208.7,85.3333 208.7,85.3333 " fill="none" id="react&lt;-vertx" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="149.227,85.3333,158.227,89.3333,154.227,85.3333,158.227,81.3333,149.227,85.3333" style="stroke: #000000; stroke-width: 1.0;"/><!--link vertx to alchemist--><path d="M269.097,79 C286.995,79 309.842,79 328.855,79 " fill="none" id="vertx-alchemist" style="stroke: #000000; stroke-width: 1.0;"/><path d="M291.4868,71.9289 A10,10 0 0 0 291.4868 86.0711" fill="#FFFFFF" style="stroke: #000000; stroke-width: 1.5;"/><ellipse cx="298.5579" cy="79" fill="#FFFFFF" rx="6" ry="6" style="stroke: #000000; stroke-width: 1.5;"/><!--
+@startuml "architecture-design-fix"
+
+  skinparam {
+    linetype ortho
+    monochrome true
+    ArrowColor black
+    backgroundColor transparent
+    classBackgroundColor transparent
+    actorBackgroundColor transparent
+    componentBackgroundColor transparent
+  }
+
+  left to right direction
+
+  actor :user: as user
+
+  component [client] as react
+
+  user - -> react
+
+  component [backend] {
+    component [server] as vertx
+
+    react - -> vertx
+    react <- - vertx
+
+    component [executor] as alchemist
+
+    vertx -(0- alchemist
+  }
+
+@enduml
+
+PlantUML version 1.2019.09(Mon Aug 26 18:19:51 CEST 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 13.0.2+8
+Operating System: Windows 10
+OS Version: 10.0
+Default Encoding: Cp1252
+Language: it
+Country: IT
+--></g></svg>

@@ -1,79 +1,52 @@
 \section{Background}
-    \subsection{Stato dell'arte}
+  \subsection{Stato dell'arte}
 
-      \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-        \begin{columns}
-          \begin{column}{.7\textwidth}
-            \begin{block}<1->{Programmazione aggregata}
-              La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
-            \end{block}
+    \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
+      \begin{columns}
+        \begin{column}{.7\textwidth}
+          \begin{block}{Programmazione aggregata}
+            La programmazione aggregata costituisce un'alternativa all'approccio ``classico'' volta a semplificare la progettazione, creazione e manutenzione di sistemi distribuiti complessi.
+          \end{block}
 
-            \begin{columns}
-              \begin{column}{.8\textwidth}
-                \begin{block}<2->{Linguaggi}
-                  \begin{itemize}
-                    \item<2-> \strong{Protelis}
-                    \item<3-> ScaFi
-                  \end{itemize}
-                  \onslide<4->{Entrambi eseguono su JVM}
-                \end{block}
-              \end{column}
-              \begin{column}{.15\textwidth}
-                \begin{figure}
-                  \includegraphics<2->[width=\textwidth]{../res/fig/protelis-logo.png}
-                \end{figure}
-              \end{column}
-            \end{columns}
-          \end{column}
-          \begin{column}{.25\textwidth}
-            \begin{figure}
-              \includegraphics<1->[height=.7\textheight]{res/fig/stack-partial.eps}
-            \end{figure}
-          \end{column}
-        \end{columns}
-      \end{frame}
+          \begin{columns}
+            \begin{column}{.8\textwidth}
+              \begin{block}{Linguaggi}
+                Implementazioni del \emph{field calculus} basate su JVM:
+                \begin{itemize}
+                  \item \strong{Protelis}
+                  \item ScaFi
+                \end{itemize}
+              \end{block}
+            \end{column}
+            \begin{column}{.15\textwidth}
+              \begin{figure}
+                \includegraphics[width=\textwidth]{../res/fig/protelis-logo.png}
+              \end{figure}
+            \end{column}
+          \end{columns}
+        \end{column}
+        \begin{column}{.25\textwidth}
+          \begin{figure}
+            \includegraphics[height=.7\textheight]{res/fig/stack-partial.eps}
+          \end{figure}
+        \end{column}
+      \end{columns}
+    \end{frame}
 
-      % \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
-      %   \begin{columns}
-      %     \begin{column}{.8\textwidth}
-      %       \begin{block}{Protelis}
-      %         \begin{itemize}[<+->]
-      %         \item
-      %             Linguaggio di programmazione basato sul paradigma aggregato fortemente influenzato da \emph{Proto}
-      %           \item
-      %             Incorpora le principali funzionalità di computazione spaziale della programmazione aggregata
-      %           \item
-      %             Possiede una sintassi più simile ai linguaggi strutturati tradizionali come C o Java
-      %           \item
-      %             È \emph{Java-hosted}
-      %             \begin{itemize}
-      %               \item richiede un ambiente JVM in cui eseguire l'interprete
-      %             \end{itemize}
-      %         \end{itemize}
-      %       \end{block}
-      %     \end{column}
-      %     \begin{column}{.15\textwidth}
-      %       \begin{figure}
-      %         \includegraphics[width=\textwidth]{../res/fig/protelis-logo.png}
-      %       \end{figure}
-      %     \end{column}
-      %   \end{columns}
-      % \end{frame}
-
-    \subsection{Problematica}
+  \subsection{Problematica}
 
     \begin{frame}{\insertsectionhead}{\insertsubsectionhead}
       \begin{columns}
         \begin{column}{.6\textwidth}
-          \begin{alertblock}{\insertsubsectionhead}
+          \begin{alertblock}{\insertsubsectionhead{}: configurazione iniziale}
             \begin{itemize}
               \item<1->
                 Il linguaggio richiede una rete di dispositivi su cui eseguire:
                 \begin{itemize}
                   \item<2-> rete fisica
-                  \item<3-> NASA WorldWind
-                  \item<4-> ProtelisVM
-                  \item<5-> Alchemist
+                  \item<3-> ProtelisVM
+                  \item<4-> NASA WorldWind
+                  \item<5-> \strong{Alchemist}
                 \end{itemize}
             \end{itemize}
           \end{alertblock}
@@ -82,8 +55,8 @@
           \begin{figure}
             \centering
             \includegraphics<2>[width=.85\textwidth]{res/fig/network.png}
-            \includegraphics<3 | handout 0>[width=.85\textwidth]{res/fig/nasaworldwind.png}
-            \includegraphics<4 | handout 0>[width=.85\textwidth]{res/uml/protelis-vm.eps}
+            \includegraphics<3 | handout 0>[width=.85\textwidth]{res/uml/protelis-vm.eps}
+            \includegraphics<4 | handout 0>[width=.85\textwidth]{res/fig/nasaworldwind.png}
             \includegraphics<5 | handout 0>[width=.85\textwidth]{res/fig/alchemist.png}
             \includegraphics<6 | handout 0>[width=.85\textwidth]{res/fig/protelis-alchemist-arch.eps}
           \end{figure}
@@ -140,7 +113,7 @@
       \end{block}
 
       \begin{figure}
-        \includegraphics[width=.71\textwidth]{../res/uml/architecture-design.eps}
+        \includegraphics[width=.63\textwidth]{res/uml/architecture-design-fix.eps}
       \end{figure}
 
       % \begin{figure}

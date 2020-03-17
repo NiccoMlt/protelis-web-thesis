@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="245px" preserveAspectRatio="none" style="width:729px;height:245px;" version="1.1" viewBox="0 0 729 245" width="729px" zoomAndPan="magnify"><defs><filter height="300%" id="fi4vx9fypaf6q" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--cluster backend--><rect fill="#FFFFFF" filter="url(#fi4vx9fypaf6q)" height="210" style="stroke: #000000; stroke-width: 1.5;" width="696" x="22" y="24"/><rect fill="#FFFFFF" height="10" style="stroke: #000000; stroke-width: 1.5;" width="15" x="698" y="29"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="696" y="31"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="696" y="35"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="60" x="340" y="56.5332">backend</text><!--cluster vertx--><rect fill="#FFFFFF" filter="url(#fi4vx9fypaf6q)" height="132" style="stroke: #000000; stroke-width: 1.5;" width="414" x="157" y="78"/><rect fill="#FFFFFF" height="10" style="stroke: #000000; stroke-width: 1.5;" width="15" x="551" y="83"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="549" y="85"/><rect fill="#FFFFFF" height="2" style="stroke: #000000; stroke-width: 1.5;" width="4" x="549" y="89"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="340.5" y="110.5332">server</text><!--entity sock--><ellipse cx="74" cy="161" fill="#F8F8F8" filter="url(#fi4vx9fypaf6q)" rx="8" ry="8" style="stroke: #383838; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="46" x="51" y="197.5332">SockJS</text><!--entity alchemist--><rect fill="#FFFFFF" filter="url(#fi4vx9fypaf6q)" height="47.6094" style="stroke: #383838; stroke-width: 1.5;" width="84" x="618" y="137"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="613" y="142"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="613" y="174.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="54" x="633" y="166.5332">executor</text><!--entity bridge--><rect fill="#FFFFFF" filter="url(#fi4vx9fypaf6q)" height="47.6094" style="stroke: #383838; stroke-width: 1.5;" width="118" x="173" y="137"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="168" y="142"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="168" y="174.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="88" x="188" y="166.5332">BridgeVerticle</text><!--entity exec--><rect fill="#FFFFFF" filter="url(#fi4vx9fypaf6q)" height="47.6094" style="stroke: #383838; stroke-width: 1.5;" width="137" x="418" y="137"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="413" y="142"/><rect fill="#FFFFFF" height="5" style="stroke: #383838; stroke-width: 1.5;" width="10" x="413" y="174.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="107" x="433" y="166.5332">AlchemistVerticle</text><!--link bridge to exec--><path d="M291.027,153 C291.027,153 412.88,153 412.88,153 " fill="none" id="bridge-&gt;exec" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="417.88,153,408.88,149,412.88,153,408.88,157,417.88,153" style="stroke: #000000; stroke-width: 1.0;"/><!--reverse link bridge to exec--><path d="M296.027,169 C296.027,169 417.88,169 417.88,169 " fill="none" id="bridge&lt;-exec" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="291.027,169,300.027,173,296.027,169,300.027,165,291.027,169" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="327" y="143.4951">EventBus</text><!--link sock to bridge--><path d="M83.4105,161 C100.8163,161 139.317,161 172.766,161 " fill="none" id="sock-bridge" style="stroke: #000000; stroke-width: 1.0;"/><!--link exec to alchemist--><path d="M555.072,161 C576.289,161 599.025,161 617.89,161 " fill="none" id="exec-alchemist" style="stroke: #000000; stroke-width: 1.0;"/><path d="M580.2919,153.9289 A10,10 0 0 0 580.2919 168.0711" fill="#FFFFFF" style="stroke: #000000; stroke-width: 1.5;"/><ellipse cx="587.363" cy="161" fill="#FFFFFF" rx="6" ry="6" style="stroke: #000000; stroke-width: 1.5;"/><!--
+@startuml "architecture-design-server"
+
+  skinparam {
+    linetype ortho
+    monochrome true
+    ArrowColor black
+    backgroundColor transparent
+    classBackgroundColor transparent
+    actorBackgroundColor transparent
+    componentBackgroundColor transparent
+    padding 5
+  }
+
+  left to right direction
+
+  component [backend] {
+    component [server] as vertx {
+      component [BridgeVerticle] as bridge
+      component [AlchemistVerticle] as exec
+
+      bridge - -> exec
+      bridge <- - exec: EventBus
+    }
+
+    interface SockJS as sock
+
+    sock -down- bridge
+
+    component [executor] as alchemist
+
+    exec -(0- alchemist
+  }
+
+@enduml
+
+PlantUML version 1.2019.09(Mon Aug 26 18:19:51 CEST 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 13.0.2+8
+Operating System: Windows 10
+OS Version: 10.0
+Default Encoding: Cp1252
+Language: it
+Country: IT
+--></g></svg>
